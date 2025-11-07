@@ -1,10 +1,33 @@
-.packageContainer{
- display: flex;
- justify-content: center;
- align-items: center; 
- flex-direction: column;
+.packageContainer input[type = "radio"]{
+width: 1rem;
+height: 1rem;
 }
 
-.packageContainer .hero{
-  text-align: left;
+#option-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#option-form span{
+    color: rgb(115 115 115);
+    font-size: .8rem;
+}
+
+#option-form .radio-label-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#option-form.border-seperator{
+    border-bottom: 1px solid #b26060;
+    padding-bottom: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+#option-form label {
+    font-size: 1.1rem;
+    font-weight: bold;
 }

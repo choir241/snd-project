@@ -1,7 +1,19 @@
 export const labels = {
+  services:{
+    allServices: "All services",
+    SupremeNomadsDetailing: "Supreme Nomads Detailing",
+    options: "Options",
+    noSearchResults: "No search results for \"\".",
+    tryDiffSearch: "Try a different search.",
+    poweredBySquare: "Powered by Square",
+    cookiePreferences: "Cookie Preferences",
+    updateButton: "Update",
+    removeButton: "Remove",
+    addButton: "Add"
+  },
   packages: {
-    touchUpPackage: {
-      name: "Touch Up Labor (Hourly)",
+    premiumPackage: {
+      name: "Premium Package",
       featureList: [
         "6 Month Ceramic Wax",
         "Iron Removal Treatment",
@@ -36,6 +48,7 @@ export const labels = {
           timeAlloted: "3 hr 30 min",
         },
       ],
+
     },
   },
 };
