@@ -1,0 +1,10 @@
+.packageContainer{
+ display: flex;
+ justify-content: center;
+ align-items: center; 
+ flex-direction: column;
+}
+
+.packageContainer .hero{
+  text-align: left;
+}
