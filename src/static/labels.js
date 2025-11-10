@@ -1,17 +1,89 @@
 export const labels = {
-  services:{
+  bookings: {
+    bookingsLink: "/",
+    interiorPackageLink: "/interiorPackage",
+    premiumPackageLink: "/premiumPackage",
+    expressPackageLink: "/expressPackage",
+    exteriorPackageLink: "/exteriorPackage",
+    supremeNomadsSpecialLink: "/supremeNomadsSpecial",
+    ceramicCoatingLink: "/ceramicCoating",
+  },
+  services: {
     allServices: "All services",
     SupremeNomadsDetailing: "Supreme Nomads Detailing",
     options: "Options",
-    noSearchResults: "No search results for \"\".",
+    noSearchResults: 'No search results for "".',
     tryDiffSearch: "Try a different search.",
     poweredBySquare: "Powered by Square",
     cookiePreferences: "Cookie Preferences",
     updateButton: "Update",
     removeButton: "Remove",
-    addButton: "Add"
+    addButton: "Add",
   },
   packages: {
+    expressPackage: {
+      name: "Express Package",
+      featureList: [
+        "Basic Wax Coating",
+        "Wheel Surface and Tire Wash",
+        "Tire Dressing",
+        "Foam Bath & Hand Wash",
+        "Seats & Carpets Sanitized",
+        "Dash/Vents/Trims/Panels Wipe Down",
+        "Interior Vacuum",
+        "Windows Only",
+      ],
+      price: "Price varies",
+      timeAlloted: "3 hr 30 min",
+      options: [
+        {
+          name: "Sedan/Coupé",
+          price: "$125.00",
+          timeAlloted: "3 hr 30 min",
+        },
+        {
+          name: "2 Row SUV/Small Truck",
+          price: "$150.00",
+          timeAlloted: "3 hr 30 min",
+        },
+        {
+          name: "3 Row SUV/Large Truck",
+          price: "$175.00",
+          timeAlloted: "3 hr 30 min",
+        },
+      ],
+    },
+    interiorPackage: {
+      price: "Price varies",
+      timeAlloted: "3 hr 30 min",
+      name: "Interior Package",
+      featureList: [
+        "Shampoo & Conditioner",
+        "Headliner Spot Cleaning",
+        "Steam Interior Surfaces",
+        "Seats & Carpets Sanitized",
+        "UV Protect and Sanitize Dash/Vents/Trims/Panels",
+        "Deep Interior & Trunk Vacuum",
+        "Windows and Door Jams Cleaned",
+      ],
+      options: [
+        {
+          name: "Sedan/Coupé",
+          price: "$160.00",
+          timeAlloted: "3 hr 30 min",
+        },
+        {
+          name: "2 Row SUV/Small Truck",
+          price: "$180.00",
+          timeAlloted: "3 hr 30 min",
+        },
+        {
+          name: "3 Row SUV/Large Truck",
+          price: "$200.00",
+          timeAlloted: "3 hr 30 min",
+        },
+      ],
+    },
     premiumPackage: {
       name: "Premium Package",
       featureList: [
@@ -48,7 +120,100 @@ export const labels = {
           timeAlloted: "3 hr 30 min",
         },
       ],
-
+    },
+    exteriorPackage: {
+      name: "Exterior Package",
+      featureList: [
+        "6 Month Ceramic Wax",
+        "Iron Removal Treatment",
+        "Clay Treatment",
+        "Wheel Surface, Barrel & Tire Wash",
+        "Tire Dressing",
+        "Foam Bath & Hand Wash",
+        "Windows & Door Jams Cleaned",
+        "Rain-X® Window Treatment",
+      ],
+      price: "Price varies",
+      timeAlloted: "3 hr 30 min",
+      options: [
+        {
+          name: "Sedan/Coupé",
+          price: "$160.00",
+          timeAlloted: "3 hr 30 min",
+        },
+        {
+          name: "2 Row SUV/Small Truck",
+          price: "$180.00",
+          timeAlloted: "3 hr 30 min",
+        },
+        {
+          name: "3 Row SUV/Large Truck",
+          price: "$200.00",
+          timeAlloted: "3 hr 30 min",
+        },
+      ],
+    },
+    supremeNomadsSpecial: {
+      name: "Supreme Nomads Special",
+      featureList: [
+        "1-Step Paint Enhancement",
+        "1 Year Ceramic Sealant1",
+        "Iron Removal Treatment",
+        "Clay Treatment",
+        "Wheel Surface, Barrel & Tire Wash",
+        "Tire Dressing",
+        "Foam Bath & Hand Wash",
+        "Shampoo & Conditioner",
+        "Headliner Spot Cleaning",
+        "Steam Interior Surfaces",
+        "Seats & Carpets Sanitized",
+        "UV Protect and Sanitize Dash/Vents/Trims/Panels",
+        "Deep Interior & Trunk Vacuum",
+        "Windows and Door Jams Cleaned",
+        "Rain-X® Window Treatment",
+      ],
+      price: "Price varies",
+      timeAlloted: "30 min+",
+      options: [
+        {
+          name: "Sedan/Coupé",
+          price: "$475.00",
+          timeAlloted: "30 min",
+        },
+        {
+          name: "2 Row SUV/Small Truck",
+          price: "$550.00",
+          timeAlloted: "30 min",
+        },
+        {
+          name: "3 Row SUV/Large Truck",
+          price: "$620.00",
+          timeAlloted: "3 hr 30 min",
+        },
+      ],
+    },
+    ceramicCoating: {
+      name: "Ceramic Coating",
+      featureList: [],
+      price: "Price varies",
+      timeAlloted: "30 min",
+      options: [
+        {
+          name: "Sedan/Coupé",
+          price: "$950.00",
+          timeAlloted: "30 min",
+        },
+        {
+          name: "2 Row SUV/Small Truck",
+          price: "$1,100.00",
+          timeAlloted: "3 hr 30 min",
+        },
+        {
+          name: "3 Row SUV/Large Truck",
+          price: "$1,300.00",
+          timeAlloted: "3 hr 30 min",
+        },
+      ],
     },
   },
 };

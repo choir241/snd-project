@@ -1,5 +1,4 @@
-import { labels } from "../static/labels";
-
+import { labels } from "../../static/labels";
 export default function PackageHeader() {
   return (
     <header className="flex items-center py-2 pl-4 pr-2 mb-2 justify-between">

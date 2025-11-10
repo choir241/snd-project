@@ -1,0 +1,93 @@
+import Package from "./components/Package/Package";
+import Bookings from "./Bookings";
+import "./Booking.css";
+import { BrowserRouter, Routes, Route } from "react-router";
+import { labels } from "./static/labels";
+
+export default function BrowserRoutes() {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Bookings />} />
+          <Route
+            path="/premiumPackage"
+            element={
+              <Package
+                packageName={labels.packages.premiumPackage.name}
+                packagePrice={labels.packages.premiumPackage.price}
+                packageTimeAlloted={labels.packages.premiumPackage.timeAlloted}
+                packageFeatureList={labels.packages.premiumPackage.featureList}
+                packageOptionList={labels.packages.premiumPackage.options}
+              />
+            }
+          />
+          <Route
+            path="/expressPackage"
+            element={
+              <Package
+                packageName={labels.packages.expressPackage.name}
+                packagePrice={labels.packages.expressPackage.price}
+                packageTimeAlloted={labels.packages.expressPackage.timeAlloted}
+                packageFeatureList={labels.packages.expressPackage.featureList}
+                packageOptionList={labels.packages.expressPackage.options}
+              />
+            }
+          />
+          <Route
+            path="/interiorPackage"
+            element={
+              <Package
+                packageName={labels.packages.interiorPackage.name}
+                packagePrice={labels.packages.interiorPackage.price}
+                packageTimeAlloted={labels.packages.interiorPackage.timeAlloted}
+                packageFeatureList={labels.packages.interiorPackage.featureList}
+                packageOptionList={labels.packages.interiorPackage.options}
+              />
+            }
+          />
+          <Route
+            path="/exteriorPackage"
+            element={
+              <Package
+                packageName={labels.packages.exteriorPackage.name}
+                packagePrice={labels.packages.exteriorPackage.price}
+                packageTimeAlloted={labels.packages.exteriorPackage.timeAlloted}
+                packageFeatureList={labels.packages.exteriorPackage.featureList}
+                packageOptionList={labels.packages.exteriorPackage.options}
+              />
+            }
+          />
+          <Route
+            path="/supremeNomadsSpecial"
+            element={
+              <Package
+                packageName={labels.packages.supremeNomadsSpecial.name}
+                packagePrice={labels.packages.supremeNomadsSpecial.price}
+                packageTimeAlloted={
+                  labels.packages.supremeNomadsSpecial.timeAlloted
+                }
+                packageFeatureList={
+                  labels.packages.supremeNomadsSpecial.featureList
+                }
+                packageOptionList={labels.packages.supremeNomadsSpecial.options}
+              />
+            }
+          />
+          <Route
+            path="/ceramicCoating"
+            element={
+              <Package
+                packageName={labels.packages.ceramicCoating.name}
+                packagePrice={labels.packages.ceramicCoating.price}
+                packageTimeAlloted={labels.packages.ceramicCoating.timeAlloted}
+                packageFeatureList={labels.packages.ceramicCoating.featureList}
+                packageOptionList={labels.packages.ceramicCoating.options}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+}

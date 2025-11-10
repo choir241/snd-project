@@ -1,9 +1,15 @@
-import { labels } from "../static/labels";
+import { labels } from "../../static/labels";
 import PackageHeader from "./PackageHeader";
 import PackageNav from "./PackageNav";
 import PackageList from "./PackageList";
 
-export default function Package() {
+export default function Package({
+  packageName,
+  packagePrice,
+  packageTimeAlloted,
+  packageFeatureList,
+  packageOptionList,
+}) {
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
       <div className="flex flex-col flex-grow overflow-y-auto">
@@ -16,20 +22,17 @@ export default function Package() {
                 aria-label="Main content"
                 className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 flex flex-col w-full px-4 md-lg:max-w-main-content flex-grow justify-between sm:justify-normal"
               >
-                <PackageNav />
+                <PackageNav packageNavName={packageName} />
 
                 <div className="h-full sm:h-auto">
-                  <h2 className="mb-2 overflow-wrap-anywhere">
-                    {labels.packages.premiumPackage.name}
-                  </h2>
+                  <h2 className="mb-2 overflow-wrap-anywhere">{packageName}</h2>
                   <div>
                     <div
                       className="paragraph-20 mb-2 flex flex-col"
                       data-testid="variation-details-summary"
                     >
                       <span>
-                        {labels.packages.premiumPackage.price} ・{" "}
-                        {labels.packages.premiumPackage.timeAlloted}
+                        {packagePrice} ・ {packageTimeAlloted}
                       </span>
                     </div>
                     <div
@@ -37,11 +40,9 @@ export default function Package() {
                       data-testid="service-description"
                     >
                       <ul>
-                        {labels.packages.premiumPackage.featureList.map(
-                          (feature) => {
-                            return <li key={feature}>{feature}</li>;
-                          }
-                        )}
+                        {packageFeatureList.map((feature) => {
+                          return <li key={feature}>{feature}</li>;
+                        })}
                       </ul>
                     </div>
                     <div className="mt-8 mb-4">
@@ -102,9 +103,7 @@ export default function Package() {
                                         viewBox="0 0 24 24"
                                         width="24"
                                         height="24"
-                                      >
-
-                                      </svg>
+                                      ></svg>
                                     </market-icon>
                                   </market-button>
                                 </slot>
@@ -130,10 +129,11 @@ export default function Package() {
                         </h3>
                       </market-header>
 
-                      <PackageList/>
+                      <PackageList packageOptionList={packageOptionList} />
 
-                      <button className="button">{labels.services.addButton}</button>
-                                        
+                      <button className="button">
+                        {labels.services.addButton}
+                      </button>
                     </div>
                   </div>
                 </div>
