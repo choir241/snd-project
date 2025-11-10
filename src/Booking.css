@@ -1,32 +1,33 @@
-.packageContainer input[type="radio"] {
-  width: 1rem;
-  height: 1rem;
-}
-
-#option-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#option-form span {
+#bookings ul li {
   color: rgb(115 115 115);
-  font-size: 0.8rem;
 }
 
-#option-form .radio-label-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-#option-form.border-seperator {
-  border-bottom: 1px solid #b26060;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-#option-form label {
-  font-size: 1.1rem;
+.collapsedPackage label {
   font-weight: bold;
+}
+
+#bookings .collapsedPackage ul {
+  margin-top: 1rem;
+}
+
+.collapsedPackageHoverContainer {
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  border-bottom: 1px solid rgba(115, 115, 115, 0.2);
+  margin-bottom: 0.5rem;
+}
+
+.collapsedPackageHoverContainer:hover {
+  background-color: rgba(115, 115, 115, 0.1);
+}
+
+#bookings .nextButton {
+  width: 100%;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+}
+
+.nextButtonDisabled {
+  color: rgba(115, 115, 115);
+  background-color: rgba(115, 115, 115, 0.1);
 }

@@ -1,6 +1,5 @@
 import Package from "./components/Package/Package";
 import Bookings from "./Bookings";
-import "./Booking.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { labels } from "./static/labels";
 

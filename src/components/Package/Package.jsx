@@ -2,6 +2,7 @@ import { labels } from "../../static/labels";
 import PackageHeader from "./PackageHeader";
 import PackageNav from "./PackageNav";
 import PackageList from "./PackageList";
+import "../../Package.css";
 
 export default function Package({
   packageName,

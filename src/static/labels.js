@@ -1,5 +1,8 @@
 export const labels = {
   bookings: {
+    appointmentSummary: "Appointment summary",
+    noServicesAddedYet: "No services added yet",
+    nextButton: "Next",
     bookingsLink: "/",
     interiorPackageLink: "/interiorPackage",
     premiumPackageLink: "/premiumPackage",

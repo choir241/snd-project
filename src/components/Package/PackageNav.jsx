@@ -1,11 +1,11 @@
 import { labels } from "../../static/labels";
 
 export default function PackageNav({ packageNavName }) {
-  const packageNameCamelCase = packageNavName.split(" ").reduce((a,b,i)=>{
-    if(i === 0){
-      return a + b.toLowerCase()
-    }else{
-      return a + b
+  const packageNameCamelCase = packageNavName.split(" ").reduce((a, b, i) => {
+    if (i === 0) {
+      return a + b.toLowerCase();
+    } else {
+      return a + b;
     }
   }, "");
 
