@@ -3,6 +3,8 @@ import PackageHeader from "./PackageHeader";
 import PackageNav from "./PackageNav";
 import PackageList from "./PackageList";
 import "../../Package.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Package({
   packageName,
@@ -11,6 +13,43 @@ export default function Package({
   packageFeatureList,
   packageOptionList,
 }) {
+  const navigate = useNavigate();
+
+  const [packageOption, setPackageOption] = useState(null);
+
+  function addPackage() {
+    if (!packageOption) {
+      throw new Error("Please select an option.");
+    }
+
+    if (sessionStorage.getItem("cart")) {
+      const cart = JSON.parse(sessionStorage.getItem("cart"));
+      cart.push({
+        packageName: packageName,
+        packagePrice: packagePrice,
+        packageTimeAlloted: packageTimeAlloted,
+        packageOption: packageOption,
+      });
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+      sessionStorage.setItem(
+        "cart",
+
+        JSON.stringify([
+          {
+            packageName: packageName,
+            packagePrice: packagePrice,
+            packageTimeAlloted: packageTimeAlloted,
+            packageOption: packageOption,
+          },
+        ])
+      );
+    }
+
+    return navigate("/");
+  }
+  console.log(sessionStorage.getItem("cart"));
+
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
       <div className="flex flex-col flex-grow overflow-y-auto">
@@ -47,92 +86,16 @@ export default function Package({
                       </ul>
                     </div>
                     <div className="mt-8 mb-4">
-                      <market-header
-                        id="service-variations-header"
-                        className="market-header"
-                        close-button-aria-label="Close"
-                        hydrated=""
-                      >
-                        <template shadowrootmode="open">
-                          <div className="grid">
-                            <div className="navigation">
-                              <nav>
-                                <slot name="navigation">
-                                  <market-button
-                                    slot="navigation"
-                                    aria-label="Close"
-                                    className="market-button"
-                                    icon-only=""
-                                    rank="secondary"
-                                    size="medium"
-                                    type="button"
-                                    variant="regular"
-                                    hydrated=""
-                                  >
-                                    <template shadowrootmode="open">
-                                      <button
-                                        className="inner-tag"
-                                        type="button"
-                                        aria-label="Close"
-                                      >
-                                        <slot name="icon"></slot>
-                                        <span
-                                          className="button-text"
-                                          part="button-text"
-                                        >
-                                          <slot></slot>
-                                        </span>
-                                      </button>
-                                    </template>
-                                    <market-icon
-                                      slot="icon"
-                                      className="market-icon"
-                                      tintable=""
-                                      name="x"
-                                      hydrated=""
-                                      style={{
-                                        style:
-                                          "--icon-width: 24px; --icon-height: 24px",
-                                      }}
-                                    >
-                                      <template shadowrootmode="open">
-                                        <slot></slot>
-                                      </template>
-                                      <svg
-                                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                                        data-name="x"
-                                        viewBox="0 0 24 24"
-                                        width="24"
-                                        height="24"
-                                      ></svg>
-                                    </market-icon>
-                                  </market-button>
-                                </slot>
-                              </nav>
-                            </div>
-                            <div className="compact">
-                              <slot name="compact"></slot>
-                            </div>
-                            <div className="actions">
-                              <menu>
-                                <slot name="actions"></slot>
-                              </menu>
-                            </div>
-                          </div>
-                          <div className="heading" part="heading">
-                            <slot name="wayfinding"></slot>
-                            <slot></slot>
-                            <slot name="subheading"></slot>
-                          </div>
-                        </template>
-                        <h3 className="mb-1" slot="compact">
-                          {labels.services.options}
-                        </h3>
-                      </market-header>
+                      <h3 className="mb-1" slot="compact">
+                        {labels.services.options}
+                      </h3>
 
-                      <PackageList packageOptionList={packageOptionList} />
+                      <PackageList
+                        setPackageOption={setPackageOption}
+                        packageOptionList={packageOptionList}
+                      />
 
-                      <button className="button">
+                      <button className="button" onClick={() => addPackage()}>
                         {labels.services.addButton}
                       </button>
                     </div>

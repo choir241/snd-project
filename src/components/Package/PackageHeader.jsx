@@ -1,10 +1,11 @@
 import { labels } from "../../static/labels";
+
 export default function PackageHeader() {
   return (
     <header className="flex items-center py-2 pl-4 pr-2 mb-2 justify-between">
       <a
         className="!text-black"
-        href="/appointments/bvvj6fvmjuosjt/location/LP3QWMTHKC1DJ"
+        href = {labels.bookings.bookingsLink}
       >
         <img
           className="rounded-xl object-contain h-12"

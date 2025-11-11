@@ -1,12 +1,19 @@
 .packageContainer input[type="radio"] {
   width: 1rem;
   height: 1rem;
+  cursor: pointer;
 }
 
-#option-form {
+#option-form.option-form-container{
+  padding: 1rem 0rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#option-form:hover {
+  cursor: pointer;
+  background-color: rgba(115, 115, 115, 0.1);
 }
 
 #option-form span {
@@ -23,7 +30,6 @@
 #option-form.border-seperator {
   border-bottom: 1px solid #b26060;
   padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
 }
 
 #option-form label {

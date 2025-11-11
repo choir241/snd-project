@@ -1,6 +1,6 @@
 import OptionRadios from "./OptionRadios";
 
-export default function PackageList({ packageOptionList }) {
+export default function PackageList({ packageOptionList, setPackageOption }) {
   return (
     <ul
       aria-multiselectable="false"
@@ -10,6 +10,8 @@ export default function PackageList({ packageOptionList }) {
       {packageOptionList.map((option, i) => {
         return (
           <OptionRadios
+            timeTaken = {option.timeTaken}
+            setPackageOption={setPackageOption}
             className="border-seperator"
             key={i}
             optionName={option.name}

@@ -11,10 +11,9 @@
 }
 
 .collapsedPackageHoverContainer {
-  padding: 0.25rem 0.5rem;
+  padding: 1rem 0.5rem;
   border-radius: 5px;
   border-bottom: 1px solid rgba(115, 115, 115, 0.2);
-  margin-bottom: 0.5rem;
 }
 
 .collapsedPackageHoverContainer:hover {
@@ -30,4 +29,5 @@
 .nextButtonDisabled {
   color: rgba(115, 115, 115);
   background-color: rgba(115, 115, 115, 0.1);
+  cursor:not-allowed;
 }

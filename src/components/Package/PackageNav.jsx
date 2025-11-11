@@ -1,14 +1,6 @@
 import { labels } from "../../static/labels";
 
 export default function PackageNav({ packageNavName }) {
-  const packageNameCamelCase = packageNavName.split(" ").reduce((a, b, i) => {
-    if (i === 0) {
-      return a + b.toLowerCase();
-    } else {
-      return a + b;
-    }
-  }, "");
-
   return (
     <nav aria-label="Breadcrumb" className="font-semibold mb-5 text-sm">
       <ol className="flex list-none m-0 p-0">
@@ -21,13 +13,7 @@ export default function PackageNav({ packageNavName }) {
           </a>
         </li>
         <li>
-          <a
-            aria-current="page"
-            className="!text-black"
-            href={`/${packageNameCamelCase}`}
-          >
-            <span className="line-clamp-1">{packageNavName}</span>
-          </a>
+          <span className="line-clamp-1">{packageNavName}</span>
         </li>
       </ol>
     </nav>
