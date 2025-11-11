@@ -1,4 +1,5 @@
 import { labels } from "../../static/labels";
+import PackageCartItem from "./PackageCartItem";
 
 export default function PackageCart() {
   return (
@@ -10,12 +11,14 @@ export default function PackageCart() {
               {labels.bookings.appointmentSummary}
             </h2>
             <div className="desktop-cart mb-4 border border-solid border-black/[.05] rounded-md">
+              <PackageCartItem
+
+              />
+
               <div className="p-4">{labels.bookings.noServicesAddedYet}</div>
             </div>
           </div>
-          <div
-            className="market-button-group"
-          >
+          <div className="market-button-group">
             <button className="nextButton nextButtonDisabled">
               {labels.bookings.nextButton}
             </button>
