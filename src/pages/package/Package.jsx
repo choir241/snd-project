@@ -1,8 +1,8 @@
 import { labels } from "../../static/labels";
-import PackageHeader from "./PackageHeader";
-import PackageNav from "./PackageNav";
-import PackageList from "./PackageList";
-import "../../Package.css";
+import PackageHeader from "../../components/Package/PackageHeader";
+import PackageNav from "../../components/Package/PackageNav";
+import PackageList from "../../components/Package/PackageList";
+import "./Package.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -61,7 +61,7 @@ export default function Package({
             packageTimeAlloted: packageTimeAlloted,
             packageOption: packageOption,
           },
-        ])
+        ]),
       );
     }
 

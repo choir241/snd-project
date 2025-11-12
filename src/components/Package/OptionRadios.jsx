@@ -4,7 +4,6 @@ export default function OptionRadios({
   optionPrice,
   optionTimeAlloted,
   setPackageOption,
-  packageOption,
   timeTaken,
   className = "",
 }) {
@@ -41,7 +40,7 @@ export default function OptionRadios({
           {optionPrice}・{optionTimeAlloted}
         </span>
       </div>
- 
+
       <input
         onChange={() => {
           setPackageOption({

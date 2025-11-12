@@ -1,6 +1,6 @@
-import PackageHeader from "./components/Package/PackageHeader";
-import CollapsedPackageList from "./components/CollapsedPackage/CollapsedPackageList";
-import PackageCart from "./components/CollapsedPackage/PackageCart";
+import PackageHeader from "../../components/Package/PackageHeader";
+import CollapsedPackageList from "../../components/CollapsedPackage/CollapsedPackageList";
+import PackageCart from "../../components/Cart/PackageCart";
 import "./Booking.css";
 
 export default function Bookings() {

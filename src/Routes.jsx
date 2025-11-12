@@ -1,5 +1,5 @@
-import Package from "./components/Package/Package";
-import Bookings from "./Bookings";
+import Package from "./pages/package/Package";
+import Bookings from "./pages/bookings/Bookings";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { labels } from "./static/labels";
 
