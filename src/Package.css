@@ -4,7 +4,7 @@
   cursor: pointer;
 }
 
-#option-form.option-form-container{
+#option-form.option-form-container {
   padding: 1rem 0rem;
   display: flex;
   justify-content: space-between;
@@ -35,4 +35,25 @@
 #option-form label {
   font-size: 1.1rem;
   font-weight: bold;
+}
+
+.remove-button {
+  color: #002559;
+  font-weight: bold;
+  background-color: rgba(115, 115, 115, 0.1);
+  margin-right: 1rem;
+}
+
+.package-button-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+#noOptionSelected {
+  color: rgb(167, 31, 31);
+}
+
+.check-mark-added {
+  color: rgb(115 115 115);
 }

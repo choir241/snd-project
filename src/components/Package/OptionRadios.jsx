@@ -1,4 +1,5 @@
 export default function OptionRadios({
+  packageName,
   optionName,
   optionPrice,
   optionTimeAlloted,
@@ -6,6 +7,24 @@ export default function OptionRadios({
   timeTaken,
   className = "",
 }) {
+  function isChecked() {
+    const cart = JSON.parse(sessionStorage.getItem("cart"));
+
+    if (cart) {
+      const findSelectedOption = cart.find((item) => {
+        if (
+          item.packageOption.name === optionName &&
+          item.packageName === packageName
+        )
+          return item;
+      });
+
+      if (findSelectedOption) {
+        return findSelectedOption.packageOption.name;
+      }
+    }
+  }
+
   return (
     <label
       aria-selected="true"
@@ -24,13 +43,14 @@ export default function OptionRadios({
           setPackageOption({
             timeTaken: {
               hr: timeTaken.hr,
-              min: timeTaken.min
+              min: timeTaken.min,
             },
             name: optionName,
             price: optionPrice,
             timeAlloted: optionTimeAlloted,
           });
         }}
+        checked={isChecked()}
         type="radio"
         aria-label={optionName}
         name="options"

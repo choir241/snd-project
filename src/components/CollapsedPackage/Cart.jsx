@@ -20,7 +20,7 @@ export default function Cart() {
           <div className="desktop-cart mb-4 border border-solid border-black/[.05] rounded-md">
             <div
               data-testid="cart-accordion-label"
-              className="cart-header px-4 my-4 flex items-center"
+              className={`${togglePackageItemList ? "" : "cart-header"} px-4 my-4 flex items-center`}
             >
               <CartHero cartItems={cartItems} />
 

@@ -3,6 +3,7 @@ export const labels = {
     services: "services",
   },
   bookings: {
+    added: "Added",
     appointmentSummary: "Appointment summary",
     noServicesAddedYet: "No services added yet",
     nextButton: "Next",

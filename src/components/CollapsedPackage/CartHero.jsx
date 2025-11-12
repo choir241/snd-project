@@ -4,7 +4,10 @@ export default function CartHero({ cartItems }) {
   function calculateItemsTotal() {
     let sumPrice = 0;
     cartItems.forEach((item) => {
-      const separateDollarSign = item.packageOption.price.split("$")[1];
+      const separateDollarSign = item.packageOption.price
+        .split("$")[1]
+        .split(",")
+        .join("");
       sumPrice += Number(separateDollarSign);
     });
     return sumPrice.toLocaleString("en-US", {
@@ -17,8 +20,11 @@ export default function CartHero({ cartItems }) {
     let hrs = 0;
     let min = 0;
     cartItems.forEach((item) => {
-      hrs += item.packageOption.timeTaken.hr;
-      min += item.packageOption.timeTaken.min;
+      if (item.packageOption.timeTaken.hr) {
+        hrs += item.packageOption.timeTaken.hr;
+      } else if (item.packageOption.timeTaken.min) {
+        min += item.packageOption.timeTaken.min;
+      }
     });
     if (min >= 60) {
       while (min >= 60) {

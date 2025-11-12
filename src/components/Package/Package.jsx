@@ -19,6 +19,8 @@ export default function Package({
 
   function addPackage() {
     if (!packageOption) {
+      document.querySelector("#noOptionSelected").innerHTML =
+        "&#x26A0; Please select an option.";
       throw new Error("Please select an option.");
     }
 
@@ -42,13 +44,28 @@ export default function Package({
             packageTimeAlloted: packageTimeAlloted,
             packageOption: packageOption,
           },
-        ])
+        ]),
       );
     }
 
     return navigate("/");
   }
-  console.log(sessionStorage.getItem("cart"));
+
+  function checkForDups() {
+    const cartArray = JSON.parse(sessionStorage.getItem("cart"));
+    let isDup = false;
+
+    if (cartArray) {
+      cartArray.forEach((cart) => {
+        if (cart.packageName === packageName) {
+          isDup = true;
+          return;
+        }
+      });
+      return isDup;
+    }
+  }
+  console.log(checkForDups());
 
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
@@ -90,14 +107,34 @@ export default function Package({
                         {labels.services.options}
                       </h3>
 
+                      <span id="noOptionSelected"></span>
+
                       <PackageList
+                        packageName={packageName}
                         setPackageOption={setPackageOption}
                         packageOptionList={packageOptionList}
                       />
 
-                      <button className="button" onClick={() => addPackage()}>
-                        {labels.services.addButton}
-                      </button>
+                      {checkForDups() ? (
+                        <div className="package-button-container">
+                          <button
+                            className="button remove-button"
+                            onClick={() => updatePackage()}
+                          >
+                            {labels.services.removeButton}
+                          </button>
+                          <button
+                            className="button"
+                            onClick={() => updatePackage()}
+                          >
+                            {labels.services.updateButton}
+                          </button>
+                        </div>
+                      ) : (
+                        <button className="button" onClick={() => addPackage()}>
+                          {labels.services.addButton}
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

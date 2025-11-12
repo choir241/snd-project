@@ -29,5 +29,5 @@
 .nextButtonDisabled {
   color: rgba(115, 115, 115);
   background-color: rgba(115, 115, 115, 0.1);
-  cursor:not-allowed;
+  cursor: not-allowed;
 }

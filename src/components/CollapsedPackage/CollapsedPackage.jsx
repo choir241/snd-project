@@ -1,3 +1,4 @@
+import { labels } from "../../static/labels";
 export default function CollapsedPackage({
   packageRedirectLink,
   packageName,
@@ -6,6 +7,23 @@ export default function CollapsedPackage({
   packagePrice,
   packageTimeAlloted,
 }) {
+  function checkIfAdded() {
+    const cart = JSON.parse(sessionStorage.getItem("cart"));
+
+    if (cart) {
+      let isAdded = false;
+
+      cart.forEach((item) => {
+        if (item.packageName === packageName) {
+          isAdded = true;
+          return;
+        }
+      });
+
+      return isAdded;
+    }
+  }
+
   return (
     <div className="collapsedPackageHoverContainer">
       <div className="collapsedPackage">
@@ -28,6 +46,9 @@ export default function CollapsedPackage({
           </div>
           <p className="text-core-text-10">
             {packagePrice} ・ {packageTimeAlloted}
+          </p>
+          <p className="check-mark-added">
+            {checkIfAdded() ? <>&#10003; {labels.bookings.added}</> : ""}
           </p>
         </a>
       </div>
