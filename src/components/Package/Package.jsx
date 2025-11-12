@@ -17,6 +17,23 @@ export default function Package({
 
   const [packageOption, setPackageOption] = useState(null);
 
+  function updatePackage() {
+    if (packageOption) {
+      const cart = JSON.parse(sessionStorage.getItem("cart"));
+      const updatedCartPackageOption = cart.map((item) => {
+        if (item.packageName === packageName) {
+          item.packageOption = packageOption;
+          return item;
+        } else {
+          return item;
+        }
+      });
+      sessionStorage.setItem("cart", JSON.stringify(updatedCartPackageOption));
+    }
+
+    return navigate("/");
+  }
+
   function addPackage() {
     if (!packageOption) {
       document.querySelector("#noOptionSelected").innerHTML =
@@ -44,9 +61,21 @@ export default function Package({
             packageTimeAlloted: packageTimeAlloted,
             packageOption: packageOption,
           },
-        ]),
+        ])
       );
     }
+
+    return navigate("/");
+  }
+
+  function removePackage() {
+    const cart = JSON.parse(sessionStorage.getItem("cart"));
+    const updatedCartRemovePackage = cart.filter((item) => {
+      if (item.packageName !== packageName) {
+        return item;
+      }
+    });
+    sessionStorage.setItem("cart", JSON.stringify(updatedCartRemovePackage));
 
     return navigate("/");
   }
@@ -65,7 +94,6 @@ export default function Package({
       return isDup;
     }
   }
-  console.log(checkForDups());
 
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
@@ -110,6 +138,7 @@ export default function Package({
                       <span id="noOptionSelected"></span>
 
                       <PackageList
+                        packageOption={packageOption}
                         packageName={packageName}
                         setPackageOption={setPackageOption}
                         packageOptionList={packageOptionList}
@@ -119,7 +148,7 @@ export default function Package({
                         <div className="package-button-container">
                           <button
                             className="button remove-button"
-                            onClick={() => updatePackage()}
+                            onClick={() => removePackage()}
                           >
                             {labels.services.removeButton}
                           </button>

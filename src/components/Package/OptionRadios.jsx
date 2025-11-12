@@ -4,6 +4,7 @@ export default function OptionRadios({
   optionPrice,
   optionTimeAlloted,
   setPackageOption,
+  packageOption,
   timeTaken,
   className = "",
 }) {
@@ -20,9 +21,11 @@ export default function OptionRadios({
       });
 
       if (findSelectedOption) {
-        return findSelectedOption.packageOption.name;
+        return true;
       }
     }
+
+    return false;
   }
 
   return (
@@ -38,6 +41,7 @@ export default function OptionRadios({
           {optionPrice}・{optionTimeAlloted}
         </span>
       </div>
+ 
       <input
         onChange={() => {
           setPackageOption({
@@ -50,7 +54,7 @@ export default function OptionRadios({
             timeAlloted: optionTimeAlloted,
           });
         }}
-        checked={isChecked()}
+        defaultChecked={isChecked()}
         type="radio"
         aria-label={optionName}
         name="options"

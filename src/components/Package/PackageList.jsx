@@ -3,6 +3,7 @@ import OptionRadios from "./OptionRadios";
 export default function PackageList({
   packageName,
   packageOptionList,
+  packageOption,
   setPackageOption,
 }) {
   return (
