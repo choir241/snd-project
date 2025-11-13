@@ -5,6 +5,7 @@ import PackageList from "../../components/Package/PackageList";
 import "./Package.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 
 export default function Package({
   packageName,
@@ -21,7 +22,7 @@ export default function Package({
     if (packageOption) {
       const cart = JSON.parse(sessionStorage.getItem("cart"));
       const updatedCartPackageOption = cart.map((item) => {
-        if (item.packageName === packageName) {
+        if (item.packageName === packageName) { 
           item.packageOption = packageOption;
           return item;
         } else {
@@ -31,7 +32,7 @@ export default function Package({
       sessionStorage.setItem("cart", JSON.stringify(updatedCartPackageOption));
     }
 
-    return navigate("/");
+    // return navigate("/appointments");
   }
 
   function addPackage() {
@@ -41,31 +42,17 @@ export default function Package({
       throw new Error("Please select an option.");
     }
 
-    if (sessionStorage.getItem("cart")) {
-      const cart = JSON.parse(sessionStorage.getItem("cart"));
-      cart.push({
+    sessionStorage.setItem(
+      "cart",
+      JSON.stringify([{
         packageName: packageName,
         packagePrice: packagePrice,
         packageTimeAlloted: packageTimeAlloted,
         packageOption: packageOption,
-      });
-      sessionStorage.setItem("cart", JSON.stringify(cart));
-    } else {
-      sessionStorage.setItem(
-        "cart",
+      }])
+    );
 
-        JSON.stringify([
-          {
-            packageName: packageName,
-            packagePrice: packagePrice,
-            packageTimeAlloted: packageTimeAlloted,
-            packageOption: packageOption,
-          },
-        ]),
-      );
-    }
-
-    return navigate("/");
+    // return navigate("/appointments");
   }
 
   function removePackage() {
@@ -77,7 +64,7 @@ export default function Package({
     });
     sessionStorage.setItem("cart", JSON.stringify(updatedCartRemovePackage));
 
-    return navigate("/");
+    // return navigate("/appointments");
   }
 
   function checkForDups() {
@@ -171,6 +158,9 @@ export default function Package({
             </div>
           </div>
         </div>
+
+        <Footer/>
+        
       </div>
     </div>
   );

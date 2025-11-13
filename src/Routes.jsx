@@ -1,5 +1,6 @@
 import Package from "./pages/package/Package";
 import Bookings from "./pages/bookings/Bookings";
+import Appointments from "./pages/appointments/Appointments";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { labels } from "./static/labels";
 
@@ -8,6 +9,7 @@ export default function BrowserRoutes() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/appointments" element={<Appointments/>}/>
           <Route path="/" element={<Bookings />} />
           <Route
             path="/premiumPackage"
