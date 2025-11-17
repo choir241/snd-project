@@ -3,6 +3,7 @@ export const labels = {
     services: "services",
   },
   bookings: {
+    appointmentsLink: "/appointments",
     added: "Added",
     appointmentSummary: "Appointment summary",
     noServicesAddedYet: "No services added yet",

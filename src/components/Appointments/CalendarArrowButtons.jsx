@@ -1,8 +1,13 @@
-export default function CalendarArrowButtons() {
+export default function CalendarArrowButtons({setCurrentPage, currentPage}) {
   return (
     <div className="flex">
       <div className="mr-4">
         <market-button
+          onClick ={()=>{
+            if(currentPage > 1){
+            setCurrentPage(currentPage-1)
+            }
+          }}
           aria-label="Previous week"
           data-testid="prior-week-button"
           disabled=""
@@ -22,10 +27,6 @@ export default function CalendarArrowButtons() {
               tabIndex="-1"
               aria-label="Previous week"
             >
-              <slot name="icon"></slot>
-              <span className="button-text" part="button-text">
-                <slot></slot>
-              </span>
             </button>
           </template>
           <market-accessory
@@ -33,9 +34,6 @@ export default function CalendarArrowButtons() {
             className="market-accessory"
             hydrated=""
           >
-            <template shadowrootmode="open">
-              <slot></slot>
-            </template>
             <svg
               width="24"
               height="24"
@@ -45,8 +43,8 @@ export default function CalendarArrowButtons() {
               className="text-core-text-30 fill-current"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M4.29289 11.2929C3.90237 11.6834 3.90237 12.3166 4.29289 12.7071L11.2929 19.7071L12.7071 18.2929L7.41421 13L19 13V11H7.41421L12.7071 5.70712L11.2929 4.29291L4.29289 11.2929Z"
               ></path>
             </svg>
@@ -55,6 +53,11 @@ export default function CalendarArrowButtons() {
       </div>
       <div>
         <market-button
+          onClick={()=>{
+          if(currentPage < 3){
+            setCurrentPage(currentPage+1)
+            }
+          }}
           aria-label="Next week"
           data-testid="next-week-button"
           icon-only=""
@@ -65,22 +68,11 @@ export default function CalendarArrowButtons() {
           variant="regular"
           hydrated=""
         >
-          <template shadowrootmode="open">
-            <button className="inner-tag" type="button" aria-label="Next week">
-              <slot name="icon"></slot>
-              <span className="button-text" part="button-text">
-                <slot></slot>
-              </span>
-            </button>
-          </template>
           <market-accessory
             slot="icon"
             className="market-accessory"
             hydrated=""
           >
-            <template shadowrootmode="open">
-              <slot></slot>
-            </template>
             <svg
               width="24"
               height="24"
@@ -90,8 +82,8 @@ export default function CalendarArrowButtons() {
               className="text-black fill-current"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M19.7071 11.2929C20.0976 11.6834 20.0976 12.3166 19.7071 12.7071L12.7071 19.7071L11.2929 18.2929L16.5858 13L5 13L5 11H16.5858L11.2929 5.70712L12.7071 4.29291L19.7071 11.2929Z"
               ></path>
             </svg>

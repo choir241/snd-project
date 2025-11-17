@@ -1,0 +1,11 @@
+.calendar-date {
+  padding: 0 1rem;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.calendar-week {
+  width: 100%;
+}

@@ -34,11 +34,11 @@ export default function CalendarToggleButton() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M7.70703 7.70711C7.31651 8.09763 6.68334 8.09763 6.29282 7.70711L0.292818 1.70711L1.70703 0.292892L6.99992 5.58579L12.2928 0.292893L13.707 1.70711L7.70703 7.70711Z"
             fill="black"
-            fill-opacity="0.9"
+            fillOpacity="0.9"
           ></path>
         </svg>
       </market-button>

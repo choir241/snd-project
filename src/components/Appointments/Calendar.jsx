@@ -1,9 +1,59 @@
 import CalendarDate from "./CalendarDate";
 import CalendarArrowButtons from "./CalendarArrowButtons";
+import CalendarWeek from "./CalendarWeek";
+import { useState } from "react";
 
 export default function Calendar() {
 
-  const pastWeek = [{dateName: "Sa", date: 9}, {dateName: "Su", date: 10}, {dateName: "Mo", date: 11}, {dateName: "Tu", date: 12}, {dateName: "We", date: 13}, {dateName: "Th", date: 14}, {dateName: "Fr", date: 15}];
+  const currentWeek = [
+    { dateName: "Sa", date: 16 },
+    { dateName: "Su", date: 17 },
+    { dateName: "Mo", date: 18 },
+    { dateName: "Tu", date: 19 },
+    { dateName: "We", date: 20 },
+    { dateName: "Th", date: 21 },
+    { dateName: "Fr", date: 22 },
+  ];
+
+  const futureWeek = [
+    { dateName: "Sa", date: 22 },
+    { dateName: "Su", date: 23 },
+    { dateName: "Mo", date: 24 },
+    { dateName: "Tu", date: 25 },
+    { dateName: "We", date: 26 },
+    { dateName: "Th", date: 27 },
+    { dateName: "Fr", date: 28 },
+  ];
+
+    const pastWeek = [
+    { dateName: "Sa", date: 29 },
+    { dateName: "Su", date: 30 },
+    { dateName: "Mo", date: 1 },
+    { dateName: "Tu", date: 2 },
+    { dateName: "We", date: 3 },
+    { dateName: "Th", date: 4 },
+    { dateName: "Fr", date: 5 },
+  ];
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selected, setSelected] = useState("");
+  
+  const currentDate = new Date();
 
   return (
     <div className="calendar relative ">
@@ -13,523 +63,30 @@ export default function Calendar() {
         id="week-view"
       >
         <div className="flex mb-4 items-center">
-          <h2 className="flex-grow">Nov 2025</h2>
+          <h2 className="flex-grow">
+            {months[currentDate.getMonth()]} {currentDate.getFullYear()}
+          </h2>
 
-          <CalendarArrowButtons />
+          <CalendarArrowButtons currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         </div>
 
         <div className="flex items-center">
           <div className="sm:px-2.5 w-0 flex flex-grow overflow-hidden">
             <div className="flex w-full my-2">
+              {currentPage === 1 ? <CalendarWeek 
+              selected={selected}
+              setSelected={setSelected}
+              calendarWeek={currentWeek} /> : ""}
 
-              <div
-                data-testid="present-week"
-                className="flex justify-between sm:px-2.5 "
-                style={{ style: "flex: 0 0 100%" }}
-              >
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-9"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Sunday"
-                    >
-                      Su
-                    </div>
-                    <div className="text-core-text-20 font-normal line-through">
-                      &nbsp;9&nbsp;
-                    </div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-10"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Monday"
-                    >
-                      Mo
-                    </div>
-                    <div className="text-core-text-20 font-normal line-through">
-                      &nbsp;10&nbsp;
-                    </div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-11"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Tuesday"
-                    >
-                      Tu
-                    </div>
-                    <div className="text-core-text-20 font-normal line-through">
-                      &nbsp;11&nbsp;
-                    </div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-12"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Wednesday"
-                    >
-                      We
-                    </div>
-                    <div className="text-core-text-20 font-normal line-through">
-                      &nbsp;12&nbsp;
-                    </div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="true"
-                  data-testid="date-13-selected"
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex bg-black market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      aria-pressed="true"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-white font-semibold"
-                      aria-label="Thursday"
-                    >
-                      Th
-                    </div>
-                    <div className="text-white font-semibold">
-                      &nbsp;13&nbsp;
-                    </div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-14"
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Friday"
-                    >
-                      Fr
-                    </div>
-                    <div className="text-black font-normal">&nbsp;14&nbsp;</div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-15"
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Saturday"
-                    >
-                      Sa
-                    </div>
-                    <div className="text-black font-normal">&nbsp;15&nbsp;</div>
-                  </div>
-                </market-button>
-              </div>
+              {currentPage === 2 ? <CalendarWeek 
+              selected={selected}
+              setSelected={setSelected}
+              calendarWeek={futureWeek} /> : ""}
 
-
-
-
-              <div
-                aria-hidden="true"
-                data-testid="future-week"
-                className="flex justify-between sm:px-2.5 "
-                style={{ style: "flex: 0 0 100%" }}
-              >
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-16"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Sunday"
-                    >
-                      Su
-                    </div>
-                    <div className="text-black font-normal">&nbsp;16&nbsp;</div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-17"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Monday"
-                    >
-                      Mo
-                    </div>
-                    <div className="text-black font-normal">&nbsp;17&nbsp;</div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-18"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Tuesday"
-                    >
-                      Tu
-                    </div>
-                    <div className="text-black font-normal">&nbsp;18&nbsp;</div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-19"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Wednesday"
-                    >
-                      We
-                    </div>
-                    <div className="text-black font-normal">&nbsp;19&nbsp;</div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-20"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Thursday"
-                    >
-                      Th
-                    </div>
-                    <div className="text-black font-normal">&nbsp;20&nbsp;</div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-21"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Friday"
-                    >
-                      Fr
-                    </div>
-                    <div className="text-black font-normal">&nbsp;21&nbsp;</div>
-                  </div>
-                </market-button>
-                <market-button
-                  aria-pressed="false"
-                  data-testid="date-22"
-                  disabled=""
-                  rank="secondary"
-                  size="small"
-                  className="h-16 xs:w-12 flex [&amp;:not(:hover)]:bg-transparent market-button"
-                  type="button"
-                  variant="regular"
-                  hydrated=""
-                >
-                  <template shadowrootmode="open">
-                    <button
-                      className="inner-tag"
-                      type="button"
-                      disabled=""
-                      tabIndex="-1"
-                      aria-pressed="false"
-                    >
-                      <slot name="icon"></slot>
-                      <span className="button-text" part="button-text">
-                        <slot></slot>
-                      </span>
-                    </button>
-                  </template>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="text-core-text-20 font-normal"
-                      aria-label="Saturday"
-                    >
-                      Sa
-                    </div>
-                    <div className="text-black font-normal">&nbsp;22&nbsp;</div>
-                  </div>
-                </market-button>
-              </div>
+              {currentPage === 3 ? <CalendarWeek 
+              selected={selected}
+              setSelected={setSelected}
+              calendarWeek={pastWeek} /> : ""}
             </div>
           </div>
         </div>

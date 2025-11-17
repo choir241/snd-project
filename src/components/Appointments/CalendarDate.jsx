@@ -1,4 +1,12 @@
-export default function CalendarDate({ dateName, date }) {
+import { useState } from "react";
+
+export default function CalendarDate({
+  dateName,
+  date,
+  selected,
+  setSelected
+}) {
+
   const staticDateNames = {
     Mo: "Monday",
     Tu: "Tuesday",
@@ -8,29 +16,81 @@ export default function CalendarDate({ dateName, date }) {
     Sa: "Saturday",
     Su: "Sunday",
   };
-  return (
-    <button
-      aria-pressed="false"
-      data-testid={`date-${date}`}
-      disabled=""
-      rank="secondary"
-      size="small"
-      className="h-16 xs:w-12 flex bg-transparent market-button"
-      type="button"
-      variant="regular"
-      hydrated=""
-    >
-      <div className="flex flex-col items-center">
+
+  const currentDate = new Date();
+
+  function checkForWeek(textColor = "") {
+    if (date < currentDate.getDate()) {
+      return (
         <div
-          className="text-core-text-20 font-normal"
-          aria-label={staticDateNames[dateName]}
+          className={`text-center font-normal line-through ${
+            textColor ? textColor : "text-core-text-20"
+          }`}
         >
-          {dateName}
-        </div>
-        <div className="text-core-text-20 font-normal line-through">
           &nbsp;{date}&nbsp;
         </div>
-      </div>
-    </button>
+      );
+    } else {
+      return (
+        <div
+          className={`text-center font-normal ${
+            textColor ? textColor : "text-core-text-20 "
+          }`}
+        >
+          {date}
+        </div>
+      );
+    }
+  }
+
+  return (
+    <>
+      {(selected === date || !selected && date === currentDate.getDate()) ? (
+        <button
+          onClick={() => setSelected(date)}
+          aria-pressed="true"
+          data-testid={`date-${date}-selected`}
+          rank="secondary"
+          size="small"
+          className="selected h-16 flex bg-black market-button calendar-date"
+          type="button"
+          variant="regular"
+          hydrated=""
+        >
+          <div className="flex flex-col items-center">
+            <div
+              className="text-white font-semibold"
+              aria-label={staticDateNames[dateName]}
+            >
+              {dateName}
+            </div>
+            {checkForWeek("text-white")}
+          </div>
+        </button>
+      ) : (
+        <button
+          onClick={() => setSelected(date)}
+          aria-pressed="false"
+          data-testid={`date-${date}`}
+          disabled=""
+          rank="secondary"
+          size="small"
+          className="h-16 flex bg-transparent market-button calendar-date"
+          type="button"
+          variant="regular"
+          hydrated=""
+        >
+          <div className="flex flex-col items-center">
+            <div
+              className="text-core-text-20 font-normal"
+              aria-label={staticDateNames[dateName]}
+            >
+              {dateName}
+            </div>
+            {checkForWeek()}
+          </div>
+        </button>
+      )}
+    </>
   );
 }

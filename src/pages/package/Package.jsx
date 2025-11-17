@@ -32,7 +32,7 @@ export default function Package({
       sessionStorage.setItem("cart", JSON.stringify(updatedCartPackageOption));
     }
 
-    // return navigate("/appointments");
+    return navigate(labels.bookings.appointmentsLink);
   }
 
   function addPackage() {
@@ -52,7 +52,7 @@ export default function Package({
       }])
     );
 
-    // return navigate("/appointments");
+    return navigate(labels.bookings.appointmentsLink);
   }
 
   function removePackage() {
@@ -64,7 +64,7 @@ export default function Package({
     });
     sessionStorage.setItem("cart", JSON.stringify(updatedCartRemovePackage));
 
-    // return navigate("/appointments");
+    return navigate(labels.bookings.appointmentsLink);
   }
 
   function checkForDups() {
