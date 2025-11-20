@@ -1,10 +1,10 @@
-import { useState } from "react";
-
 export default function CalendarDate({
   dateName,
   date,
   selected,
-  setSelected
+  setSelected,
+  month,
+  year
 }) {
 
   const staticDateNames = {
@@ -20,7 +20,8 @@ export default function CalendarDate({
   const currentDate = new Date();
 
   function checkForWeek(textColor = "") {
-    if (date < currentDate.getDate()) {
+    if ((date < currentDate.getDate() && month === currentDate.getMonth()+1 && year === currentDate.getFullYear())) {
+      return true;
       return (
         <div
           className={`text-center font-normal line-through ${
@@ -30,7 +31,9 @@ export default function CalendarDate({
           &nbsp;{date}&nbsp;
         </div>
       );
-    } else {
+    }
+    else {
+      return false;
       return (
         <div
           className={`text-center font-normal ${

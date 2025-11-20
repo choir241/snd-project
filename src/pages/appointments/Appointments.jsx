@@ -6,8 +6,12 @@ import Availabilty from "../../components/Appointments/Availability";
 import AvailabilityHero from "../../components/Appointments/AvailabilityHero";
 import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
+import { useState } from "react";
+import HiddenCalendar from "../../components/Appointments/HiddenCalendar";
 
 export default function Appointments() {
+  const [toggleCalendarView, setToggleCalendarView] = useState(false);
+
   return (
     <div className="bg-white" id="root">
       <div className="mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
@@ -22,9 +26,12 @@ export default function Appointments() {
                 aria-label="Main content"
                 className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 flex flex-col w-full px-4 md-lg:max-w-main-content "
               >
-                <Calendar />
+                {toggleCalendarView ? <HiddenCalendar /> : <Calendar />}
 
-                <CalendarToggleButton />
+                <CalendarToggleButton
+                  toggleCalendarView={toggleCalendarView}
+                  setToggleCalendarView={setToggleCalendarView}
+                />
 
                 <AvailabilityHero />
 

@@ -9,3 +9,14 @@
 .calendar-week {
   width: 100%;
 }
+
+#calendar{
+  display: flex;
+  background: black;
+  width: 1200px;
+  height: 1200px;
+}
+
+#calendar *{
+  color: white;
+}

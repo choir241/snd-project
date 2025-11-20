@@ -28,6 +28,8 @@ export default function CalendarWeek({calendarWeek, selected, setSelected}) {
             key={week.dateName}
             dateName={week.dateName}
             date={week.date}
+            month={week.month}
+            year={week.year}
           />
         );
       })}
