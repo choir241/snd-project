@@ -4,8 +4,10 @@ import PackageNav from "../../components/Package/PackageNav";
 import PackageList from "../../components/Package/PackageList";
 import "./Package.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
+import PackageButtons from "../../components/Package/PackageButtons";
+import PackageServiceList from "../../components/Package/PackageServiceList";
+PackageServiceList;
 
 export default function Package({
   packageName,
@@ -14,73 +16,7 @@ export default function Package({
   packageFeatureList,
   packageOptionList,
 }) {
-  const navigate = useNavigate();
-
   const [packageOption, setPackageOption] = useState(null);
-
-  function updatePackage() {
-    if (packageOption) {
-      const cart = JSON.parse(sessionStorage.getItem("cart"));
-      const updatedCartPackageOption = cart.map((item) => {
-        if (item.packageName === packageName) { 
-          item.packageOption = packageOption;
-          return item;
-        } else {
-          return item;
-        }
-      });
-      sessionStorage.setItem("cart", JSON.stringify(updatedCartPackageOption));
-    }
-
-    return navigate(labels.bookings.appointmentsLink);
-  }
-
-  function addPackage() {
-    if (!packageOption) {
-      document.querySelector("#noOptionSelected").innerHTML =
-        "&#x26A0; Please select an option.";
-      throw new Error("Please select an option.");
-    }
-
-    sessionStorage.setItem(
-      "cart",
-      JSON.stringify([{
-        packageName: packageName,
-        packagePrice: packagePrice,
-        packageTimeAlloted: packageTimeAlloted,
-        packageOption: packageOption,
-      }])
-    );
-
-    return navigate(labels.bookings.appointmentsLink);
-  }
-
-  function removePackage() {
-    const cart = JSON.parse(sessionStorage.getItem("cart"));
-    const updatedCartRemovePackage = cart.filter((item) => {
-      if (item.packageName !== packageName) {
-        return item;
-      }
-    });
-    sessionStorage.setItem("cart", JSON.stringify(updatedCartRemovePackage));
-
-    return navigate(labels.bookings.appointmentsLink);
-  }
-
-  function checkForDups() {
-    const cartArray = JSON.parse(sessionStorage.getItem("cart"));
-    let isDup = false;
-
-    if (cartArray) {
-      cartArray.forEach((cart) => {
-        if (cart.packageName === packageName) {
-          isDup = true;
-          return;
-        }
-      });
-      return isDup;
-    }
-  }
 
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
@@ -96,6 +32,7 @@ export default function Package({
               >
                 <PackageNav packageNavName={packageName} />
 
+                {/* Body */}
                 <div className="h-full sm:h-auto">
                   <h2 className="mb-2 overflow-wrap-anywhere">{packageName}</h2>
                   <div>
@@ -107,16 +44,12 @@ export default function Package({
                         {packagePrice} ・ {packageTimeAlloted}
                       </span>
                     </div>
-                    <div
-                      className="paragraph-20 text-core-text-20 whitespace-pre-wrap"
-                      data-testid="service-description"
-                    >
-                      <ul>
-                        {packageFeatureList.map((feature) => {
-                          return <li key={feature}>{feature}</li>;
-                        })}
-                      </ul>
-                    </div>
+
+                    <PackageServiceList
+                      packageFeatureList={packageFeatureList}
+                    />
+
+                    {/* Options & Buttons */}
                     <div className="mt-8 mb-4">
                       <h3 className="mb-1" slot="compact">
                         {labels.services.options}
@@ -131,26 +64,12 @@ export default function Package({
                         packageOptionList={packageOptionList}
                       />
 
-                      {checkForDups() ? (
-                        <div className="package-button-container">
-                          <button
-                            className="button remove-button"
-                            onClick={() => removePackage()}
-                          >
-                            {labels.services.removeButton}
-                          </button>
-                          <button
-                            className="button"
-                            onClick={() => updatePackage()}
-                          >
-                            {labels.services.updateButton}
-                          </button>
-                        </div>
-                      ) : (
-                        <button className="button" onClick={() => addPackage()}>
-                          {labels.services.addButton}
-                        </button>
-                      )}
+                      <PackageButtons
+                        packageName={packageName}
+                        packageOption={packageOption}
+                        packagePrice={packagePrice}
+                        packageTimeAlloted={packageTimeAlloted}
+                      />
                     </div>
                   </div>
                 </div>
@@ -159,8 +78,7 @@ export default function Package({
           </div>
         </div>
 
-        <Footer/>
-        
+        <Footer />
       </div>
     </div>
   );

@@ -1,10 +1,12 @@
+import { labels } from "../static/labels";
+
 export default function Footer() {
   return (
     <footer
       role="contentinfo"
       className="w-full pb-4 false market-footer"
       hydrated=""
-      style={{style: "margin-bottom: 0px"}}
+      style={{ style: "margin-bottom: 0px" }}
     >
       <div className="w-full flex flex-col items-center justify-center">
         <svg
@@ -27,7 +29,7 @@ export default function Footer() {
           ></path>
         </svg>
         <div className="mt-2 leading-4 text-[12px] text-core-text-20">
-          Powered by Square
+          {labels.footer.poweredBySquare}
         </div>
       </div>
     </footer>

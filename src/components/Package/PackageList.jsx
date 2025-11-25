@@ -15,13 +15,12 @@ export default function PackageList({
         return (
           <OptionRadios
             packageName={packageName}
-            timeTaken={option.timeTaken}
             setPackageOption={setPackageOption}
             className="border-seperator"
             key={i}
             optionName={option.name}
-            optionPrice={option.price}
-            optionTimeAlloted={option.timeAlloted}
+            optionPrice={(option.priceMoneyAmt / 100).toFixed(2)}
+            optionTimeAlloted={option.serviceDuration}
           />
         );
       })}

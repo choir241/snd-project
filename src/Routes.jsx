@@ -3,92 +3,59 @@ import Bookings from "./pages/bookings/Bookings";
 import Appointments from "./pages/appointments/Appointments";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { labels } from "./static/labels";
+import axios from "axios";
+import { PackageSession } from "./middleware/packageContext";
+import { useState, useEffect } from "react";
+import { packageNameCamelCase } from "./hooks/packageNameCamelCase";
 
 export default function BrowserRoutes() {
+  const [packages, setPackages] = useState([]);
+
+  useEffect(() => {
+    async function getPackages() {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_API_URL}/packages`,
+      );
+
+      setPackages(response.data.packageList);
+    }
+
+    getPackages();
+  }, []);
+
   return (
-    <>
+    <PackageSession.Provider value={{ packages }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/appointments" element={<Appointments/>}/>
+          <Route path="/appointments" element={<Appointments />} />
           <Route path="/" element={<Bookings />} />
-          <Route
-            path="/premiumPackage"
-            element={
-              <Package
-                packageName={labels.packages.premiumPackage.name}
-                packagePrice={labels.packages.premiumPackage.price}
-                packageTimeAlloted={labels.packages.premiumPackage.timeAlloted}
-                packageFeatureList={labels.packages.premiumPackage.featureList}
-                packageOptionList={labels.packages.premiumPackage.options}
-              />
+          {packages.map((packageService) => {
+            if (packageService.name !== "Touch Up Labor (Hourly)") {
+              const camelCasedPackageName = packageNameCamelCase({
+                packageName: packageService.name,
+              });
+              const packagePrice = labels.packages[camelCasedPackageName].price;
+              const packageTimeAlloted =
+                labels.packages[camelCasedPackageName].timeAlloted;
+              return (
+                <Route
+                  path={`/${camelCasedPackageName}`}
+                  key={camelCasedPackageName}
+                  element={
+                    <Package
+                      packageName={packageService.name}
+                      packagePrice={packagePrice}
+                      packageTimeAlloted={packageTimeAlloted}
+                      packageFeatureList={packageService.descriptionPlaintext}
+                      packageOptionList={packageService.variations}
+                    />
+                  }
+                />
+              );
             }
-          />
-          <Route
-            path="/expressPackage"
-            element={
-              <Package
-                packageName={labels.packages.expressPackage.name}
-                packagePrice={labels.packages.expressPackage.price}
-                packageTimeAlloted={labels.packages.expressPackage.timeAlloted}
-                packageFeatureList={labels.packages.expressPackage.featureList}
-                packageOptionList={labels.packages.expressPackage.options}
-              />
-            }
-          />
-          <Route
-            path="/interiorPackage"
-            element={
-              <Package
-                packageName={labels.packages.interiorPackage.name}
-                packagePrice={labels.packages.interiorPackage.price}
-                packageTimeAlloted={labels.packages.interiorPackage.timeAlloted}
-                packageFeatureList={labels.packages.interiorPackage.featureList}
-                packageOptionList={labels.packages.interiorPackage.options}
-              />
-            }
-          />
-          <Route
-            path="/exteriorPackage"
-            element={
-              <Package
-                packageName={labels.packages.exteriorPackage.name}
-                packagePrice={labels.packages.exteriorPackage.price}
-                packageTimeAlloted={labels.packages.exteriorPackage.timeAlloted}
-                packageFeatureList={labels.packages.exteriorPackage.featureList}
-                packageOptionList={labels.packages.exteriorPackage.options}
-              />
-            }
-          />
-          <Route
-            path="/supremeNomadsSpecial"
-            element={
-              <Package
-                packageName={labels.packages.supremeNomadsSpecial.name}
-                packagePrice={labels.packages.supremeNomadsSpecial.price}
-                packageTimeAlloted={
-                  labels.packages.supremeNomadsSpecial.timeAlloted
-                }
-                packageFeatureList={
-                  labels.packages.supremeNomadsSpecial.featureList
-                }
-                packageOptionList={labels.packages.supremeNomadsSpecial.options}
-              />
-            }
-          />
-          <Route
-            path="/ceramicCoating"
-            element={
-              <Package
-                packageName={labels.packages.ceramicCoating.name}
-                packagePrice={labels.packages.ceramicCoating.price}
-                packageTimeAlloted={labels.packages.ceramicCoating.timeAlloted}
-                packageFeatureList={labels.packages.ceramicCoating.featureList}
-                packageOptionList={labels.packages.ceramicCoating.options}
-              />
-            }
-          />
+          })}
         </Routes>
       </BrowserRouter>
-    </>
+    </PackageSession.Provider>
   );
 }

@@ -1,11 +1,11 @@
-export default function CalendarArrowButtons({setCurrentPage, currentPage}) {
+export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
   return (
     <div className="flex">
       <div className="mr-4">
         <button
-          onClick ={()=>{
-            if(currentPage > 1){
-            setCurrentPage(currentPage-1)
+          onClick={() => {
+            if (currentPage > 1) {
+              setCurrentPage(currentPage - 1);
             }
           }}
           aria-label="Previous week"
@@ -19,18 +19,18 @@ export default function CalendarArrowButtons({setCurrentPage, currentPage}) {
           variant="regular"
           hydrated=""
         >
-          <section
-            slot="icon"
-            className="market-accessory"
-            hydrated=""
-          >
+          <section slot="icon" className="market-accessory" hydrated="">
             <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={currentPage === 1 ? "cursor-not-allowed text-core-text-30 fill-current" : "text-black fill-current"}
+              className={
+                currentPage === 1
+                  ? "cursor-not-allowed text-core-text-30 fill-current"
+                  : "text-black fill-current"
+              }
             >
               <path
                 fillRule="evenodd"
@@ -43,9 +43,9 @@ export default function CalendarArrowButtons({setCurrentPage, currentPage}) {
       </div>
       <div>
         <button
-          onClick={()=>{
-          if(currentPage < 3){
-            setCurrentPage(currentPage+1)
+          onClick={() => {
+            if (currentPage < 3) {
+              setCurrentPage(currentPage + 1);
             }
           }}
           aria-label="Next week"
@@ -58,18 +58,18 @@ export default function CalendarArrowButtons({setCurrentPage, currentPage}) {
           variant="regular"
           hydrated=""
         >
-          <section
-            slot="icon"
-            className="market-accessory"
-            hydrated=""
-          >
+          <section slot="icon" className="market-accessory" hydrated="">
             <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={currentPage === 3 ? "cursor-not-allowed text-core-text-30 fill-current" : "text-black fill-current"}
+              className={
+                currentPage === 3
+                  ? "cursor-not-allowed text-core-text-30 fill-current"
+                  : "text-black fill-current"
+              }
             >
               <path
                 fillRule="evenodd"

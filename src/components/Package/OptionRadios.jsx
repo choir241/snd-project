@@ -1,31 +1,13 @@
+import { isOptionChecked } from "../../hooks/isOptionChecked";
+
 export default function OptionRadios({
   packageName,
   optionName,
   optionPrice,
   optionTimeAlloted,
   setPackageOption,
-  timeTaken,
   className = "",
 }) {
-  function isChecked() {
-    const cart = JSON.parse(sessionStorage.getItem("cart"));
-
-    if (cart) {
-      const findSelectedOption = cart.find((item) => {
-        if (
-          item.packageOption.name === optionName &&
-          item.packageName === packageName
-        )
-          return item;
-      });
-
-      if (findSelectedOption) {
-        return true;
-      }
-    }
-
-    return false;
-  }
 
   return (
     <label
@@ -37,23 +19,19 @@ export default function OptionRadios({
       <div className="radio-label-container">
         <label slot="label">{optionName}</label>
         <span>
-          {optionPrice}・{optionTimeAlloted}
+          ${optionPrice}・{formatTime()}
         </span>
       </div>
 
       <input
         onChange={() => {
           setPackageOption({
-            timeTaken: {
-              hr: timeTaken.hr,
-              min: timeTaken.min,
-            },
             name: optionName,
             price: optionPrice,
             timeAlloted: optionTimeAlloted,
           });
         }}
-        defaultChecked={isChecked()}
+        defaultChecked={isOptionChecked({optionName, packageName})}
         type="radio"
         aria-label={optionName}
         name="options"

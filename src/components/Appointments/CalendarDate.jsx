@@ -4,9 +4,8 @@ export default function CalendarDate({
   selected,
   setSelected,
   month,
-  year
+  year,
 }) {
-
   const staticDateNames = {
     Mo: "Monday",
     Tu: "Tuesday",
@@ -20,8 +19,11 @@ export default function CalendarDate({
   const currentDate = new Date();
 
   function checkForWeek(textColor = "") {
-    if ((date < currentDate.getDate() && month === currentDate.getMonth()+1 && year === currentDate.getFullYear())) {
-      return true;
+    if (
+      date < currentDate.getDate() &&
+      month === currentDate.getMonth() + 1 &&
+      year === currentDate.getFullYear()
+    ) {
       return (
         <div
           className={`text-center font-normal line-through ${
@@ -31,9 +33,7 @@ export default function CalendarDate({
           &nbsp;{date}&nbsp;
         </div>
       );
-    }
-    else {
-      return false;
+    } else {
       return (
         <div
           className={`text-center font-normal ${
@@ -48,7 +48,7 @@ export default function CalendarDate({
 
   return (
     <>
-      {(selected === date || !selected && date === currentDate.getDate()) ? (
+      {selected === date || (!selected && date === currentDate.getDate()) ? (
         <button
           onClick={() => setSelected(date)}
           aria-pressed="true"

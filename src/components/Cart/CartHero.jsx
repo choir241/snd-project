@@ -1,43 +1,8 @@
 import { labels } from "../../static/labels";
+import { calculateItemsTotal } from "../../hooks/calculateItemsTotal";
+import {calculateTimeTotal} from "../../hooks/calculateTimeTotal";
 
 export default function CartHero({ cartItems }) {
-  function calculateItemsTotal() {
-    let sumPrice = 0;
-    cartItems.forEach((item) => {
-      const separateDollarSign = item.packageOption.price
-        .split("$")[1]
-        .split(",")
-        .join("");
-      sumPrice += Number(separateDollarSign);
-    });
-    return sumPrice.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-  }
-
-  function calculateTimeTotal() {
-    let hrs = 0;
-    let min = 0;
-    cartItems.forEach((item) => {
-      if (item.packageOption.timeTaken.hr) {
-        hrs += item.packageOption.timeTaken.hr;
-      } else if (item.packageOption.timeTaken.min) {
-        min += item.packageOption.timeTaken.min;
-      }
-    });
-    if (min >= 60) {
-      while (min >= 60) {
-        min -= 60;
-        hrs += 1;
-      }
-    }
-    if (min) {
-      return `${hrs} hr ${min} min`;
-    } else {
-      return `${hrs} hr`;
-    }
-  }
 
   if (cartItems.length === 1) {
     return (

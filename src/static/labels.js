@@ -1,4 +1,7 @@
 export const labels = {
+  footer:{
+    poweredBySquare: "Powered by Square"
+  },
   cart: {
     services: "services",
   },
