@@ -6,11 +6,29 @@ import Availabilty from "../../components/Appointments/Availability";
 import AvailabilityHero from "../../components/Appointments/AvailabilityHero";
 import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import HiddenCalendar from "../../components/Appointments/HiddenCalendar";
+import axios from "axios";
+import { PackageSession } from "../../middleware/packageContext";
 
 export default function Appointments() {
   const [toggleCalendarView, setToggleCalendarView] = useState(false);
+
+  const { packages } = useContext(PackageSession);
+
+  useEffect(()=>{
+    console.log(packages);
+    async function getAppointments(){
+      try{
+        const appts = await axios.get(
+          "http://localhost:8000/searchAvailability"
+        );
+      }catch(err){
+        console.error(err);
+      }
+    }
+
+  },[packages]);
 
   return (
     <div className="bg-white" id="root">

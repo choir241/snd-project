@@ -1,4 +1,5 @@
 import { isOptionChecked } from "../../hooks/isOptionChecked";
+import {formatTimeOptionRadios} from "../../hooks/formatTimeOptionRadios"
 
 export default function OptionRadios({
   packageName,
@@ -19,7 +20,7 @@ export default function OptionRadios({
       <div className="radio-label-container">
         <label slot="label">{optionName}</label>
         <span>
-          ${optionPrice}・{formatTime()}
+          ${optionPrice}・{formatTimeOptionRadios({optionTimeAlloted})}
         </span>
       </div>
 
