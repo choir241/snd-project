@@ -10,25 +10,44 @@ import { useState, useEffect, useContext } from "react";
 import HiddenCalendar from "../../components/Appointments/HiddenCalendar";
 import axios from "axios";
 import { PackageSession } from "../../middleware/packageContext";
+import { generateDateRange } from "../../hooks/generateDateRange";
 
 export default function Appointments() {
   const [toggleCalendarView, setToggleCalendarView] = useState(false);
 
   const { packages } = useContext(PackageSession);
 
-  useEffect(()=>{
-    console.log(packages);
-    async function getAppointments(){
-      try{
-        const appts = await axios.get(
-          "http://localhost:8000/searchAvailability"
-        );
-      }catch(err){
+  useEffect(() => {
+
+    async function getAppointments() {
+      try {
+
+        const {startDate, endDate} = generateDateRange({dateRange: 14});
+        
+        // if (packages.length) {
+        //   const serviceVariationId = packages[0].variations[0].id;
+        //   const appts = await axios.post(
+        //     `${
+        //       import.meta.env.VITE_BACKEND_API_URL
+        //     }/bookings`,
+        //     {
+        //       startAt: startDate,
+        //       endAt: endDate,
+        //       locationId: import.meta.env.VITE_LOCATION_ID,
+        //       serviceVariationId: serviceVariationId,
+        //     }
+        //   );
+
+        //   console.log(appts);
+        // }
+      } catch (err) {
         console.error(err);
       }
     }
 
-  },[packages]);
+    getAppointments();
+
+  }, []);
 
   return (
     <div className="bg-white" id="root">

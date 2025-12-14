@@ -7,14 +7,16 @@ import axios from "axios";
 import { PackageSession } from "./middleware/packageContext";
 import { useState, useEffect } from "react";
 import { packageNameCamelCase } from "./hooks/packageNameCamelCase";
+import CardForm from "./components/Purchase/CardForm";
 
 export default function BrowserRoutes() {
   const [packages, setPackages] = useState([]);
 
+  {/* Grab packages from backend */}
   useEffect(() => {
     async function getPackages() {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_API_URL}/packages`,
+        `${import.meta.env.VITE_BACKEND_API_URL}/packages`
       );
 
       setPackages(response.data.packageList);
@@ -23,11 +25,28 @@ export default function BrowserRoutes() {
     getPackages();
   }, []);
 
+  {/* Refresh oAuth Token */}
+  useEffect(() => {
+    const refreshToken = ""
+    setTimeout(() => {
+      async function refreshToken() {
+        try {
+          axios.get("http://localhost:8000/refreshToken", {
+            refreshToken: refreshToken,
+          });
+        } catch (err) {
+          console.error(`Error refreshing token + ${err}`);
+        }
+      }
+    }, 518400000);
+  }, []);
+
   return (
     <PackageSession.Provider value={{ packages }}>
       <BrowserRouter>
         <Routes>
           <Route path="/appointments" element={<Appointments />} />
+          <Route path="/purchase" element={<CardForm />} />
           <Route path="/" element={<Bookings />} />
           {packages.map((packageService) => {
             if (packageService.name !== "Touch Up Labor (Hourly)") {
