@@ -1,4 +1,4 @@
-export function checkIfPackageAdded({packageName}) {
+export function checkIfPackageAdded({ packageName }) {
   const cart = JSON.parse(sessionStorage.getItem("cart"));
 
   if (cart) {

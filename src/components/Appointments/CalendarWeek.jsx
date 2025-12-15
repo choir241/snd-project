@@ -1,18 +1,22 @@
 import CalendarDate from "./CalendarDate";
 import { checkForCalendarWeek } from "../../hooks/checkForCalendarWeek";
 
-export default function CalendarWeek({ calendarWeek, selected, setSelected }) {
+export default function CalendarWeek({
+  calendarWeek,
+  selectedDate,
+  setSelectedDate,
+}) {
   return (
     <div
       aria-hidden="true"
-      data-testid={checkForCalendarWeek({calendarWeek})}
+      data-testid={checkForCalendarWeek({ calendarWeek })}
       className="calendar-week flex justify-between sm:px-2.5 "
     >
       {calendarWeek.map((week) => {
         return (
           <CalendarDate
-            selected={selected}
-            setSelected={setSelected}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
             key={week.dateName}
             dateName={week.dateName}
             date={week.date}

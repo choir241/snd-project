@@ -1,8 +1,8 @@
 export default function CalendarDate({
   dateName,
   date,
-  selected,
-  setSelected,
+  selectedDate,
+  setSelectedDate,
   month,
   year,
 }) {
@@ -48,9 +48,9 @@ export default function CalendarDate({
 
   return (
     <>
-      {selected === date || (!selected && date === currentDate.getDate()) ? (
+      {new Date(selectedDate).getDate() === date ? (
         <button
-          onClick={() => setSelected(date)}
+          onClick={() => setSelectedDate(`${year},${month},${date}`)}
           aria-pressed="true"
           data-testid={`date-${date}-selected`}
           rank="secondary"
@@ -72,7 +72,7 @@ export default function CalendarDate({
         </button>
       ) : (
         <button
-          onClick={() => setSelected(date)}
+          onClick={() => setSelectedDate(`${year},${month},${date}`)}
           aria-pressed="false"
           data-testid={`date-${date}`}
           disabled=""

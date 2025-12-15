@@ -1,9 +1,12 @@
 export const labels = {
-  footer:{
-    poweredBySquare: "Powered by Square"
+  footer: {
+    poweredBySquare: "Powered by Square",
   },
   cart: {
     services: "services",
+  },
+  appointments: {
+    timesShown: "Times are shown in ",
   },
   bookings: {
     appointmentsLink: "/appointments",
@@ -244,5 +247,8 @@ export const labels = {
         },
       ],
     },
+  },
+  payments: {
+    bookAppointment: "Book appointment",
   },
 };

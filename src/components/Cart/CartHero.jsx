@@ -1,9 +1,8 @@
 import { labels } from "../../static/labels";
 import { calculateItemsTotal } from "../../hooks/calculateItemsTotal";
-import {calculateTimeTotal} from "../../hooks/calculateTimeTotal";
+import { calculateTimeTotal } from "../../hooks/calculateTimeTotal";
 
 export default function CartHero({ cartItems }) {
-
   if (cartItems.length === 1) {
     return (
       <div className="flex-grow flex-col overflow-wrap-anywhere">

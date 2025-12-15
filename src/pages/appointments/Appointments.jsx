@@ -13,17 +13,19 @@ import { PackageSession } from "../../middleware/packageContext";
 import { generateDateRange } from "../../hooks/generateDateRange";
 
 export default function Appointments() {
+  const date = new Date();
+  const currDate = `${date.getFullYear()},${date.getMonth() + 1},${date.getDate()}`;
+
   const [toggleCalendarView, setToggleCalendarView] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(currDate);
 
   const { packages } = useContext(PackageSession);
 
   useEffect(() => {
-
     async function getAppointments() {
       try {
+        const { startDate, endDate } = generateDateRange({ dateRange: 14 });
 
-        const {startDate, endDate} = generateDateRange({dateRange: 14});
-        
         // if (packages.length) {
         //   const serviceVariationId = packages[0].variations[0].id;
         //   const appts = await axios.post(
@@ -46,7 +48,6 @@ export default function Appointments() {
     }
 
     getAppointments();
-
   }, []);
 
   return (
@@ -63,14 +64,21 @@ export default function Appointments() {
                 aria-label="Main content"
                 className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 flex flex-col w-full px-4 md-lg:max-w-main-content "
               >
-                {toggleCalendarView ? <HiddenCalendar /> : <Calendar />}
+                {toggleCalendarView ? (
+                  <HiddenCalendar />
+                ) : (
+                  <Calendar
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                  />
+                )}
 
                 <CalendarToggleButton
                   toggleCalendarView={toggleCalendarView}
                   setToggleCalendarView={setToggleCalendarView}
                 />
 
-                <AvailabilityHero />
+                <AvailabilityHero selectedDate={selectedDate} />
 
                 <Availabilty />
               </section>

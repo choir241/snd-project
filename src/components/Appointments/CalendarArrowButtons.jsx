@@ -1,11 +1,12 @@
 export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
+  console.log(currentPage);
   return (
     <div className="flex">
       <div className="mr-4">
         <button
           onClick={() => {
-            if (currentPage > 1) {
-              setCurrentPage(currentPage - 1);
+            if (currentPage > 7) {
+              setCurrentPage(currentPage - 7);
             }
           }}
           aria-label="Previous week"
@@ -44,8 +45,8 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
       <div>
         <button
           onClick={() => {
-            if (currentPage < 3) {
-              setCurrentPage(currentPage + 1);
+            if (currentPage < 15) {
+              setCurrentPage(currentPage + 7);
             }
           }}
           aria-label="Next week"

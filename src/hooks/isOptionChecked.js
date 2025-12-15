@@ -1,4 +1,4 @@
-export function isOptionChecked({optionName, packageName}) {
+export function isOptionChecked({ optionName, packageName }) {
   const cart = JSON.parse(sessionStorage.getItem("cart"));
 
   if (cart) {

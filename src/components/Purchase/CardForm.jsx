@@ -1,17 +1,20 @@
 import { payments } from "@square/web-sdk";
 import { useEffect } from "react";
+import { labels } from "../../static/labels";
 
 export default function CardForm() {
   useEffect(() => {
     async function renderPaymentForm() {
       try {
+        /*CREATE ORDER at POST /orders to create order purchase for a particular item to be able to identify the item(s) when you create a payment*/
+
         const response = await payments(
           import.meta.env.VITE_APP_ID,
-          import.meta.env.VITE_LOCATION_ID
+          import.meta.env.VITE_LOCATION_ID,
         );
 
-        if(!response){
-            throw new Error("There was an error ");
+        if (!response) {
+          throw new Error("There was an error ");
         }
 
         const cardOptions = {
@@ -29,19 +32,19 @@ export default function CardForm() {
           const result = await card.tokenize();
 
           const strongCustomerAuth = await response.verifyBuyer(result.token, {
-            amount: "1.00",
+            amount: amount,
             currencyCode: "USD",
             intent: "CHARGE",
             billingContact: { postalCode: result.details.billing.postalCode },
           });
 
           const paymentData = await axios.post(
-            "http://localhost:8000/createPayment",
+            `${import.meta.env.VITE_BACKEND_API_URL}/createPayment`,
             {
-              amount: 1,
+              amount: amount,
               token: result.token,
               verificationToken: strongCustomerAuth.token,
-            }
+            },
           );
 
           if (paymentData) {
@@ -49,7 +52,7 @@ export default function CardForm() {
         });
       } catch (err) {
         throw new Error(
-          `There was an error rendering the payment form: ${err}`
+          `There was an error rendering the payment form: ${err}`,
         );
       }
     }
@@ -59,7 +62,9 @@ export default function CardForm() {
   return (
     <>
       <div id="card"></div>
-      <button className="button" id="pay">Pay</button>
+      <button className="button" id="pay">
+        {labels.payments.bookAppointment}
+      </button>
     </>
   );
 }

@@ -12,11 +12,13 @@ import CardForm from "./components/Purchase/CardForm";
 export default function BrowserRoutes() {
   const [packages, setPackages] = useState([]);
 
-  {/* Grab packages from backend */}
+  {
+    /* Grab packages from backend */
+  }
   useEffect(() => {
     async function getPackages() {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_API_URL}/packages`
+        `${import.meta.env.VITE_BACKEND_API_URL}/packages`,
       );
 
       setPackages(response.data.packageList);
@@ -25,13 +27,15 @@ export default function BrowserRoutes() {
     getPackages();
   }, []);
 
-  {/* Refresh oAuth Token */}
+  {
+    /* Refresh oAuth Token */
+  }
   useEffect(() => {
-    const refreshToken = ""
+    const refreshToken = "";
     setTimeout(() => {
       async function refreshToken() {
         try {
-          axios.get("http://localhost:8000/refreshToken", {
+          axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/refreshToken`, {
             refreshToken: refreshToken,
           });
         } catch (err) {

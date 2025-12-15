@@ -1,4 +1,4 @@
-export function calculateItemsTotal({cartItems}) {
+export function calculateItemsTotal({ cartItems }) {
   let sumPrice = 0;
   cartItems.forEach((item) => {
     const separateDollarSign = item.packageOption.price

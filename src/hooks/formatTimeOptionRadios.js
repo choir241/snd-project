@@ -1,4 +1,4 @@
-export function formatTimeOptionRadios({optionTimeAlloted}) {
+export function formatTimeOptionRadios({ optionTimeAlloted }) {
   const timeInHours = optionTimeAlloted / 1000 / 3600;
   const isDecimal = Number.isInteger(optionTimeAlloted / timeInHours);
   if (!isDecimal) {
