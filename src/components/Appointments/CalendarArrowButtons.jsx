@@ -1,5 +1,4 @@
 export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
-  console.log(currentPage);
   return (
     <div className="flex">
       <div className="mr-4">
@@ -45,7 +44,7 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
       <div>
         <button
           onClick={() => {
-            if (currentPage < 15) {
+            if (currentPage < 36) {
               setCurrentPage(currentPage + 7);
             }
           }}
@@ -67,7 +66,7 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className={
-                currentPage === 3
+                currentPage === 36
                   ? "cursor-not-allowed text-core-text-30 fill-current"
                   : "text-black fill-current"
               }

@@ -1,5 +1,4 @@
 import CalendarDate from "./CalendarDate";
-import { checkForCalendarWeek } from "../../hooks/checkForCalendarWeek";
 
 export default function CalendarWeek({
   calendarWeek,
@@ -9,7 +8,6 @@ export default function CalendarWeek({
   return (
     <div
       aria-hidden="true"
-      data-testid={checkForCalendarWeek({ calendarWeek })}
       className="calendar-week flex justify-between sm:px-2.5 "
     >
       {calendarWeek.map((week) => {

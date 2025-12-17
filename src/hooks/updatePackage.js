@@ -1,4 +1,6 @@
 import { labels } from "../static/labels";
+import { packageNameCamelCase } from "./packageNameCamelCase";
+
 export function updatePackage({ packageOption, packageName, navigate }) {
   if (packageOption) {
     const cart = JSON.parse(sessionStorage.getItem("cart"));
@@ -13,5 +15,7 @@ export function updatePackage({ packageOption, packageName, navigate }) {
     sessionStorage.setItem("cart", JSON.stringify(updatedCartPackageOption));
   }
 
-  return navigate(labels.bookings.appointmentsLink);
+  return navigate(
+    `/${packageNameCamelCase({ packageName: packageName })}${labels.bookings.addOnsLink}`,
+  );
 }

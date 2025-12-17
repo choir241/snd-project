@@ -18,6 +18,18 @@ export default function Package({
 }) {
   const [packageOption, setPackageOption] = useState(null);
 
+  /*add-ons are set as modifiers
+  modifiers is not available in square flow
+  pick a service -> vehicle type -> add ons
+  Consult for $0 (not added yet)
+  Should display all 9 options at all times
+  user should be able to select multiple add-ons, but only one at a time (so no dups)
+  
+  Add verbage to scheduling page:
+  need service sooner than the available time slots? Call us (link to phone number) for additional availability.
+  
+  */
+
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
       <div className="flex flex-col flex-grow overflow-y-auto">

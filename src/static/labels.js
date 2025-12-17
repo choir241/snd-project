@@ -9,6 +9,7 @@ export const labels = {
     timesShown: "Times are shown in ",
   },
   bookings: {
+    addOnsLink: "/addOns",
     appointmentsLink: "/appointments",
     added: "Added",
     appointmentSummary: "Appointment summary",

@@ -5,7 +5,7 @@ export function generateDateRange({ selectedDate }) {
   const currMin = currDate.getMinutes().toString().padStart(2, 0);
   const currSecs = currDate.getSeconds().toString().padStart(2, 0);
 
-  let newDate = currDate.getDate();
+  let newDate = currDate.getDate() + 10;
   let newMonth = currDate.getMonth() + 1;
   let newYear = currDate.getFullYear();
 

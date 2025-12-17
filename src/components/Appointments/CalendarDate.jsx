@@ -48,7 +48,7 @@ export default function CalendarDate({
 
   return (
     <>
-      {new Date(selectedDate).getDate() === date ? (
+      {selectedDate === `${year},${month},${date}` ? (
         <button
           onClick={() => setSelectedDate(`${year},${month},${date}`)}
           aria-pressed="true"

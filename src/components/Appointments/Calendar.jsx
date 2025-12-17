@@ -5,7 +5,7 @@ import { generateCalendarDates } from "../../hooks/generateCalendarDates";
 
 export default function Calendar({ selectedDate, setSelectedDate }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const calendar = generateCalendarDates({ dateRange: 21 }).slice(
+  const calendar = generateCalendarDates({ dateRange: 42 }).slice(
     currentPage,
     currentPage + 7,
   );

@@ -21,33 +21,30 @@ export default function Appointments() {
 
   const { packages } = useContext(PackageSession);
 
+  /*8 weeks max for calendar carasoul*/
+
   useEffect(() => {
-    async function getAppointments() {
-      try {
-        const { startDate, endDate } = generateDateRange({ dateRange: 14 });
-
-        // if (packages.length) {
-        //   const serviceVariationId = packages[0].variations[0].id;
-        //   const appts = await axios.post(
-        //     `${
-        //       import.meta.env.VITE_BACKEND_API_URL
-        //     }/bookings`,
-        //     {
-        //       startAt: startDate,
-        //       endAt: endDate,
-        //       locationId: import.meta.env.VITE_LOCATION_ID,
-        //       serviceVariationId: serviceVariationId,
-        //     }
-        //   );
-
-        //   console.log(appts);
-        // }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    getAppointments();
+    // async function getAppointments() {
+    //   try {
+    //     const { startDate, endDate } = generateDateRange({ dateRange: 14 });
+    //       const serviceVariationId = ""
+    //       const appts = await axios.post(
+    //         `${
+    //           import.meta.env.VITE_BACKEND_API_URL
+    //         }/bookings`,
+    //         {
+    //           startAt: startDate,
+    //           endAt: endDate,
+    //           locationId: import.meta.env.VITE_LOCATION_ID,
+    //           serviceVariationId: serviceVariationId,
+    //         }
+    //       );
+    //       console.log(appts);
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // }
+    // getAppointments();
   }, []);
 
   return (
