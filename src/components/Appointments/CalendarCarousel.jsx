@@ -1,9 +1,9 @@
 import CalendarArrowButtons from "./CalendarArrowButtons";
-import CalendarWeek from "./CalendarWeek";
+import CalendarCarouselWeek from "./CalendarCarouselWeek";
 import { useState } from "react";
 import { generateCalendarDates } from "../../hooks/generateCalendarDates";
 
-export default function Calendar({ selectedDate, setSelectedDate }) {
+export default function CalendarCarousel({ selectedDate, setSelectedDate }) {
   const [currentPage, setCurrentPage] = useState(1);
   const calendar = generateCalendarDates({ dateRange: 42 }).slice(
     currentPage,
@@ -34,7 +34,7 @@ export default function Calendar({ selectedDate, setSelectedDate }) {
         <div className="flex items-center">
           <div className="sm:px-2.5 w-0 flex flex-grow overflow-hidden">
             <div className="flex w-full my-2">
-              <CalendarWeek
+              <CalendarCarouselWeek
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
                 calendarWeek={calendar}

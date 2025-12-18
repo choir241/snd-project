@@ -1,6 +1,6 @@
 import CalendarDate from "./CalendarDate";
 
-export default function CalendarWeek({
+export default function CalendarCarouselWeek({
   calendarWeek,
   selectedDate,
   setSelectedDate,

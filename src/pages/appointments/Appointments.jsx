@@ -1,6 +1,6 @@
 import Cart from "../../components/Cart/Cart";
 import "./Appointment.css";
-import Calendar from "../../components/Appointments/Calendar";
+import CalendarCarasoul from "../../components/Appointments/CalendarCarousel";
 import CalendarToggleButton from "../../components/Appointments/CalendarToggleButton";
 import Availabilty from "../../components/Appointments/Availability";
 import AvailabilityHero from "../../components/Appointments/AvailabilityHero";
@@ -10,18 +10,32 @@ import { useState, useEffect, useContext } from "react";
 import HiddenCalendar from "../../components/Appointments/HiddenCalendar";
 import axios from "axios";
 import { PackageSession } from "../../middleware/packageContext";
-import { generateDateRange } from "../../hooks/generateDateRange";
 
 export default function Appointments() {
   const date = new Date();
-  const currDate = `${date.getFullYear()},${date.getMonth() + 1},${date.getDate()}`;
+  const currDate = `${date.getFullYear()},${
+    date.getMonth() + 1
+  },${date.getDate()}`;
 
   const [toggleCalendarView, setToggleCalendarView] = useState(false);
   const [selectedDate, setSelectedDate] = useState(currDate);
 
   const { packages } = useContext(PackageSession);
-
-  /*8 weeks max for calendar carasoul*/
+  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   useEffect(() => {
     // async function getAppointments() {
@@ -62,9 +76,21 @@ export default function Appointments() {
                 className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 flex flex-col w-full px-4 md-lg:max-w-main-content "
               >
                 {toggleCalendarView ? (
-                  <HiddenCalendar />
+                  ""
                 ) : (
-                  <Calendar
+                  <h2 className="mb-2 overflow-wrap-anywhere">
+                    {months[new Date(selectedDate).getMonth()]}{" "}
+                    {new Date(selectedDate).getFullYear()}
+                  </h2>
+                )}
+
+                {toggleCalendarView ? (
+                  <HiddenCalendar
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                  />
+                ) : (
+                  <CalendarCarasoul
                     selectedDate={selectedDate}
                     setSelectedDate={setSelectedDate}
                   />
@@ -79,8 +105,12 @@ export default function Appointments() {
 
                 <Availabilty />
               </section>
-
-              <Cart />
+              <aside className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 hidden md-lg:block md-lg:px-4 max-w-cart-sidebar min-w-cart-sidebar ">
+                <div className="sticky top-2">
+                  {/* Service Cart */}
+                  <Cart />
+                </div>
+              </aside>
             </div>
           </div>
           <Footer />

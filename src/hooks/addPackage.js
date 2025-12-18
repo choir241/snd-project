@@ -18,6 +18,7 @@ export function addPackage({
     "cart",
     JSON.stringify([
       {
+        addOns: [],
         packageName: packageName,
         packagePrice: packagePrice,
         packageTimeAlloted: packageTimeAlloted,

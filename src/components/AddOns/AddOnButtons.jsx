@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router";
 import { labels } from "../../static/labels";
 import { removePackage } from "../../hooks/removePackage";
+import { updateModifier } from "./AddModifier";
 
-export default function AddButtons({packageName}){
+export default function AddButtons({ packageName, addOnOption }) {
   const navigate = useNavigate();
 
   return (
@@ -15,10 +16,12 @@ export default function AddButtons({packageName}){
       </button>
       <button
         className="button"
-        onClick={() => ""}
+        onClick={() =>
+          updateModifier({ packageName, addOn: addOnOption, navigate })
+        }
       >
         {labels.services.updateButton}
       </button>
     </div>
-  )
+  );
 }

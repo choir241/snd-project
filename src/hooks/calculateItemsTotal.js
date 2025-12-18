@@ -1,11 +1,12 @@
 export function calculateItemsTotal({ cartItems }) {
   let sumPrice = 0;
   cartItems.forEach((item) => {
-    const separateDollarSign = item.packageOption.price
-      .split("$")[1]
-      .split(",")
-      .join("");
-    sumPrice += Number(separateDollarSign);
+    sumPrice += Number(item.packageOption.price);
+    if (item.addOns && item.addOns.length) {
+      item.addOns.forEach((modifier) => {
+        sumPrice += Number(modifier.optionPrice);
+      });
+    }
   });
   return sumPrice.toLocaleString("en-US", {
     minimumFractionDigits: 2,

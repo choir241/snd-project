@@ -8,6 +8,7 @@ export default function PackageItemList({ cartItems }) {
           return (
             <PackageCartItem
               key={i}
+              addOns={cartItem.addOns}
               packageName={cartItem.packageName}
               optionName={cartItem.packageOption.name}
               optionPrice={cartItem.packageOption.price}

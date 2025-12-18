@@ -1,26 +1,27 @@
 import { packageNameCamelCase } from "../../hooks/packageNameCamelCase";
+import RenderAddOnsCart from "../AddOns/RenderAddOnsInCart";
 
 export default function PackageCartItem({
   packageName,
   optionName,
   optionPrice,
+  addOns,
 }) {
   return (
-    <div data-testid="service-staff-row" className="packageCartItem">
-      <div className="relative flex pl-0">
+    <div data-testid="service-staff-row" className="packageCartItem flex-col">
+      <div className="relative flex flex pl-0 mb-3">
         <div className="flex relative items-center grow">
           <div className="flex flex-col flex-grow gap-0.5 text-core-text-20 text-sm font-normal">
             <span className="text-black text-base font-medium overflow-wrap-anywhere">
               {packageName}
             </span>
-            <span></span>
             <span>{optionName}</span>
           </div>
           <div className="text-base font-normal ml-4 ">{optionPrice}</div>
 
           <a
             href={packageNameCamelCase({ packageName: packageName })}
-            aria-label="Edit selection: Premium Package"
+            aria-label={`Edit selection: ${packageName}`}
             data-testid="edit-service"
             className="ml-4 flex market-link"
             hydrated=""
@@ -43,6 +44,8 @@ export default function PackageCartItem({
           </a>
         </div>
       </div>
+
+      <RenderAddOnsCart addOns={addOns} />
     </div>
   );
 }

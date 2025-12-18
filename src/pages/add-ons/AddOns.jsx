@@ -7,12 +7,9 @@ import "./AddOn.css";
 import AddOnButtons from "../../components/AddOns/AddOnButtons";
 import Cart from "../../components/Cart/Cart";
 
-export default function AddOns({packageName}) {
-
+export default function AddOns({ packageName }) {
   const { modifiers } = useContext(ModifierSession);
   const [addOnOption, setAddOnOption] = useState([]);
-
-  console.log(packageName);
 
   return (
     <div className="bg-white" id="addOn">
@@ -44,7 +41,10 @@ export default function AddOns({packageName}) {
                 {/* Service Cart */}
                 <Cart />
 
-                <AddOnButtons packageName={packageName}/>
+                <AddOnButtons
+                  packageName={packageName}
+                  addOnOption={addOnOption}
+                />
               </div>
             </aside>
           </div>
