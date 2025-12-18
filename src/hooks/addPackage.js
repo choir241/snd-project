@@ -1,4 +1,5 @@
 import { labels } from "../static/labels";
+import { packageNameCamelCase } from "./packageNameCamelCase";
 
 export function addPackage({
   packageOption,
@@ -25,5 +26,7 @@ export function addPackage({
     ]),
   );
 
-  return navigate(labels.bookings.appointmentsLink);
+  return navigate(
+    `/${packageNameCamelCase({ packageName: packageName })}${labels.bookings.addOnsLink}`,
+  );
 }

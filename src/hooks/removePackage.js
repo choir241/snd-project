@@ -1,4 +1,5 @@
 import { labels } from "../static/labels";
+
 export function removePackage({ packageName, navigate }) {
   const cart = JSON.parse(sessionStorage.getItem("cart"));
   const updatedCartRemovePackage = cart.filter((item) => {

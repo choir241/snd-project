@@ -65,7 +65,7 @@ export default function BrowserRoutes() {
                 return (
                   <Route
                     path={`/${camelCasedPackageName}/addOns`}
-                    element={<AddOns />}
+                    element={<AddOns packageName= {packageService.name} />}
                   />
                 );
               }
