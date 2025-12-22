@@ -15,7 +15,11 @@ export function updatePackage({ packageOption, packageName, navigate }) {
     sessionStorage.setItem("cart", JSON.stringify(updatedCartPackageOption));
   }
 
-  return navigate(
-    `/${packageNameCamelCase({ packageName: packageName })}${labels.bookings.addOnsLink}`,
-  );
+  if (packageName !== "Ceramic Coating") {
+    return navigate(
+      `/${packageNameCamelCase({ packageName: packageName })}${labels.bookings.addOnsLink}`,
+    );
+  } else {
+    return navigate(`${labels.bookings.appointmentsLink}`);
+  }
 }

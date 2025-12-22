@@ -1,7 +1,10 @@
 import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
 import { useContext, useState } from "react";
-import { ModifierSession } from "../../middleware/packageContext";
+import {
+  ModifierSession,
+  PackageSession,
+} from "../../middleware/packageContext";
 import AddOnOption from "../../components/AddOns/AddOnOption";
 import "./AddOn.css";
 import AddOnButtons from "../../components/AddOns/AddOnButtons";
@@ -9,7 +12,12 @@ import Cart from "../../components/Cart/Cart";
 
 export default function AddOns({ packageName }) {
   const { modifiers } = useContext(ModifierSession);
+  const { packages } = useContext(PackageSession);
   const [addOnOption, setAddOnOption] = useState([]);
+
+  const findPackage = packages.find(
+    (packages) => packages.name === packageName,
+  );
 
   return (
     <div className="bg-white" id="addOn">
@@ -26,6 +34,8 @@ export default function AddOns({ packageName }) {
               {modifiers.map((addOn) => {
                 return (
                   <AddOnOption
+                    findPackage={findPackage}
+                    id={addOn.id}
                     key={addOn.id}
                     optionName={addOn.name}
                     optionPrice={addOn.priceAmt}

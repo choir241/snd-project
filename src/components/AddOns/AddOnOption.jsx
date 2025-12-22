@@ -4,6 +4,8 @@ export default function AddOnOption({
   className,
   addOnOption,
   setAddOnOption,
+  id,
+  findPackage,
 }) {
   function checkForOptionDups(optionList) {
     const uniqueOptions = [];
@@ -20,7 +22,11 @@ export default function AddOnOption({
     return dups;
   }
 
-  function handleOnOptionSelect() {
+  function handleOnOptionSelect({ isDisabled }) {
+    if (isDisabled) {
+      throw new Error("This is disabled");
+    }
+
     const optionList = [{ optionName, optionPrice }, ...addOnOption];
     if (!addOnOption.length) {
       setAddOnOption([{ optionName, optionPrice }]);
@@ -36,6 +42,19 @@ export default function AddOnOption({
     }
   }
 
+  let modifiers;
+  let isDisabled;
+
+  if (findPackage.modifiers) {
+    modifiers = findPackage.modifiers.filter((modifier) => {
+      if (modifier.modifierId === id) {
+        return modifier;
+      }
+    })[0];
+
+    isDisabled = modifiers.hiddenOnlineOverride === "YES" ? true : false;
+  }
+
   return (
     <label
       aria-selected="true"
@@ -49,8 +68,9 @@ export default function AddOnOption({
       </div>
 
       <input
+        disabled={isDisabled}
         onChange={() => {
-          handleOnOptionSelect();
+          handleOnOptionSelect({ isDisabled: isDisabled });
         }}
         type="checkbox"
         aria-label={optionName}
