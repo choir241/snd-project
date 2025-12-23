@@ -1,19 +1,32 @@
-export function generateDateRange({ selectedDate }) {
-  const currDate = new Date();
+export function generateDateRange({ startDate, endTime }) {
+  let endDate;
+  const date = new Date();
 
-  const currHrs = currDate.getHours().toString().padStart(2, 0);
-  const currMin = currDate.getMinutes().toString().padStart(2, 0);
-  const currSecs = currDate.getSeconds().toString().padStart(2, 0);
+  let currHrs = date.getHours();
+  let currMin = date.getMinutes();
+  const currSecs = date.getSeconds();
 
-  let newDate = currDate.getDate() + 10;
-  let newMonth = currDate.getMonth() + 1;
-  let newYear = currDate.getFullYear();
+  const currMonth = date.getMonth() + 1;
+  const currDate = date.getDate();
+  const currYear = date.getFullYear();
 
-  const startDate = currDate.toISOString();
+  if (
+    (startDate === `${currYear},${currMonth},${currDate}` &&
+      currHrs < endTime) ||
+    startDate !== `${currYear},${currMonth},${currDate}`
+  ) {
+    const newYear = new Date(startDate).getFullYear();
+    const newMonth = new Date(startDate).getMonth() + 1;
+    const newDate = new Date(startDate).getDate();
 
-  const newEndDate = `${newYear}-${newMonth}-${newDate}T${currHrs}:${currMin}:${currSecs}`;
+    currHrs = endTime;
 
-  const endDate = new Date(newEndDate).toISOString();
+    endDate = `${newYear}-${newMonth}-${newDate}T${currHrs
+      .toString()
+      .padStart(2, 0)}:${currMin.toString().padStart(2, 0)}:${currSecs
+      .toString()
+      .padStart(2, 0)}`;
+  }
 
-  return { startDate, endDate };
+  return endDate;
 }

@@ -3,6 +3,7 @@ import { formatTimeOptionRadios } from "../../hooks/formatTimeOptionRadios";
 
 export default function OptionRadios({
   packageName,
+  optionId,
   optionName,
   optionPrice,
   optionTimeAlloted,
@@ -26,6 +27,7 @@ export default function OptionRadios({
       <input
         onChange={() => {
           setPackageOption({
+            id: optionId,
             name: optionName,
             price: optionPrice,
             timeAlloted: optionTimeAlloted,

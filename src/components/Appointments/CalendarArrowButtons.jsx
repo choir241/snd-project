@@ -4,8 +4,8 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
       <div className="mr-4">
         <button
           onClick={() => {
-            if (currentPage > 7) {
-              setCurrentPage(currentPage - 7);
+            if (currentPage > 5) {
+              setCurrentPage(currentPage - 6);
             }
           }}
           aria-label="Previous week"
@@ -27,7 +27,7 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className={
-                currentPage === 1
+                currentPage === 0
                   ? "cursor-not-allowed text-core-text-30 fill-current"
                   : "text-black fill-current"
               }
@@ -45,7 +45,7 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
         <button
           onClick={() => {
             if (currentPage < 36) {
-              setCurrentPage(currentPage + 7);
+              setCurrentPage(currentPage + 6);
             }
           }}
           aria-label="Next week"

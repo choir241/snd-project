@@ -10,14 +10,7 @@ export function generateCalendarDates({ dateRange }) {
   let newMonth = currDate.getMonth() + 1;
   let newYear = currDate.getFullYear();
 
-  const calendar = [
-    {
-      month: newMonth,
-      year: newYear,
-      date: newDate,
-      dateName: abbrDateNames[currDate.getDay()],
-    },
-  ];
+  const calendar = [];
 
   for (let i = 0; i < dateRange; i++) {
     switch (newMonth) {

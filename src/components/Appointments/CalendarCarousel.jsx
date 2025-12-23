@@ -4,10 +4,10 @@ import { useState } from "react";
 import { generateCalendarDates } from "../../hooks/generateCalendarDates";
 
 export default function CalendarCarousel({ selectedDate, setSelectedDate }) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const calendar = generateCalendarDates({ dateRange: 42 }).slice(
     currentPage,
-    currentPage + 7,
+    currentPage + 6,
   );
 
   // 9am start

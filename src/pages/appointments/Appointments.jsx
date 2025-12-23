@@ -6,10 +6,8 @@ import Availabilty from "../../components/Appointments/Availability";
 import AvailabilityHero from "../../components/Appointments/AvailabilityHero";
 import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import HiddenCalendar from "../../components/Appointments/HiddenCalendar";
-import axios from "axios";
-import { PackageSession } from "../../middleware/packageContext";
 
 export default function Appointments() {
   const date = new Date();
@@ -20,8 +18,6 @@ export default function Appointments() {
   const [toggleCalendarView, setToggleCalendarView] = useState(false);
   const [selectedDate, setSelectedDate] = useState(currDate);
 
-  const { packages } = useContext(PackageSession);
-  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
   const months = [
     "Jan",
     "Feb",
@@ -36,30 +32,7 @@ export default function Appointments() {
     "Nov",
     "Dec",
   ];
-
-  useEffect(() => {
-    // async function getAppointments() {
-    //   try {
-    //     const { startDate, endDate } = generateDateRange({ dateRange: 14 });
-    //       const serviceVariationId = ""
-    //       const appts = await axios.post(
-    //         `${
-    //           import.meta.env.VITE_BACKEND_API_URL
-    //         }/bookings`,
-    //         {
-    //           startAt: startDate,
-    //           endAt: endDate,
-    //           locationId: import.meta.env.VITE_LOCATION_ID,
-    //           serviceVariationId: serviceVariationId,
-    //         }
-    //       );
-    //       console.log(appts);
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // }
-    // getAppointments();
-  }, []);
+  const [appointments, setAppointments] = useState([]);
 
   return (
     <div className="bg-white" id="root">
@@ -103,7 +76,12 @@ export default function Appointments() {
 
                 <AvailabilityHero selectedDate={selectedDate} />
 
-                <Availabilty />
+                <Availabilty
+                  setSelectedDate={setSelectedDate}
+                  selectedDate={selectedDate}
+                  appointments={appointments}
+                  setAppointments={setAppointments}
+                />
               </section>
               <aside className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 hidden md-lg:block md-lg:px-4 max-w-cart-sidebar min-w-cart-sidebar ">
                 <div className="sticky top-2">

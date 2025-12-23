@@ -14,6 +14,7 @@ export default function PackageList({
       {packageOptionList.map((option, i) => {
         return (
           <OptionRadios
+            optionId={option.id}
             packageName={packageName}
             setPackageOption={setPackageOption}
             className="border-seperator"

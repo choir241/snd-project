@@ -7,6 +7,8 @@ export const labels = {
   },
   appointments: {
     timesShown: "Times are shown in ",
+    noAvailability: "No availability until ",
+    nextAvail: "Go to next available",
   },
   bookings: {
     addOnsLink: "/addOns",
