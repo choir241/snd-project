@@ -9,6 +9,10 @@ export const labels = {
     timesShown: "Times are shown in ",
     noAvailability: "No availability until ",
     nextAvail: "Go to next available",
+    availMorning: "Morning",
+    availAfternoon: "Afternoon",
+    availEvening: "Evening",
+    noAvailContainer: "No availability",
   },
   bookings: {
     addOnsLink: "/addOns",

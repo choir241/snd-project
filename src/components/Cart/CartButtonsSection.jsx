@@ -4,9 +4,11 @@ export default function CartButtonsSection({ cartItems }) {
   if (cartItems.length) {
     return (
       <div className="market-button-group">
-        <button className="nextButton button">
-          {labels.bookings.nextButton}
-        </button>
+        <a href={labels.bookings.appointmentsLink}>
+          <button className="nextButton button">
+            {labels.bookings.nextButton}
+          </button>
+        </a>
       </div>
     );
   } else {
