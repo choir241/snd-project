@@ -19,6 +19,10 @@ ul li {
   width: 100%;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 footer {
   margin-top: 2rem;
 }

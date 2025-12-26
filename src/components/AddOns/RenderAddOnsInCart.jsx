@@ -13,7 +13,7 @@ export default function RenderAddOnsCart({ addOns }) {
               </div>
 
               <div className="text-base font-normal ml-4 ">
-                {Number(addOn.optionPrice).toFixed(2)}
+                ${Number(addOn.optionPrice).toFixed(2)}
               </div>
             </div>
           </div>

@@ -16,36 +16,6 @@ export default function CalendarDate({
     Su: "Sunday",
   };
 
-  const currentDate = new Date();
-
-  function checkForWeek(textColor = "") {
-    if (
-      date < currentDate.getDate() &&
-      month === currentDate.getMonth() + 1 &&
-      year === currentDate.getFullYear()
-    ) {
-      return (
-        <div
-          className={`text-center font-normal line-through ${
-            textColor ? textColor : "text-core-text-20"
-          }`}
-        >
-          &nbsp;{date}&nbsp;
-        </div>
-      );
-    } else {
-      return (
-        <div
-          className={`text-center font-normal ${
-            textColor ? textColor : "text-core-text-20 "
-          }`}
-        >
-          {date}
-        </div>
-      );
-    }
-  }
-
   return (
     <>
       {selectedDate === `${year},${month},${date}` ? (
@@ -67,7 +37,7 @@ export default function CalendarDate({
             >
               {dateName}
             </div>
-            {checkForWeek("text-white")}
+            <div className="text-center font-normal text-white">{date}</div>
           </div>
         </button>
       ) : (
@@ -90,7 +60,7 @@ export default function CalendarDate({
             >
               {dateName}
             </div>
-            {checkForWeek()}
+            <div className="text-center font-normal">{date}</div>
           </div>
         </button>
       )}

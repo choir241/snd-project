@@ -1,10 +1,10 @@
 import { labels } from "../../static/labels";
-import CartHero from "./CartHero";
-import CartArrowButton from "./CartArrowButton";
-import PackageItemList from "./PackageItemList";
+import CartArrowButton from "../Cart/CartArrowButton";
+import PackageItemList from "../Cart/PackageItemList";
 import { useState } from "react";
+import CheckoutCartHero from "./CheckoutCartHero";
 
-export default function Cart() {
+export default function CheckoutCart() {
   const [togglePackageItemList, setTogglePackageItemList] = useState(false);
 
   const cartItems = sessionStorage.getItem("cart")
@@ -14,7 +14,11 @@ export default function Cart() {
   return (
     <>
       {cartItems.length ? (
-        <div data-testid="desktop-cart" className="flex flex-col">
+        <div
+          id="checkout-cart"
+          data-testid="desktop-cart"
+          className="flex flex-col"
+        >
           <h2 className="mb-4 heading-20">
             {labels.bookings.appointmentSummary}
           </h2>
@@ -26,7 +30,7 @@ export default function Cart() {
                 togglePackageItemList ? "" : "cart-header"
               } px-4 my-4 flex items-center`}
             >
-              <CartHero cartItems={cartItems} />
+              <CheckoutCartHero cartItems={cartItems} />
 
               <CartArrowButton
                 togglePackageItemList={togglePackageItemList}

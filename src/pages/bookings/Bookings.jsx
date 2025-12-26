@@ -6,8 +6,9 @@ import Footer from "../../components/Footer";
 import CartButtonsSection from "../../components/Cart/CartButtonsSection";
 
 export default function Bookings() {
-  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-
+  const cartItems = sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [];
   return (
     <div id="bookings">
       <div className="bg-white" id="root">

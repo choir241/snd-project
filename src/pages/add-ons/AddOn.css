@@ -1,3 +1,8 @@
 #addOn .add-on-option {
   border-bottom: 1px solid #b26060;
 }
+
+.disabled,
+#option-form .disabled span {
+  color: rgba(115, 115, 115, 0.5);
+}

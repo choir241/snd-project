@@ -3,7 +3,9 @@ import { packageNameCamelCase } from "./packageNameCamelCase";
 
 export function updatePackage({ packageOption, packageName, navigate }) {
   if (packageOption) {
-    const cart = JSON.parse(sessionStorage.getItem("cart"));
+    const cart = sessionStorage.getItem("cart")
+      ? JSON.parse(sessionStorage.getItem("cart"))
+      : [];
     const updatedCartPackageOption = cart.map((item) => {
       if (item.packageName === packageName) {
         item.packageOption = packageOption;

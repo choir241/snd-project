@@ -62,7 +62,7 @@ export default function AddOnOption({
       htmlFor={optionName}
       className={`add-on-option option-form-container market-row has-slotted-control ${className}`}
     >
-      <div className="radio-label-container">
+      <div className={`radio-label-container ${isDisabled ? "disabled" : ""}`}>
         <label slot="label">{optionName}</label>
         <span>${optionPrice}</span>
       </div>

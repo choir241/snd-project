@@ -1,5 +1,7 @@
 export function checkIfPackageAdded({ packageName }) {
-  const cart = JSON.parse(sessionStorage.getItem("cart"));
+  const cart = sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [];
 
   if (cart) {
     let isAdded = false;

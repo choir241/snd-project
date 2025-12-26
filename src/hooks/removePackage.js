@@ -1,7 +1,9 @@
 import { labels } from "../static/labels";
 
 export function removePackage({ packageName, navigate }) {
-  const cart = JSON.parse(sessionStorage.getItem("cart"));
+  const cart = sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [];
   const updatedCartRemovePackage = cart.filter((item) => {
     if (item.packageName !== packageName) {
       return item;

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { labels } from "../../static/labels";
 import AptBtnsContainer from "./AptBtnsContainer";
 import TimeButton from "./TimeButton";
+import { useNavigate } from "react-router";
 
 export default function Availabilty({
   setSelectedDate,
@@ -12,7 +13,18 @@ export default function Availabilty({
   appointments,
   setAppointments,
 }) {
-  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const navigate = useNavigate();
+
+  const cartItems = sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [];
+
+  function addBookingToCart({ time }) {
+    cartItems[0]["apptTime"] = time;
+    cartItems[0]["apptDate"] = selectedDate;
+    sessionStorage.setItem("cart", JSON.stringify(cartItems));
+    navigate(labels.bookings.checkoutLink);
+  }
 
   useEffect(() => {
     async function getAppointments() {
@@ -22,7 +34,7 @@ export default function Availabilty({
           endTime: 13,
         });
 
-        if (endDate) {
+        if (endDate && cartItems.length) {
           const newStartDate = new Date(selectedDate).toISOString();
           const newEndDate = new Date(endDate).toISOString();
 
@@ -123,44 +135,56 @@ export default function Availabilty({
           ""
         )}
         <div className="flex flex-col gap-4 mb-4">
-          <AptBtnsContainer
-            availCatSeparator={labels.appointments.availMorning}
-            TimeButtons={filterApts.morning.apts.map((appt) => {
-              return (
-                <TimeButton
-                  time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
-                    appt.timeMeridiem
-                  }`}
-                />
-              );
-            })}
-          />
+          {appointments.length ? (
+            <>
+              <AptBtnsContainer
+                availCatSeparator={labels.appointments.availMorning}
+                TimeButtons={filterApts.morning.apts.map((appt, i) => {
+                  return (
+                    <TimeButton
+                      addBookingToCart={addBookingToCart}
+                      key={i}
+                      time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
+                        appt.timeMeridiem
+                      }`}
+                    />
+                  );
+                })}
+              />
 
-          <AptBtnsContainer
-            availCatSeparator={labels.appointments.availAfternoon}
-            TimeButtons={filterApts.afternoon.apts.map((appt) => {
-              return (
-                <TimeButton
-                  time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
-                    appt.timeMeridiem
-                  }`}
-                />
-              );
-            })}
-          />
+              <AptBtnsContainer
+                availCatSeparator={labels.appointments.availAfternoon}
+                TimeButtons={filterApts.afternoon.apts.map((appt, i) => {
+                  return (
+                    <TimeButton
+                      addBookingToCart={addBookingToCart}
+                      key={i}
+                      time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
+                        appt.timeMeridiem
+                      }`}
+                    />
+                  );
+                })}
+              />
 
-          <AptBtnsContainer
-            availCatSeparator={labels.appointments.availEvening}
-            TimeButtons={filterApts.evening.apts.map((appt) => {
-              return (
-                <TimeButton
-                  time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
-                    appt.timeMeridiem
-                  }`}
-                />
-              );
-            })}
-          />
+              <AptBtnsContainer
+                availCatSeparator={labels.appointments.availEvening}
+                TimeButtons={filterApts.evening.apts.map((appt, i) => {
+                  return (
+                    <TimeButton
+                      addBookingToCart={addBookingToCart}
+                      key={i}
+                      time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
+                        appt.timeMeridiem
+                      }`}
+                    />
+                  );
+                })}
+              />
+            </>
+          ) : (
+            ""
+          )}
 
           {!appointments.length ? (
             <button

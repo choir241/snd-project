@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.calendar-date:hover {
+  background: rgb(225, 217, 217, 0.5);
+}
+
 .calendar-week {
   width: 100%;
 }
@@ -32,4 +36,11 @@
 
 #availability-segments {
   justify-content: space-between;
+}
+
+.cal-arrow-button {
+  border-radius: 5px;
+  background: rgb(225, 217, 217, 0.5);
+  padding: 0.5rem;
+  font-weight: bold;
 }

@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { packageNameCamelCase } from "./hooks/packageNameCamelCase";
 import CardForm from "./components/Purchase/CardForm";
 import AddOns from "./pages/add-ons/AddOns";
+import Checkout from "./pages/checkout/Checkout";
 
 export default function BrowserRoutes() {
   const [packages, setPackages] = useState([]);
@@ -56,6 +57,7 @@ export default function BrowserRoutes() {
           <Routes>
             <Route path="/appointments" element={<Appointments />} />
             <Route path="/purchase" element={<CardForm />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/" element={<Bookings />} />
             {packages.map((packageService) => {
               if (

@@ -2,6 +2,10 @@ export const labels = {
   footer: {
     poweredBySquare: "Powered by Square",
   },
+  checkout: {
+    estDue: "Est. due at appointment:",
+    bookApt: "Book Appointment",
+  },
   cart: {
     services: "services",
   },
@@ -15,6 +19,7 @@ export const labels = {
     noAvailContainer: "No availability",
   },
   bookings: {
+    checkoutLink: "/checkout",
     addOnsLink: "/addOns",
     appointmentsLink: "/appointments",
     added: "Added",

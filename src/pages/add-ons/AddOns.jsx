@@ -44,17 +44,17 @@ export default function AddOns({ packageName }) {
                   />
                 );
               })}
+
+              <AddOnButtons
+                packageName={packageName}
+                addOnOption={addOnOption}
+              />
             </ul>
 
             <aside className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 hidden md-lg:block md-lg:px-4 max-w-cart-sidebar min-w-cart-sidebar ">
               <div className="sticky top-2">
                 {/* Service Cart */}
                 <Cart />
-
-                <AddOnButtons
-                  packageName={packageName}
-                  addOnOption={addOnOption}
-                />
               </div>
             </aside>
           </div>

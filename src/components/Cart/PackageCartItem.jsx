@@ -17,7 +17,7 @@ export default function PackageCartItem({
             </span>
             <span>{optionName}</span>
           </div>
-          <div className="text-base font-normal ml-4 ">{optionPrice}</div>
+          <div className="text-base font-normal ml-4 ">${optionPrice}</div>
 
           <a
             href={packageNameCamelCase({ packageName: packageName })}
