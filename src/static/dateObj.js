@@ -1,9 +1,9 @@
 import { formatDate } from "../hooks/dateFuncs";
 
 const currDate = new Date();
-const formattedDate = `${currDate.getFullYear()},${
-  formatDate(currDate.getMonth() + 1)
-},${formatDate(currDate.getDate())}`;
+const formattedDate = `${currDate.getFullYear()},${formatDate(
+  currDate.getMonth() + 1,
+)},${formatDate(currDate.getDate())}`;
 
 const hrs = currDate.getHours();
 const min = currDate.getMinutes();

@@ -29,7 +29,6 @@ export default function Appointments() {
                 aria-label="Main content"
                 className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 flex flex-col w-full px-4 md-lg:max-w-main-content "
               >
-
                 {toggleCalendarView ? (
                   <HiddenCalendar
                     selectedDate={selectedDate}

@@ -10,7 +10,6 @@ export default function CalendarDate({
   month,
   year,
 }) {
-
   return (
     <>
       {selectedDate === `${year},${month},${date}` ? (

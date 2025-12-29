@@ -10,7 +10,7 @@ export default function CheckoutCart() {
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
 
-    return (
+  return (
     <>
       {cartItems.length ? (
         <div

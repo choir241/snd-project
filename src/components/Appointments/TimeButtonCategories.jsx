@@ -5,7 +5,7 @@ import TimeButton from "./TimeButton";
 import { setCart } from "../../static/cartItems";
 import Button from "../Button";
 
-export default function TimeButtonCategories({appointments}) {
+export default function TimeButtonCategories({ appointments }) {
   function addBookingToCart({ time }) {
     cartItems[0]["apptTime"] = time;
     cartItems[0]["apptDate"] = selectedDate;
@@ -90,7 +90,7 @@ export default function TimeButtonCategories({appointments}) {
         <Button
           onClick={() =>
             setSelectedDate(
-              `${noAvailDate.year},${noAvailDate.month},${noAvailDate.date}`
+              `${noAvailDate.year},${noAvailDate.month},${noAvailDate.date}`,
             )
           }
           rank="primary"
@@ -99,7 +99,7 @@ export default function TimeButtonCategories({appointments}) {
           type="button"
           variant="regular"
           hydrated=""
-          label = {labels.appointments.nextAvail}
+          label={labels.appointments.nextAvail}
         />
       )}
     </div>

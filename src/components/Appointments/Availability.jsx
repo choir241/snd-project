@@ -40,7 +40,7 @@ export default function Availabilty({
         });
 
         if (endDate && cartItems.length) {
-          const newStartDate = new Date(selectedDate)
+          const newStartDate = new Date(selectedDate);
           const newEndDate = new Date(endDate);
 
           const appts = await axios.post(
@@ -49,7 +49,7 @@ export default function Availabilty({
               startAt: newStartDate,
               endAt: newEndDate,
               serviceVariationId: cartItems[0].packageOption.id,
-            }
+            },
           );
 
           const apptTimes = appts.data.appts.map((appt) => {
@@ -108,14 +108,13 @@ export default function Availabilty({
         {!appointments.length ? (
           <div className="mb-4">
             {labels.appointments.noAvailability}
-            {abbrToFullWeekNames[noAvailDate.dateName]}, {months[noAvailDate.month - 1]}{" "}
-            {noAvailDate.date}.
+            {abbrToFullWeekNames[noAvailDate.dateName]},{" "}
+            {months[noAvailDate.month - 1]} {noAvailDate.date}.
           </div>
         ) : (
           ""
         )}
-        <TimeButtonCategories
-        appointments = {appointments}/>
+        <TimeButtonCategories appointments={appointments} />
         {/* <div className="flex flex-col gap-4 mb-4">
           {appointments.length ? (
             <>

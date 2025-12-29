@@ -1,3 +1,8 @@
+import { handleOnOptionSelect } from "./handleOnOptionSelect";
+import { useState, useEffect } from "react";
+import { removeAddOn } from "./removeAddOn";
+import { useNavigate } from "react-router";
+
 export default function AddOnOption({
   optionName,
   optionPrice,
@@ -7,40 +12,21 @@ export default function AddOnOption({
   id,
   findPackage,
 }) {
-  function checkForOptionDups(optionList) {
-    const uniqueOptions = [];
-    let dups = false;
-    optionList.forEach((option) => {
-      if (uniqueOptions.indexOf(option.optionName) == -1) {
-        uniqueOptions.push(option.optionName);
-      } else {
-        dups = true;
-        return;
-      }
-    });
+  const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
 
-    return dups;
-  }
+  useEffect(() => {
+    const isOptionInCart = cartItems[0].addOns.find(
+      (addOn) => addOn.optionName === optionName,
+    )
+      ? true
+      : false;
+    setIsChecked(isOptionInCart);
+  }, []);
 
-  function handleOnOptionSelect({ isDisabled }) {
-    if (isDisabled) {
-      throw new Error("This is disabled");
-    }
-
-    const optionList = [{ optionName, optionPrice }, ...addOnOption];
-    if (!addOnOption.length) {
-      setAddOnOption([{ optionName, optionPrice }]);
-    } else if (checkForOptionDups(optionList)) {
-      const removeSelectedOption = addOnOption.filter((option) => {
-        if (option.optionName !== optionName) {
-          return option;
-        }
-      });
-      setAddOnOption(removeSelectedOption);
-    } else {
-      setAddOnOption(optionList);
-    }
-  }
+  const cartItems = sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [];
 
   let modifiers;
   let isDisabled;
@@ -68,9 +54,25 @@ export default function AddOnOption({
       </div>
 
       <input
+        checked={isChecked}
         disabled={isDisabled}
         onChange={() => {
-          handleOnOptionSelect({ isDisabled: isDisabled });
+          if (isChecked) {
+            setIsChecked(false);
+            removeAddOn({
+              addOnItemName: optionName,
+              navigate: navigate,
+            });
+          } else {
+            setIsChecked(true);
+            handleOnOptionSelect({
+              isDisabled,
+              optionName,
+              optionPrice,
+              addOnOption,
+              setAddOnOption,
+            });
+          }
         }}
         type="checkbox"
         aria-label={optionName}
