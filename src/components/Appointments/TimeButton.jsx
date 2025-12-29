@@ -1,6 +1,8 @@
+import Button from "../Button"
+
 export default function TimeButton({ time, addBookingToCart }) {
   return (
-    <button
+    <Button
       onClick={() => addBookingToCart({ time })}
       size="small"
       data-testid="time-slot"
@@ -10,8 +12,7 @@ export default function TimeButton({ time, addBookingToCart }) {
       type="button"
       variant="regular"
       hydrated=""
-    >
-      {time}
-    </button>
+      label={time}
+    />
   );
 }

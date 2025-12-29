@@ -6,11 +6,9 @@ import { useState } from "react";
 
 export default function Cart() {
   const [togglePackageItemList, setTogglePackageItemList] = useState(false);
-
   const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
-
   return (
     <>
       {cartItems.length ? (
@@ -26,7 +24,7 @@ export default function Cart() {
                 togglePackageItemList ? "" : "cart-header"
               } px-4 my-4 flex items-center`}
             >
-              <CartHero cartItems={cartItems} />
+              <CartHero />
 
               <CartArrowButton
                 togglePackageItemList={togglePackageItemList}
@@ -34,11 +32,7 @@ export default function Cart() {
               />
             </div>
 
-            {togglePackageItemList ? (
-              ""
-            ) : (
-              <PackageItemList cartItems={cartItems} />
-            )}
+            {togglePackageItemList ? "" : <PackageItemList />}
           </div>
         </div>
       ) : (

@@ -1,5 +1,6 @@
 import { labels } from "../static/labels";
 import { packageNameCamelCase } from "./packageNameCamelCase";
+import { setCart } from "../static/cartItems";
 
 export function addPackage({
   packageOption,
@@ -14,20 +15,19 @@ export function addPackage({
     throw new Error("Please select an option.");
   }
 
-  sessionStorage.setItem(
-    "cart",
-    JSON.stringify([
-      {
-        addOns: [],
-        packageName: packageName,
-        packagePrice: packagePrice,
-        packageTimeAlloted: packageTimeAlloted,
-        packageOption: packageOption,
-      },
-    ]),
-  );
+  const cart = [
+    {
+      addOns: [],
+      packageName: packageName,
+      packagePrice: packagePrice,
+      packageTimeAlloted: packageTimeAlloted,
+      packageOption: packageOption,
+    },
+  ];
+
+  setCart(cart);
 
   return navigate(
-    `/${packageNameCamelCase({ packageName: packageName })}${labels.bookings.addOnsLink}`,
+    `/${packageNameCamelCase({ packageName: packageName })}${labels.links.addOnsLink}`,
   );
 }

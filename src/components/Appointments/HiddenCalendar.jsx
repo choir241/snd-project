@@ -1,5 +1,6 @@
 import { Calendar } from "../ui/calendar";
 import { addMonths, startOfMonth, startOfDay } from "date-fns";
+import { currDate } from "../../static/dateObj";
 
 export default function HiddenCalendar({ selectedDate, setSelectedDate }) {
   return (
@@ -14,12 +15,12 @@ export default function HiddenCalendar({ selectedDate, setSelectedDate }) {
             <div className="flex w-full my-2">
               <Calendar
                 mode="single"
-                startMonth={startOfMonth(new Date())}
-                endMonth={startOfMonth(addMonths(new Date(), 2))}
+                startMonth={startOfMonth(currDate)}
+                endMonth={startOfMonth(addMonths(currDate, 2))}
                 selected={selectedDate}
                 onSelect={setSelectedDate}
                 className="rounded-lg border w-full"
-                disabled={{ before: startOfDay(new Date()) }}
+                disabled={{ before: startOfDay(currDate) }}
               />
             </div>
           </div>

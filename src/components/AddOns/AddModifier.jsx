@@ -1,21 +1,22 @@
 import { labels } from "../../static/labels";
+import { setCart } from "../../static/cartItems";
 
-export function updateModifier({ addOn, packageName, navigate }) {
-  if (addOn.length) {
-    const cart = sessionStorage.getItem("cart")
-      ? JSON.parse(sessionStorage.getItem("cart"))
-      : [];
+export function updateModifier({ addOnItems, packageName, navigate }) {
+  const cartItems = sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [];
 
-    const updatedCartModifier = cart.map((item) => {
+  if (addOnItems.length) {
+    const updatedCartModifier = cartItems.map((item) => {
       if (item.packageName === packageName) {
-        item.addOns = addOn;
+        item.addOns = addOnItems;
         return item;
       } else {
         return item;
       }
     });
-    sessionStorage.setItem("cart", JSON.stringify(updatedCartModifier));
+    setCart(updatedCartModifier);
   }
 
-  return navigate(labels.bookings.appointmentsLink);
+  return navigate(labels.links.appointmentsLink);
 }

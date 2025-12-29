@@ -3,7 +3,7 @@ import { labels } from "../../static/labels";
 export default function PackageHeader() {
   return (
     <header className="flex items-center py-2 pl-4 pr-2 mb-2 justify-between">
-      <a className="!text-black" href={labels.bookings.bookingsLink}>
+      <a className="!text-black" href={labels.links.bookingsLink}>
         <img
           className="rounded-xl object-contain h-12"
           aria-hidden="true"

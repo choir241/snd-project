@@ -1,10 +1,9 @@
 export function isOptionChecked({ optionName, packageName }) {
-  const cart = sessionStorage.getItem("cart")
+  const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
-
-  if (cart) {
-    const findSelectedOption = cart.find((item) => {
+  if (cartItems) {
+    const findSelectedOption = cartItems.find((item) => {
       if (
         item.packageOption.name === optionName &&
         item.packageName === packageName

@@ -1,16 +1,15 @@
 import Package from "./pages/package/Package";
 import Bookings from "./pages/bookings/Bookings";
 import Appointments from "./pages/appointments/Appointments";
+import AddOns from "./pages/add-ons/AddOns";
+import Checkout from "./pages/checkout/Checkout";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { labels } from "./static/labels";
 import axios from "axios";
-import { PackageSession } from "./middleware/packageContext";
-import { ModifierSession } from "./middleware/packageContext";
-import { useState, useEffect } from "react";
+import { PackageSession, ModifierSession } from "./middleware/packageContext";
 import { packageNameCamelCase } from "./hooks/packageNameCamelCase";
 import CardForm from "./components/Purchase/CardForm";
-import AddOns from "./pages/add-ons/AddOns";
-import Checkout from "./pages/checkout/Checkout";
 
 export default function BrowserRoutes() {
   const [packages, setPackages] = useState([]);
@@ -84,6 +83,7 @@ export default function BrowserRoutes() {
                   labels.packages[camelCasedPackageName].price;
                 const packageTimeAlloted =
                   labels.packages[camelCasedPackageName].timeAlloted;
+
                 return (
                   <Route
                     path={`/${camelCasedPackageName}`}

@@ -1,8 +1,10 @@
+import { Button } from "../ui/button";
+
 export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
   return (
     <div className="flex">
       <div className="mr-4">
-        <button
+        <Button
           onClick={() => {
             if (currentPage > 5) {
               setCurrentPage(currentPage - 6);
@@ -39,10 +41,10 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
               ></path>
             </svg>
           </section>
-        </button>
+        </Button>
       </div>
       <div>
-        <button
+        <Button
           onClick={() => {
             if (currentPage < 36) {
               setCurrentPage(currentPage + 6);
@@ -78,7 +80,7 @@ export default function CalendarArrowButtons({ setCurrentPage, currentPage }) {
               ></path>
             </svg>
           </section>
-        </button>
+        </Button>
       </div>
     </div>
   );

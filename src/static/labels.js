@@ -18,14 +18,10 @@ export const labels = {
     availEvening: "Evening",
     noAvailContainer: "No availability",
   },
-  bookings: {
+  links: {
     checkoutLink: "/checkout",
     addOnsLink: "/addOns",
     appointmentsLink: "/appointments",
-    added: "Added",
-    appointmentSummary: "Appointment summary",
-    noServicesAddedYet: "No services added yet",
-    nextButton: "Next",
     bookingsLink: "/",
     interiorPackageLink: "/interiorPackage",
     premiumPackageLink: "/premiumPackage",
@@ -33,6 +29,12 @@ export const labels = {
     exteriorPackageLink: "/exteriorPackage",
     supremeNomadsSpecialLink: "/supremeNomadsSpecial",
     ceramicCoatingLink: "/ceramicCoating",
+  },
+  bookings: {
+    added: "Added",
+    appointmentSummary: "Appointment summary",
+    noServicesAddedYet: "No services added yet",
+    nextButton: "Next",
   },
   services: {
     allServices: "All services",

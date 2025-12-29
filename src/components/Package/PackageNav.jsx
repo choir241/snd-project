@@ -7,7 +7,7 @@ export default function PackageNav({ packageNavName }) {
         <li className="after:content-['/'] after:mx-2 after:text-core-text-20">
           <a
             className="min-w-fit text-nowrap !text-core-text-20"
-            href={labels.bookings.bookingsLink}
+            href={labels.links.bookingsLink}
           >
             <span>{labels.services.allServices}</span>
           </a>

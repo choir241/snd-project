@@ -1,12 +1,11 @@
 export function checkIfPackageAdded({ packageName }) {
-  const cart = sessionStorage.getItem("cart")
+  const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
-
-  if (cart) {
+  if (cartItems) {
     let isAdded = false;
 
-    cart.forEach((item) => {
+    cartItems.forEach((item) => {
       if (item.packageName === packageName) {
         isAdded = true;
         return;

@@ -6,6 +6,11 @@ import { labels } from "../../static/labels";
 import AptBtnsContainer from "./AptBtnsContainer";
 import TimeButton from "./TimeButton";
 import { useNavigate } from "react-router";
+import { months, abbrToFullWeekNames } from "../../static/dateObj";
+import { setCart } from "../../static/cartItems";
+import Button from "../Button";
+import { toDateISOString } from "../../hooks/dateFuncs";
+import TimeButtonCategories from "./TimeButtonCategories";
 
 export default function Availabilty({
   setSelectedDate,
@@ -22,8 +27,8 @@ export default function Availabilty({
   function addBookingToCart({ time }) {
     cartItems[0]["apptTime"] = time;
     cartItems[0]["apptDate"] = selectedDate;
-    sessionStorage.setItem("cart", JSON.stringify(cartItems));
-    navigate(labels.bookings.checkoutLink);
+    setCart(cartItems);
+    navigate(labels.links.checkoutLink);
   }
 
   useEffect(() => {
@@ -35,8 +40,8 @@ export default function Availabilty({
         });
 
         if (endDate && cartItems.length) {
-          const newStartDate = new Date(selectedDate).toISOString();
-          const newEndDate = new Date(endDate).toISOString();
+          const newStartDate = new Date(selectedDate)
+          const newEndDate = new Date(endDate);
 
           const appts = await axios.post(
             `${import.meta.env.VITE_BACKEND_API_URL}/bookings`,
@@ -44,7 +49,7 @@ export default function Availabilty({
               startAt: newStartDate,
               endAt: newEndDate,
               serviceVariationId: cartItems[0].packageOption.id,
-            },
+            }
           );
 
           const apptTimes = appts.data.appts.map((appt) => {
@@ -71,52 +76,27 @@ export default function Availabilty({
 
   const noAvailDate = generateCalendarDates({ dateRange: 2 })[1];
 
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  // const filterApts = {
+  //   morning: {
+  //     apts: [],
+  //   },
+  //   afternoon: {
+  //     apts: [],
+  //   },
+  //   evening: {
+  //     apts: [],
+  //   },
+  // };
 
-  const weekDays = {
-    Mo: "Monday",
-    Tu: "Tuesday",
-    We: "Wednesday",
-    Th: "Thursday",
-    Fr: "Friday",
-    Sa: "Saturday",
-    Su: "Sunday",
-  };
-
-  const filterApts = {
-    morning: {
-      apts: [],
-    },
-    afternoon: {
-      apts: [],
-    },
-    evening: {
-      apts: [],
-    },
-  };
-
-  appointments.forEach((appt) => {
-    if (appt.hrs < 12 && appt.timeMeridiem === "AM") {
-      filterApts.morning.apts.push(appt);
-    } else if (appt.hrs < 6 && appt.timeMeridiem === "PM") {
-      filterApts.afternoon.apts.push(appt);
-    } else if (appt.timeMeridiem === "PM" && appt.hrs > 5 && appt.hrs < 12) {
-      filterApts.evening.apts.push(appt);
-    }
-  });
+  // appointments.forEach((appt) => {
+  //   if (appt.hrs < 12 && appt.timeMeridiem === "AM") {
+  //     filterApts.morning.apts.push(appt);
+  //   } else if (appt.hrs < 6 && appt.timeMeridiem === "PM") {
+  //     filterApts.afternoon.apts.push(appt);
+  //   } else if (appt.timeMeridiem === "PM" && appt.hrs > 5 && appt.hrs < 12) {
+  //     filterApts.evening.apts.push(appt);
+  //   }
+  // });
 
   return (
     <div
@@ -128,13 +108,15 @@ export default function Availabilty({
         {!appointments.length ? (
           <div className="mb-4">
             {labels.appointments.noAvailability}
-            {weekDays[noAvailDate.dateName]}, {months[noAvailDate.month - 1]}{" "}
+            {abbrToFullWeekNames[noAvailDate.dateName]}, {months[noAvailDate.month - 1]}{" "}
             {noAvailDate.date}.
           </div>
         ) : (
           ""
         )}
-        <div className="flex flex-col gap-4 mb-4">
+        <TimeButtonCategories
+        appointments = {appointments}/>
+        {/* <div className="flex flex-col gap-4 mb-4">
           {appointments.length ? (
             <>
               <AptBtnsContainer
@@ -144,9 +126,9 @@ export default function Availabilty({
                     <TimeButton
                       addBookingToCart={addBookingToCart}
                       key={i}
-                      time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
-                        appt.timeMeridiem
-                      }`}
+                      time={`${appt.hrs}:${appt.min
+                        .toString()
+                        .padStart(2, 0)} ${appt.timeMeridiem}`}
                     />
                   );
                 })}
@@ -159,9 +141,9 @@ export default function Availabilty({
                     <TimeButton
                       addBookingToCart={addBookingToCart}
                       key={i}
-                      time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
-                        appt.timeMeridiem
-                      }`}
+                      time={`${appt.hrs}:${appt.min
+                        .toString()
+                        .padStart(2, 0)} ${appt.timeMeridiem}`}
                     />
                   );
                 })}
@@ -174,23 +156,19 @@ export default function Availabilty({
                     <TimeButton
                       addBookingToCart={addBookingToCart}
                       key={i}
-                      time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
-                        appt.timeMeridiem
-                      }`}
+                      time={`${appt.hrs}:${appt.min
+                        .toString()
+                        .padStart(2, 0)} ${appt.timeMeridiem}`}
                     />
                   );
                 })}
               />
             </>
           ) : (
-            ""
-          )}
-
-          {!appointments.length ? (
-            <button
+            <Button
               onClick={() =>
                 setSelectedDate(
-                  `${noAvailDate.year},${noAvailDate.month},${noAvailDate.date}`,
+                  `${noAvailDate.year},${noAvailDate.month},${noAvailDate.date}`
                 )
               }
               rank="primary"
@@ -201,11 +179,9 @@ export default function Availabilty({
               hydrated=""
             >
               {labels.appointments.nextAvail}
-            </button>
-          ) : (
-            ""
+            </Button>
           )}
-        </div>
+        </div> */}
       </div>
       <div className="mb-4"></div>
     </div>

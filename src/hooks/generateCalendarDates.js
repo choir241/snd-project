@@ -1,14 +1,22 @@
+import {
+  abbrWeekNameList,
+  month,
+  date,
+  year,
+  hrs,
+  min,
+  sec,
+} from "../static/dateObj";
+import { formatDate, getDay } from "./dateFuncs";
+
 export function generateCalendarDates({ dateRange }) {
-  const currDate = new Date();
-  const abbrDateNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+  const currHrs = formatDate(hrs);
+  const currMin = formatDate(min);
+  const currSecs = formatDate(sec);
 
-  const currHrs = currDate.getHours().toString().padStart(2, 0);
-  const currMin = currDate.getMinutes().toString().padStart(2, 0);
-  const currSecs = currDate.getSeconds().toString().padStart(2, 0);
-
-  let newDate = currDate.getDate();
-  let newMonth = currDate.getMonth() + 1;
-  let newYear = currDate.getFullYear();
+  let newDate = date;
+  let newMonth = month;
+  let newYear = year;
 
   const calendar = [];
 
@@ -47,19 +55,13 @@ export function generateCalendarDates({ dateRange }) {
         break;
     }
 
-    const newEndDate = `${newYear.toString().padStart(2, 0)}-${newMonth
-      .toString()
-      .padStart(2, 0)}-${newDate
-      .toString()
-      .padStart(2, 0)}T${currHrs}:${currMin}:${currSecs}`;
-
-    const endDate = new Date(newEndDate);
+    const newEndDate = `${newYear}-${newMonth}-${newDate}T${currHrs}:${currMin}:${currSecs}`;
 
     calendar.push({
       month: newMonth,
       year: newYear,
       date: newDate,
-      dateName: abbrDateNames[endDate.getDay()],
+      dateName: abbrWeekNameList[getDay(newEndDate)],
     });
 
     newDate += 1;

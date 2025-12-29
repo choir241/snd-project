@@ -2,26 +2,26 @@ import { useNavigate } from "react-router";
 import { labels } from "../../static/labels";
 import { removePackage } from "../../hooks/removePackage";
 import { updateModifier } from "./AddModifier";
+import Button from "../Button";
 
 export default function AddButtons({ packageName, addOnOption }) {
   const navigate = useNavigate();
 
   return (
     <div className="package-button-container">
-      <button
+      <Button
         className="button remove-button"
         onClick={() => removePackage({ packageName, navigate })}
-      >
-        {labels.services.removeButton}
-      </button>
-      <button
+        label={labels.services.removeButton}
+      />
+
+      <Button
         className="button"
         onClick={() =>
-          updateModifier({ packageName, addOn: addOnOption, navigate })
+          updateModifier({ packageName, addOnItems: addOnOption, navigate })
         }
-      >
-        {labels.services.updateButton}
-      </button>
+        label={labels.services.updateButton}
+      />
     </div>
   );
 }

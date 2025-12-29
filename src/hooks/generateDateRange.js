@@ -1,32 +1,29 @@
+import { hrs, min, sec, month, date, year } from "../static/dateObj";
+import { getMonth, getDate, getFullYear, formatDate } from "./dateFuncs";
+
 export function generateDateRange({ startDate, endTime }) {
-  let endDate;
-  const date = new Date();
+  let currHrs = hrs;
+  let currMin = min;
+  const currSecs = sec;
 
-  let currHrs = date.getHours();
-  let currMin = date.getMinutes();
-  const currSecs = date.getSeconds();
-
-  const currMonth = date.getMonth() + 1;
-  const currDate = date.getDate();
-  const currYear = date.getFullYear();
+  const currMonth = month;
+  const currDate = date;
+  const currYear = year;
 
   if (
     (startDate === `${currYear},${currMonth},${currDate}` &&
       currHrs < endTime) ||
     startDate !== `${currYear},${currMonth},${currDate}`
   ) {
-    const newYear = new Date(startDate).getFullYear();
-    const newMonth = new Date(startDate).getMonth() + 1;
-    const newDate = new Date(startDate).getDate();
+    const newYear = getFullYear(startDate);
+    const newMonth = getMonth(startDate, false);
+    const newDate = getDate(startDate);
 
     currHrs = endTime;
 
-    endDate = `${newYear}-${newMonth}-${newDate}T${currHrs
-      .toString()
-      .padStart(2, 0)}:${currMin.toString().padStart(2, 0)}:${currSecs
-      .toString()
-      .padStart(2, 0)}`;
+    const endDate = `${newYear}-${formatDate(newMonth)}-${formatDate(newDate)}T${formatDate(currHrs)}:${formatDate(currMin)}:${formatDate(currSecs)}`;
+    return endDate;
   }
 
-  return endDate;
+  return "";
 }

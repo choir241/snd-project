@@ -2,12 +2,13 @@ import CalendarArrowButtons from "./CalendarArrowButtons";
 import CalendarCarouselWeek from "./CalendarCarouselWeek";
 import { useState } from "react";
 import { generateCalendarDates } from "../../hooks/generateCalendarDates";
+import { getFullYear, getAbbrMonth } from "../../hooks/dateFuncs";
 
-export default function CalendarCarousel({ selectedDate, setSelectedDate }) {
+export default function CalendarCarousel({ selectedDate, setSelectedDate, toggleCalendarView }) {
   const [currentPage, setCurrentPage] = useState(0);
   const calendar = generateCalendarDates({ dateRange: 42 }).slice(
     currentPage,
-    currentPage + 6,
+    currentPage + 6
   );
 
   // 9am start
@@ -21,9 +22,13 @@ export default function CalendarCarousel({ selectedDate, setSelectedDate }) {
         id="week-view"
       >
         <div className="flex mb-4 items-center">
-          <h2 className="flex-grow">
-            {/* {months[generateCalendarDates.getMonth()]} {currentDate.getFullYear()} */}
-          </h2>
+          {toggleCalendarView ? (
+            ""
+          ) : (
+            <h2 className="flex-grow">
+              {getAbbrMonth(selectedDate)} {getFullYear(selectedDate)}
+            </h2>
+          )}
 
           <CalendarArrowButtons
             currentPage={currentPage}

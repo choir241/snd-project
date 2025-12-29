@@ -6,9 +6,6 @@ import Footer from "../../components/Footer";
 import CartButtonsSection from "../../components/Cart/CartButtonsSection";
 
 export default function Bookings() {
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
-    : [];
   return (
     <div id="bookings">
       <div className="bg-white" id="root">
@@ -25,7 +22,7 @@ export default function Bookings() {
                   {/* Service Cart */}
                   <Cart />
 
-                  <CartButtonsSection cartItems={cartItems} />
+                  <CartButtonsSection />
                 </div>
               </aside>
             </div>

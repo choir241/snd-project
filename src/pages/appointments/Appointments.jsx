@@ -8,30 +8,11 @@ import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
 import { useState } from "react";
 import HiddenCalendar from "../../components/Appointments/HiddenCalendar";
+import { formattedDate } from "../../static/dateObj";
 
 export default function Appointments() {
-  const date = new Date();
-  const currDate = `${date.getFullYear()},${
-    date.getMonth() + 1
-  },${date.getDate()}`;
-
   const [toggleCalendarView, setToggleCalendarView] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(currDate);
-
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  const [selectedDate, setSelectedDate] = useState(formattedDate);
   const [appointments, setAppointments] = useState([]);
 
   return (
@@ -48,14 +29,6 @@ export default function Appointments() {
                 aria-label="Main content"
                 className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 flex flex-col w-full px-4 md-lg:max-w-main-content "
               >
-                {toggleCalendarView ? (
-                  ""
-                ) : (
-                  <h2 className="mb-2 overflow-wrap-anywhere">
-                    {months[new Date(selectedDate).getMonth()]}{" "}
-                    {new Date(selectedDate).getFullYear()}
-                  </h2>
-                )}
 
                 {toggleCalendarView ? (
                   <HiddenCalendar
@@ -64,6 +37,7 @@ export default function Appointments() {
                   />
                 ) : (
                   <CalendarCarasoul
+                    toggleCalendarView={toggleCalendarView}
                     selectedDate={selectedDate}
                     setSelectedDate={setSelectedDate}
                   />

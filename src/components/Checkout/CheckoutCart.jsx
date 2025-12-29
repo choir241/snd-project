@@ -6,12 +6,11 @@ import CheckoutCartHero from "./CheckoutCartHero";
 
 export default function CheckoutCart() {
   const [togglePackageItemList, setTogglePackageItemList] = useState(false);
-
   const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
 
-  return (
+    return (
     <>
       {cartItems.length ? (
         <div
@@ -30,7 +29,7 @@ export default function CheckoutCart() {
                 togglePackageItemList ? "" : "cart-header"
               } px-4 my-4 flex items-center`}
             >
-              <CheckoutCartHero cartItems={cartItems} />
+              <CheckoutCartHero />
 
               <CartArrowButton
                 togglePackageItemList={togglePackageItemList}

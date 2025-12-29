@@ -1,13 +1,13 @@
 export function checkForDupPackages({ packageName }) {
-  const cartArray = sessionStorage.getItem("cart")
+  const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
 
   let isDup = false;
 
-  if (cartArray) {
-    cartArray.forEach((cart) => {
-      if (cart.packageName === packageName) {
+  if (cartItems) {
+    cartItems.forEach((cartItem) => {
+      if (cartItem.packageName === packageName) {
         isDup = true;
         return;
       }
