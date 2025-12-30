@@ -4,8 +4,20 @@ import AptBtnsContainer from "./AptBtnsContainer";
 import TimeButton from "./TimeButton";
 import { setCart } from "../../static/cartItems";
 import Button from "../Button";
+import { formatDate } from "../../hooks/dateFuncs";
+import { useNavigate } from "react-router";
 
-export default function TimeButtonCategories({ appointments }) {
+export default function TimeButtonCategories({
+  appointments,
+  selectedDate,
+  setSelectedDate,
+}) {
+  const navigate = useNavigate();
+
+  const cartItems = sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [];
+
   function addBookingToCart({ time }) {
     cartItems[0]["apptTime"] = time;
     cartItems[0]["apptDate"] = selectedDate;
@@ -48,7 +60,7 @@ export default function TimeButtonCategories({ appointments }) {
                 <TimeButton
                   addBookingToCart={addBookingToCart}
                   key={i}
-                  time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
+                  time={`${appt.hrs}:${formatDate(appt.min)} ${
                     appt.timeMeridiem
                   }`}
                 />
@@ -63,7 +75,7 @@ export default function TimeButtonCategories({ appointments }) {
                 <TimeButton
                   addBookingToCart={addBookingToCart}
                   key={i}
-                  time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
+                  time={`${appt.hrs}:${formatDate(appt.min)} ${
                     appt.timeMeridiem
                   }`}
                 />
@@ -78,7 +90,7 @@ export default function TimeButtonCategories({ appointments }) {
                 <TimeButton
                   addBookingToCart={addBookingToCart}
                   key={i}
-                  time={`${appt.hrs}:${appt.min.toString().padStart(2, 0)} ${
+                  time={`${appt.hrs}:${formatDate(appt.min)} ${
                     appt.timeMeridiem
                   }`}
                 />

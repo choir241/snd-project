@@ -13,10 +13,10 @@ export default function CheckoutCartHero() {
   const date = cartItems[0]?.apptDate;
 
   return (
-    <div className="market-row preload">
-      <FaRegCalendar />
+    <div className="w-full market-row preload flex items-center justify-between">
+      <FaRegCalendar className="bg-gray-100 w-8 h-8 p-2 rounded mr-4" />
       {date && cartItems[0].apptTime && cartItems[0].packageTimeAlloted ? (
-        <>
+        <div>
           <label slot="subtext">
             {weekNameList[getDay(date)]}, {months[getMonth(date)]}{" "}
             {getDate(date)}
@@ -33,7 +33,7 @@ export default function CheckoutCartHero() {
               {labels.checkout.estDue} ${calculateItemsTotal()}
             </div>
           </label>
-        </>
+        </div>
       ) : (
         "No appointment time and date was selected."
       )}

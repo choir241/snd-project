@@ -1,6 +1,6 @@
 import { setCart } from "../../static/cartItems";
 
-export function removeAddOn({ addOnItemName, navigate }) {
+export function removeAddOn({ addOnItemName }) {
   const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];

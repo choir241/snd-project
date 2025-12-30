@@ -1,10 +1,15 @@
 export const labels = {
-  footer: {
-    poweredBySquare: "Powered by Square",
-  },
   checkout: {
+    subtotal: "Subtotal",
+    taxes: "Taxes",
+    total: "Total",
+    dueToday: "Due Today",
+    dueAtAppt: "Due at appointment",
     estDue: "Est. due at appointment:",
     bookApt: "Book Appointment",
+  },
+  footer: {
+    poweredBySquare: "Powered by Square",
   },
   cart: {
     services: "services",

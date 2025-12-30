@@ -3,6 +3,7 @@ import CartArrowButton from "../Cart/CartArrowButton";
 import PackageItemList from "../Cart/PackageItemList";
 import { useState } from "react";
 import CheckoutCartHero from "./CheckoutCartHero";
+import CheckoutCartTotals from "./CheckoutCartTotals";
 
 export default function CheckoutCart() {
   const [togglePackageItemList, setTogglePackageItemList] = useState(false);
@@ -27,7 +28,7 @@ export default function CheckoutCart() {
               data-testid="cart-accordion-label"
               className={`${
                 togglePackageItemList ? "" : "cart-header"
-              } px-4 my-4 flex items-center`}
+              } px-4 my-4 flex items-center justify-between`}
             >
               <CheckoutCartHero />
 
@@ -40,7 +41,10 @@ export default function CheckoutCart() {
             {togglePackageItemList ? (
               ""
             ) : (
-              <PackageItemList cartItems={cartItems} />
+              <>
+                <PackageItemList cartItems={cartItems} />
+                <CheckoutCartTotals />
+              </>
             )}
           </div>
         </div>

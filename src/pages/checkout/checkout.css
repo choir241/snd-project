@@ -1,0 +1,8 @@
+#checkout-cart .totals-footer {
+  border-top: 1px solid #b26060;
+  padding: 0.5rem 0rem;
+}
+
+#checkout-cart .label {
+  font-weight: bold;
+}
