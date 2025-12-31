@@ -4,6 +4,7 @@ import CheckoutCart from "../../components/Checkout/CheckoutCart";
 import { labels } from "../../static/labels";
 import "./checkout.css";
 import CheckoutTimer from "../../components/Checkout/CheckoutTimer";
+import CheckoutForm from "../../components/Checkout/CheckoutForm";
 
 export default function Checkout() {
   return (
@@ -12,14 +13,19 @@ export default function Checkout() {
         <div className="flex flex-col flex-grow overflow-y-auto">
           <PackageHeader />
           <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
-            <CheckoutTimer />
-            <aside className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 hidden md-lg:block md-lg:px-4 max-w-cart-sidebar min-w-cart-sidebar ">
-              <div className="sticky top-2">
-                <CheckoutCart />
+            <form className="flex flex-col w-full items-center">
+              <h2>{labels.checkout.checkoutH1}</h2>
+              <CheckoutTimer />
 
-                <button className="button">{labels.checkout.bookApt}</button>
-              </div>
-            </aside>
+              <aside className="flex justify-between">
+                <CheckoutForm />
+                <div className="sticky top-2">
+                  <CheckoutCart />
+
+                  <button className="button">{labels.checkout.bookApt}</button>
+                </div>
+              </aside>
+            </form>
           </div>
           <Footer />
         </div>

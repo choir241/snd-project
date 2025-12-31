@@ -7,6 +7,17 @@ export const labels = {
     dueAtAppt: "Due at appointment",
     estDue: "Est. due at appointment:",
     bookApt: "Book Appointment",
+    checkoutH1: "Checkout",
+    apptHeldFor: "Appointment held for",
+    minutesTimer: "minutes",
+    textConsent:
+      "By providing your phone number you acknowledge you will receive occasional informational messages, including automated messages, on your mobile device from this merchant. Text STOP to opt out at any time, and text HELP to get HELP. Message and data rates may apply.",
+    firstName: "First Name",
+    lastName: "Last Name",
+    email: "Email",
+    year: "Year",
+    make: "Make",
+    model: "Model",
   },
   footer: {
     poweredBySquare: "Powered by Square",

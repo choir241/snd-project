@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { formatDate } from "../../hooks/dateFuncs";
+import { labels } from "../../static/labels";
 
 export default function CheckoutTimer() {
   const [timerSec, setTimerSec] = useState(0);
@@ -17,8 +19,10 @@ export default function CheckoutTimer() {
 
   return (
     <>
-      Min:{timerMin}
-      Sec:{timerSec}
+      {labels.checkout.apptHeldFor + " "}
+      {timerMin}
+      {":" + formatDate(timerSec)}
+      {" " + labels.checkout.minutesTimer}
     </>
   );
 }
