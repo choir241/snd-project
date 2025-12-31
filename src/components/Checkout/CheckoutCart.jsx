@@ -17,7 +17,7 @@ export default function CheckoutCart() {
         <div
           id="checkout-cart"
           data-testid="desktop-cart"
-          className="flex flex-col"
+          className="flex flex-col sticky top-2"
         >
           <h2 className="mb-4 heading-20">
             {labels.bookings.appointmentSummary}
@@ -41,12 +41,15 @@ export default function CheckoutCart() {
             {togglePackageItemList ? (
               ""
             ) : (
-              <>
+              <div className="overflow-x-hidden overflow-y-auto md-lg:max-h-[calc(100vh-412px)] -mx-4 px-4">
+                {" "}
                 <PackageItemList cartItems={cartItems} />
                 <CheckoutCartTotals />
-              </>
+              </div>
             )}
           </div>
+
+          <button className="button">{labels.checkout.bookApt}</button>
         </div>
       ) : (
         <div className="p-4">{labels.bookings.noServicesAddedYet}</div>

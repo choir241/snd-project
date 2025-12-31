@@ -9,21 +9,17 @@ import CheckoutForm from "../../components/Checkout/CheckoutForm";
 export default function Checkout() {
   return (
     <div className="bg-white" id="root">
-      <div className="mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
-        <div className="flex flex-col flex-grow overflow-y-auto">
+      <div className="mb-0 flex w-screen min-h-screen relative">
+        <div className="flex flex-col flex-grow">
           <PackageHeader />
           <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
             <form className="flex flex-col w-full items-center">
               <h2>{labels.checkout.checkoutH1}</h2>
               <CheckoutTimer />
 
-              <aside className="flex justify-between">
+              <aside className="flex justify-between mt-8 w-full items-start">
                 <CheckoutForm />
-                <div className="sticky top-2">
-                  <CheckoutCart />
-
-                  <button className="button">{labels.checkout.bookApt}</button>
-                </div>
+                <CheckoutCart />
               </aside>
             </form>
           </div>

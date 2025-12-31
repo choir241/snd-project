@@ -1,5 +1,10 @@
 export const labels = {
   checkout: {
+    addLink: "Add",
+    aptNote: "Appointment note",
+    whereWillApt: "Where will this appointment take place?",
+    signIn: "Sign in",
+    contactInfo: "Contact info",
     subtotal: "Subtotal",
     taxes: "Taxes",
     total: "Total",
@@ -14,10 +19,16 @@ export const labels = {
       "By providing your phone number you acknowledge you will receive occasional informational messages, including automated messages, on your mobile device from this merchant. Text STOP to opt out at any time, and text HELP to get HELP. Message and data rates may apply.",
     firstName: "First Name",
     lastName: "Last Name",
+    phoneNumber: "Phone Number",
     email: "Email",
     year: "Year",
     make: "Make",
     model: "Model",
+    address: "Street Address",
+    aptSuite: "Apt./Suite",
+    city: "City",
+    state: "State",
+    zip: "ZIP",
   },
   footer: {
     poweredBySquare: "Powered by Square",

@@ -1,31 +1,25 @@
 import { labels } from "../../static/labels";
+import Button from "../Button";
 
-export default function CheckoutFormPhone() {
+export default function CheckoutFormPhone({ onChange }) {
+  function onInputChange(inputValue) {
+    if (inputValue) {
+      onChange(inputValue);
+    } else {
+      throw new Error(
+        `There was an error on inputting the ${labels.checkout.phoneNumber}`,
+      );
+    }
+  }
+
   return (
     <>
       <div className="col-span-2 relative">
-        <market-field name="phone" className="market-field" hydrated="">
-          <div className="flex justify-between items-center gap-2">
-            <market-button
-              icon-only=""
-              size="small"
-              rank="tertiary"
-              aria-haspopup=""
-              aria-expanded="false"
-              aria-controls="country-calling-code-popover"
-              aria-label="Select a country code"
-              aria-activedescendant="United States"
-              caret="down"
-              className="market-button"
-              type="button"
-              variant="regular"
-              hydrated=""
-            >
-              <market-accessory
-                slot="icon"
-                className="mr-1 market-accessory"
-                hydrated=""
-              >
+        <div className="flex justify-between items-center gap-2">
+          <Button
+            className="market-button mr-1 market-accessory"
+            label={
+              <>
                 <span className="text-3xl">🇺🇸</span>
                 <span
                   className="ml-3 text-black font-medium text-base pointer-events-none"
@@ -33,39 +27,23 @@ export default function CheckoutFormPhone() {
                 >
                   +1
                 </span>
-              </market-accessory>
-            </market-button>
-            <market-input-text
-              type="tel"
-              autoComplete="tel-national"
-              value=""
-              placeholder="(000) 000-0000"
-              className="max-h-16 flex-1 market-input-text"
-              aria-describedby="a3b3c9ee-9216-4e18-9829-ae172630d3e3-error"
-              size="large"
-              hydrated=""
-            >
-              <div className="field">
-                <input
-                  onChange={(e) => {
-                    e.preventDefault();
-                    const value = e.target.value;
-                    if (Number(value)) {
-                      console.log(value);
-                    } else {
-                      throw new Error("test");
-                    }
-                  }}
-                  type="text"
-                  id="phoneNumber"
-                  placeholder=" "
-                  required
-                />
-                <label for="phoneNumber">Phone Number</label>
-              </div>
-            </market-input-text>
+              </>
+            }
+          />
+
+          <div className="field">
+            <input
+              onChange={(e) => {
+                onInputChange(e.target.value);
+              }}
+              type="text"
+              id="phoneNumber"
+              placeholder=" "
+              required
+            />
+            <label htmlFor="phoneNumber">{labels.checkout.phoneNumber}</label>
           </div>
-        </market-field>
+        </div>
       </div>
 
       <div className="col-span-2  paragraph-10">

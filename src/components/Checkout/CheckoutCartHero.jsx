@@ -13,11 +13,11 @@ export default function CheckoutCartHero() {
   const date = cartItems[0]?.apptDate;
 
   return (
-    <div className="w-full market-row preload flex items-center justify-between">
+    <div className="w-full market-row preload flex items-center justify-between checkout-hero">
       <FaRegCalendar className="bg-gray-100 w-8 h-8 p-2 rounded mr-4" />
       {date && cartItems[0].apptTime && cartItems[0].packageTimeAlloted ? (
-        <div>
-          <label slot="subtext">
+        <div className="pr-8">
+          <label slot="subtext" className="date">
             {weekNameList[getDay(date)]}, {months[getMonth(date)]}{" "}
             {getDate(date)}
           </label>
@@ -29,8 +29,10 @@ export default function CheckoutCartHero() {
                 timeAlloted: cartItems[0].packageTimeAlloted,
               })}
             </div>
-            <div>
-              {labels.checkout.estDue} ${calculateItemsTotal()}
+            <div className="flex flex-col items-start">
+              {labels.checkout.estDue}
+
+              <span>${calculateItemsTotal()}</span>
             </div>
           </label>
         </div>
