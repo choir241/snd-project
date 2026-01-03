@@ -11,7 +11,7 @@ export default function CheckoutTimer() {
       if (timerMin > 0 && timerSec === 0) {
         setTimerSec(59);
         setTimerMin(timerMin - 1);
-      } else {
+      } else if (timerMin > 0) {
         setTimerSec(timerSec - 1);
       }
     }, 1000);

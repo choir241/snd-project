@@ -3,7 +3,7 @@ import Button from "../Button";
 
 export default function CheckoutFormPhone({ onChange }) {
   function onInputChange(inputValue) {
-    if (inputValue) {
+    if (inputValue !== null) {
       onChange(inputValue);
     } else {
       throw new Error(

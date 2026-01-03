@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { labels } from "../../static/labels";
+import axios from "axios";
 
 export default function AuthLink() {
   const [authLink, setAuthLink] = useState("");
@@ -22,9 +24,5 @@ export default function AuthLink() {
     generateToken();
   }, []);
 
-  return (
-    <a href={authLink} className="button">
-      Login
-    </a>
-  );
+  return <a href={authLink}>{labels.checkout.signIn}</a>;
 }

@@ -5,7 +5,7 @@ export default function CheckoutCarForm({
   className,
 }) {
   function onInputChange(inputValue) {
-    if (inputValue) {
+    if (inputValue !== null) {
       onChange(inputValue);
     } else {
       throw new Error(`There was an error on inputting the ${carLabel}`);

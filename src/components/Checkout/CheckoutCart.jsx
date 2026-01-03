@@ -49,10 +49,12 @@ export default function CheckoutCart() {
             )}
           </div>
 
-          <button className="button">{labels.checkout.bookApt}</button>
+          {/* <button className="button">{labels.checkout.bookApt}</button> */}
         </div>
       ) : (
-        <div className="p-4">{labels.bookings.noServicesAddedYet}</div>
+        <div className="p-4 sticky top-4">
+          {labels.bookings.noServicesAddedYet}
+        </div>
       )}
     </>
   );

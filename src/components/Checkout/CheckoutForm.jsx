@@ -4,8 +4,10 @@ import CheckoutInfoSection from "./CheckoutInfoSection";
 import CheckoutCarSection from "./CheckoutCarSection";
 import CheckoutHero from "./CheckoutHero";
 import CheckoutLocationForm from "./CheckoutLocationForm";
+import axios from "axios";
+import Button from "../Button";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ isCurrUser }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,6 +16,67 @@ export default function CheckoutForm() {
   const [carMake, setCarMake] = useState("");
   const [carModel, setCarModel] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
+  const [aptSuite, setAptSuite] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+
+  async function BookAppointment() {
+    try {
+      if (
+        firstName &&
+        lastName &&
+        email &&
+        phone &&
+        streetAddress &&
+        aptSuite &&
+        city &&
+        state &&
+        zip
+      ) {
+        const customer = await axios.post(
+          `${import.meta.env.VITE_BACKEND_API_URL}/createCustomer`,
+          {
+            firstName,
+            lastName,
+            email,
+            phoneNumber: phone,
+            streetAddress,
+            suiteAddress: aptSuite,
+            city,
+            state,
+            zipCode: zip,
+            country: "USA",
+          },
+        );
+
+        if (!customer) {
+          throw new Error(
+            "There was an error creating the customer with variable customer's value at: " +
+              customer,
+          );
+        }
+
+        console.log(customer);
+      } else {
+        throw new Error("One of the inputs were not filled out");
+      }
+    } catch (err) {
+      console.error(
+        `There was an error booking the appointment, ${err.message}`,
+      );
+    }
+  }
+
+  // customer: {
+  //   id: "",
+  //   createdAt: '',
+  //   updatedAt: '',
+  //   givenName: 'Bob',
+  //   familyName: 'Builder',
+  //   emailAddress: 'bob@email.com',
+  //   phoneNumber: '',
+  // }
 
   return (
     <section
@@ -22,7 +85,7 @@ export default function CheckoutForm() {
     >
       <div className="flex-col items-center">
         <div className="flex flex-col">
-          <CheckoutHero />
+          <CheckoutHero isCurrUser={isCurrUser} />
 
           <CheckoutInfoSection
             setPhone={setPhone}
@@ -40,7 +103,13 @@ export default function CheckoutForm() {
 
         <div className="mt-4">
           <h3 className="mb-2">{labels.checkout.whereWillApt}</h3>
-          <CheckoutLocationForm setStreetAddress={setStreetAddress} />
+          <CheckoutLocationForm
+            setStreetAddress={setStreetAddress}
+            setAptSuite={setAptSuite}
+            setCity={setCity}
+            setState={setState}
+            setZip={setZip}
+          />
         </div>
 
         <div className="col-span-2 flex flex-col py-6 separator">
@@ -61,6 +130,14 @@ export default function CheckoutForm() {
         >
           <template shadowrootmode="open"></template>
         </market-divider>
+
+        <Button
+          onClick={() => {
+            BookAppointment();
+          }}
+          label={"Book appointment"}
+          className="button"
+        />
         <div className="my-4">
           <h3 className="mb-4">Cancellation policy</h3>
           <div className="w-full mb-4 pt-12">
@@ -130,25 +207,6 @@ export default function CheckoutForm() {
           Square Appointments. You can sign back in using your mobile number at
           any time. You may also receive promotional emails from Square.
         </div>
-        <market-button
-          data-testid="book-appointment-button-mobile"
-          type="submit"
-          rank="primary"
-          className="md-lg:hidden w-full mb-8 market-button"
-          size="medium"
-          variant="regular"
-          hydrated=""
-        >
-          <template shadowrootmode="open">
-            <button className="inner-tag" type="submit">
-              <slot name="icon"></slot>
-              <span className="button-text" part="button-text">
-                <slot></slot>
-              </span>
-            </button>
-          </template>
-          Book appointment
-        </market-button>
       </div>
     </section>
   );
