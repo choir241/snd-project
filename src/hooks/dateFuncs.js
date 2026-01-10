@@ -48,3 +48,7 @@ export function getTimeZone(date) {
 export function getDay(date) {
   return new Date(date).getDay();
 }
+
+export function createNewDate(date) {
+  return new Date(date);
+}

@@ -1,17 +1,7 @@
-import { labels } from "../../static/labels";
-import Button from "../Button";
+import { labels } from "../../../static/labels";
+import Button from "../../Button";
 
-export default function CheckoutFormPhone({ onChange }) {
-  function onInputChange(inputValue) {
-    if (inputValue !== null) {
-      onChange(inputValue);
-    } else {
-      throw new Error(
-        `There was an error on inputting the ${labels.checkout.phoneNumber}`,
-      );
-    }
-  }
-
+export default function CheckoutFormPhone({ handleChange }) {
   return (
     <>
       <div className="col-span-2 relative">
@@ -33,8 +23,9 @@ export default function CheckoutFormPhone({ onChange }) {
 
           <div className="field">
             <input
+              name={"phone"}
               onChange={(e) => {
-                onInputChange(e.target.value);
+                handleChange(e);
               }}
               type="text"
               id="phoneNumber"

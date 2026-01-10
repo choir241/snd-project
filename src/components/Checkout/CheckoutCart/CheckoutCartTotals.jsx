@@ -1,5 +1,5 @@
-import { labels } from "../../static/labels";
-import { calculateItemsTotal } from "../../hooks/calculateItemsTotal";
+import { labels } from "../../../static/labels";
+import { calculateItemsTotal } from "../../../hooks/calculateItemsTotal";
 
 export default function CheckoutCartTotals() {
   return (

@@ -1,39 +1,34 @@
-import { labels } from "../../static/labels";
+import { labels } from "../../../static/labels";
 import CheckoutFormPhone from "./CheckoutFormPhone";
 import CheckoutUserDataInput from "./CheckoutUserDataInput";
 
-export default function CheckoutInfoSection({
-  setFirstName,
-  setLastName,
-  setEmail,
-  setPhone,
-}) {
+export default function CheckoutInfoSection({ handleChange }) {
   return (
     <div
       className="grid grid-cols-2 gap-2"
       data-testid="customer-information-form"
     >
-      <CheckoutFormPhone onChange={setPhone} />
+      <CheckoutFormPhone handleChange={handleChange} />
 
       <CheckoutUserDataInput
         label={labels.checkout.firstName}
         htmlForId={"firstName"}
         type={"text"}
-        onChange={setFirstName}
+        handleChange={handleChange}
       />
 
       <CheckoutUserDataInput
         label={labels.checkout.lastName}
         htmlForId={"lastName"}
         type={"text"}
-        onChange={setLastName}
+        handleChange={handleChange}
       />
 
       <CheckoutUserDataInput
         label={labels.checkout.email}
         htmlForId={"email"}
         type={"email"}
-        onChange={setEmail}
+        handleChange={handleChange}
         className={"col-span-2"}
       />
     </div>

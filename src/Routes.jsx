@@ -10,100 +10,169 @@ import axios from "axios";
 import { PackageSession, ModifierSession } from "./middleware/packageContext";
 import { packageNameCamelCase } from "./hooks/packageNameCamelCase";
 import CardForm from "./components/Purchase/CardForm";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { TailSpin } from "react-loader-spinner";
 
 export default function BrowserRoutes() {
   const [packages, setPackages] = useState([]);
   const [modifiers, setModifiers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  {
-    /* Grab packages from backend */
-  }
+  // Fetch packages from backend
   useEffect(() => {
-    async function getPackages() {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_API_URL}/packages`,
-      );
-      setModifiers(response.data.modifierList);
+    const fetchPackages = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_API_URL}/packages`,
+        );
+        setModifiers(response.data.modifierList);
+        setPackages(response.data.packageList);
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching packages:", err);
+        const errorMsg = "Failed to load packages. Please try again later.";
+        setError(errorMsg);
+        toast.error(errorMsg, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-      setPackages(response.data.packageList);
-    }
-
-    getPackages();
+    fetchPackages();
   }, []);
 
-  {
-    /* Refresh oAuth Token */
-  }
+  // Refresh oAuth Token
   useEffect(() => {
     const refreshToken = "";
-    setTimeout(() => {
+    const refreshTimeout = setTimeout(() => {
       async function refreshToken() {
         try {
-          axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/refreshToken`, {
-            refreshToken: refreshToken,
-          });
+          await axios.get(
+            `${import.meta.env.VITE_BACKEND_API_URL}/refreshToken`,
+            {
+              refreshToken: refreshToken,
+            },
+          );
         } catch (err) {
-          console.error(`Error refreshing token + ${err}`);
+          console.error(`Error refreshing token: ${err}`);
+          toast.error("Session refresh failed. Please log in again.", {
+            position: "top-center",
+          });
         }
       }
+      refreshToken();
     }, 518400000);
+
+    return () => clearTimeout(refreshTimeout);
   }, []);
 
-  return (
-    <PackageSession.Provider value={{ packages }}>
-      <ModifierSession.Provider value={{ modifiers }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/appointments" element={<Appointments />} />
-            <Route path="/purchase" element={<CardForm />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/" element={<Bookings />} />
-            {packages.map((packageService) => {
-              if (
-                packageService.name !== "Touch Up Labor (Hourly)" &&
-                packageService.name !== "Ceramic Coating"
-              ) {
-                const camelCasedPackageName = packageNameCamelCase({
-                  packageName: packageService.name,
-                });
-                return (
-                  <Route
-                    path={`/${camelCasedPackageName}/addOns`}
-                    element={<AddOns packageName={packageService.name} />}
-                  />
-                );
-              }
-            })}
-            {packages.map((packageService) => {
-              if (packageService.name !== "Touch Up Labor (Hourly)") {
-                const camelCasedPackageName = packageNameCamelCase({
-                  packageName: packageService.name,
-                });
-                const packagePrice =
-                  labels.packages[camelCasedPackageName].price;
-                const packageTimeAlloted =
-                  labels.packages[camelCasedPackageName].timeAlloted;
+  // Loading state UI
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <TailSpin height={80} width={80} color="#4f46e5" ariaLabel="loading" />
+      </div>
+    );
+  }
 
-                return (
-                  <Route
-                    path={`/${camelCasedPackageName}`}
-                    key={camelCasedPackageName}
-                    element={
-                      <Package
-                        packageName={packageService.name}
-                        packagePrice={packagePrice}
-                        packageTimeAlloted={packageTimeAlloted}
-                        packageFeatureList={packageService.descriptionPlaintext}
-                        packageOptionList={packageService.variations}
-                      />
-                    }
-                  />
-                );
-              }
-            })}
-          </Routes>
-        </BrowserRouter>
-      </ModifierSession.Provider>
-    </PackageSession.Provider>
+  // Error state UI
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center">
+        <div className="text-red-600 text-xl font-semibold mb-4">
+          Oops! Something went wrong
+        </div>
+        <p className="text-gray-700 mb-6">{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <PackageSession.Provider value={{ packages }}>
+        <ModifierSession.Provider value={{ modifiers }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/appointments" element={<Appointments />} />
+              <Route path="/purchase" element={<CardForm />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/" element={<Bookings />} />
+              {packages.map((packageService) => {
+                if (packageService.name !== "Touch Up Labor (Hourly)") {
+                  const camelCasedPackageName = packageNameCamelCase({
+                    packageName: packageService.name,
+                  });
+                  return (
+                    <Route
+                      key={`${camelCasedPackageName}-addons`}
+                      path={`/${camelCasedPackageName}/addOns`}
+                      element={<AddOns packageName={packageService.name} />}
+                    />
+                  );
+                }
+                return null;
+              })}
+              {packages.map((packageService) => {
+                if (packageService.name !== "Touch Up Labor (Hourly)") {
+                  const camelCasedPackageName = packageNameCamelCase({
+                    packageName: packageService.name,
+                  });
+                  const packagePrice =
+                    labels.packages[camelCasedPackageName]?.price || 0;
+                  const packageTimeAlloted =
+                    labels.packages[camelCasedPackageName]?.timeAlloted || 0;
+
+                  return (
+                    <Route
+                      path={`/${camelCasedPackageName}`}
+                      key={camelCasedPackageName}
+                      element={
+                        <Package
+                          packageName={packageService.name}
+                          packagePrice={packagePrice}
+                          packageTimeAlloted={packageTimeAlloted}
+                          packageFeatureList={
+                            packageService.descriptionPlaintext
+                          }
+                          packageOptionList={packageService.variations}
+                        />
+                      }
+                    />
+                  );
+                }
+                return null;
+              })}
+            </Routes>
+          </BrowserRouter>
+        </ModifierSession.Provider>
+      </PackageSession.Provider>
+    </>
   );
 }

@@ -1,5 +1,5 @@
-import { labels } from "../../static/labels";
-import AuthLink from "../OAuth/AuthLink";
+import { labels } from "../../../static/labels";
+import AuthLink from "../../OAuth/AuthLink";
 
 export default function CheckoutHero({ isCurrUser }) {
   return (

@@ -1,20 +1,14 @@
 import CheckoutUserDataInput from "./CheckoutUserDataInput";
-import { labels } from "../../static/labels";
+import { labels } from "../../../static/labels";
 
-export default function CheckoutLocationForm({
-  setStreetAddress,
-  setAptSuite,
-  setCity,
-  setState,
-  setZip,
-}) {
+export default function CheckoutLocationForm({ handleChange }) {
   return (
     <div className="grid grid-cols-2 gap-2 separator">
       <CheckoutUserDataInput
         label={labels.checkout.address}
         htmlForId={"streetAddress"}
         type={"text"}
-        onChange={setStreetAddress}
+        handleChange={handleChange}
         className={"col-span-2"}
       />
 
@@ -22,7 +16,7 @@ export default function CheckoutLocationForm({
         label={labels.checkout.aptSuite}
         htmlForId={"aptSuite"}
         type={"text"}
-        onChange={setAptSuite}
+        handleChange={handleChange}
         className={"col-span-2"}
       />
 
@@ -30,7 +24,7 @@ export default function CheckoutLocationForm({
         label={labels.checkout.city}
         htmlForId={"city"}
         type={"text"}
-        onChange={setCity}
+        handleChange={handleChange}
         className={"col-span-2"}
       />
 
@@ -38,14 +32,14 @@ export default function CheckoutLocationForm({
         label={labels.checkout.state}
         htmlForId={"state"}
         type={"text"}
-        onChange={setState}
+        handleChange={handleChange}
       />
 
       <CheckoutUserDataInput
         label={labels.checkout.zip}
         htmlForId={"zip"}
         type={"text"}
-        onChange={setZip}
+        handleChange={handleChange}
       />
     </div>
   );

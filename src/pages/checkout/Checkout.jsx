@@ -1,15 +1,32 @@
 import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
-import CheckoutCart from "../../components/Checkout/CheckoutCart";
+import CheckoutCart from "../../components/Checkout/CheckoutCart/CheckoutCart";
 import { labels } from "../../static/labels";
 import "./checkout.css";
-import CheckoutTimer from "../../components/Checkout/CheckoutTimer";
-import CheckoutForm from "../../components/Checkout/CheckoutForm";
+import CheckoutTimer from "../../components/Checkout/CheckoutCart/CheckoutTimer";
+import CheckoutForm from "../../components/Checkout/CheckoutForm/CheckoutForm";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Checkout() {
   const [isCurrUser, setIsCurrUser] = useState(false);
+  const [userInfo, setUserInfo] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    streetAddress: "",
+    aptSuite: "",
+    city: "",
+    state: "",
+    zip: "",
+    carYear: "",
+    carMake: "",
+    carModel: "",
+    note: "",
+  });
+
+  console.log(userInfo);
 
   useEffect(() => {
     async function getCurrUser() {
@@ -44,7 +61,11 @@ export default function Checkout() {
               <CheckoutTimer />
 
               <aside className="flex justify-between mt-8 w-full items-start">
-                <CheckoutForm isCurrUser={isCurrUser} />
+                <CheckoutForm
+                  isCurrUser={isCurrUser}
+                  userInfo={userInfo}
+                  setUserInfo={setUserInfo}
+                />
                 <CheckoutCart />
               </aside>
             </form>

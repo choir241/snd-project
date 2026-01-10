@@ -1,10 +1,16 @@
 import { generateCalendarDates } from "../../hooks/generateCalendarDates";
 import { generateDateRange } from "../../hooks/generateDateRange";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { labels } from "../../static/labels";
-import { months, abbrToFullWeekNames } from "../../static/dateObj";
+import { months, weekNameList } from "../../static/dateObj";
 import TimeButtonCategories from "./TimeButtonCategories";
+import {
+  getFullYear,
+  getMonth,
+  getDate,
+  formatDate,
+} from "../../hooks/dateFuncs";
 
 export default function Availabilty({
   setSelectedDate,
@@ -15,17 +21,36 @@ export default function Availabilty({
   const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
+  const [nextAvailableDate, setNextAvailableDate] = useState(null);
 
-  useEffect(() => {
-    async function getAppointments() {
+  // Function to find the next available date with appointments
+  async function findNextAvailableDate(startFromDate) {
+    if (!cartItems.length) return null;
+
+    const calendarDates = generateCalendarDates({ dateRange: 60 }); // Check up to 60 days ahead
+    const startIndex = calendarDates.findIndex(
+      (calDate) =>
+        `${calDate.year},${formatDate(calDate.month)},${formatDate(calDate.date)}` ===
+        startFromDate,
+    );
+
+    if (startIndex === -1) return null;
+
+    // Check dates starting from the day after the selected date
+    for (let i = startIndex + 1; i < calendarDates.length; i++) {
+      const calDate = calendarDates[i];
+      const dateString = `${calDate.year},${formatDate(calDate.month)},${formatDate(calDate.date)}`;
+
       try {
         const endDate = generateDateRange({
-          startDate: selectedDate,
+          startDate: dateString,
           endTime: 13,
         });
 
-        if (endDate && cartItems.length) {
-          const newStartDate = new Date(selectedDate);
+        if (endDate) {
+          // Create Date object from the date string format (year,month,day)
+          const [year, month, day] = dateString.split(",").map(Number);
+          const newStartDate = new Date(year, month - 1, day);
           const newEndDate = new Date(endDate);
 
           const appts = await axios.post(
@@ -36,6 +61,50 @@ export default function Availabilty({
               serviceVariationId: cartItems[0].packageOption.id,
             },
           );
+
+          if (appts.data.appts && appts.data.appts.length > 0) {
+            return {
+              dateString,
+              year: calDate.year,
+              month: calDate.month,
+              date: calDate.date,
+              dateName: calDate.dateName,
+            };
+          }
+        }
+      } catch (err) {
+        console.error(`Error checking date ${dateString}:`, err);
+        // Continue to next date if there's an error
+      }
+    }
+
+    return null;
+  }
+
+  useEffect(() => {
+    async function getAppointments() {
+      try {
+        const endDate = generateDateRange({
+          startDate: selectedDate,
+          endTime: 13,
+        });
+
+        if (endDate && cartItems.length) {
+          // Parse selectedDate format (year,month,day) to create Date object
+          const [year, month, day] = selectedDate.split(",").map(Number);
+          const newStartDate = new Date(year, month - 1, day);
+          const newEndDate = new Date(endDate);
+
+          const appts = await axios.post(
+            `${import.meta.env.VITE_BACKEND_API_URL}/bookings`,
+            {
+              startAt: newStartDate,
+              endAt: newEndDate,
+              serviceVariationId: cartItems[0].packageOption.id,
+            },
+          );
+
+          console.log(appts);
 
           const apptTimes = appts.data.appts.map((appt) => {
             let hours = new Date(appt.startAt).getHours();
@@ -51,6 +120,14 @@ export default function Availabilty({
             return { hrs: hours, min: min, timeMeridiem: timeMeridiem };
           });
           setAppointments(apptTimes);
+
+          // If no appointments, find the next available date
+          if (apptTimes.length === 0) {
+            const nextAvail = await findNextAvailableDate(selectedDate);
+            setNextAvailableDate(nextAvail);
+          } else {
+            setNextAvailableDate(null);
+          }
         }
       } catch (err) {
         console.error(err);
@@ -59,8 +136,6 @@ export default function Availabilty({
     getAppointments();
   }, [selectedDate]);
 
-  const noAvailDate = generateCalendarDates({ dateRange: 2 })[1];
-
   return (
     <div
       className="flex flex-1 flex-col"
@@ -68,11 +143,24 @@ export default function Availabilty({
       id="availability-segments"
     >
       <div className="mb-4">
-        {!appointments.length ? (
+        {!appointments.length && nextAvailableDate ? (
           <div className="mb-4">
             {labels.appointments.noAvailability}
-            {abbrToFullWeekNames[noAvailDate.dateName]},{" "}
-            {months[noAvailDate.month - 1]} {noAvailDate.date}.
+            {
+              weekNameList[
+                new Date(
+                  nextAvailableDate.year,
+                  nextAvailableDate.month - 1,
+                  nextAvailableDate.date,
+                ).getDay()
+              ]
+            }
+            , {months[nextAvailableDate.month - 1]} {nextAvailableDate.date}.
+          </div>
+        ) : !appointments.length ? (
+          <div className="mb-4">
+            {labels.appointments.noAvailability}
+            Loading...
           </div>
         ) : (
           ""
@@ -81,6 +169,7 @@ export default function Availabilty({
           appointments={appointments}
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
+          nextAvailableDate={nextAvailableDate}
         />
       </div>
       <div className="mb-4"></div>

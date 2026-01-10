@@ -1,32 +1,28 @@
 import CheckoutCarForm from "./CheckoutCarForm";
-import { labels } from "../../static/labels";
+import { labels } from "../../../static/labels";
 
-export default function CheckoutCarSection({
-  setCarYear,
-  setCarMake,
-  setCarModel,
-}) {
+export default function CheckoutCarSection({ handleChange }) {
   return (
     <div className="mt-8 separator">
       <CheckoutCarForm
         className="mb-4"
         carLabel={labels.checkout.year}
-        htmlForId={"year"}
-        onChange={setCarYear}
+        htmlForId={"carYear"}
+        handleChange={handleChange}
       />
 
       <CheckoutCarForm
         className="mb-4"
         carLabel={labels.checkout.make}
-        htmlForId={"make"}
-        onChange={setCarMake}
+        htmlForId={"carMake"}
+        handleChange={handleChange}
       />
 
       <CheckoutCarForm
         className="mb-4"
         carLabel={labels.checkout.model}
-        htmlForId={"model"}
-        onChange={setCarModel}
+        htmlForId={"carModel"}
+        handleChange={handleChange}
       />
     </div>
   );

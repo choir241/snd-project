@@ -4,7 +4,9 @@ export default function Button({ label, className, onClick }) {
       className={`${className}  cursor-pointer`}
       onClick={(e) => {
         e.preventDefault();
-        onClick();
+        if (onClick) {
+          onClick();
+        }
       }}
     >
       {label}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { formatDate } from "../../hooks/dateFuncs";
-import { labels } from "../../static/labels";
+import { formatDate } from "../../../hooks/dateFuncs";
+import { labels } from "../../../static/labels";
 
 export default function CheckoutTimer() {
   const [timerSec, setTimerSec] = useState(0);

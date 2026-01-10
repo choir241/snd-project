@@ -5,4 +5,13 @@
 .disabled,
 #option-form .disabled span {
   color: rgba(115, 115, 115, 0.5);
+  background: none !important;
+  background-color: transparent !important;
+}
+
+#addOn .disabled,
+#addOn #option-form .disabled,
+#addOn #option-form .disabled span {
+  background: none !important;
+  background-color: transparent !important;
 }

@@ -1,9 +1,9 @@
-import { calculateItemsTotal } from "../../hooks/calculateItemsTotal";
+import { calculateItemsTotal } from "../../../hooks/calculateItemsTotal";
 import { FaRegCalendar } from "react-icons/fa";
-import { labels } from "../../static/labels";
-import { calculateCheckoutTimeRange } from "../../hooks/calculateCheckoutTimeRange";
-import { weekNameList, months } from "../../static/dateObj";
-import { getDay, getMonth, getDate } from "../../hooks/dateFuncs";
+import { labels } from "../../../static/labels";
+import { calculateCheckoutTimeRange } from "../../../hooks/calculateCheckoutTimeRange";
+import { weekNameList, months } from "../../../static/dateObj";
+import { getDay, getMonth, getDate } from "../../../hooks/dateFuncs";
 
 export default function CheckoutCartHero() {
   const cartItems = sessionStorage.getItem("cart")

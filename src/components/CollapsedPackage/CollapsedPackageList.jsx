@@ -25,7 +25,12 @@ export default function CollapsedPackageList() {
           <h2 className="sr-only">Services</h2>
 
           {packages.map((packageService) => {
-            if (packageService && packageService.descriptionPlaintext) {
+            if (
+              packageService &&
+              packageService.descriptionPlaintext &&
+              (packageService.name !== "Ceramic Coating" ||
+                packageService.variations.length > 0)
+            ) {
               const splitDescriptionText =
                 packageService.descriptionPlaintext.split("\n");
               const camelCasedPackageName = packageNameCamelCase({
@@ -47,20 +52,6 @@ export default function CollapsedPackageList() {
               );
             }
           })}
-
-          {/*Ceramic Coating*/}
-          {packages.length ? (
-            <CollapsedPackage
-              packageRedirectLink={ceramicCamelCasedPackageName}
-              packageName={packages[0].name}
-              packageFirstService={""}
-              packageSecondService={""}
-              packagePrice={ceramicPackagePrice}
-              packageTimeAlloted={ceramicPackageTimeAlloted}
-            />
-          ) : (
-            ""
-          )}
         </div>
       </section>
     );

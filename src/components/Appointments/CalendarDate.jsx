@@ -12,7 +12,7 @@ export default function CalendarDate({
 }) {
   return (
     <>
-      {selectedDate === `${year},${month},${date}` ? (
+      {selectedDate === `${year},${formatDate(month)},${formatDate(date)}` ? (
         <Button
           onClick={() => setSelectedDate(`${year},${month},${date}`)}
           aria-pressed="true"
@@ -37,7 +37,9 @@ export default function CalendarDate({
         />
       ) : (
         <Button
-          onClick={() => setSelectedDate(`${year},${month},${date}`)}
+          onClick={() =>
+            setSelectedDate(`${year},${formatDate(month)},${formatDate(date)}`)
+          }
           aria-pressed="false"
           data-testid={`date-${date}`}
           disabled=""

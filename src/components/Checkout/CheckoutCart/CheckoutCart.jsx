@@ -1,9 +1,10 @@
-import { labels } from "../../static/labels";
-import CartArrowButton from "../Cart/CartArrowButton";
-import PackageItemList from "../Cart/PackageItemList";
+import { labels } from "../../../static/labels";
+import CartArrowButton from "../../Cart/CartArrowButton";
+import PackageItemList from "../../Cart/PackageItemList";
 import { useState } from "react";
 import CheckoutCartHero from "./CheckoutCartHero";
 import CheckoutCartTotals from "./CheckoutCartTotals";
+import Button from "../../Button";
 
 export default function CheckoutCart() {
   const [togglePackageItemList, setTogglePackageItemList] = useState(false);
@@ -49,7 +50,13 @@ export default function CheckoutCart() {
             )}
           </div>
 
-          {/* <button className="button">{labels.checkout.bookApt}</button> */}
+          <Button
+            className="button"
+            onClick={() => {
+              BookAppointment();
+            }}
+            label={labels.checkout.bookApt}
+          />
         </div>
       ) : (
         <div className="p-4 sticky top-4">

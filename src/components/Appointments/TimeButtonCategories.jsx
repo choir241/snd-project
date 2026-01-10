@@ -1,4 +1,3 @@
-import { generateCalendarDates } from "../../hooks/generateCalendarDates";
 import { labels } from "../../static/labels";
 import AptBtnsContainer from "./AptBtnsContainer";
 import TimeButton from "./TimeButton";
@@ -11,6 +10,7 @@ export default function TimeButtonCategories({
   appointments,
   selectedDate,
   setSelectedDate,
+  nextAvailableDate,
 }) {
   const navigate = useNavigate();
 
@@ -24,8 +24,6 @@ export default function TimeButtonCategories({
     setCart(cartItems);
     navigate(labels.links.checkoutLink);
   }
-
-  const noAvailDate = generateCalendarDates({ dateRange: 2 })[1];
 
   const filterApts = {
     morning: {
@@ -100,11 +98,11 @@ export default function TimeButtonCategories({
         </>
       ) : (
         <Button
-          onClick={() =>
-            setSelectedDate(
-              `${noAvailDate.year},${noAvailDate.month},${noAvailDate.date}`,
-            )
-          }
+          onClick={() => {
+            if (nextAvailableDate) {
+              setSelectedDate(nextAvailableDate.dateString);
+            }
+          }}
           rank="primary"
           size="small"
           className="w-full market-button button"
