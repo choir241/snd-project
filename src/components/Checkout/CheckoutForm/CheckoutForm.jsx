@@ -19,53 +19,6 @@ export default function CheckoutForm({ isCurrUser, userInfo, setUserInfo }) {
     }
   };
 
-  async function BookAppointment() {
-    try {
-      if (
-        firstName &&
-        lastName &&
-        email &&
-        phone &&
-        streetAddress &&
-        aptSuite &&
-        city &&
-        state &&
-        zip
-      ) {
-        const customer = await axios.post(
-          `${import.meta.env.VITE_BACKEND_API_URL}/createCustomer`,
-          {
-            firstName,
-            lastName,
-            email,
-            phoneNumber: phone,
-            streetAddress,
-            suiteAddress: aptSuite,
-            city,
-            state,
-            zipCode: zip,
-            country: "USA",
-          },
-        );
-
-        if (!customer) {
-          throw new Error(
-            "There was an error creating the customer with variable customer's value at: " +
-              customer,
-          );
-        }
-
-        console.log(customer);
-      } else {
-        throw new Error("One of the inputs were not filled out");
-      }
-    } catch (err) {
-      console.error(
-        `There was an error booking the appointment, ${err.message}`,
-      );
-    }
-  }
-
   return (
     <section
       id="checkoutForm"

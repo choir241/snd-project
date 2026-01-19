@@ -7,6 +7,7 @@ import CheckoutTimer from "../../components/Checkout/CheckoutCart/CheckoutTimer"
 import CheckoutForm from "../../components/Checkout/CheckoutForm/CheckoutForm";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BookAppointment } from "../../hooks/BookAppointment";
 
 export default function Checkout() {
   const [isCurrUser, setIsCurrUser] = useState(false);
@@ -25,8 +26,6 @@ export default function Checkout() {
     carModel: "",
     note: "",
   });
-
-  console.log(userInfo);
 
   useEffect(() => {
     async function getCurrUser() {
@@ -55,9 +54,12 @@ export default function Checkout() {
       <div className="mb-0 flex min-h-screen relative">
         <div className="flex flex-col flex-grow">
           <PackageHeader />
+
+          <div className="p-4">
+            <h1>Checkout</h1>
+          </div>
           <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
             <form className="flex flex-col w-full items-center">
-              <h2>{labels.checkout.checkoutH1}</h2>
               <CheckoutTimer />
 
               <aside className="flex justify-between mt-8 w-full items-start">
@@ -66,7 +68,10 @@ export default function Checkout() {
                   userInfo={userInfo}
                   setUserInfo={setUserInfo}
                 />
-                <CheckoutCart />
+                <CheckoutCart
+                  userInfo={userInfo}
+                  BookAppointment={BookAppointment}
+                />
               </aside>
             </form>
           </div>

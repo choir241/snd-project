@@ -25,6 +25,9 @@ export default function AddOns({ packageName }) {
         <div className="flex flex-col flex-grow overflow-y-auto">
           <PackageHeader />
 
+            <div className="p-4">
+              <h1>Choose an Add-on</h1>
+            </div>
           <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
             <ul
               aria-multiselectable="false"
@@ -39,6 +42,7 @@ export default function AddOns({ packageName }) {
                     key={addOn.id}
                     optionName={addOn.name}
                     optionPrice={addOn.priceAmt}
+                    optionId={addOn.id}
                     addOnOption={addOnOption}
                     setAddOnOption={setAddOnOption}
                   />

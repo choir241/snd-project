@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 
 export default function PackageButtons({
   packageName,
+  packageVersion,
   packageOption,
   packagePrice,
   packageTimeAlloted,
@@ -34,6 +35,7 @@ export default function PackageButtons({
       onClick={() =>
         addPackage({
           packageName,
+          packageVersion,
           packagePrice,
           packageTimeAlloted,
           packageOption,

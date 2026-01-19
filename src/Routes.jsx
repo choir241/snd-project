@@ -155,6 +155,7 @@ export default function BrowserRoutes() {
                       key={camelCasedPackageName}
                       element={
                         <Package
+                          packageVersion={packageService.version}
                           packageName={packageService.name}
                           packagePrice={packagePrice}
                           packageTimeAlloted={packageTimeAlloted}

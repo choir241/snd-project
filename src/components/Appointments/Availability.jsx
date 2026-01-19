@@ -104,8 +104,6 @@ export default function Availabilty({
             },
           );
 
-          console.log(appts);
-
           const apptTimes = appts.data.appts.map((appt) => {
             let hours = new Date(appt.startAt).getHours();
             const min = new Date(appt.startAt).getMinutes();

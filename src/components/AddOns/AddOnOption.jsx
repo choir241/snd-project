@@ -9,6 +9,7 @@ export default function AddOnOption({
   className,
   addOnOption,
   setAddOnOption,
+  optionId,
   id,
   findPackage,
 }) {
@@ -69,6 +70,7 @@ export default function AddOnOption({
               isDisabled,
               optionName,
               optionPrice,
+              optionId,
               addOnOption,
               setAddOnOption,
             });

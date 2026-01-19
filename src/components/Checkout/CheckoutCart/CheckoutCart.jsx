@@ -6,7 +6,7 @@ import CheckoutCartHero from "./CheckoutCartHero";
 import CheckoutCartTotals from "./CheckoutCartTotals";
 import Button from "../../Button";
 
-export default function CheckoutCart() {
+export default function CheckoutCart({ BookAppointment, userInfo }) {
   const [togglePackageItemList, setTogglePackageItemList] = useState(false);
   const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
@@ -53,7 +53,7 @@ export default function CheckoutCart() {
           <Button
             className="button"
             onClick={() => {
-              BookAppointment();
+              BookAppointment(userInfo);
             }}
             label={labels.checkout.bookApt}
           />

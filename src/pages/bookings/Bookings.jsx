@@ -13,6 +13,11 @@ export default function Bookings() {
           <div className="flex flex-col flex-grow overflow-y-auto">
             <PackageHeader />
 
+            <div className="p-4">
+              <h1>Bookings</h1>
+
+            </div>
+
             <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
               {/* Package list */}
               <CollapsedPackageList />

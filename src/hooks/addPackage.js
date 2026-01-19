@@ -5,6 +5,7 @@ import { setCart } from "../static/cartItems";
 export function addPackage({
   packageOption,
   packageName,
+  packageVersion,
   packagePrice,
   packageTimeAlloted,
   navigate,
@@ -22,6 +23,7 @@ export function addPackage({
       packagePrice: packagePrice,
       packageTimeAlloted: packageTimeAlloted,
       packageOption: packageOption,
+      packageVersion: packageVersion,
     },
   ];
 

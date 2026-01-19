@@ -20,6 +20,10 @@ export default function Appointments() {
       <div className="mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
         <div className="flex flex-col flex-grow overflow-y-auto">
           <PackageHeader />
+
+            <div className="p-4">
+              <h1>Book an Appointment</h1>
+            </div>
           <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
             <div
               className="flex w-full justify-center"
