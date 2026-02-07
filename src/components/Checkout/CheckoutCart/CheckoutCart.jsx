@@ -5,8 +5,10 @@ import { useState } from "react";
 import CheckoutCartHero from "./CheckoutCartHero";
 import CheckoutCartTotals from "./CheckoutCartTotals";
 import Button from "../../Button";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutCart({ BookAppointment, userInfo }) {
+  const navigate = useNavigate();
   const [togglePackageItemList, setTogglePackageItemList] = useState(false);
   const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
@@ -53,7 +55,7 @@ export default function CheckoutCart({ BookAppointment, userInfo }) {
           <Button
             className="button"
             onClick={() => {
-              BookAppointment(userInfo);
+              BookAppointment(userInfo, navigate);
             }}
             label={labels.checkout.bookApt}
           />
