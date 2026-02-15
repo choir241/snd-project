@@ -14,6 +14,14 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TailSpin } from "react-loader-spinner";
 
+// Import snd-site components
+import Home from "./pages/snd-site/Home";
+import Gallery from "./pages/snd-site/Gallery";
+import About from "./pages/snd-site/About";
+import Services from "./pages/snd-site/Services";
+import Academy from "./pages/snd-site/Academy";
+import Booking from "./pages/snd-site/Booking";
+
 export default function BrowserRoutes() {
   const [packages, setPackages] = useState([]);
   const [modifiers, setModifiers] = useState([]);
@@ -120,6 +128,15 @@ export default function BrowserRoutes() {
         <ModifierSession.Provider value={{ modifiers }}>
           <BrowserRouter>
             <Routes>
+              {/* snd-site routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/snd-site/gallery" element={<Gallery />} />
+              <Route path="/snd-site/about" element={<About />} />
+              <Route path="/snd-site/services" element={<Services />} />
+              <Route path="/snd-site/academy" element={<Academy />} />
+              <Route path="/snd-site/booking" element={<Booking />} />
+              
+              {/* Original React app routes */}
               <Route path="/appointments" element={<Appointments />} />
               <Route path="/purchase" element={<CardForm />} />
               <Route path="/checkout" element={<Checkout />} />

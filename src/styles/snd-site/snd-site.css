@@ -1,0 +1,558 @@
+/* 
+Scoped CSS for snd-site pages to avoid conflicts with existing React components
+Theme Name: Turbo
+Theme URL: 
+Author: TemplatesJungle
+Author URL: https://templatesjungle.com/
+Description: Turbo  is a Free Bootstrap Website Template for Car Wash by TemplatesJungle.
+Version: 1.0 
+*/
+
+.snd-site *,
+.snd-site *::before,
+.snd-site *::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.snd-site html {
+  box-sizing: border-box;
+}
+
+.snd-site body {
+  --heading-font: "Oswald", sans-serif;
+  --heading-font-weight: 700;
+  --heading-color: #13325c;
+  --accent-color: #dca958;
+  --background-color: #f6f6f6;
+
+  /* bootstrap */
+  --bs-body-font-family: "Nunito Sans", sans-serif;
+  --bs-body-font-size: 18px;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.75313rem;
+  --bs-body-color: #7d7d7d;
+  --bs-body-color-rgb: 143, 143, 143;
+
+  --bs-primary: #8c907e;
+  --bs-secondary: #6c757d;
+  --bs-black: #1f1f1f;
+  --bs-light: #ffffff;
+  --bs-dark: #101010;
+  --bs-gray: #e4e4e4;
+  --bs-gray-dark: #ababab;
+
+  --bs-primary-rgb: 140, 144, 126;
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-black-rgb: 17, 17, 17;
+  --bs-light-rgb: 241, 241, 240;
+  --bs-dark-rgb: 33, 37, 41;
+
+  --bs-link-color: #111;
+  --bs-link-color-rgb: 17, 17, 17;
+  --bs-link-decoration: underline;
+  --bs-link-hover-color: #111;
+  --bs-link-hover-color-rgb: 17, 17, 17;
+
+  --bs-border-width: 2px;
+  --bs-border-style: solid;
+  --bs-border-color: #e4e4e4;
+}
+
+.snd-site a {
+  text-decoration: none;
+}
+
+.snd-site h1,
+.snd-site .h1,
+.snd-site h2,
+.snd-site .h2,
+.snd-site h3,
+.snd-site .h3,
+.snd-site h4,
+.snd-site .h4,
+.snd-site h5,
+.snd-site .h5,
+.snd-site h6,
+.snd-site .h6 {
+  font-family: var(--heading-font);
+  font-weight: var(--heading-font-weight);
+  color: var(--heading-color);
+  line-height: var(--heading-line-height);
+  letter-spacing: 0.0725rem;
+  text-transform: uppercase;
+}
+
+.snd-site h1,
+.snd-site .h1,
+.snd-site h2,
+.snd-site .h2,
+.snd-site h3,
+.snd-site .h3 {
+  font-weight: 600;
+}
+
+.snd-site h4,
+.snd-site .h4,
+.snd-site h5,
+.snd-site .h5,
+.snd-site h6,
+.snd-site .h6 {
+  font-weight: 500;
+}
+
+.snd-site .header-top {
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.28125rem;
+}
+
+.snd-site .heading-color {
+  color: var(--accent-color);
+}
+
+.snd-site .padding-large {
+  padding-top: 26.13rem;
+  padding-bottom: 14.06rem;
+}
+
+.snd-site .padding-medium {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+}
+
+.snd-site .padding-medium-2 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .snd-site .padding-large {
+    padding-top: 18rem;
+    padding-bottom: 12rem;
+  }
+
+  .snd-site .padding-medium {
+    padding-top: 5rem;
+    padding-bottom: 0rem;
+  }
+
+  .snd-site .padding-medium-2 {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.snd-site html,
+.snd-site body {
+  overflow-x: hidden;
+}
+
+/* bootstrap button style  */
+.snd-site .btn {
+  text-transform: uppercase;
+  letter-spacing: 0.075rem;
+  --bs-btn-padding-x: 3rem;
+  --bs-btn-padding-y: 1.4rem;
+  --bs-btn-font-weight: 600;
+  --bs-btn-border-radius: 0px;
+}
+
+.snd-site .btn-outline-primary {
+  --bs-btn-color: var(--bs-light);
+  --bs-btn-border-color: var(--bs-light);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--accent-color);
+  --bs-btn-hover-border-color: var(--accent-color);
+  --bs-btn-focus-shadow-rgb: 13, 110, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--accent-color);
+  --bs-btn-active-border-color: var(--accent-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #0d6efd;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #0d6efd;
+  --bs-gradient: none;
+}
+
+.snd-site .btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--accent-color);
+  --bs-btn-border-color: var(--accent-color);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #1452a2;
+  --bs-btn-hover-border-color: #1452a2;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #1452a2;
+  --bs-btn-active-border-color: #1452a2;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #0d6efd;
+  --bs-btn-disabled-border-color: #0d6efd;
+}
+
+/* button arrow style  */
+.snd-site iconify-icon.arrow-icon {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: -3px;
+}
+
+/* offcanvas style  */
+.snd-site .offcanvas,
+.snd-site .offcanvas-lg,
+.snd-site .offcanvas-md,
+.snd-site .offcanvas-sm,
+.snd-site .offcanvas-xl,
+.snd-site .offcanvas-xxl {
+  --bs-offcanvas-bg: var(--bs-dark);
+}
+
+.snd-site .navbar-toggler {
+  border: var(--bs-border-width) solid var(--bs-light);
+}
+
+.snd-site iconify-icon.hamburger-menu {
+  color: var(--bs-light);
+  font-size: 30px;
+}
+
+/*---- navigation section style start ----*/
+.snd-site .nav-link {
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.075rem;
+}
+
+.snd-site .navbar-nav .nav-link.active,
+.snd-site .navbar-nav .nav-link:hover,
+.snd-site .navbar-nav .nav-link.show {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.snd-site iconify-icon.social-icon {
+  font-size: 1.2rem;
+}
+
+/*---- hero section style start ----*/
+
+/*---- project section style start ----*/
+.snd-site .swiper-slide {
+    width: auto !important;
+}
+
+.snd-site iconify-icon.icon-arrow-left,
+.snd-site iconify-icon.icon-arrow-right {
+    color: var(--bs-light);
+    font-size: 70px;
+}
+
+.snd-site iconify-icon.icon-arrow-left:active,
+.snd-site iconify-icon.icon-arrow-right:active {
+    color: var(--bs-light);
+}
+
+/*---- price section style start ----*/
+
+/* tab style  */
+.snd-site .nav-tabs {
+  --bs-nav-tabs-border-color: transparent;
+}
+
+.snd-site .nav-tabs .nav-item.show .nav-link,
+.snd-site .nav-tabs .nav-link.active,
+.snd-site .nav-tabs .nav-link:hover {
+  color: var(--bs-light);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.snd-site .nav-tabs .nav-link {
+  text-transform: uppercase;
+  border: 1px solid #e4e4e4;
+  border-radius: 0px;
+  transition: all 0.2s ease-in;
+}
+
+.snd-site .plan-post {
+  border: 1px solid var(--bs-border-color);
+}
+
+.snd-site .price-tick {
+  color: var(--accent-color);
+}
+
+.snd-site .price-option {
+  height: 320px;
+}
+
+/*---- blog section style start ----*/
+.snd-site .blog-content {
+  border-bottom: 1px solid var(--bs-border-color);
+  transition: all 0.2s ease-in;
+}
+
+.snd-site .blog-topic {
+  color: var(--bs-gray-dark);
+  font-size: 0.9375rem;
+  letter-spacing: 0.28125rem;
+}
+
+.snd-site .blog-title {
+  transition: all 0.3s ease-in;
+}
+
+.snd-site .blog-content:hover {
+  background: var(--background-color);
+}
+
+.snd-site .blog-content:hover .blog-title {
+  color: var(--accent-color);
+}
+
+/*---- video section style start ----*/
+.snd-site .video .video-player {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snd-site iconify-icon.video-icon {
+  font-size: 66px;
+  color: var(--bs-light);
+  border-radius: 6.25rem;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/*---- footer section style start ----*/
+.snd-site section#footer {
+  background: var(--background-color);
+}
+
+.snd-site .navbar-nav .footer-list .nav-link.active,
+.snd-site .navbar-nav .footer-list .nav-link:hover,
+.snd-site .navbar-nav .footer-list .nav-link.show {
+  background: transparent;
+  color: var(--accent-color);
+}
+
+.snd-site iconify-icon.social-icon-footer {
+  font-size: 20px;
+  color: #d0d0d0;
+}
+
+.snd-site iconify-icon.social-icon-footer.active,
+.snd-site iconify-icon.social-icon-footer:hover,
+.snd-site iconify-icon.social-icon-footer.show {
+  color: var(--accent-color);
+}
+
+/* Additional custom styles */
+.snd-site .book-now-btn {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 2;
+  background-color: #dc6696;
+  border: #dc6696;
+}
+
+.snd-site .book-now-btn:hover {
+  background-color: #f51fb5 !important;
+}
+
+.snd-site .navbar-nav .nav-link {
+  white-space: nowrap;
+}
+
+.snd-site .sndName {
+  color: #dca958;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.snd-site .hero-text {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.15em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.snd-site .mainbtn {
+  font-size: 0.7rem;
+  background-color: #dca958;
+  padding: 10px 45px;
+  border-radius: 25px;
+  border-color: #dca958;
+  position: relative;
+  z-index: 3;
+}
+
+.snd-site .mainbtn:focus,
+.snd-site .mainbtn:active{
+  background-color: #1452a2 !important;
+  border-color: #1452a2 !important;
+  outline: none;
+}
+
+.snd-site #hero {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snd-site .hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+
+.snd-site #hero > .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snd-site #hero .container .row {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.snd-site .homepage .padding-large {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .snd-site #hero {
+    height: 100vh;
+    min-height: 500px;
+  }
+
+  .snd-site .hero-video {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .snd-site .hero-text {
+    font-size: 1.2rem;
+  }
+
+  .snd-site .padding-large {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .snd-site .footer-copy {
+    font-size: x-small;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .snd-site .hero-text {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* Hero Images  */
+.snd-site .hero-section {
+  position: relative;
+  overflow: hidden;
+  height: 55vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.snd-site .hero-gallery {
+  background-image: url(https://res.cloudinary.com/dnsc73sla/image/upload/w_1920,h_800,c_fit,q_auto,f_auto/v1754101101/hero-gallery_y2gooc.png);
+  background-position: center 30%;
+}
+
+.snd-site .hero-services {
+  background-image: url(https://res.cloudinary.com/dnsc73sla/image/upload/w_1920,h_800,c_fit,q_auto,f_auto/v1754101108/hero-our-services_xikweu.png);
+  background-position: center 70%;
+}
+
+.snd-site .hero-about {
+  background-image: url(https://res.cloudinary.com/dnsc73sla/image/upload/w_1920,h_800,c_fit,q_auto,f_auto/v1754101056/hero-about-us_ofprvo.png);
+  background-position: 0% center;
+}
+
+.snd-site .hero-academy {
+  background-image: url(https://res.cloudinary.com/dnsc73sla/image/upload/w_1920,h_800,c_fit,q_auto,f_auto/v1754101079/hero-academy_vhftjc.png);
+  background-position: center center;
+}
+
+.snd-site .hero-booking {
+  background-image: url(https://res.cloudinary.com/dnsc73sla/image/upload/w_1920,h_800,c_fit,q_auto,f_auto/v1754101091/hero-book-now_mfbapf.png);
+  background-position: 60% 55%;
+}
+
+.snd-site .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Quick Links */
+.snd-site #about,
+.snd-site #about-us {
+  background-color: #dec49a !important;
+}
+
+.snd-site .book-now-btn-links {
+  background-color: #dc6696;
+  border: #dc6696;
+}
+
+.snd-site .book-now-btn-links:hover {
+  background-color: #f51fb5 !important;
+}
+
+/* Footer */
+.snd-site .footer-heading2 {
+  color: #dc6696;
+}
+
+.snd-site .footer-logo {
+  width: 200px;
+  height: auto;
+  padding-bottom: 2%;
+}
+
+.snd-site .footer-em {
+  font-size: 0.775em !important;
+}
