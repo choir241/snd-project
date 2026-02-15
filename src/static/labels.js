@@ -46,10 +46,11 @@ export const labels = {
     noAvailContainer: "No availability",
   },
   links: {
+    homeLink: "/",
     checkoutLink: "/checkout",
     addOnsLink: "/addOns",
     appointmentsLink: "/appointments",
-    bookingsLink: "/",
+    bookingsLink: "/bookings",
     interiorPackageLink: "/interiorPackage",
     premiumPackageLink: "/premiumPackage",
     expressPackageLink: "/expressPackage",

@@ -123,7 +123,7 @@ export default function BrowserRoutes() {
               <Route path="/appointments" element={<Appointments />} />
               <Route path="/purchase" element={<CardForm />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/" element={<Bookings />} />
+              <Route path="/bookings" element={<Bookings />} />
               {packages.map((packageService) => {
                 if (packageService.name !== "Touch Up Labor (Hourly)") {
                   const camelCasedPackageName = packageNameCamelCase({
