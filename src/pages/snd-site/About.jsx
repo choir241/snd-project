@@ -3,32 +3,526 @@ import { Link } from 'react-router-dom';
 import SndSiteWrapper from '../../components/SndSiteWrapper';
 
 const About = () => {
+  const openFacebook = (event) => {
+    event.preventDefault();
+    window.open('https://www.facebook.com/Supremenomads/', '_blank');
+  };
+
   return (
     <SndSiteWrapper>
-      <div className="hero-section hero-about">
-        <div className="hero-content">
-          <div className="container">
-            <div className="row">
-              <div className="col-12 text-center">
-                <h1 className="text-white">About Us</h1>
-                <p className="lead text-white">Learn more about Supreme Nomads Detailing</p>
+      {/* Nav */}
+      <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
+        {/* Logo */}
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            <img src="/images/horizontal-logo.png" alt="logo" />
+          </Link>
+
+          {/* Mobile Layout */}
+          <div className="d-flex align-items-center gap-3 d-xl-none">
+            <a href="tel:+17045611927" className="text-white pt-2">
+              <iconify-icon
+                icon="ic:baseline-call"
+                className="call-icon"
+                style={{ fontSize: '1.5rem' }}
+              ></iconify-icon>
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar"
+            >
+              <iconify-icon
+                icon="system-uicons:menu-hamburger"
+                className="hamburger-menu"
+              ></iconify-icon>
+            </button>
+          </div>
+
+          <div
+            className="offcanvas offcanvas-end"
+            tabIndex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div className="offcanvas-header my-2 mx-3">
+              <img
+                src="/images/logo-gold-text.svg"
+                alt="Supreme Nomads Detailing Logo"
+                className="hamburger-logo"
+              />
+              <button
+                type="button"
+                className="btn-close btn-close-white text-reset"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div className="offcanvas-body">
+              {/* Routes */}
+              <ul
+                className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1"
+              >
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    to="/"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    to="/snd-site/gallery"
+                  >
+                    Gallery
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    to="/snd-site/services"
+                  >
+                    Our Services
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
+                    to="/snd-site/about"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    to="/snd-site/academy"
+                  >
+                    Academy
+                  </Link>
+                </li>
+              </ul>
+
+              {/* Socials */}
+              <div
+                className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div"
+              >
+                <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
+                  <li className="nav-item">
+                    <a
+                      className="nav-link d-flex align-items-center"
+                      href="tel:+17045611927"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <iconify-icon
+                        icon="ic:baseline-call"
+                        className="social-icon text-white"
+                      ></iconify-icon>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link d-flex align-items-center"
+                      href="https://www.tiktok.com/@supremenomads704"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <iconify-icon
+                        icon="ri:tiktok-fill"
+                        className="social-icon text-white"
+                      ></iconify-icon>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link d-flex align-items-center"
+                      href="https://www.instagram.com/supremenomads"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <iconify-icon
+                        icon="ri:instagram-line"
+                        className="social-icon text-white"
+                      ></iconify-icon>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link d-flex align-items-center"
+                      href="https://www.facebook.com/Supremenomads/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={openFacebook}
+                    >
+                      <iconify-icon
+                        icon="ri:facebook-fill"
+                        className="social-icon text-white"
+                      ></iconify-icon>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link d-flex align-items-center"
+                      href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <iconify-icon
+                        icon="mdi:yelp"
+                        className="social-icon text-white"
+                      ></iconify-icon>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link d-flex align-items-center"
+                      href="https://www.youtube.com/@SupremeNomads"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <iconify-icon
+                        icon="ri:youtube-fill"
+                        className="social-icon text-white"
+                      ></iconify-icon>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Book Now */}
+              <div className="book-now-div">
+                <Link
+                  to="/snd-site/booking"
+                  className="btn btn-primary book-now-btn w-100 w-xl-auto ms-0 ms-xl-3"
+                >
+                  Book Now
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-12">
-            <h2 className="text-center mb-4">Our Story</h2>
-            <p className="text-center">About page content will be implemented here.</p>
-            <div className="text-center">
-              <Link to="/snd-site/home" className="btn btn-primary">Back to Home</Link>
+      </nav>
+
+      {/* Hero */}
+      <section className="hero-section hero-about">
+        <div className="hero-overlay"></div>
+
+        <div className="container py-5 hero-content">
+          <div className="row py-5">
+            <div
+              className="d-flex flex-wrap flex-column justify-content-center align-items-center my-5 py-5 text-white"
+            >
+              <h2 className="page-title display-3 mt-5 text-white">About Us</h2>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Company Info */}
+      <section id="about-us" className="py-5">
+        <div style={{ overflow: 'hidden' }}>
+          <div className="vertical-element" data-aos="zoom-out">
+            <div className="container pt-2">
+              <div className="row d-flex align-items-center">
+                <div className="col-lg-6 col-12 order-2 order-md-1">
+                  <div className="image-holder">
+                    <img src="https://res.cloudinary.com/dnsc73sla/image/upload/w_auto,dpr_auto,c_fit,q_auto,f_auto/v1754103603/who-are-we_qmajj7.png" 
+                    alt="Who Are We" className="about-us-team-img" />
+                  </div>
+                </div>
+                <div className="col-lg-6 col-12 order-1 order-md-2">
+                  <div className="section-element p-4 p-md-5">
+                    <h2 className="element-title text-uppercase mb-4">Who are we?</h2>
+                    <p>Supreme Nomads Detailing sparked from a shared passion for ensuring that every vehicle we touch is left in the most pristine condition possible through our detailing services. No matter the make or model, we deliver the highest level of care in every detail. Whether innovating with new techniques or meeting new enthusiasts, we strive for a single outcome: to make you proud of your ride. We are grateful for our support systems from our families, friends, mentors, the car community, and most importantly, you, the customer that allows us to deliver on our passion. Through continuous feedback and unconditional support, we are able to further our endeavors in being perfectionists in the art of auto detailing. Thank you to our team for their unwavering support, and to our loyal customers for making this journey possible.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ overflow: 'hidden' }}>
+          <div className="vertical-element py-3" data-aos="zoom-out">
+            <div className="container">
+              <div className="row d-flex align-items-center justify-content-between">
+                <div className="col-lg-6 col-12">
+                  <div className="section-element p-4 p-md-5">
+                    <h2 className="element-title text-uppercase mb-4 about-supreme">CHOOSE US FOR THE SUPREME TREATMENT</h2>
+                    <p>At Supreme Nomads, perfection is at the heart of how we operate. Even as a respected name in the Charlotte Auto Industry, we're committed to continuous improvement and applying our expertise. A clean environment allows for some peace amongst the chaos in the day to day, and that extends to your second-largest investment, your vehicle. Between work, family, road trips, or just leisure driving, it's easy to use your vehicle, but hard to find time to keep it clean. We understand this need and seek to find a personalized detailing plan for every customer. These words resonate deeply with us at supreme nomads detailing. even as a respected name in the Charlotte auto industry, we're committed to continuous improvement and sharing our expertise. stay tuned as we develop the supreme nomads academy, where we'll offer insights and training to elevate your detailing skills! click below to subscribe for updates and be the first to know when we launch!</p>
+                  </div>
+                </div>
+                <div className="col-lg-6 col-12">
+                  <div className="image-holder">
+                    <img 
+                      src="https://res.cloudinary.com/dnsc73sla/image/upload/w_auto,dpr_auto,c_fit,q_auto,f_auto/v1754104066/choose-us-for-the-supreme-treatment_giqhd3.png" 
+                      alt="Choose us for the supreme treatment" className="about-us-team-img" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Info */}
+      <section id="team">
+        <div style={{ overflow: 'hidden' }}>
+          <div className="container my-5 py-5" data-aos="zoom-out">
+            <p className="header-top text-center mb-3">Meet our team</p>
+            <h2 className="display-4 text-center">Our Team Members</h2>
+
+            {/* Team Member 1 */}
+            <div className="row align-items-center my-5 mx-auto">
+              <div className="col-md-4 text-center">
+                <img
+                  src="https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto,c_limit,w_1200/v1754439571/about-us-akash_gnm3s8.png"
+                  className="img-fluid member-photo"
+                  alt="Akash"
+                />
+                <div
+                  className="social-links mt-3 d-flex justify-content-center gap-3"
+                >
+                  <a href="https://www.instagram.com/akashcar19?igsh=MXZqdmNybjd5ZmEwaQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                    <iconify-icon
+                      icon="ri:instagram-line"
+                      className="social-icon text-secondary"
+                    ></iconify-icon>
+                  </a>
+                  <a href="https://www.linkedin.com/in/abhardwaj97?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">
+                    <iconify-icon
+                      icon="ri:linkedin-fill"
+                      className="social-icon text-secondary"
+                    ></iconify-icon>
+                  </a>
+                </div>
+              </div>
+              <div className="col-md-8 text-center">
+                <h5 className="element-title text-uppercase mt-3">Akash </h5>
+                <h6 className="heading-color">Co-CEO</h6>
+                <p>
+                  Akash is a passionate automotive enthusiast with a keen eye for detail. With years of experience in the detailing industry, he brings expertise and dedication to every project. His commitment to excellence ensures that each vehicle receives the supreme treatment it deserves.
+                </p>
+              </div>
+            </div>
+
+            {/* Team Member 2 */}
+            <div className="row align-items-center my-5 mx-auto">
+              <div className="col-md-4 text-center">
+                <img
+                  src="https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto,c_limit,w_1200/v1754439571/about-us-richard_gnm3s8.png"
+                  className="img-fluid member-photo"
+                  alt="Richard"
+                />
+                <div
+                  className="social-links mt-3 d-flex justify-content-center gap-3"
+                >
+                  <a href="https://www.instagram.com/richardcar19?igsh=MXZqdmNybjd5ZmEwaQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                    <iconify-icon
+                      icon="ri:instagram-line"
+                      className="social-icon text-secondary"
+                    ></iconify-icon>
+                  </a>
+                  <a href="https://www.linkedin.com/in/richardb97?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">
+                    <iconify-icon
+                      icon="ri:linkedin-fill"
+                      className="social-icon text-secondary"
+                    ></iconify-icon>
+                  </a>
+                </div>
+              </div>
+              <div className="col-md-8 text-center">
+                <h5 className="element-title text-uppercase mt-3">Richard</h5>
+                <h6 className="heading-color">Co-CEO</h6>
+                <p>
+                  Richard's love for automobiles extends beyond just driving them – he understands the art and science behind vehicle care. His innovative approach to detailing techniques and customer service has helped establish Supreme Nomads as a trusted name in Charlotte's auto detailing scene.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <section id="footer">
+        <div className="container footer-containerG mt-5 mt-md-0 pt-2">
+          <div>
+            <img 
+              src="https://res.cloudinary.com/dnsc73sla/image/upload/v1752006942/logo-gold-horse-name_dmbkjk.svg" 
+              alt="Supreme Nomands Logo" 
+              className="footer-logo mx-auto d-block mt-5"
+            />
+          </div>
+         
+          {/* Main Footer */}
+          <footer className="row py-3">
+          
+            {/* Contact Us */}
+            <div className="col-12 col-lg-4 mb-4 mb-lg-0 text-center">
+              <h5 className="fs-5 mt-3 mt-lg-0 mb-3">Mobile Detailing Unit</h5>
+              <div className="row row-cols-1 g-0">
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <h6 className="mobile footer-heading2">We Come To You!</h6>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a 
+                      href="tel:+1704-561-1927" 
+                      className="nav-link text-uppercase p-0" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <iconify-icon icon="mdi:phone" style={{ verticalAlign: 'middle', marginRight: '6px' }}></iconify-icon>704-561-1927
+                    </a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a 
+                      href="mailto:info@supremenomads.com" 
+                      className="nav-link text-uppercase p-0 footer-em" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <iconify-icon icon="mdi:email" style={{ verticalAlign: 'middle', marginRight: '6px' }}></iconify-icon>info@supremenomads.com
+                    </a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <div className="d-flex justify-content-center align-items-center">
+                      <a href="https://www.tiktok.com/@supremenomads704" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon className="social-icon-footer pe-4" icon="ri:tiktok-fill"></iconify-icon>
+                      </a>
+                      <a href="https://www.instagram.com/supremenomads" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon className="social-icon-footer pe-4" icon="mdi:instagram"></iconify-icon>
+                      </a>
+                      <a href="https://www.facebook.com/Supremenomads/" target="_blank" rel="noopener noreferrer" onClick={openFacebook}>
+                        <iconify-icon className="social-icon-footer pe-4" icon="mdi:facebook"></iconify-icon>
+                      </a>
+                      <a href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon className="social-icon-footer pe-4" icon="mdi:yelp"></iconify-icon>
+                      </a>
+                      <a href="https://www.youtube.com/@SupremeNomads" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon className="social-icon-footer" icon="mdi:youtube"></iconify-icon>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <p>Icons by <a href="https://icons8.com" target="_blank" rel="noopener noreferrer">Icons8</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Cities */}
+            <div className="col-12 col-lg-4 mb-4 mb-lg-0 text-center">
+              <h5 className="fs-5 mt-3 mt-lg-0 mb-3">We Serve</h5>
+              <div className="row row-cols-1 row-cols-lg-2 g-0">
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Charlotte</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Concord</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Harrisburg</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Huntersville</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Matthews</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Waxhaw</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Lake Norman</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Fort Mill, SC</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Indian Land, SC</a>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <a href="#" className="nav-link text-uppercase p-0">Rock Hill, SC</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="col-12 col-lg-4 mb-4 mb-lg-0 text-center">
+              <h5 className="fs-5 mt-3 mt-lg-0 mb-3">Quick Links</h5>
+              <div className="row row-cols-1 g-0">
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <Link to="/" className="nav-link text-uppercase p-0">Home</Link>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <Link to="/snd-site/gallery" className="nav-link text-uppercase p-0">Gallery</Link>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <Link to="/snd-site/services" className="nav-link text-uppercase p-0">Our Services</Link>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <Link to="/snd-site/about" className="nav-link text-uppercase p-0">About Us</Link>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="footer-list mb-3">
+                    <Link to="/snd-site/academy" className="nav-link text-uppercase p-0">Academy</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+        {/* Copyright */}
+        <div className="container">
+          <footer className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center py-2 border-top">
+            <p className="mb-1 mb-md-0 footer-copy">© 2022 - 2025 | All Rights Reserved</p>
+            <p className="mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
+          </footer>
+        </div>
+      </section>
     </SndSiteWrapper>
   );
 };

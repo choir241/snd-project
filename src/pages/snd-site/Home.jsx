@@ -49,7 +49,7 @@ const Home = () => {
       <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
         {/* Logo */}
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/snd-site/home">
+          <Link className="navbar-brand" to="/">
             <img src="/images/horizontal-logo.png" alt="logo" />
           </Link>
 
@@ -105,7 +105,7 @@ const Home = () => {
                   <Link
                     className="nav-link text-white text-uppercase active mx-2 px-3 mb-2 mb-lg-0 active"
                     aria-current="page"
-                    to="/snd-site/home"
+                    to="/"
                   >
                     home
                   </Link>
@@ -1168,7 +1168,7 @@ const Home = () => {
               <div className="row row-cols-1 g-0">
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/home" className="nav-link text-uppercase p-0">Home</Link>
+                    <Link to="/" className="nav-link text-uppercase p-0">Home</Link>
                   </div>
                 </div>
                 <div className="col">

@@ -31,8 +31,20 @@ const useSndSiteResources = () => {
     // JS resources to load
     const jsResources = [
       {
+        id: 'modernizr-js',
+        src: '/js/modernizr.js'
+      },
+      {
         id: 'jquery-js',
-        src: 'https://code.jquery.com/jquery-3.6.0.min.js'
+        src: '/js/jquery-1.11.0.min.js'
+      },
+      {
+        id: 'plugins-js',
+        src: '/js/plugins.js'
+      },
+      {
+        id: 'script-js',
+        src: '/js/script.js'
       },
       {
         id: 'bootstrap-js',

@@ -7,6 +7,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.nav-item{
+  list-style: none;
+}
+
 ul li {
   list-style: inside;
   margin-left: 2rem;

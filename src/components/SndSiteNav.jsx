@@ -11,7 +11,7 @@ const SndSiteNav = () => {
           </div>
           <div className="col-auto">
             <div className="btn-group" role="group">
-              <Link to="/snd-site/home" className="btn btn-outline-primary btn-sm">Home</Link>
+              <Link to="/" className="btn btn-outline-primary btn-sm">Home</Link>
               <Link to="/snd-site/gallery" className="btn btn-outline-primary btn-sm">Gallery</Link>
               <Link to="/snd-site/services" className="btn btn-outline-primary btn-sm">Services</Link>
               <Link to="/snd-site/about" className="btn btn-outline-primary btn-sm">About</Link>
