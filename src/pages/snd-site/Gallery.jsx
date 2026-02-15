@@ -1,8 +1,128 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SndSiteWrapper from '../../components/SndSiteWrapper';
 
 const Gallery = () => {
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const galleryImages = [
+    {
+      id: 'porsche-macan',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754362192/gal1_uc2v15.png',
+      title: 'Porsche Macan',
+      description: 'Premium Detailing Service'
+    },
+    {
+      id: 'jeep-grand-cherokee',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754361140/gal4_ulohwf.png',
+      title: 'Jeep Grand Cherokee',
+      description: 'Complete Interior & Exterior'
+    },
+    {
+      id: 'lexus-es-350',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754184608/gal1_rtpi1d.png',
+      title: 'Lexus ES 350',
+      description: 'Paint Protection Film'
+    },
+    {
+      id: 'honda-accord-x2',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754182584/gal3_acjsna.png',
+      title: 'Honda Accord x 2',
+      description: 'Fleet Detailing Package'
+    },
+    {
+      id: 'toyota-highlander',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754361709/gal5_q6kv3a.png',
+      title: 'Toyota Highlander',
+      description: 'Tire & Wheel Service'
+    },
+    {
+      id: 'honda-cr-v',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754182416/gal2_l8et51.png',
+      title: 'Honda CR-V',
+      description: 'Express Wash & Wax'
+    },
+    {
+      id: 'tesla-model-3',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754363223/gal7_aprlex.png',
+      title: 'Tesla Model 3',
+      description: 'Ceramic Coating'
+    },
+    {
+      id: 'hyundai-elantra',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754362661/gal8_yf8fen.png',
+      title: 'Hyundai Elantra',
+      description: 'Interior Deep Clean'
+    },
+    {
+      id: 'jaguar-f-type',
+      src: 'https://res.cloudinary.com/dnsc73sla/image/upload/v1754363950/gal9_dwrnt7.png',
+      title: 'Jaguar F-Type P340',
+      description: 'Showroom Detail'
+    }
+  ];
+
+  const handleMouseEnter = (itemId) => {
+    setHoveredItem(itemId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredItem(null);
+  };
+
+  const openLightbox = (imageId) => {
+    const index = galleryImages.findIndex(img => img.id === imageId);
+    if (index !== -1) {
+      setCurrentImageIndex(index);
+      setIsLightboxOpen(true);
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handleKeyDown = (e) => {
+    if (!isLightboxOpen) return;
+    
+    switch (e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        goToPrevious();
+        break;
+      case 'ArrowRight':
+        goToNext();
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isLightboxOpen]);
+
   const openFacebook = (event) => {
     event.preventDefault();
     window.open('https://www.facebook.com/Supremenomads/', '_blank');
@@ -226,90 +346,100 @@ const Gallery = () => {
       <section id="gallery" className="pb-5">
         <div className="container mb-3 py-5">
           <h2 className="display-4 text-center mb-5">Explore Our Work</h2>
-          <div className="isotope-container">
-            <div className="item polish col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754362192/gal1_uc2v15.png" title="Porsche Macan" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754362192/gal1_uc2v15.png" alt="Porsche Macan" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Porsche Macan</h3>
+          <div className="row g-4">
+            {galleryImages.map((image) => (
+              <div key={image.id} className="col-lg-4 col-md-6">
+                <div 
+                  className="gallery-item position-relative overflow-hidden rounded cursor-pointer"
+                  style={{ height: '300px' }}
+                  onMouseEnter={() => handleMouseEnter(image.id)}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => openLightbox(image.id)}
+                >
+                  <img 
+                    className="portfolio-img w-100 h-100" 
+                    style={{ 
+                      objectFit: 'cover',
+                      objectPosition: 'center'
+                    }}
+                    src={image.src} 
+                    alt={image.title} 
+                  />
+                  <div className={`gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-75 transition-opacity duration-300 ${hoveredItem === image.id ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="text-center text-white p-3">
+                      <h3 className="h4 mb-2">{image.title}</h3>
+                      <p className="mb-0 small">{image.description}</p>
+                    </div>
+                  </div>
                 </div>
-              </a>
-            </div>
-
-            <div className="item engine col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754361140/gal4_ulohwf.png" title="Jeep Grand Cherokee" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754361140/gal4_ulohwf.png" alt="Jeep Grand Cherokee" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Jeep Grand Cherokee</h3>
-                </div>
-              </a>
-            </div>
-
-            <div className="item express col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754184608/gal1_rtpi1d.png" title="Lexus ES 350" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754184608/gal1_rtpi1d.png" alt="Lexus ES 350" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Lexus ES 350</h3>
-                </div>
-              </a>
-            </div>
-
-            <div className="item polish col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754182584/gal3_acjsna.png" title="Honda Accord x 2" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754182584/gal3_acjsna.png" alt="Honda Accord x 2" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Honda Accord x 2</h3>
-                </div>
-              </a>
-            </div>
-
-            <div className="item tire col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754361709/gal5_q6kv3a.png" title="Toyota Highlander" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754361709/gal5_q6kv3a.png" alt="Toyota Highlander" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Toyota Highlander</h3>
-                </div>
-              </a>
-            </div>
-
-            <div className="item wash col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754182416/gal2_l8et51.png" title="Honda CR-V" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754182416/gal2_l8et51.png" alt="Honda CR-V" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Honda CR-V</h3>
-                </div>
-              </a>
-            </div>
-
-            <div className="item express col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754363223/gal7_aprlex.png" title="Tesla Model 3" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754363223/gal7_aprlex.png" alt="Tesla Model 3" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Tesla Model 3</h3>
-                </div>
-              </a>
-            </div>
-
-            <div className="item wash col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754362661/gal8_yf8fen.png" title="Hyundai Elantra" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754362661/gal8_yf8fen.png" alt="Hyundai Elantra" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Hyundai Elantra</h3>
-                </div>
-              </a>
-            </div>
-
-            <div className="item tire col-md-4">
-              <a href="https://res.cloudinary.com/dnsc73sla/image/upload/v1754363950/gal9_dwrnt7.png" title="Jaguar F-Type P340" className="image-link">
-                <img className="portfolio-img img-fluid p-3" src="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754363950/gal9_dwrnt7.png" alt="Jaguar F-Type P340" />
-                <div className="description position-absolute top-50 start-50 translate-middle text-center p-3">
-                  <h3 className="text-white">Jaguar F-Type P340</h3>
-                </div>
-              </a>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      {isLightboxOpen && (
+        <div 
+          className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center"
+          style={{ zIndex: 9999 }}
+          onClick={closeLightbox}
+        >
+          {/* Previous Button - Outside Image */}
+          <button
+            className="position-absolute top-50 start-0 translate-middle-y text-white border-0 bg-transparent"
+            style={{ 
+              zIndex: 10001, 
+              left: '2rem',
+              fontSize: '3rem',
+              cursor: 'pointer'
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+          >
+            <iconify-icon icon="mdi:chevron-left"></iconify-icon>
+          </button>
+
+          {/* Next Button - Outside Image */}
+          <button
+            className="position-absolute top-50 end-0 translate-middle-y text-white border-0 bg-transparent"
+            style={{ 
+              zIndex: 10001, 
+              right: '2rem',
+              fontSize: '3rem',
+              cursor: 'pointer'
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+          >
+            <iconify-icon icon="mdi:chevron-right"></iconify-icon>
+          </button>
+
+          <div className="position-relative">
+            {/* Image */}
+            <img
+              src={galleryImages[currentImageIndex].src}
+              alt={galleryImages[currentImageIndex].title}
+              className="img-fluid"
+              style={{ maxHeight: '90vh', maxWidth: '90vw' }}
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {/* Image Info */}
+            <div className="position-absolute bottom-0 start-0 w-100 bg-dark bg-opacity-75 text-white p-3">
+              <h4 className="h5 mb-1">{galleryImages[currentImageIndex].title}</h4>
+              <p className="mb-0 small">{galleryImages[currentImageIndex].description}</p>
+              <p className="mb-0 small mt-1">
+                {currentImageIndex + 1} / {galleryImages.length}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <section id="footer">
