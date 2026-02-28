@@ -1,0 +1,170 @@
+/* Home page specific styles */
+
+/* Quick Links section background */
+#quick-links {
+  background-color: #dec49a !important;
+  scroll-margin-top: 150px;
+}
+
+/* Detailing Packages background */
+.paint-packages {
+  background-color: #e0dbdb !important;
+}
+
+/* Detailing Packages tab styling */
+#paintProtectionTab .nav-link {
+  padding: 0.75rem 1.5rem !important;
+  margin: 0 0.5rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+  transition: all 0.3s ease !important;
+}
+
+#paintProtectionTab .nav-link:hover {
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+#paintProtectionTab .nav-link.active {
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Home page gallery background */
+.home-gallery-section {
+  background-image: url('/images/project-img.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  position: relative !important;
+  min-height: 400px !important;
+  /* Debug: Add a fallback color */
+  background-color: #2c3e50 !important;
+}
+
+.home-gallery-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  z-index: 1 !important;
+}
+
+.home-gallery-section > div {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Navigation link styling adjustments */
+.navbar-nav .nav-link {
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05rem !important;
+}
+
+/* Fix social media spacing and visibility */
+.social-div {
+  display: flex !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.social-ul {
+  gap: 0.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.social-ul .nav-link {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.social-ul .nav-item {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.social-icon {
+  font-size: 1rem !important;
+}
+
+@media only screen and (max-width: 1500px) {
+  .social-div {
+    display: flex !important;
+  }
+}
+
+/* New custom Book Now button classes */
+.book-now-button-custom {
+  background-color: #dc6696 !important;
+  border: 2px solid #dc6696 !important;
+  color: #ffffff !important;
+  padding: 0.4rem 1rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.075rem !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
+}
+
+.book-now-button-custom:hover {
+  background-color: #f51fb5 !important;
+  border-color: #f51fb5 !important;
+  color: #ffffff !important;
+}
+
+.book-now-button-custom:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 0.25rem rgba(220, 169, 88, 0.25) !important;
+}
+
+.arrow-icon-custom {
+  color: #ffffff !important;
+  font-size: 16px !important;
+  margin-left: 8px !important;
+  vertical-align: middle !important;
+}
+
+/* Navbar scroll effect */
+.navbar.fixed-top.bg-black {
+  background-color: #000000 !important;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+
+.navbar.fixed-top {
+  background-color: transparent !important;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.show {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+}
+
+.navbar-toggler {
+  border: 2px solid #ffffff;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(220, 169, 88, 0.25);
+}

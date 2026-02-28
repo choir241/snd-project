@@ -13,6 +13,7 @@ import CardForm from "./components/Purchase/CardForm";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TailSpin } from "react-loader-spinner";
+import Home from "./pages/snd-site/home/Home-Clean";
 
 export default function BrowserRoutes() {
   const [packages, setPackages] = useState([]);
@@ -123,7 +124,8 @@ export default function BrowserRoutes() {
               <Route path="/appointments" element={<Appointments />} />
               <Route path="/purchase" element={<CardForm />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/" element={<Bookings />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/bookings" element={<Bookings />} />
               {packages.map((packageService) => {
                 if (packageService.name !== "Touch Up Labor (Hourly)") {
                   const camelCasedPackageName = packageNameCamelCase({
