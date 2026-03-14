@@ -569,7 +569,7 @@ export default function Services() {
                   <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="tel:+17045611927"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -582,7 +582,7 @@ export default function Services() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center m-0 p-0"
                         href="https://www.tiktok.com/@supremenomads704"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -595,7 +595,7 @@ export default function Services() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.instagram.com/supremenomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -608,7 +608,7 @@ export default function Services() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.facebook.com/Supremenomads/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -622,7 +622,7 @@ export default function Services() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -635,7 +635,7 @@ export default function Services() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.youtube.com/@SupremeNomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -682,51 +682,39 @@ export default function Services() {
           <div className="container py-5" data-aos="zoom-out">
             <h2 className="display-4 mb-5">Detailing Packages</h2>
 
-            {/* Pricing Tabs */}
-            <ul className="nav nav-tabs my-3" id="myTab" role="tablist">
-              <li className="nav-item" role="presentation">
+           {/* Pricing Tabs */}
+          <div className="nav-tabs mb-5" id="paintProtectionTab">
+            <div className="row justify-content-left">
+              <div className="col-md-auto">
                 <button
-                  className="nav-link me-4 px-4 py-1 mb-2 active"
-                  id="regular-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#regular-tab-pane"
+                  className={`m-0 nav-link ${activeTab === "regular-tab-pane" ? "active" : ""}`}
+                  onClick={() => handleTabClick("regular-tab-pane")}
                   type="button"
-                  role="tab"
-                  aria-controls="regular-tab-pane"
-                  aria-selected="true"
                 >
                   Sedan/Coupé
                 </button>
-              </li>
-              <li className="nav-item" role="presentation">
+              </div>
+              <div className="col-md-auto">
                 <button
-                  className="nav-link me-4 px-4 py-1 mb-2"
-                  id="medium-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#medium-tab-pane"
+                  className={`nav-link ${activeTab === "medium-tab-pane" ? "active" : ""}`}
+                  onClick={() => handleTabClick("medium-tab-pane")}
                   type="button"
-                  role="tab"
-                  aria-controls="medium-tab-pane"
-                  aria-selected="false"
                 >
                   2 Row Suv/Small Truck
                 </button>
-              </li>
-              <li className="nav-item" role="presentation">
+              </div>
+              <div className="col-md-auto">
                 <button
-                  className="nav-link me-4 px-4 py-1 mb-2"
-                  id="van-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#van-tab-pane"
+                  className={`nav-link ${activeTab === "van-tab-pane" ? "active" : ""}`}
+                  onClick={() => handleTabClick("van-tab-pane")}
                   type="button"
-                  role="tab"
-                  aria-controls="van-tab-pane"
-                  aria-selected="false"
                 >
                   3 Row Suv/Large Truck
                 </button>
-              </li>
-            </ul>
+              </div>
+            </div>
+          </div>
+
 
             <div className="tab-content" id="myTabContent">
               {/* Regular Tab - Sedan/Coupé */}
@@ -1868,16 +1856,18 @@ export default function Services() {
         <div style={{ overflow: "hidden" }}>
           <div className="container py-5" data-aos="zoom-out">
             <h2 className="display-4 mb-5">Paint Protection</h2>
+
+
             <ul
               className="nav nav-tabs my-3"
               id="paintProtectionTab"
               role="tablist"
             >
-              <li className="nav-item" role="presentation">
+              <li className="m-0" role="presentation">
                 <button
                   type="button"
                   role="tab"
-                  className={`nav-link me-4 px-4 py-1 mb-2 ${paintTab === PAINT_TABS.REGULAR ? "active" : ""}`}
+                  className={`nav-link me-4 mb-2 mx-0 ${paintTab === PAINT_TABS.REGULAR ? "active" : ""}`}
                   onClick={() => setPaintTab(PAINT_TABS.REGULAR)}
                   aria-selected={paintTab === PAINT_TABS.REGULAR}
                 >
@@ -1888,7 +1878,7 @@ export default function Services() {
                 <button
                   type="button"
                   role="tab"
-                  className={`nav-link me-4 px-4 py-1 mb-2 ${paintTab === PAINT_TABS.MEDIUM ? "active" : ""}`}
+                  className={`nav-link me-4 mb-2 ${paintTab === PAINT_TABS.MEDIUM ? "active" : ""}`}
                   onClick={() => setPaintTab(PAINT_TABS.MEDIUM)}
                   aria-selected={paintTab === PAINT_TABS.MEDIUM}
                 >
@@ -1899,7 +1889,7 @@ export default function Services() {
                 <button
                   type="button"
                   role="tab"
-                  className={`nav-link me-4 px-4 py-1 mb-2 ${paintTab === PAINT_TABS.VAN ? "active" : ""}`}
+                  className={`nav-link me-4 mb-2 ${paintTab === PAINT_TABS.VAN ? "active" : ""}`}
                   onClick={() => setPaintTab(PAINT_TABS.VAN)}
                   aria-selected={paintTab === PAINT_TABS.VAN}
                 >
@@ -2183,8 +2173,8 @@ export default function Services() {
       </div>
 
       {/* Footer */}
-      <footer className="main-footer">
-        <div className="container footer-containerG mt-5 mt-md-0 pt-2">
+      <footer id="footer" className="py-3">
+        <div className="container footer-containerG mt-3 mt-md-0 pt-2">
           <div>
             <img
               src="https://res.cloudinary.com/dnsc73sla/image/upload/v1752006942/logo-gold-horse-name_dmbkjk.svg"
@@ -2192,7 +2182,142 @@ export default function Services() {
               className="footer-logo mx-auto d-block mt-5"
             />
           </div>
-          <div className="row">
+
+          {/* Main Footer */}
+          <div className="row footer-content">
+            {/* Mobile Detailing Unit */}
+            <div className="col-lg-4 mb-4 mb-lg-0 text-center">
+              <div className="footer-section">
+                <h5 className="fs-5 mt-3 mt-lg-0 mb-3">
+                  Mobile Detailing Unit
+                </h5>
+                <div className="row row-cols-1 g-0">
+                  <div className="col">
+                    <div className="footer-list mb-3">
+                      <h6 className="mobile footer-heading2">
+                        We Come To You!
+                      </h6>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="footer-list mb-3">
+                      <a
+                        href="tel:+1704-561-1927"
+                        className="nav-link text-uppercase p-0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <iconify-icon
+                          icon="mdi:phone"
+                          style={{
+                            verticalAlign: "middle",
+                            marginRight: "6px",
+                          }}
+                        />
+                        704-561-1927
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="footer-list mb-3">
+                      <a
+                        href="mailto:info@supremenomads.com"
+                        className="nav-link text-uppercase p-0 footer-em"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <iconify-icon
+                          icon="mdi:email"
+                          style={{
+                            verticalAlign: "middle",
+                            marginRight: "6px",
+                          }}
+                        />
+                        info@supremenomads.com
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="footer-list mb-3">
+                      <div className="d-flex justify-content-center align-items-center">
+                        <a
+                          href="https://www.tiktok.com/@supremenomads704"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="me-3"
+                        >
+                          <iconify-icon
+                            className="social-icon-footer"
+                            icon="ri:tiktok-fill"
+                          />
+                        </a>
+                        <a
+                          href="https://www.instagram.com/supremenomads"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="me-3"
+                        >
+                          <iconify-icon
+                            className="social-icon-footer"
+                            icon="mdi:instagram"
+                          />
+                        </a>
+                        <a
+                          href="https://www.facebook.com/Supremenomads/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="me-3"
+                          onClick={openFacebook}
+                        >
+                          <iconify-icon
+                            className="social-icon-footer"
+                            icon="mdi:facebook"
+                          />
+                        </a>
+                        <a
+                          href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="me-3"
+                        >
+                          <iconify-icon
+                            className="social-icon-footer"
+                            icon="mdi:yelp"
+                          />
+                        </a>
+                        <a
+                          href="https://www.youtube.com/@SupremeNomads"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <iconify-icon
+                            className="social-icon-footer"
+                            icon="mdi:youtube"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="footer-list mb-3">
+                      <p className="small">
+                        Icons by
+                        <a
+                          href="https://icons8.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="ms-1"
+                        >
+                          Icons8
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* We Serve */}
             <div className="col-lg-4 mb-4 mb-lg-0 text-center">
               <div className="footer-section">
                 <h5 className="fs-5 mt-3 mt-lg-0 mb-3">We Serve</h5>
@@ -2270,6 +2395,7 @@ export default function Services() {
                 </div>
               </div>
             </div>
+
             {/* Quick Links */}
             <div className="col-lg-4 mb-4 mb-lg-0 text-center">
               <div className="footer-section">
@@ -2277,65 +2403,65 @@ export default function Services() {
                 <div className="row row-cols-1 g-0">
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a
-                        href="/snd-site/index.html"
-                        className="nav-link text-uppercase p-0"
-                      >
+                      <Link to="/" className="nav-link text-uppercase p-0">
                         Home
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a
-                        href="/snd-site/project.html"
+                      <Link
+                        to="/snd-site/gallery"
                         className="nav-link text-uppercase p-0"
                       >
                         Gallery
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a
-                        href="/snd-site/services.html"
+                      <Link
+                        to="/snd-site/services"
                         className="nav-link text-uppercase p-0"
                       >
                         Our Services
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a
-                        href="/snd-site/about.html"
+                      <Link
+                        to="/snd-site/about"
                         className="nav-link text-uppercase p-0"
                       >
                         About Us
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a
-                        href="/snd-site/academy.html"
+                      <Link
+                        to="/snd-site/academy"
                         className="nav-link text-uppercase p-0"
                       >
                         Academy
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <hr className="my-4" />
-          <div className="row">
-            <div className="col-12 text-center">
-              <p className="mb-0">© 2022 - 2025 | All Rights Reserved</p>
-              <p className="mb-0">Supreme Nomads Detailing LLC</p>
-            </div>
-          </div>
+   
+        {/* Copyright */}
+        <div className="container">
+          <footer className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center py-2 border-top">
+            <p className="font-rgb(102, 102, 102) mb-1 mb-md-0 footer-copy">
+              © 2022 - {new Date().getFullYear()} | All Rights Reserved
+            </p>
+            <p className="font-rgb(102, 102, 102) mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
+          </footer>
+        </div>
         </div>
       </footer>
     </>

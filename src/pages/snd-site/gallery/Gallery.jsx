@@ -70,6 +70,10 @@ export default function Gallery() {
     window.open("https://www.facebook.com/Supremenomads/", "_blank");
   };
 
+  const isActiveLink = (path) => {
+    return location.pathname === path ? "active" : "";
+  };
+  
   const handleMouseEnter = (id) => {
     setHoveredItem(id);
   };
@@ -279,7 +283,7 @@ export default function Gallery() {
 
   return (
     <>
-      {/* Nav */}
+    {/* Nav */}
       <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
         {/* Logo */}
         <div className="container-fluid">
@@ -327,7 +331,7 @@ export default function Gallery() {
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/")}`}
                     to="/"
                   >
                     Home
@@ -335,7 +339,7 @@ export default function Gallery() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/gallery")}`}
                     to="/snd-site/gallery"
                   >
                     Gallery
@@ -343,7 +347,7 @@ export default function Gallery() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/services")}`}
                     to="/snd-site/services"
                   >
                     Our Services
@@ -351,7 +355,7 @@ export default function Gallery() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/about")}`}
                     to="/snd-site/about"
                   >
                     About Us
@@ -359,7 +363,7 @@ export default function Gallery() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/academy")}`}
                     to="/snd-site/academy"
                   >
                     Academy
@@ -370,7 +374,7 @@ export default function Gallery() {
                   <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="tel:+17045611927"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -383,7 +387,7 @@ export default function Gallery() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center m-0 p-0"
                         href="https://www.tiktok.com/@supremenomads704"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -396,7 +400,7 @@ export default function Gallery() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.instagram.com/supremenomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -409,7 +413,7 @@ export default function Gallery() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.facebook.com/Supremenomads/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -423,7 +427,7 @@ export default function Gallery() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -436,7 +440,7 @@ export default function Gallery() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.youtube.com/@SupremeNomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -855,10 +859,10 @@ export default function Gallery() {
         {/* Copyright */}
         <div className="container">
           <footer className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center py-2 border-top">
-            <p className="mb-1 mb-md-0 footer-copy">
-              © 2022 - 2025 | All Rights Reserved
+            <p className="font-rgb(102, 102, 102) mb-1 mb-md-0 footer-copy">
+              © 2022 - {new Date().getFullYear()} | All Rights Reserved
             </p>
-            <p className="mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
+            <p className="font-rgb(102, 102, 102) mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
           </footer>
         </div>
       </section>

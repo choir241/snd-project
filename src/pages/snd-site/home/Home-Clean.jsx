@@ -8,6 +8,7 @@ import "../css/style.css";
 import "./Home-Clean.css";
 import "./Home-Clean-carousel.css";
 import MediumTabPane from "../../../components/Home/MediumTabPane";
+import { getFullYear } from "../../../hooks/dateFuncs";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("regular-tab-pane");
@@ -467,7 +468,7 @@ export default function Home() {
                   <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="tel:+17045611927"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -480,7 +481,7 @@ export default function Home() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center m-0 p-0"
                         href="https://www.tiktok.com/@supremenomads704"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -493,7 +494,7 @@ export default function Home() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.instagram.com/supremenomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -506,7 +507,7 @@ export default function Home() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.facebook.com/Supremenomads/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -520,7 +521,7 @@ export default function Home() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -533,7 +534,7 @@ export default function Home() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.youtube.com/@SupremeNomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -590,12 +591,15 @@ export default function Home() {
                 We strive for quality service, punctuality, and clear
                 communication every time we see you.
               </p>
-              <a
-                href="#quick-links"
-                className="btn mainbtn btn-outline-primary"
-              >
-                <iconify-icon icon="tabler:arrow-down" className="arrow-icon" />
-              </a>
+              <div>
+                <a
+                  href="#quick-links"
+                  className="btn mainbtn btn-outline-primary"
+                >
+                  <iconify-icon icon="tabler:arrow-down" className="arrow-icon" />
+                </a>
+              </div>
+
             </div>
           </div>
         </div>
@@ -798,10 +802,10 @@ export default function Home() {
 
           {/* Pricing Tabs */}
           <div className="nav-tabs mb-5" id="paintProtectionTab">
-            <div className="row justify-content-center">
+            <div className="row justify-content-left">
               <div className="col-md-auto">
                 <button
-                  className={`nav-link ${activeTab === "regular-tab-pane" ? "active" : ""}`}
+                  className={`m-0 nav-link ${activeTab === "regular-tab-pane" ? "active" : ""}`}
                   onClick={() => handleTabClick("regular-tab-pane")}
                   type="button"
                 >
@@ -1481,6 +1485,30 @@ export default function Home() {
                 </div>
               </div>
             )}
+
+            <div id="disclaimers" className="container py-3">
+              <ul className="list-unstyled">
+                <li className="py-2">
+                  <sup className="sup-line">
+                    <a href="#detailingPrice">1</a>
+                  </sup>{" "}
+                  Wax protection longevity varies based on vehicle condition, storage,
+                  and maintenance. Pre-existing paint damage or aftermarket paint may
+                  also affect the wax's lifespan. For optimal results, regular care
+                  and garaging are recommended.
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex justify-center">
+              <a href="/snd-site/services" className="btn btn-primary">
+                View All Services
+                <iconify-icon
+                  icon="tabler:arrow-right"
+                  className="arrow-icon ms-2"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -1824,12 +1852,15 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <hr className="my-4" />
-          <div className="row">
-            <div className="col-12 text-center">
-              <p className="mb-0">© 2022 - 2025 | All Rights Reserved</p>
-              <p className="mb-0">Supreme Nomads Detailing LLC</p>
-            </div>
+
+          {/* Copyright */}
+          <div className="container">
+            <footer className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center py-2 border-top">
+              <p className="font-rgb(102, 102, 102) mb-1 mb-md-0 footer-copy">
+                © 2022 - {new Date().getFullYear()} | All Rights Reserved
+              </p>
+              <p className="font-rgb(102, 102, 102) mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
+            </footer>
           </div>
         </div>
       </footer>

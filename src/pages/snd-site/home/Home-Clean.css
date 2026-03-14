@@ -430,20 +430,24 @@
   border-radius: 8px;
 }
 
-#footer .footer-containerG .footer-heading2,
+.price-option p, #footer .footer-containerG .footer-heading2,
 #footer .footer-containerG .footer-heading,
 #footer .footer-containerG .footer-em,
 #footer .footer-containerG .footer-list a,
-#footer .footer-containerG .footer-copy {
-  color: #000000 !important;
+#footer .footer-containerG .footer-copy, #footer .footer-list a {
+  color: rgb(102, 102, 102) !important;
+}
+
+.plan-post h2{
+  color: #13325c !important;
 }
 
 #footer .social-icon-footer {
-  color: #000000 !important;
+  color: rgb(102, 102, 102) !important;
 }
 
 #footer .nav-link {
-  color: #000000 !important;
+  color: rgb(102, 102, 102) !important;
 }
 
 #footer .nav-link:hover {
@@ -452,18 +456,15 @@
 
 /* Icons by Icons8 text styling */
 #footer .footer-list .small {
-  color: #000000 !important;
+  color: rgb(102, 102, 102) !important;
   font-size: 0.875rem !important;
   font-weight: 500 !important;
 }
 
 #footer .footer-list .small a {
-  color: #0066cc !important;
-  text-decoration: underline !important;
-  font-weight: 600 !important;
+  color: rgb(102, 102, 102) !important;
 }
 
 #footer .footer-list .small a:hover {
-  color: #004499 !important;
   text-decoration: none !important;
 }

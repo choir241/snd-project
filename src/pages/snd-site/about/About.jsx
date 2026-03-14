@@ -6,9 +6,20 @@ import Logo from "../images/horizontal-logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/style.css";
 import "./About.css";
+import { getFullYear, getDate, getMonth } from "../../../hooks/dateFuncs";
 
 export default function About() {
   const location = useLocation();
+
+  // Helper function to get dynamic dates
+  const getCurrentYear = () => new Date().getFullYear();
+  const getDynamicDate = (startYear, endYear) => {
+    const currentYear = getCurrentYear();
+    if (currentYear >= startYear && currentYear <= endYear) {
+      return currentYear;
+    }
+    return endYear; // Return end year as fallback
+  };
 
   const openFacebook = (event) => {
     event.preventDefault();
@@ -180,7 +191,7 @@ export default function About() {
 
   return (
     <>
-      {/* Nav */}
+    {/* Nav */}
       <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
         {/* Logo */}
         <div className="container-fluid">
@@ -271,7 +282,7 @@ export default function About() {
                   <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="tel:+17045611927"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -284,7 +295,7 @@ export default function About() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center m-0 p-0"
                         href="https://www.tiktok.com/@supremenomads704"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -297,7 +308,7 @@ export default function About() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.instagram.com/supremenomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -310,7 +321,7 @@ export default function About() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.facebook.com/Supremenomads/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -324,7 +335,7 @@ export default function About() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -337,7 +348,7 @@ export default function About() {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.youtube.com/@SupremeNomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -511,9 +522,9 @@ export default function About() {
                   I was born and raised in New Jersey. I've moved around a lot
                   and have even lived in Texas for a couple of years. I finished
                   high school in Cary, NC and have lived in Charlotte since
-                  2015. I majored in Computer Science at University of North
+                  {getDynamicDate(2015, 2025)}. I majored in Computer Science at University of North
                   Carolina at Charlotte Class of '19 and have a masters in Data
-                  Science and Business Analytics '20. Since my childhood, I have
+                  Science and Business Analytics {getDynamicDate(2020, 2025)}. Since my childhood, I have
                   always been interested in 2 things. Cars, and tech. After
                   working in the tech industry for several years, I decided to
                   pursue my other passion for cars. I learned to work on my 2006
@@ -565,13 +576,14 @@ export default function About() {
                   semester. After moving to Charlotte, it came time to get my
                   own vehicle. The ES 350 F sport model contained the same
                   sliding speedometer and many design aspects of the LFA so it
-                  was a no brainer: I had to have it! After purchasing a 2020
-                  model, I have gone to great lengths to take great care of my
-                  Lexus. Through my appreciation of my ES, I was able to learn a
-                  lot about detailing and the proper way to maintain a vehicle.
-                  I would constantly get asked about detailing services, and
-                  eventually, Supreme Nomads Detailing was formed to help others
-                  take care of their prized possessions. Akash and I connected
+                  was a no brainer: I had to have it! After purchasing a {getDynamicDate(2020, 2025)} model, I have
+                  gone to great lengths to take great care of my Lexus. Through
+                  my appreciation of my ES, I was able to learn a lot about
+                  detailing and the proper way to maintain a vehicle. I would
+                  constantly get asked about detailing services, and eventually,
+                  Supreme Nomads Detailing was formed to help others take care of
+                  their prized possessions. Akash and I connected through our
+                  shared enthusiasm for cars and detailing.
                   through our shared enthusiasm for cars and detailing.
                 </p>
               </div>
@@ -849,10 +861,10 @@ export default function About() {
         {/* Copyright */}
         <div className="container">
           <footer className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center py-2 border-top">
-            <p className="mb-1 mb-md-0 footer-copy">
-              © 2022 - 2025 | All Rights Reserved
+            <p className="font-rgb(102, 102, 102) mb-1 mb-md-0 footer-copy">
+              © 2022 - {new Date().getFullYear()} | All Rights Reserved
             </p>
-            <p className="mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
+            <p className="font-rgb(102, 102, 102) mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
           </footer>
         </div>
       </section>

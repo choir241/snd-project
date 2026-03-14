@@ -53,6 +53,24 @@ const Academy = () => {
     iconifyScript.async = true;
     document.body.appendChild(iconifyScript);
 
+    // Google Fonts
+    const preconnect1 = document.createElement("link");
+    preconnect1.rel = "preconnect";
+    preconnect1.href = "https://fonts.googleapis.com";
+    document.head.appendChild(preconnect1);
+
+    const preconnect2 = document.createElement("link");
+    preconnect2.rel = "preconnect";
+    preconnect2.href = "https://fonts.gstatic.com";
+    preconnect2.crossOrigin = "";
+    document.head.appendChild(preconnect2);
+
+    const googleFonts = document.createElement("link");
+    googleFonts.rel = "stylesheet";
+    googleFonts.href =
+      "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Oswald:wght@500;600;700&display=swap";
+    document.head.appendChild(googleFonts);
+
     // Load local scripts
     const modernizrScript = document.createElement("script");
     modernizrScript.src = "/snd-site/js/modernizr.js";
@@ -87,7 +105,6 @@ const Academy = () => {
         document.head.removeChild(preconnect1);
         document.head.removeChild(preconnect2);
         document.head.removeChild(googleFonts);
-        document.body.removeChild(jqueryScript);
         document.body.removeChild(bootstrapScript);
         document.body.removeChild(swiperScript);
         document.body.removeChild(aosScript);
@@ -143,7 +160,7 @@ const Academy = () => {
 
   return (
     <>
-      {/* Nav */}
+    {/* Nav */}
       <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
         {/* Logo */}
         <div className="container-fluid">
@@ -234,7 +251,7 @@ const Academy = () => {
                   <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="tel:+17045611927"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -247,7 +264,7 @@ const Academy = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center m-0 p-0"
                         href="https://www.tiktok.com/@supremenomads704"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -260,7 +277,7 @@ const Academy = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.instagram.com/supremenomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -273,7 +290,7 @@ const Academy = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.facebook.com/Supremenomads/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -287,7 +304,7 @@ const Academy = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -300,7 +317,7 @@ const Academy = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link d-flex align-items-center"
+                        className="nav-link d-flex align-items-center p-0 m-0"
                         href="https://www.youtube.com/@SupremeNomads"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -347,7 +364,7 @@ const Academy = () => {
           <div className="row justify-content-center"></div>
 
           <div className="col-12 text-center">
-            <p className="fs-3 my-5 pt-5">
+            <p className="fs-3 my-5 pt-5 text-[rgba(102,102,102)]">
               As Richard Feynman says, "If you want to master something, teach
               it." Whether you're looking to start your own detailing business
               or just want to learn some tips and tricks to take care of your
@@ -668,10 +685,10 @@ const Academy = () => {
         {/* Copyright */}
         <div className="container">
           <footer className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center py-2 border-top">
-            <p className="mb-1 mb-md-0 footer-copy">
-              © 2022 - 2025 | All Rights Reserved
+            <p className="font-rgb(102, 102, 102) mb-1 mb-md-0 footer-copy">
+              © 2022 - {new Date().getFullYear()} | All Rights Reserved
             </p>
-            <p className="mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
+            <p className="font-rgb(102, 102, 102) mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
           </footer>
         </div>
       </section>
