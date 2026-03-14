@@ -12,7 +12,7 @@ export default function AddButtons({ packageName, addOnOption }) {
       <Button
         className="button remove-button"
         onClick={() => removePackage({ packageName, navigate })}
-        label={labels.services.removeButton}
+        label={labels.services.backButton}
       />
 
       <Button

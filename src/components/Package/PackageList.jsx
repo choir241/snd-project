@@ -6,9 +6,8 @@ export default function PackageList({
   setPackageOption,
 }) {
   return (
-    <ul
+    <div
       aria-multiselectable="false"
-      className="market-list"
       aria-labelledby="service-variations-header"
     >
       {packageOptionList.map((option, i) => {
@@ -25,6 +24,6 @@ export default function PackageList({
           />
         );
       })}
-    </ul>
+    </div>
   );
 }

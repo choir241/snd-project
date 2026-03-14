@@ -1,4 +1,4 @@
-import { packageNameCamelCase } from "../../hooks/packageNameCamelCase";
+import { packageNameCamelCase, getPackageBaseUrl } from "../../hooks/packageNameCamelCase";
 import RenderAddOnsCart from "../AddOns/RenderAddOnsInCart";
 
 export default function PackageCartItem({
@@ -20,7 +20,7 @@ export default function PackageCartItem({
           <div className="text-base font-normal ml-4 ">${optionPrice}</div>
 
           <a
-            href={packageNameCamelCase({ packageName: packageName })}
+            href={getPackageBaseUrl({ packageName })}
             aria-label={`Edit selection: ${packageName}`}
             data-testid="edit-service"
             className="ml-4 flex market-link"

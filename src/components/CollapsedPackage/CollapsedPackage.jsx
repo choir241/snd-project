@@ -18,13 +18,13 @@ export default function CollapsedPackage({
           </label>
           <div
             data-testid="service-row-description"
-            className="paragraph-20 text-ellipsis overflow-hidden line-clamp-2"
+            className="flex flex-col items-start paragraph-20 text-ellipsis overflow-hidden line-clamp-2"
           >
             {packageFirstService && packageSecondService ? (
-              <ul>
-                <li>{packageFirstService}</li>
-                <li>{packageSecondService}</li>
-              </ul>
+              <>
+                <span>{packageFirstService}</span>
+                <span>{packageSecondService}</span>
+              </>
             ) : (
               ""
             )}

@@ -75,6 +75,7 @@ export const labels = {
     updateButton: "Update",
     removeButton: "Remove",
     addButton: "Add",
+    backButton: "Back"
   },
   packages: {
     expressPackage: {

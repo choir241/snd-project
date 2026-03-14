@@ -15,7 +15,7 @@ export default function OptionRadios({
       aria-selected="true"
       id="option-form"
       htmlFor={optionName}
-      className={`option-form-container market-row has-slotted-control ${className}`}
+      className={`px-4 option-form-container market-row ]has-slotted-control ${className}`}
     >
       <div className="radio-label-container">
         <label slot="label">{optionName}</label>

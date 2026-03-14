@@ -7,3 +7,8 @@ export function packageNameCamelCase({ packageName }) {
     }
   }, "");
 }
+
+export function getPackageBaseUrl({ packageName }) {
+  const camelCaseName = packageNameCamelCase({ packageName });
+  return `/${camelCaseName}`;
+}

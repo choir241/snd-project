@@ -30,6 +30,12 @@ export default function PackageButtons({
       </button>
     </div>
   ) : (
+    <div className="package-button-container">
+    <button className="button remove-button">
+      <a href = "/bookings">
+        {labels.services.backButton}
+      </a>
+    </button>
     <button
       className="button"
       onClick={() =>
@@ -45,5 +51,7 @@ export default function PackageButtons({
     >
       {labels.services.addButton}
     </button>
+    </div>
+
   );
 }
