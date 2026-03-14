@@ -317,14 +317,6 @@ export default function Home() {
     window.open("https://www.facebook.com/Supremenomads/", "_blank");
   };
 
-  const scrollToQuickLinks = (event) => {
-    event.preventDefault();
-    const element = document.getElementById("quick-links");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   // Close hamburger menu when clicking outside and navbar scroll effect
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -664,7 +656,7 @@ export default function Home() {
                 <p className="header-top mb-3 text-center text-sm-start">
                   Gallery
                 </p>
-                <h2 className="text-white display-4 text-center text-sm-start">
+                <h2 className="text-white display-4 text-left text-sm-start">
                   Latest Projects
                 </h2>
               </div>
@@ -793,10 +785,10 @@ export default function Home() {
       {/* Detailing Packages Section */}
       <section id="detailingPrice" className="py-5 paint-packages">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
+          <div className="row">
+            <div className="col-lg-8 text-left">
               <p className="header-top mb-3">Our Services</p>
-              <h2 className="display-4">Detailing Packages</h2>
+              <h2 className="display-4 mb-4">Detailing Packages</h2>
             </div>
           </div>
 
@@ -805,7 +797,7 @@ export default function Home() {
             <div className="row justify-content-left">
               <div className="col-md-auto">
                 <button
-                  className={`m-0 nav-link ${activeTab === "regular-tab-pane" ? "active" : ""}`}
+                  className={`m-0 mb-2 nav-link ${activeTab === "regular-tab-pane" ? "active" : ""}`}
                   onClick={() => handleTabClick("regular-tab-pane")}
                   type="button"
                 >
@@ -814,7 +806,7 @@ export default function Home() {
               </div>
               <div className="col-md-auto">
                 <button
-                  className={`nav-link ${activeTab === "medium-tab-pane" ? "active" : ""}`}
+                  className={`m-0 mb-2 nav-link ${activeTab === "medium-tab-pane" ? "active" : ""}`}
                   onClick={() => handleTabClick("medium-tab-pane")}
                   type="button"
                 >
@@ -823,7 +815,7 @@ export default function Home() {
               </div>
               <div className="col-md-auto">
                 <button
-                  className={`nav-link ${activeTab === "van-tab-pane" ? "active" : ""}`}
+                  className={`m-0 nav-link ${activeTab === "van-tab-pane" ? "active" : ""}`}
                   onClick={() => handleTabClick("van-tab-pane")}
                   type="button"
                 >
@@ -1579,7 +1571,7 @@ export default function Home() {
             <img
               src="https://res.cloudinary.com/dnsc73sla/image/upload/v1752006942/logo-gold-horse-name_dmbkjk.svg"
               alt="Supreme Nomads Logo"
-              className="footer-logo mx-auto d-block mt-5"
+              className="footer-logo mx-auto d-block mb-5"
             />
           </div>
 

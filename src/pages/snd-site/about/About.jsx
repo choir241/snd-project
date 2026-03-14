@@ -6,7 +6,6 @@ import Logo from "../images/horizontal-logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/style.css";
 import "./About.css";
-import { getFullYear, getDate, getMonth } from "../../../hooks/dateFuncs";
 
 export default function About() {
   const location = useLocation();
@@ -148,21 +147,6 @@ export default function About() {
       }
     };
   }, []);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add netlify integration or other submission logic here
-  };
 
   // Navbar scroll effect
   useEffect(() => {
