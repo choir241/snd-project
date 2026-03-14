@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import "../css/vendor.css";
 import 'swiper/css';
 import Logo from '../images/horizontal-logo.png';
@@ -8,12 +8,23 @@ import "../css/style.css";
 import "./About.css";
 
 export default function About() {
-  // Event handlers
+  const location = useLocation();
+
   const openFacebook = (event) => {
     event.preventDefault();
     window.open('https://www.facebook.com/Supremenomads/', '_blank');
   };
 
+  const isActiveLink = (path) => {
+    return location.pathname === path ? 'active' : '';
+  };
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: ''
+  });
+
+  // Load Iconify and Bootstrap
   useEffect(() => {
     // Load external CSS
     const swiperCSS = document.createElement('link');
@@ -122,30 +133,45 @@ export default function About() {
     };
   }, []);
 
-  // Navbar scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const scroll = window.scrollY;
-      const navbar = document.querySelector('.navbar.fixed-top');
-      
-      if (navbar) {
-        if (scroll >= 200) {
-          navbar.classList.add('bg-black');
-        } else {
-          navbar.classList.remove('bg-black');
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    // You can add netlify integration or other submission logic here
+  };
+
+    // Navbar scroll effect
+    useEffect(() => {
+      const handleScroll = () => {
+        const scroll = window.scrollY;
+        const navbar = document.querySelector('.navbar.fixed-top');
+        
+        if (navbar) {
+          if (scroll >= 200) {
+            navbar.classList.add('bg-black');
+          } else {
+            navbar.classList.remove('bg-black');
+          }
         }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    
-    // Initial check
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      
+      // Initial check
+      handleScroll();
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
 
   return (
     <>
@@ -197,31 +223,31 @@ export default function About() {
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/')}`}
                     to="/"
                   >Home</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/gallery')}`}
                     to="/snd-site/gallery"
                   >Gallery</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/services')}`}
                     to="/snd-site/services"
                   >Our Services</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/about')}`}
                     to="/snd-site/about"
                   >About Us</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/academy')}`}
                     to="/snd-site/academy"
                   >Academy</Link>
                 </li>

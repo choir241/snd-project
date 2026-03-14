@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from '../images/horizontal-logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/style.css";
@@ -105,19 +105,29 @@ const PAINT_TABS = {
 export default function Services() {
   const [activeTab, setActiveTab] = useState('regular-tab-pane');
   const [paintTab, setPaintTab] = useState(PAINT_TABS.REGULAR);
+  const location = useLocation();
 
+  const openFacebook = (event) => {
+    event.preventDefault();
+    window.open('https://www.facebook.com/Supremenomads/', '_blank');
+  };
 
+  const isActiveLink = (path) => {
+    return location.pathname === path ? 'active' : '';
+  };
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: ''
+  });
+
+  // Load Iconify and Bootstrap
   useEffect(() => {
     // Load external CSS
     const swiperCSS = document.createElement('link');
     swiperCSS.rel = 'stylesheet';
     swiperCSS.href = 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css';
     document.head.appendChild(swiperCSS);
-
-    const datepickerCSS = document.createElement('link');
-    datepickerCSS.rel = 'stylesheet';
-    datepickerCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css';
-    document.head.appendChild(datepickerCSS);
 
     // AOS CSS
     const aosCSS = document.createElement('link');
@@ -166,12 +176,6 @@ export default function Services() {
     aosScript.async = true;
     document.body.appendChild(aosScript);
 
-    // Load Isotope
-    const isotopeScript = document.createElement('script');
-    isotopeScript.src = 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js';
-    isotopeScript.async = true;
-    document.body.appendChild(isotopeScript);
-
     // Load Iconify
     const iconifyScript = document.createElement('script');
     iconifyScript.src = 'https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js';
@@ -189,44 +193,13 @@ export default function Services() {
     pluginsScript.async = true;
     document.body.appendChild(pluginsScript);
 
-    const mainScript = document.createElement('script');
-    mainScript.src = '/snd-site/js/main.js';
-    mainScript.async = true;
-    document.body.appendChild(mainScript);
-
     const scriptScript = document.createElement('script');
     scriptScript.src = '/snd-site/js/script.js';
     scriptScript.async = true;
     document.body.appendChild(scriptScript);
 
-    // Initialize Swiper after scripts load
+    // Initialize AOS
     setTimeout(() => {
-      if (window.Swiper) {
-        new window.Swiper('.project-swiper', {
-          slidesPerView: 'auto',
-          spaceBetween: 30,
-          navigation: {
-            nextEl: '.icon-arrow-right',
-            prevEl: '.icon-arrow-left',
-          },
-          breakpoints: {
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-            },
-            1400: {
-              slidesPerView: 4,
-              spaceBetween: 10,
-            },
-          }
-        });
-      }
-      
-      // Initialize AOS
       if (window.AOS) {
         window.AOS.init({
           duration: 1000,
@@ -239,7 +212,6 @@ export default function Services() {
     return () => {
       try {
         document.head.removeChild(swiperCSS);
-        document.head.removeChild(datepickerCSS);
         document.head.removeChild(aosCSS);
         document.head.removeChild(preconnect1);
         document.head.removeChild(preconnect2);
@@ -248,11 +220,9 @@ export default function Services() {
         document.body.removeChild(bootstrapScript);
         document.body.removeChild(swiperScript);
         document.body.removeChild(aosScript);
-        document.body.removeChild(isotopeScript);
         document.body.removeChild(iconifyScript);
         document.body.removeChild(modernizrScript);
         document.body.removeChild(pluginsScript);
-        document.body.removeChild(mainScript);
         document.body.removeChild(scriptScript);
       } catch (e) {
         // Ignore cleanup errors
@@ -260,11 +230,45 @@ export default function Services() {
     };
   }, []);
 
-  // Event handlers
-  const openFacebook = (event) => {
-    event.preventDefault();
-    window.open('https://www.facebook.com/Supremenomads/', '_blank');
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    // You can add netlify integration or other submission logic here
+  };
+
+    // Navbar scroll effect
+    useEffect(() => {
+      const handleScroll = () => {
+        const scroll = window.scrollY;
+        const navbar = document.querySelector('.navbar.fixed-top');
+        
+        if (navbar) {
+          if (scroll >= 200) {
+            navbar.classList.add('bg-black');
+          } else {
+            navbar.classList.remove('bg-black');
+          }
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      
+      // Initial check
+      handleScroll();
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
 
   return (
     <>
@@ -402,180 +406,180 @@ export default function Services() {
         }
       `}</style>
       
-      {/* Nav */}
-      <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
-        {/* Logo */}
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            <img src={Logo} alt="logo" />
-          </Link>
-          
-          {/* Mobile Layout */}
-          <div className="d-flex align-items-center gap-3 d-xl-none">
-            <a href="tel:+17045611927" className="text-white pt-2">
-              <iconify-icon
-                icon="ic:baseline-call"
-                className="call-icon"
-                style={{ fontSize: "1.5rem" }}
-              />
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasNavbar"
-              aria-controls="offcanvasNavbar"
-            >
-              <iconify-icon
-                icon="system-uicons:menu-hamburger"
-                className="hamburger-menu"
-              />
-            </button>
-          </div>
-          <div
-            className="offcanvas offcanvas-end"
-            tabIndex={-1}
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-          >
-            <div className="offcanvas-header my-2 mx-3">
-              <img
-                src="/images/logo-gold-text.svg"
-                alt="Supreme Nomads Detailing Logo"
-                className="hamburger-logo"
-              />
-            </div>
-            <div className="offcanvas-body">
-              {/* Routes */}
-              <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
-                <li className="nav-item">
-                  <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
-                    to="/"
-                  >Home</Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
-                    to="/snd-site/gallery"
-                  >Gallery</Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
-                    to="/snd-site/services"
-                  >Our Services</Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
-                    to="/snd-site/about"
-                  >About Us</Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
-                    to="/snd-site/academy"
-                  >Academy</Link>
-                </li>
-                {/* Socials */}
-                <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
-                  <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
-                    <li className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center"
-                        href="tel:+17045611927"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <iconify-icon
-                          icon="ic:baseline-call"
-                          className="social-icon text-white"
-                        />
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center"
-                        href="https://www.tiktok.com/@supremenomads704"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <iconify-icon
-                          icon="ri:tiktok-fill"
-                          className="social-icon text-white"
-                        />
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center"
-                        href="https://www.instagram.com/supremenomads"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <iconify-icon
-                          icon="ri:instagram-line"
-                          className="social-icon text-white"
-                        />
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center"
-                        href="https://www.facebook.com/Supremenomads/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={openFacebook}
-                      >
-                        <iconify-icon
-                          icon="ri:facebook-fill"
-                          className="social-icon text-white"
-                        />
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center"
-                        href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <iconify-icon
-                          icon="mdi:yelp"
-                          className="social-icon text-white"
-                        />
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center"
-                        href="https://www.youtube.com/@SupremeNomads"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <iconify-icon
-                          icon="ri:youtube-fill"
-                          className="social-icon text-white"
-                        />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                {/* Book Now */}
-                <div className="book-now-div">
-                  <Link
-                    to="/bookings"
-                    className="btn btn-primary book-now-btn w-100 w-xl-auto ms-0 ms-xl-3"
-                  >
-                    Book Now
-                  </Link>
-                </div>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
+       {/* Nav */}
+       <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
+         {/* Logo */}
+         <div className="container-fluid">
+           <Link className="navbar-brand" to="/">
+             <img src={Logo} alt="logo" />
+           </Link>
+           
+           {/* Mobile Layout */}
+           <div className="d-flex align-items-center gap-3 d-xl-none">
+             <a href="tel:+17045611927" className="text-white pt-2">
+               <iconify-icon
+                 icon="ic:baseline-call"
+                 className="call-icon"
+                 style={{ fontSize: "1.5rem" }}
+               />
+             </a>
+             <button
+               className="navbar-toggler"
+               type="button"
+               data-bs-toggle="offcanvas"
+               data-bs-target="#offcanvasNavbar"
+               aria-controls="offcanvasNavbar"
+             >
+               <iconify-icon
+                 icon="system-uicons:menu-hamburger"
+                 className="hamburger-menu"
+               />
+             </button>
+           </div>
+           <div
+             className="offcanvas offcanvas-end"
+             tabIndex={-1}
+             id="offcanvasNavbar"
+             aria-labelledby="offcanvasNavbarLabel"
+           >
+             <div className="offcanvas-header my-2 mx-3">
+               <img
+                 src="/images/logo-gold-text.svg"
+                 alt="Supreme Nomads Detailing Logo"
+                 className="hamburger-logo"
+               />
+             </div>
+             <div className="offcanvas-body">
+               {/* Routes */}
+               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
+                 <li className="nav-item">
+                   <Link
+                     className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/')}`}
+                     to="/"
+                   >Home</Link>
+                 </li>
+                 <li className="nav-item">
+                   <Link
+                     className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/gallery')}`}
+                     to="/snd-site/gallery"
+                   >Gallery</Link>
+                 </li>
+                 <li className="nav-item">
+                   <Link
+                     className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/services')}`}
+                     to="/snd-site/services"
+                   >Our Services</Link>
+                 </li>
+                 <li className="nav-item">
+                   <Link
+                     className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/about')}`}
+                     to="/snd-site/about"
+                   >About Us</Link>
+                 </li>
+                 <li className="nav-item">
+                   <Link
+                     className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/academy')}`}
+                     to="/snd-site/academy"
+                   >Academy</Link>
+                 </li>
+                 {/* Socials */}
+                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
+                   <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
+                     <li className="nav-item">
+                       <a
+                         className="nav-link d-flex align-items-center"
+                         href="tel:+17045611927"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                       >
+                         <iconify-icon
+                           icon="ic:baseline-call"
+                           className="social-icon text-white"
+                         />
+                       </a>
+                     </li>
+                     <li className="nav-item">
+                       <a
+                         className="nav-link d-flex align-items-center"
+                         href="https://www.tiktok.com/@supremenomads704"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                       >
+                         <iconify-icon
+                           icon="ri:tiktok-fill"
+                           className="social-icon text-white"
+                         />
+                       </a>
+                     </li>
+                     <li className="nav-item">
+                       <a
+                         className="nav-link d-flex align-items-center"
+                         href="https://www.instagram.com/supremenomads"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                       >
+                         <iconify-icon
+                           icon="ri:instagram-line"
+                           className="social-icon text-white"
+                         />
+                       </a>
+                     </li>
+                     <li className="nav-item">
+                       <a
+                         className="nav-link d-flex align-items-center"
+                         href="https://www.facebook.com/Supremenomads/"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         onClick={openFacebook}
+                       >
+                         <iconify-icon
+                           icon="ri:facebook-fill"
+                           className="social-icon text-white"
+                         />
+                       </a>
+                     </li>
+                     <li className="nav-item">
+                       <a
+                         className="nav-link d-flex align-items-center"
+                         href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                       >
+                         <iconify-icon
+                           icon="mdi:yelp"
+                           className="social-icon text-white"
+                         />
+                       </a>
+                     </li>
+                     <li className="nav-item">
+                       <a
+                         className="nav-link d-flex align-items-center"
+                         href="https://www.youtube.com/@SupremeNomads"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                       >
+                         <iconify-icon
+                           icon="ri:youtube-fill"
+                           className="social-icon text-white"
+                         />
+                       </a>
+                     </li>
+                   </ul>
+                 </div>
+                 {/* Book Now */}
+                 <div className="book-now-div">
+                   <Link
+                     to="/bookings"
+                     className="btn btn-primary book-now-btn w-100 w-xl-auto ms-0 ms-xl-3"
+                   >
+                     Book Now
+                   </Link>
+                 </div>
+               </ul>
+             </div>
+           </div>
+         </div>
+       </nav>
 
       {/* Hero Section */}
       <section className="hero-section hero-services">
