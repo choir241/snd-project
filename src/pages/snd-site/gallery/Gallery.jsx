@@ -238,7 +238,10 @@ export default function Gallery() {
       const scroll = window.scrollY;
       const navbar = document.querySelector('.navbar.fixed-top');
       
-      if (navbar) {
+      // Only apply scroll effect on larger screens (xl and above)
+      const isLargeScreen = window.innerWidth >= 1200;
+      
+      if (navbar && isLargeScreen) {
         if (scroll >= 200) {
           navbar.classList.add('bg-black');
         } else {
@@ -248,12 +251,14 @@ export default function Gallery() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
     
     // Initial check
     handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
   }, []);
 
@@ -297,7 +302,7 @@ export default function Gallery() {
           >
             <div className="offcanvas-header my-2 mx-3">
               <img
-                src="/images/logo-gold-text.svg"
+                src="/snd-site/images/horizontal-logo.png"
                 alt="Supreme Nomads Detailing Logo"
                 className="hamburger-logo"
               />

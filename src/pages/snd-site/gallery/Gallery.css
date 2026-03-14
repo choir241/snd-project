@@ -312,3 +312,55 @@
   justify-content: center;
   gap: 20px;
 }
+
+/* Hamburger menu logo styling */
+.hamburger-logo {
+  max-width: 200px;
+  height: auto;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Hide navigation links outside offcanvas on mobile */
+@media (max-width: 1199.98px) {
+  .navbar .navbar-nav {
+    display: none !important;
+  }
+  
+  .navbar .offcanvas .navbar-nav {
+    display: flex !important;
+  }
+  
+  .navbar .book-now-div {
+    display: none !important;
+  }
+  
+  .navbar .offcanvas .book-now-div {
+    display: block !important;
+  }
+  
+  /* Prevent navbar collapse on mobile */
+  .navbar.fixed-top {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    transition: none !important;
+    min-height: auto !important;
+    padding: inherit !important;
+  }
+  
+  .navbar.fixed-top.bg-black {
+    background-color: transparent !important;
+  }
+  
+  /* Ensure hamburger menu stays visible */
+  .navbar-toggler {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .d-xl-none {
+    display: flex !important;
+  }
+}
