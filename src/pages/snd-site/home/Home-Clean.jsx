@@ -12,6 +12,8 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('regular-tab-pane');
   const [displayedImages, setDisplayedImages] = useState([]);
   const carouselRef = useRef(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
@@ -64,28 +66,77 @@ export default function Home() {
     setDisplayedImages(initialDisplay);
   }, []);
 
-  // Carousel navigation using array manipulation
+  // Lightbox functions
+  const openLightbox = (index) => {
+    setCurrentImageIndex(index);
+    setIsLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? displayedImages.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prev) => (prev === displayedImages.length - 1 ? 0 : prev + 1));
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (!isLightboxOpen) return;
+      
+      switch (event.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          goToPrevious();
+          break;
+        case 'ArrowRight':
+          goToNext();
+          break;
+      }
+    };
+
+    if (isLightboxOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isLightboxOpen, currentImageIndex]);
+
+  // Carousel navigation using smooth scrolling
   const scrollCarousel = (direction) => {
     console.log('🎡🎡🎡🎡 SCROLL CLICKED 🎡🎡🎡🎡🎡');
     console.log('📍 Direction:', direction);
-    console.log('� Current displayed images count:', displayedImages.length);
     
-    let newDisplayedImages;
-    
-    if (direction === 'left') {
-      console.log('⬅️ Moving left - removing last image, adding new one at start');
-      // Remove last image, add new one at start
-      const lastImage = displayedImages[displayedImages.length - 1];
-      newDisplayedImages = [lastImage, ...displayedImages.slice(0, -1)];
-    } else {
-      console.log('➡️ Moving right - removing first image, adding new one at end');
-      // Remove first image, add new one at end
-      const firstImage = displayedImages[0];
-      newDisplayedImages = [...displayedImages.slice(1), firstImage];
+    const carousel = document.getElementById('projectsCarousel');
+    if (carousel) {
+      const scrollAmount = 330; // Width of one item + gap
+      const currentScroll = carousel.scrollLeft;
+      
+      if (direction === 'left') {
+        console.log('⬅️ Moving left');
+        carousel.scrollTo({
+          left: Math.max(0, currentScroll - scrollAmount),
+          behavior: 'smooth'
+        });
+      } else {
+        console.log('➡️ Moving right');
+        carousel.scrollTo({
+          left: currentScroll + scrollAmount,
+          behavior: 'smooth'
+        });
+      }
     }
-    
-    console.log('🔄 Updating displayed images array');
-    setDisplayedImages(newDisplayedImages);
   };
 
   useEffect(() => {
@@ -609,11 +660,11 @@ export default function Home() {
                         <a
                           href={image.link}
                           title={image.title}
-                          style={{
-                            display: 'block',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            textDecoration: 'none'
+                          className="image-link"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const index = displayedImages.findIndex(img => img.id === image.id);
+                            openLightbox(index);
                           }}
                         >
                           <img
@@ -915,6 +966,62 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      {isLightboxOpen && (
+        <div 
+          className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center"
+          style={{ zIndex: 9999 }}
+          onClick={closeLightbox}
+        >
+          {/* Previous Button - Outside Image */}
+          <button
+            className="position-absolute top-50 start-0 translate-middle-y text-white border-0 bg-transparent"
+            style={{ 
+              zIndex: 10001, 
+              left: '2rem',
+              fontSize: '3rem',
+              cursor: 'pointer'
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+          >
+            <iconify-icon icon="mdi:chevron-left" />
+          </button>
+
+          {/* Image */}
+          <div className="position-relative" style={{ maxWidth: '90vw', maxHeight: '90vh' }}>
+            <img 
+              src={displayedImages[currentImageIndex].link}
+              alt={displayedImages[currentImageIndex].title}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '80vh',
+                objectFit: 'contain'
+              }}
+            />
+          </div>
+
+          {/* Next Button - Outside Image */}
+          <button
+            className="position-absolute top-50 end-0 translate-middle-y text-white border-0 bg-transparent"
+            style={{ 
+              zIndex: 10001, 
+              right: '2rem',
+              fontSize: '3rem',
+              cursor: 'pointer'
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+          >
+            <iconify-icon icon="mdi:chevron-right" />
+          </button>
+        </div>
+      )}
 
       {/* Footer */}
       <footer id="footer" className="py-3">
