@@ -26,7 +26,7 @@ CSS STRUCTURE:
 
 /*  General Styles
 /*----------------------------------------------*/
-ul li{
+ul li {
   list-style: none;
 }
 
@@ -283,18 +283,18 @@ iconify-icon.social-icon {
 
 /*---- project section style start ----*/
 .swiper-slide {
-    width: auto !important;
+  width: auto !important;
 }
 
 iconify-icon.icon-arrow-left,
 iconify-icon.icon-arrow-right {
-    color: var(--bs-light);
-    font-size: 70px;
+  color: var(--bs-light);
+  font-size: 70px;
 }
 
 iconify-icon.icon-arrow-left:active,
 iconify-icon.icon-arrow-right:active {
-    color: var(--bs-light);
+  color: var(--bs-light);
 }
 
 /* @media only screen and (max-width: 576px) {
@@ -554,7 +554,9 @@ button.filter-button:hover {
 /* chocolat style  */
 .chocolat-wrapper.chocolat-visible {
   z-index: 9999999999;
-  transition: opacity 0.4s, visibility 0s;
+  transition:
+    opacity 0.4s,
+    visibility 0s;
   opacity: 1;
   visibility: visible;
 }
@@ -607,7 +609,7 @@ button.filter-button:hover {
 }
 
 .mainbtn:focus,
-.mainbtn:active{
+.mainbtn:active {
   background-color: #1452a2 !important;
   border-color: #1452a2 !important;
   outline: none;
@@ -1182,16 +1184,16 @@ button.filter-button:hover {
 
 @media only screen and (max-width: 768px) {
   .hero-text-div {
-    padding: 45vh 10vw; 
+    padding: 45vh 10vw;
     height: 100vh;
     /* display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center;  */
-}
-.disclaimer {
-  font-size: xx-small;
-}
+  }
+  .disclaimer {
+    font-size: xx-small;
+  }
 }
 /* Youtube Video */
 
@@ -1306,70 +1308,70 @@ button.filter-button:hover {
 }
 
 /* Gallery Socials */
-       /* Container for consistent spacing */
-        .social-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px 15px;
-        }
-        
-        /* Fixed width wrapper for each button */
+/* Container for consistent spacing */
+.social-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 15px;
+}
+
+/* Fixed width wrapper for each button */
 .social-button-wrapper {
   width: 200px;
   max-width: 90vw;
   flex-shrink: 0;
 }
-        
-        /* Fixed dimensions and centering for buttons */
-        .gallerySocials {
-            /* Fixed width, flexible height */
-            width: 100% !important;
-            min-height: 60px !important;
-            
-            /* Fixed font size */
-            font-size: 16px !important;
-            
-            /* Perfect centering */
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            text-align: center !important;
-            
-            /* Allow text wrapping */
-            white-space: normal;
-            word-wrap: break-word;
-            
-            /* Remove Bootstrap margins */
-            margin: 0 !important;
-            padding: 15px !important;
-        }
-        
-        /* Responsive adjustments for small screens */
-        @media (max-width: 480px) {
-            .social-button-wrapper {
-                width: 180px;
-            }
-            
-            .gallerySocials {
-                font-size: 14px !important;
-                min-height: 50px !important;
-            }
-        }
-        
-        /* Extra small screens */
-        @media (max-width: 360px) {
-            .social-button-wrapper {
-                width: 160px;
-            }
-            
-            .gallerySocials {
-                font-size: 13px !important;
-                min-height: 45px !important;
-                padding: 12px !important;
-            }
-        }
+
+/* Fixed dimensions and centering for buttons */
+.gallerySocials {
+  /* Fixed width, flexible height */
+  width: 100% !important;
+  min-height: 60px !important;
+
+  /* Fixed font size */
+  font-size: 16px !important;
+
+  /* Perfect centering */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+
+  /* Allow text wrapping */
+  white-space: normal;
+  word-wrap: break-word;
+
+  /* Remove Bootstrap margins */
+  margin: 0 !important;
+  padding: 15px !important;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 480px) {
+  .social-button-wrapper {
+    width: 180px;
+  }
+
+  .gallerySocials {
+    font-size: 14px !important;
+    min-height: 50px !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .social-button-wrapper {
+    width: 160px;
+  }
+
+  .gallerySocials {
+    font-size: 13px !important;
+    min-height: 45px !important;
+    padding: 12px !important;
+  }
+}
 
 @media (min-width: 992px) {
   .social-container {
@@ -1379,25 +1381,27 @@ button.filter-button:hover {
     overflow-x: auto; /* allow horizontal scrolling if needed */
   }
 }
-   
+
 /* Gallery Images */
 
-.portfolio-img{
+.portfolio-img {
   width: 100%;
-  height: auto; 
+  height: auto;
 }
 
-.image-link{
+.image-link {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
 }
 
-#detailingPrice, #maintenancePrice, #add-ons-section, #stain-removal {
+#detailingPrice,
+#maintenancePrice,
+#add-ons-section,
+#stain-removal {
   scroll-margin-top: 145px;
 }
-
 
 /* Only affects mobile/tablet view (hamburger menu) */
 @media (max-width: 1199.98px) {
@@ -1412,23 +1416,21 @@ button.filter-button:hover {
   .offcanvas .social-div {
     padding: 5%;
   }
-
 }
 
-.member-photo{
+.member-photo {
   width: 100%;
   height: auto;
 }
 
-
 @media only screen and (max-width: 1500px) {
-    .social-div {
-        display: none;
-    }
+  .social-div {
+    display: none;
+  }
 }
 
 /* Nav Highlighting */
-/* * Only highlight dropdown toggle on hover, not when dropdown is open */ 
+/* * Only highlight dropdown toggle on hover, not when dropdown is open */
 /* .navbar-nav .nav-item.dropdown .nav-link.dropdown-toggle:hover {
   background: rgba(255, 255, 255, 0.35);
   color: var(--bs-light);

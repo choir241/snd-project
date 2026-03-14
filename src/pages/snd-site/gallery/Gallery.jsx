@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/vendor.css";
-import 'swiper/css';
-import Logo from '../images/horizontal-logo.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "swiper/css";
+import Logo from "../images/horizontal-logo.png";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/style.css";
 import "./Gallery.css";
 
@@ -17,51 +17,57 @@ export default function Gallery() {
     {
       id: 1,
       src: "https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754362192/gal1_uc2v15.png",
-      largeSrc: "https://res.cloudinary.com/dnsc73sla/image/upload/v1754362192/gal1_uc2v15.png",
+      largeSrc:
+        "https://res.cloudinary.com/dnsc73sla/image/upload/v1754362192/gal1_uc2v15.png",
       title: "Porsche Macan",
-      category: "polish"
+      category: "polish",
     },
     {
       id: 2,
       src: "https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754361140/gal4_ulohwf.png",
-      largeSrc: "https://res.cloudinary.com/dnsc73sla/image/upload/v1754361140/gal4_ulohwf.png",
+      largeSrc:
+        "https://res.cloudinary.com/dnsc73sla/image/upload/v1754361140/gal4_ulohwf.png",
       title: "Jeep Grand Cherokee",
-      category: "express"
+      category: "express",
     },
     {
       id: 3,
       src: "https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754184608/gal1_rtpi1d.png",
-      largeSrc: "https://res.cloudinary.com/dnsc73sla/image/upload/v1754184608/gal1_rtpi1d.png",
+      largeSrc:
+        "https://res.cloudinary.com/dnsc73sla/image/upload/v1754184608/gal1_rtpi1d.png",
       title: "Lexus ES 350",
-      category: "express"
+      category: "express",
     },
     {
       id: 4,
       src: "https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754182837/lp2_pyi66n.png",
-      largeSrc: "https://res.cloudinary.com/dnsc73sla/image/upload/v1754182837/lp2_pyi66n.png",
+      largeSrc:
+        "https://res.cloudinary.com/dnsc73sla/image/upload/v1754182837/lp2_pyi66n.png",
       title: "Honda Civic Si",
-      category: "polish"
+      category: "polish",
     },
     {
       id: 5,
       src: "https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754359599/lp8_fxd3br.png",
-      largeSrc: "https://res.cloudinary.com/dnsc73sla/image/upload/v1754359599/lp8_fxd3br.png",
+      largeSrc:
+        "https://res.cloudinary.com/dnsc73sla/image/upload/v1754359599/lp8_fxd3br.png",
       title: "Mercedes G Wagon",
-      category: "polish"
+      category: "polish",
     },
     {
       id: 6,
       src: "https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_500,h_500/v1754364681/lp5_arc7pw.png",
-      largeSrc: "https://res.cloudinary.com/dnsc73sla/image/upload/v1754364681/lp5_arc7pw.png",
+      largeSrc:
+        "https://res.cloudinary.com/dnsc73sla/image/upload/v1754364681/lp5_arc7pw.png",
       title: "BMW X3",
-      category: "express"
-    }
+      category: "express",
+    },
   ];
 
   // Event handlers
   const openFacebook = (event) => {
     event.preventDefault();
-    window.open('https://www.facebook.com/Supremenomads/', '_blank');
+    window.open("https://www.facebook.com/Supremenomads/", "_blank");
   };
 
   const handleMouseEnter = (id) => {
@@ -75,33 +81,37 @@ export default function Gallery() {
   const openLightbox = (index) => {
     setCurrentImageIndex(index);
     setIsLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setIsLightboxOpen(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   const goToPrevious = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? galleryImages.length - 1 : prev - 1,
+    );
   };
 
   const goToNext = () => {
-    setCurrentImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+    setCurrentImageIndex((prev) =>
+      prev === galleryImages.length - 1 ? 0 : prev + 1,
+    );
   };
 
   const handleKeyDown = (event) => {
     if (!isLightboxOpen) return;
-    
+
     switch (event.key) {
-      case 'Escape':
+      case "Escape":
         closeLightbox();
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         goToPrevious();
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         goToNext();
         break;
       default:
@@ -111,77 +121,82 @@ export default function Gallery() {
 
   useEffect(() => {
     // Load external CSS
-    const swiperCSS = document.createElement('link');
-    swiperCSS.rel = 'stylesheet';
-    swiperCSS.href = 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css';
+    const swiperCSS = document.createElement("link");
+    swiperCSS.rel = "stylesheet";
+    swiperCSS.href =
+      "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css";
     document.head.appendChild(swiperCSS);
 
     // AOS CSS
-    const aosCSS = document.createElement('link');
-    aosCSS.rel = 'stylesheet';
-    aosCSS.href = 'https://unpkg.com/aos@2.3.1/dist/aos.css';
+    const aosCSS = document.createElement("link");
+    aosCSS.rel = "stylesheet";
+    aosCSS.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
     document.head.appendChild(aosCSS);
 
     // Google Fonts
-    const preconnect1 = document.createElement('link');
-    preconnect1.rel = 'preconnect';
-    preconnect1.href = 'https://fonts.googleapis.com';
+    const preconnect1 = document.createElement("link");
+    preconnect1.rel = "preconnect";
+    preconnect1.href = "https://fonts.googleapis.com";
     document.head.appendChild(preconnect1);
 
-    const preconnect2 = document.createElement('link');
-    preconnect2.rel = 'preconnect';
-    preconnect2.href = 'https://fonts.gstatic.com';
-    preconnect2.crossOrigin = '';
+    const preconnect2 = document.createElement("link");
+    preconnect2.rel = "preconnect";
+    preconnect2.href = "https://fonts.gstatic.com";
+    preconnect2.crossOrigin = "";
     document.head.appendChild(preconnect2);
 
-    const googleFonts = document.createElement('link');
-    googleFonts.rel = 'stylesheet';
-    googleFonts.href = 'https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Oswald:wght@500;600;700&display=swap';
+    const googleFonts = document.createElement("link");
+    googleFonts.rel = "stylesheet";
+    googleFonts.href =
+      "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Oswald:wght@500;600;700&display=swap";
     document.head.appendChild(googleFonts);
 
     // Load jQuery first (required for many scripts)
-    const jqueryScript = document.createElement('script');
-    jqueryScript.src = 'https://code.jquery.com/jquery-1.11.0.min.js';
+    const jqueryScript = document.createElement("script");
+    jqueryScript.src = "https://code.jquery.com/jquery-1.11.0.min.js";
     jqueryScript.async = true;
     document.body.appendChild(jqueryScript);
 
     // Load Bootstrap JS
-    const bootstrapScript = document.createElement('script');
-    bootstrapScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+    const bootstrapScript = document.createElement("script");
+    bootstrapScript.src =
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js";
     bootstrapScript.async = true;
     document.body.appendChild(bootstrapScript);
 
     // Load Swiper JS
-    const swiperScript = document.createElement('script');
-    swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js';
+    const swiperScript = document.createElement("script");
+    swiperScript.src =
+      "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js";
     swiperScript.async = true;
     document.body.appendChild(swiperScript);
 
     // Load AOS JS
-    const aosScript = document.createElement('script');
-    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    const aosScript = document.createElement("script");
+    aosScript.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
     aosScript.async = true;
     document.body.appendChild(aosScript);
 
     // Load Iconify
-    const iconifyScript = document.createElement('script');
-    iconifyScript.src = 'https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js';
+    const iconifyScript = document.createElement("script");
+    iconifyScript.src =
+      "https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js";
     iconifyScript.async = true;
     document.body.appendChild(iconifyScript);
 
     // Load local scripts
-    const modernizrScript = document.createElement('script');
-    modernizrScript.src = '/snd-site/js/modernizr.js';
+    const modernizrScript = document.createElement("script");
+    modernizrScript.src = "/snd-site/js/modernizr.js";
     modernizrScript.async = true;
     document.body.appendChild(modernizrScript);
 
-    const pluginsScript = document.createElement('script');
-    pluginsScript.src = '/snd-site/js/plugins.js';
+    const pluginsScript = document.createElement("script");
+    pluginsScript.src = "/snd-site/js/plugins.js";
     pluginsScript.async = true;
     document.body.appendChild(pluginsScript);
 
-    const scriptScript = document.createElement('script');
-    scriptScript.src = '/snd-site/js/script.js';
+    const scriptScript = document.createElement("script");
+    scriptScript.src = "/snd-site/js/script.js";
     scriptScript.async = true;
     document.body.appendChild(scriptScript);
 
@@ -224,11 +239,11 @@ export default function Gallery() {
     };
 
     if (isLightboxOpen) {
-      document.addEventListener('keydown', handleKeyDownGlobal);
+      document.addEventListener("keydown", handleKeyDownGlobal);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDownGlobal);
+      document.removeEventListener("keydown", handleKeyDownGlobal);
     };
   }, [isLightboxOpen, currentImageIndex]);
 
@@ -236,29 +251,29 @@ export default function Gallery() {
   useEffect(() => {
     const handleScroll = () => {
       const scroll = window.scrollY;
-      const navbar = document.querySelector('.navbar.fixed-top');
-      
+      const navbar = document.querySelector(".navbar.fixed-top");
+
       // Only apply scroll effect on larger screens (xl and above)
       const isLargeScreen = window.innerWidth >= 1200;
-      
+
       if (navbar && isLargeScreen) {
         if (scroll >= 200) {
-          navbar.classList.add('bg-black');
+          navbar.classList.add("bg-black");
         } else {
-          navbar.classList.remove('bg-black');
+          navbar.classList.remove("bg-black");
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
     // Initial check
     handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -271,7 +286,7 @@ export default function Gallery() {
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" />
           </Link>
-          
+
           {/* Mobile Layout */}
           <div className="d-flex align-items-center gap-3 d-xl-none">
             <a href="tel:+17045611927" className="text-white pt-2">
@@ -314,31 +329,41 @@ export default function Gallery() {
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/"
-                  >Home</Link>
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
                     to="/snd-site/gallery"
-                  >Gallery</Link>
+                  >
+                    Gallery
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/services"
-                  >Our Services</Link>
+                  >
+                    Our Services
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/about"
-                  >About Us</Link>
+                  >
+                    About Us
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/academy"
-                  >Academy</Link>
+                  >
+                    Academy
+                  </Link>
                 </li>
                 {/* Socials */}
                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
@@ -456,53 +481,65 @@ export default function Gallery() {
           <h2 className="display-4 text-center mb-5">Explore Our Work</h2>
           <div className="isotope-container">
             {galleryImages.map((image) => (
-              <div key={image.id} className="col-12 col-sm-6 col-md-4" style={{ padding: '0 15px', marginBottom: '30px' }}>
-                <div 
+              <div
+                key={image.id}
+                className="col-12 col-sm-6 col-md-4"
+                style={{ padding: "0 15px", marginBottom: "30px" }}
+              >
+                <div
                   style={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '300px',
-                    overflow: 'hidden',
-                    borderRadius: '10px',
-                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
-                    cursor: 'pointer',
-                    backgroundColor: '#000'
+                    position: "relative",
+                    width: "100%",
+                    height: "300px",
+                    overflow: "hidden",
+                    borderRadius: "10px",
+                    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+                    cursor: "pointer",
+                    backgroundColor: "#000",
                   }}
                   onClick={() => openLightbox(image.id - 1)}
                 >
                   {/* Test: Direct image tag with minimal styling */}
-                  <img 
-                    src={image.src} 
+                  <img
+                    src={image.src}
                     alt={image.title}
                     style={{
-                      position: 'absolute',
-                      top: '0',
-                      left: '0',
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
+                      position: "absolute",
+                      top: "0",
+                      left: "0",
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
                     }}
                   />
-                  
+
                   {/* Simple overlay */}
-                  <div 
+                  <div
                     style={{
-                      position: 'absolute',
-                      top: '0',
-                      left: '0',
-                      width: '100%',
-                      height: '100%',
-                      background: 'rgba(0, 0, 0, 0.6)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      position: "absolute",
+                      top: "0",
+                      left: "0",
+                      width: "100%",
+                      height: "100%",
+                      background: "rgba(0, 0, 0, 0.6)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       opacity: 0,
-                      transition: 'opacity 0.3s ease'
+                      transition: "opacity 0.3s ease",
                     }}
-                    onMouseEnter={(e) => e.target.style.opacity = '1'}
-                    onMouseLeave={(e) => e.target.style.opacity = '0'}
+                    onMouseEnter={(e) => (e.target.style.opacity = "1")}
+                    onMouseLeave={(e) => (e.target.style.opacity = "0")}
                   >
-                    <h3 style={{ color: 'white', margin: '0', textAlign: 'center' }}>{image.title}</h3>
+                    <h3
+                      style={{
+                        color: "white",
+                        margin: "0",
+                        textAlign: "center",
+                      }}
+                    >
+                      {image.title}
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -537,14 +574,14 @@ export default function Gallery() {
 
       {/* YouTube Embed */}
       <div className="video-container">
-        <iframe 
-          width="560" 
-          height="315" 
-          src="https://www.youtube.com/embed/BnKc-n4MM9c?si=5RnSswOmSIbUd_1a" 
-          title="YouTube video player" 
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerPolicy="strict-origin-when-cross-origin" 
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/BnKc-n4MM9c?si=5RnSswOmSIbUd_1a"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         />
       </div>
@@ -553,13 +590,13 @@ export default function Gallery() {
       <section id="footer">
         <div className="container footer-containerG mt-3 mt-md-0 pt-2">
           <div>
-            <img 
-              src="https://res.cloudinary.com/dnsc73sla/image/upload/v1752006942/logo-gold-horse-name_dmbkjk.svg" 
-              alt="Supreme Nomads Logo" 
+            <img
+              src="https://res.cloudinary.com/dnsc73sla/image/upload/v1752006942/logo-gold-horse-name_dmbkjk.svg"
+              alt="Supreme Nomads Logo"
               className="footer-logo mx-auto d-block mt-5"
             />
           </div>
-         
+
           {/* Main Footer */}
           <footer className="row py-3">
             {/* Contact Us */}
@@ -573,15 +610,15 @@ export default function Gallery() {
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a 
-                      href="tel:+1704-561-1927" 
-                      className="nav-link text-uppercase p-0" 
-                      target="_blank" 
+                    <a
+                      href="tel:+1704-561-1927"
+                      className="nav-link text-uppercase p-0"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <iconify-icon 
-                        icon="mdi:phone" 
-                        style={{verticalAlign: 'middle', marginRight: '6px'}}
+                      <iconify-icon
+                        icon="mdi:phone"
+                        style={{ verticalAlign: "middle", marginRight: "6px" }}
                       />
                       704-561-1927
                     </a>
@@ -589,15 +626,15 @@ export default function Gallery() {
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a 
-                      href="mailto:info@supremenomads.com" 
-                      className="nav-link text-uppercase p-0 footer-em" 
-                      target="_blank" 
+                    <a
+                      href="mailto:info@supremenomads.com"
+                      className="nav-link text-uppercase p-0 footer-em"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <iconify-icon 
-                        icon="mdi:email" 
-                        style={{verticalAlign: 'middle', marginRight: '6px'}}
+                      <iconify-icon
+                        icon="mdi:email"
+                        style={{ verticalAlign: "middle", marginRight: "6px" }}
                       />
                       info@supremenomads.com
                     </a>
@@ -606,58 +643,58 @@ export default function Gallery() {
                 <div className="col">
                   <div className="footer-list mb-3">
                     <div className="d-flex justify-content-center align-items-center">
-                      <a 
-                        href="https://www.tiktok.com/@supremenomads704" 
-                        target="_blank" 
+                      <a
+                        href="https://www.tiktok.com/@supremenomads704"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="me-3"
                       >
-                        <iconify-icon 
-                          className="social-icon-footer" 
+                        <iconify-icon
+                          className="social-icon-footer"
                           icon="ri:tiktok-fill"
                         />
                       </a>
-                      <a 
-                        href="https://www.instagram.com/supremenomads" 
-                        target="_blank" 
+                      <a
+                        href="https://www.instagram.com/supremenomads"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="me-3"
                       >
-                        <iconify-icon 
-                          className="social-icon-footer" 
+                        <iconify-icon
+                          className="social-icon-footer"
                           icon="mdi:instagram"
                         />
                       </a>
-                      <a 
-                        href="https://www.facebook.com/Supremenomads/" 
-                        target="_blank" 
+                      <a
+                        href="https://www.facebook.com/Supremenomads/"
+                        target="_blank"
                         rel="noopener noreferrer"
                         onClick={openFacebook}
                         className="me-3"
                       >
-                        <iconify-icon 
-                          className="social-icon-footer" 
+                        <iconify-icon
+                          className="social-icon-footer"
                           icon="mdi:facebook"
                         />
                       </a>
-                      <a 
-                        href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte" 
-                        target="_blank" 
+                      <a
+                        href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="me-3"
                       >
-                        <iconify-icon 
-                          className="social-icon-footer pe-4" 
+                        <iconify-icon
+                          className="social-icon-footer pe-4"
                           icon="mdi:yelp"
                         />
                       </a>
-                      <a 
-                        href="https://www.youtube.com/@SupremeNomads" 
-                        target="_blank" 
+                      <a
+                        href="https://www.youtube.com/@SupremeNomads"
+                        target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <iconify-icon 
-                          className="social-icon-footer" 
+                        <iconify-icon
+                          className="social-icon-footer"
                           icon="mdi:youtube"
                         />
                       </a>
@@ -666,10 +703,11 @@ export default function Gallery() {
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <p>Icons by 
-                      <a 
-                        href="https://icons8.com" 
-                        target="_blank" 
+                    <p>
+                      Icons by
+                      <a
+                        href="https://icons8.com"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="ms-1"
                       >
@@ -687,52 +725,72 @@ export default function Gallery() {
               <div className="row row-cols-1 row-cols-lg-2 g-0">
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Charlotte</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Charlotte
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Concord</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Concord
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Harrisburg</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Harrisburg
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Huntersville</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Huntersville
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Matthews</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Matthews
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Waxhaw</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Waxhaw
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Lake Norman</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Lake Norman
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Fort Mill, SC</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Fort Mill, SC
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Indian Land, SC</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Indian Land, SC
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Rock Hill, SC</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Rock Hill, SC
+                    </a>
                   </div>
                 </div>
               </div>
@@ -744,27 +802,49 @@ export default function Gallery() {
               <div className="row row-cols-1 g-0">
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/" className="nav-link text-uppercase p-0">Home</Link>
+                    <Link to="/" className="nav-link text-uppercase p-0">
+                      Home
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/gallery" className="nav-link text-uppercase p-0">Gallery</Link>
+                    <Link
+                      to="/snd-site/gallery"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      Gallery
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/services" className="nav-link text-uppercase p-0">Our Services</Link>
+                    <Link
+                      to="/snd-site/services"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      Our Services
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/about" className="nav-link text-uppercase p-0">About Us</Link>
+                    <Link
+                      to="/snd-site/about"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      About Us
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/academy" className="nav-link text-uppercase p-0">Academy</Link>
+                    <Link
+                      to="/snd-site/academy"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      Academy
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -775,7 +855,9 @@ export default function Gallery() {
         {/* Copyright */}
         <div className="container">
           <footer className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center py-2 border-top">
-            <p className="mb-1 mb-md-0 footer-copy">© 2022 - 2025 | All Rights Reserved</p>
+            <p className="mb-1 mb-md-0 footer-copy">
+              © 2022 - 2025 | All Rights Reserved
+            </p>
             <p className="mb-0 footer-copy">Supreme Nomads Detailing LLC</p>
           </footer>
         </div>
@@ -783,7 +865,7 @@ export default function Gallery() {
 
       {/* Lightbox */}
       {isLightboxOpen && (
-        <div 
+        <div
           className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center"
           style={{ zIndex: 9999 }}
           onClick={closeLightbox}
@@ -791,11 +873,11 @@ export default function Gallery() {
           {/* Previous Button - Outside Image */}
           <button
             className="position-absolute top-50 start-0 translate-middle-y text-white border-0 bg-transparent"
-            style={{ 
-              zIndex: 10001, 
-              left: '2rem',
-              fontSize: '3rem',
-              cursor: 'pointer'
+            style={{
+              zIndex: 10001,
+              left: "2rem",
+              fontSize: "3rem",
+              cursor: "pointer",
             }}
             onClick={(e) => {
               e.stopPropagation();
@@ -806,17 +888,20 @@ export default function Gallery() {
           </button>
 
           {/* Image */}
-          <div className="position-relative" style={{ maxWidth: '90vw', maxHeight: '90vh' }}>
-            <img 
+          <div
+            className="position-relative"
+            style={{ maxWidth: "90vw", maxHeight: "90vh" }}
+          >
+            <img
               src={galleryImages[currentImageIndex].largeSrc}
               alt={galleryImages[currentImageIndex].title}
               style={{
-                maxWidth: '100%',
-                maxHeight: '80vh',
-                objectFit: 'contain'
+                maxWidth: "100%",
+                maxHeight: "80vh",
+                objectFit: "contain",
               }}
             />
-            
+
             {/* Image Info */}
             <div className="position-absolute bottom-0 start-0 w-100 bg-dark bg-opacity-75 text-white p-3">
               <h5 className="mb-0">{galleryImages[currentImageIndex].title}</h5>
@@ -826,11 +911,11 @@ export default function Gallery() {
           {/* Next Button - Outside Image */}
           <button
             className="position-absolute top-50 end-0 translate-middle-y text-white border-0 bg-transparent"
-            style={{ 
-              zIndex: 10001, 
-              right: '2rem',
-              fontSize: '3rem',
-              cursor: 'pointer'
+            style={{
+              zIndex: 10001,
+              right: "2rem",
+              fontSize: "3rem",
+              cursor: "pointer",
             }}
             onClick={(e) => {
               e.stopPropagation();

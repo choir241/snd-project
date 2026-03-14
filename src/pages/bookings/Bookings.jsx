@@ -15,7 +15,6 @@ export default function Bookings() {
 
             <div className="p-4">
               <h1>Bookings</h1>
-
             </div>
 
             <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">

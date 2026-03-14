@@ -128,7 +128,7 @@ export default function BrowserRoutes() {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/" element={<Home />} />
               <Route path="/bookings" element={<Bookings />} />
-              
+
               {/* snd-site routes */}
               <Route path="/snd-site/about" element={<About />} />
               <Route path="/snd-site/gallery" element={<Gallery />} />

@@ -21,9 +21,9 @@ export default function Appointments() {
         <div className="flex flex-col flex-grow overflow-y-auto">
           <PackageHeader />
 
-            <div className="p-4">
-              <h1>Book an Appointment</h1>
-            </div>
+          <div className="p-4">
+            <h1>Book an Appointment</h1>
+          </div>
           <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
             <div
               className="flex w-full justify-center"

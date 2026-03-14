@@ -1,6 +1,10 @@
 import { labels } from "../../static/labels";
+import { useState } from "react";
+import MobileHeader from "./mobileHeader";
 
 export default function PackageHeader() {
+  const [toggleMobileView, setToggleMobileView] = useState(false);
+
   return (
     <header className="flex items-center py-2 pl-4 pr-2 mb-2 justify-between">
       <a className="!text-black" href={labels.links.homeLink}>
@@ -23,6 +27,7 @@ export default function PackageHeader() {
           role="presentation"
           className="!text-black h-auto w-auto p-2"
           aria-hidden="true"
+          onClick={() => setToggleMobileView(true)}
           style={{ style: "color: var(--color-ultra-dark)" }}
         >
           <path
@@ -33,6 +38,10 @@ export default function PackageHeader() {
           ></path>
         </svg>
       </button>
+
+      {toggleMobileView && (
+        <MobileHeader setToggleMobileView={setToggleMobileView} />
+      )}
     </header>
   );
 }

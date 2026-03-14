@@ -28,11 +28,10 @@ export default function Package({
       <div className="flex flex-col flex-grow overflow-y-auto">
         <PackageHeader />
 
-            <div className="p-4">
-              <h1>Book a Service</h1>
-            </div>
+        <div className="p-4">
+          <h1>Book a Service</h1>
+        </div>
         <div className="flex justify-center flex-grow w-full max-w-lg mx-auto">
-          
           <div className="w-full">
             <div className="flex justify-center h-full">
               <section

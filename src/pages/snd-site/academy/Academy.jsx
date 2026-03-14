@@ -1,69 +1,71 @@
 import "../css/vendor.css";
-import 'swiper/css';
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/style.css';
-import './Academy.css';
-import Logo from '../images/horizontal-logo.png';
+import "swiper/css";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/style.css";
+import "./Academy.css";
+import Logo from "../images/horizontal-logo.png";
 
 const Academy = () => {
   const location = useLocation();
 
   const openFacebook = (event) => {
     event.preventDefault();
-    window.open('https://www.facebook.com/Supremenomads/', '_blank');
+    window.open("https://www.facebook.com/Supremenomads/", "_blank");
   };
 
   const isActiveLink = (path) => {
-    return location.pathname === path ? 'active' : '';
+    return location.pathname === path ? "active" : "";
   };
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: ''
+    name: "",
+    email: "",
   });
 
   // Load Iconify and Bootstrap
   useEffect(() => {
-
     // Load Bootstrap JS
-    const bootstrapScript = document.createElement('script');
-    bootstrapScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+    const bootstrapScript = document.createElement("script");
+    bootstrapScript.src =
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js";
     bootstrapScript.async = true;
     document.body.appendChild(bootstrapScript);
 
     // Load Swiper JS
-    const swiperScript = document.createElement('script');
-    swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js';
+    const swiperScript = document.createElement("script");
+    swiperScript.src =
+      "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js";
     swiperScript.async = true;
     document.body.appendChild(swiperScript);
 
     // Load AOS JS
-    const aosScript = document.createElement('script');
-    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    const aosScript = document.createElement("script");
+    aosScript.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
     aosScript.async = true;
     document.body.appendChild(aosScript);
 
     // Load Iconify
-    const iconifyScript = document.createElement('script');
-    iconifyScript.src = 'https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js';
+    const iconifyScript = document.createElement("script");
+    iconifyScript.src =
+      "https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js";
     iconifyScript.async = true;
     document.body.appendChild(iconifyScript);
 
     // Load local scripts
-    const modernizrScript = document.createElement('script');
-    modernizrScript.src = '/snd-site/js/modernizr.js';
+    const modernizrScript = document.createElement("script");
+    modernizrScript.src = "/snd-site/js/modernizr.js";
     modernizrScript.async = true;
     document.body.appendChild(modernizrScript);
 
-    const pluginsScript = document.createElement('script');
-    pluginsScript.src = '/snd-site/js/plugins.js';
+    const pluginsScript = document.createElement("script");
+    pluginsScript.src = "/snd-site/js/plugins.js";
     pluginsScript.async = true;
     document.body.appendChild(pluginsScript);
 
-    const scriptScript = document.createElement('script');
-    scriptScript.src = '/snd-site/js/script.js';
+    const scriptScript = document.createElement("script");
+    scriptScript.src = "/snd-site/js/script.js";
     scriptScript.async = true;
     document.body.appendChild(scriptScript);
 
@@ -101,43 +103,43 @@ const Academy = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     // You can add netlify integration or other submission logic here
   };
 
-    // Navbar scroll effect
-    useEffect(() => {
-      const handleScroll = () => {
-        const scroll = window.scrollY;
-        const navbar = document.querySelector('.navbar.fixed-top');
-        
-        if (navbar) {
-          if (scroll >= 200) {
-            navbar.classList.add('bg-black');
-          } else {
-            navbar.classList.remove('bg-black');
-          }
+  // Navbar scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scroll = window.scrollY;
+      const navbar = document.querySelector(".navbar.fixed-top");
+
+      if (navbar) {
+        if (scroll >= 200) {
+          navbar.classList.add("bg-black");
+        } else {
+          navbar.classList.remove("bg-black");
         }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      
-      // Initial check
-      handleScroll();
-  
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -148,7 +150,7 @@ const Academy = () => {
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" />
           </Link>
-          
+
           {/* Mobile Layout */}
           <div className="d-flex align-items-center gap-3 d-xl-none">
             <a href="tel:+17045611927" className="text-white pt-2">
@@ -189,33 +191,43 @@ const Academy = () => {
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/")}`}
                     to="/"
-                  >Home</Link>
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/gallery')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/gallery")}`}
                     to="/snd-site/gallery"
-                  >Gallery</Link>
+                  >
+                    Gallery
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/services')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/services")}`}
                     to="/snd-site/services"
-                  >Our Services</Link>
+                  >
+                    Our Services
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/about')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/about")}`}
                     to="/snd-site/about"
-                  >About Us</Link>
+                  >
+                    About Us
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/academy')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/academy")}`}
                     to="/snd-site/academy"
-                  >Academy</Link>
+                  >
+                    Academy
+                  </Link>
                 </li>
                 {/* Socials */}
                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
@@ -332,23 +344,25 @@ const Academy = () => {
 
       <div className="pb-5 academy-quote">
         <div className="container">
-          <div className="row justify-content-center">
-          </div>
+          <div className="row justify-content-center"></div>
 
-            <div className="col-12 text-center">
-              <p className="fs-3 my-5 pt-5">
-                As Richard Feynman says, "If you want to master something, teach it."
-                Whether you're looking to start your own detailing business or just want
-                to learn some tips and tricks to take care of your own vehicle in
-                between details, you've come to the right spot. Even if you have no
-                interest in detailing, we encourage you to stick around as we share our
-                passion for automobiles and the art of preserving them. We've got
-                something for all of you. Want to know when this section releases?
-              </p>
-            </div>
+          <div className="col-12 text-center">
+            <p className="fs-3 my-5 pt-5">
+              As Richard Feynman says, "If you want to master something, teach
+              it." Whether you're looking to start your own detailing business
+              or just want to learn some tips and tricks to take care of your
+              own vehicle in between details, you've come to the right spot.
+              Even if you have no interest in detailing, we encourage you to
+              stick around as we share our passion for automobiles and the art
+              of preserving them. We've got something for all of you. Want to
+              know when this section releases?
+            </p>
+          </div>
           <div className="row justify-content-center py-3">
             <div className="col-md-6 text-center">
-              <h2 className="fs-3 text-uppercase mb-4">Join The Mailing List!</h2>
+              <h2 className="fs-3 text-uppercase mb-4">
+                Join The Mailing List!
+              </h2>
               <form
                 id="form"
                 method="post"
@@ -422,7 +436,7 @@ const Academy = () => {
                     >
                       <iconify-icon
                         icon="mdi:phone"
-                        style={{ verticalAlign: 'middle', marginRight: '6px' }}
+                        style={{ verticalAlign: "middle", marginRight: "6px" }}
                       ></iconify-icon>
                       704-561-1927
                     </a>
@@ -438,7 +452,7 @@ const Academy = () => {
                     >
                       <iconify-icon
                         icon="mdi:email"
-                        style={{ verticalAlign: 'middle', marginRight: '6px' }}
+                        style={{ verticalAlign: "middle", marginRight: "6px" }}
                       ></iconify-icon>
                       info@supremenomads.com
                     </a>
@@ -471,7 +485,7 @@ const Academy = () => {
                         href="https://www.facebook.com/Supremenomads/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={(e) => window.open(e.target.href, '_blank')}
+                        onClick={(e) => window.open(e.target.href, "_blank")}
                       >
                         <iconify-icon
                           className="social-icon-footer pe-4"
@@ -524,52 +538,72 @@ const Academy = () => {
               <div className="row row-cols-1 row-cols-lg-2 g-0">
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Charlotte</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Charlotte
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Concord</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Concord
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Harrisburg</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Harrisburg
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Huntersville</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Huntersville
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Matthews</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Matthews
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Waxhaw</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Waxhaw
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Lake Norman</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Lake Norman
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Fort Mill, SC</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Fort Mill, SC
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Indian Land, SC</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Indian Land, SC
+                    </a>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <a href="#" className="nav-link text-uppercase p-0">Rock Hill, SC</a>
+                    <a href="#" className="nav-link text-uppercase p-0">
+                      Rock Hill, SC
+                    </a>
                   </div>
                 </div>
               </div>
@@ -581,27 +615,49 @@ const Academy = () => {
               <div className="row row-cols-1 g-0">
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/" className="nav-link text-uppercase p-0">Home</Link>
+                    <Link to="/" className="nav-link text-uppercase p-0">
+                      Home
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/gallery" className="nav-link text-uppercase p-0">Gallery</Link>
+                    <Link
+                      to="/snd-site/gallery"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      Gallery
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/services" className="nav-link text-uppercase p-0">Our Services</Link>
+                    <Link
+                      to="/snd-site/services"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      Our Services
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/about" className="nav-link text-uppercase p-0">About Us</Link>
+                    <Link
+                      to="/snd-site/about"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      About Us
+                    </Link>
                   </div>
                 </div>
                 <div className="col">
                   <div className="footer-list mb-3">
-                    <Link to="/snd-site/academy" className="nav-link text-uppercase p-0">Academy</Link>
+                    <Link
+                      to="/snd-site/academy"
+                      className="nav-link text-uppercase p-0"
+                    >
+                      Academy
+                    </Link>
                   </div>
                 </div>
               </div>

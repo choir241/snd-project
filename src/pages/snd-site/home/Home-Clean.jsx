@@ -1,16 +1,16 @@
-import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "../css/vendor.css";
-import 'swiper/css';
-import Logo from '../images/horizontal-logo.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "swiper/css";
+import Logo from "../images/horizontal-logo.png";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/style.css";
 import "./Home-Clean.css";
 import "./Home-Clean-carousel.css";
-import MediumTabPane from '../../../components/Home/MediumTabPane';
+import MediumTabPane from "../../../components/Home/MediumTabPane";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('regular-tab-pane');
+  const [activeTab, setActiveTab] = useState("regular-tab-pane");
   const [displayedImages, setDisplayedImages] = useState([]);
   const carouselRef = useRef(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -27,41 +27,47 @@ export default function Home() {
       {
         id: 1,
         title: "Audi R8",
-        image: "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754182746/lp1_x8d33y.png",
-        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto//v1754182746/lp1_x8d33y.png"
+        image:
+          "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754182746/lp1_x8d33y.png",
+        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto//v1754182746/lp1_x8d33y.png",
       },
       {
         id: 2,
         title: "Mercedes GLC 300",
-        image: "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754182972/lp3_xmn6rm.png",
-        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754182972/lp3_xmn6rm.png"
+        image:
+          "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754182972/lp3_xmn6rm.png",
+        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754182972/lp3_xmn6rm.png",
       },
       {
         id: 3,
         title: "Honda Civic Si",
-        image: "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754182837/lp2_pyi66n.png",
-        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754182837/lp2_pyi66n.png"
+        image:
+          "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754182837/lp2_pyi66n.png",
+        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754182837/lp2_pyi66n.png",
       },
       {
         id: 4,
         title: "Mercedes G Wagon",
-        image: "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754359599/lp8_fxd3br.png",
-        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754359599/lp8_fxd3br.png"
+        image:
+          "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754359599/lp8_fxd3br.png",
+        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754359599/lp8_fxd3br.png",
       },
       {
         id: 5,
         title: "BMW X3",
-        image: "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754364681/lp5_arc7pw.png",
-        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754364681/lp5_arc7pw.png"
+        image:
+          "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754364681/lp5_arc7pw.png",
+        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754364681/lp5_arc7pw.png",
       },
       {
         id: 6,
         title: "Tesla CyberTruck",
-        image: "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754359771/lp6_f23yy3.png",
-        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754359771/lp6_f23yy3.png"
-      }
+        image:
+          "https://res.cloudinary.com/dnsc73sla/image/upload/c_limit,h_480,f_auto,q_auto/v1754359771/lp6_f23yy3.png",
+        link: "https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto/v1754359771/lp6_f23yy3.png",
+      },
     ];
-    
+
     // Create initial display: original + first 3 duplicates
     const initialDisplay = [...originalImages, ...originalImages.slice(0, 3)];
     setDisplayedImages(initialDisplay);
@@ -71,70 +77,74 @@ export default function Home() {
   const openLightbox = (index) => {
     setCurrentImageIndex(index);
     setIsLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setIsLightboxOpen(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   const goToPrevious = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? displayedImages.length - 1 : prev - 1));
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? displayedImages.length - 1 : prev - 1,
+    );
   };
 
   const goToNext = () => {
-    setCurrentImageIndex((prev) => (prev === displayedImages.length - 1 ? 0 : prev + 1));
+    setCurrentImageIndex((prev) =>
+      prev === displayedImages.length - 1 ? 0 : prev + 1,
+    );
   };
 
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (!isLightboxOpen) return;
-      
+
       switch (event.key) {
-        case 'Escape':
+        case "Escape":
           closeLightbox();
           break;
-        case 'ArrowLeft':
+        case "ArrowLeft":
           goToPrevious();
           break;
-        case 'ArrowRight':
+        case "ArrowRight":
           goToNext();
           break;
       }
     };
 
     if (isLightboxOpen) {
-      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener("keydown", handleKeyDown);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isLightboxOpen, currentImageIndex]);
 
   // Carousel navigation using smooth scrolling
   const scrollCarousel = (direction) => {
-    console.log('🎡🎡🎡🎡 SCROLL CLICKED 🎡🎡🎡🎡🎡');
-    console.log('📍 Direction:', direction);
-    
-    const carousel = document.getElementById('projectsCarousel');
+    console.log("🎡🎡🎡🎡 SCROLL CLICKED 🎡🎡🎡🎡🎡");
+    console.log("📍 Direction:", direction);
+
+    const carousel = document.getElementById("projectsCarousel");
     if (carousel) {
       const scrollAmount = 330; // Width of one item + gap
       const currentScroll = carousel.scrollLeft;
-      
-      if (direction === 'left') {
-        console.log('⬅️ Moving left');
+
+      if (direction === "left") {
+        console.log("⬅️ Moving left");
         carousel.scrollTo({
           left: Math.max(0, currentScroll - scrollAmount),
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       } else {
-        console.log('➡️ Moving right');
+        console.log("➡️ Moving right");
         carousel.scrollTo({
           left: currentScroll + scrollAmount,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     }
@@ -142,105 +152,112 @@ export default function Home() {
 
   useEffect(() => {
     // Load external CSS
-    const swiperCSS = document.createElement('link');
-    swiperCSS.rel = 'stylesheet';
-    swiperCSS.href = 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css';
+    const swiperCSS = document.createElement("link");
+    swiperCSS.rel = "stylesheet";
+    swiperCSS.href =
+      "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css";
     document.head.appendChild(swiperCSS);
 
-    const datepickerCSS = document.createElement('link');
-    datepickerCSS.rel = 'stylesheet';
-    datepickerCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css';
+    const datepickerCSS = document.createElement("link");
+    datepickerCSS.rel = "stylesheet";
+    datepickerCSS.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css";
     document.head.appendChild(datepickerCSS);
 
     // AOS CSS
-    const aosCSS = document.createElement('link');
-    aosCSS.rel = 'stylesheet';
-    aosCSS.href = 'https://unpkg.com/aos@2.3.1/dist/aos.css';
+    const aosCSS = document.createElement("link");
+    aosCSS.rel = "stylesheet";
+    aosCSS.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
     document.head.appendChild(aosCSS);
 
     // Google Fonts
-    const preconnect1 = document.createElement('link');
-    preconnect1.rel = 'preconnect';
-    preconnect1.href = 'https://fonts.googleapis.com';
+    const preconnect1 = document.createElement("link");
+    preconnect1.rel = "preconnect";
+    preconnect1.href = "https://fonts.googleapis.com";
     document.head.appendChild(preconnect1);
 
-    const preconnect2 = document.createElement('link');
-    preconnect2.rel = 'preconnect';
-    preconnect2.href = 'https://fonts.gstatic.com';
-    preconnect2.crossOrigin = '';
+    const preconnect2 = document.createElement("link");
+    preconnect2.rel = "preconnect";
+    preconnect2.href = "https://fonts.gstatic.com";
+    preconnect2.crossOrigin = "";
     document.head.appendChild(preconnect2);
 
-    const googleFonts = document.createElement('link');
-    googleFonts.rel = 'stylesheet';
-    googleFonts.href = 'https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Oswald:wght@500;600;700&display=swap';
+    const googleFonts = document.createElement("link");
+    googleFonts.rel = "stylesheet";
+    googleFonts.href =
+      "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Oswald:wght@500;600;700&display=swap";
     document.head.appendChild(googleFonts);
 
     // Load jQuery first (required for many scripts)
-    const jqueryScript = document.createElement('script');
-    jqueryScript.src = 'https://code.jquery.com/jquery-1.11.0.min.js';
+    const jqueryScript = document.createElement("script");
+    jqueryScript.src = "https://code.jquery.com/jquery-1.11.0.min.js";
     jqueryScript.async = true;
     document.body.appendChild(jqueryScript);
 
     // Load Bootstrap JS
-    const bootstrapScript = document.createElement('script');
-    bootstrapScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+    const bootstrapScript = document.createElement("script");
+    bootstrapScript.src =
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js";
     bootstrapScript.async = true;
     document.body.appendChild(bootstrapScript);
 
     // Load Swiper JS
-    const swiperScript = document.createElement('script');
-    swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js';
+    const swiperScript = document.createElement("script");
+    swiperScript.src =
+      "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js";
     swiperScript.async = true;
     document.body.appendChild(swiperScript);
 
     // Load AOS JS
-    const aosScript = document.createElement('script');
-    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    const aosScript = document.createElement("script");
+    aosScript.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
     aosScript.async = true;
     document.body.appendChild(aosScript);
 
     // Load Isotope
-    const isotopeScript = document.createElement('script');
-    isotopeScript.src = 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js';
+    const isotopeScript = document.createElement("script");
+    isotopeScript.src =
+      "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js";
     isotopeScript.async = true;
     document.body.appendChild(isotopeScript);
 
     // Load Iconify
-    const iconifyScript = document.createElement('script');
-    iconifyScript.src = 'https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js';
+    const iconifyScript = document.createElement("script");
+    iconifyScript.src =
+      "https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js";
     iconifyScript.async = true;
     document.body.appendChild(iconifyScript);
 
     // Load local scripts
-    const modernizrScript = document.createElement('script');
-    modernizrScript.src = '/snd-site/js/modernizr.js';
+    const modernizrScript = document.createElement("script");
+    modernizrScript.src = "/snd-site/js/modernizr.js";
     modernizrScript.async = true;
     document.body.appendChild(modernizrScript);
 
-    const pluginsScript = document.createElement('script');
-    pluginsScript.src = '/snd-site/js/plugins.js';
+    const pluginsScript = document.createElement("script");
+    pluginsScript.src = "/snd-site/js/plugins.js";
     pluginsScript.async = true;
     document.body.appendChild(pluginsScript);
 
-    const mainScript = document.createElement('script');
-    mainScript.src = '/snd-site/js/main.js';
+    const mainScript = document.createElement("script");
+    mainScript.src = "/snd-site/js/main.js";
     mainScript.async = true;
     document.body.appendChild(mainScript);
 
-    const scriptScript = document.createElement('script');
-    scriptScript.src = '/snd-site/js/script.js';
+    const scriptScript = document.createElement("script");
+    scriptScript.src = "/snd-site/js/script.js";
     scriptScript.async = true;
     document.body.appendChild(scriptScript);
 
     // Initialize Swiper after scripts load
     setTimeout(() => {
       if (window.Swiper) {
-        new window.Swiper('.project-swiper', {
-          slidesPerView: 'auto',
+        new window.Swiper(".project-swiper", {
+          slidesPerView: "auto",
           spaceBetween: 30,
           navigation: {
-            nextEl: '.icon-arrow-right',
-            prevEl: '.icon-arrow-left',
+            nextEl: ".icon-arrow-right",
+            prevEl: ".icon-arrow-left",
           },
           breakpoints: {
             0: {
@@ -255,10 +272,10 @@ export default function Home() {
               slidesPerView: 4,
               spaceBetween: 10,
             },
-          }
+          },
         });
       }
-      
+
       // Initialize AOS
       if (window.AOS) {
         window.AOS.init({
@@ -296,60 +313,65 @@ export default function Home() {
   // Event handlers
   const openFacebook = (event) => {
     event.preventDefault();
-    window.open('https://www.facebook.com/Supremenomads/', '_blank');
+    window.open("https://www.facebook.com/Supremenomads/", "_blank");
   };
 
   const scrollToQuickLinks = (event) => {
     event.preventDefault();
-    const element = document.getElementById('quick-links');
+    const element = document.getElementById("quick-links");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   // Close hamburger menu when clicking outside and navbar scroll effect
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const checkbox = document.getElementById('hamburger-toggle');
-      const mobileMenu = document.querySelector('.mobile-nav-menu');
-      const hamburgerLabel = document.querySelector('.hamburger-label');
-      const navbar = document.querySelector('.navbar');
-      
+      const checkbox = document.getElementById("hamburger-toggle");
+      const mobileMenu = document.querySelector(".mobile-nav-menu");
+      const hamburgerLabel = document.querySelector(".hamburger-label");
+      const navbar = document.querySelector(".navbar");
+
       // Only close if menu is open and click is outside menu and navbar
-      if (checkbox && checkbox.checked && 
-          mobileMenu && !mobileMenu.contains(event.target) && 
-          navbar && !navbar.contains(event.target)) {
+      if (
+        checkbox &&
+        checkbox.checked &&
+        mobileMenu &&
+        !mobileMenu.contains(event.target) &&
+        navbar &&
+        !navbar.contains(event.target)
+      ) {
         checkbox.checked = false;
       }
     };
 
     const handleScroll = () => {
       const scroll = window.scrollY;
-      const navbar = document.querySelector('.navbar.fixed-top');
-      
+      const navbar = document.querySelector(".navbar.fixed-top");
+
       if (navbar) {
         if (scroll >= 200) {
-          navbar.classList.add('bg-black');
+          navbar.classList.add("bg-black");
         } else {
-          navbar.classList.remove('bg-black');
+          navbar.classList.remove("bg-black");
         }
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    window.addEventListener('scroll', handleScroll);
-    
+    document.addEventListener("click", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+
     // Initial check
     handleScroll();
 
     return () => {
-      document.removeEventListener('click', handleClickOutside);
-      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-    const isActiveLink = (path) => {
-    return location.pathname === path ? 'active' : '';
+  const isActiveLink = (path) => {
+    return location.pathname === path ? "active" : "";
   };
 
   return (
@@ -361,7 +383,7 @@ export default function Home() {
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" />
           </Link>
-          
+
           {/* Mobile Layout */}
           <div className="d-flex align-items-center gap-3 d-xl-none">
             <a href="tel:+17045611927" className="text-white pt-2">
@@ -402,33 +424,43 @@ export default function Home() {
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/")}`}
                     to="/"
-                  >Home</Link>
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/gallery')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/gallery")}`}
                     to="/snd-site/gallery"
-                  >Gallery</Link>
+                  >
+                    Gallery
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/services')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/services")}`}
                     to="/snd-site/services"
-                  >Our Services</Link>
+                  >
+                    Our Services
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/about')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/about")}`}
                     to="/snd-site/about"
-                  >About Us</Link>
+                  >
+                    About Us
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink('/snd-site/academy')}`}
+                    className={`nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 ${isActiveLink("/snd-site/academy")}`}
                     to="/snd-site/academy"
-                  >Academy</Link>
+                  >
+                    Academy
+                  </Link>
                 </li>
                 {/* Socials */}
                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
@@ -532,7 +564,14 @@ export default function Home() {
       {/* Hero */}
       <section id="hero" className="homepage">
         {/* Background Video */}
-        <video className="hero-video" autoPlay muted loop playsInline poster="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_1920,h_1080,f_auto,q_auto,dpr_auto/hero-home-thumbnail_vss0vf.png">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://res.cloudinary.com/dnsc73sla/image/upload/c_fill,g_auto,w_1920,h_1080,f_auto,q_auto,dpr_auto/hero-home-thumbnail_vss0vf.png"
+        >
           <source
             src="https://res.cloudinary.com/dnsc73sla/video/upload/v1754100999/SN_Export_lm5zjy.mp4"
             type="video/mp4"
@@ -544,18 +583,18 @@ export default function Home() {
           <div className="row justify-content-center">
             <div className="hero-text-div col-12 col-md-10 text-center px-3 px-sm-5">
               <p className="hero-text">
-                At <span className="sndName">Supreme Nomads Detailing</span>, our top
-                priority is you.
+                At <span className="sndName">Supreme Nomads Detailing</span>,
+                our top priority is you.
               </p>
               <p className="hero-text mb-4">
                 We strive for quality service, punctuality, and clear
                 communication every time we see you.
               </p>
-              <a href="#quick-links" className="btn mainbtn btn-outline-primary">
-                <iconify-icon
-                  icon="tabler:arrow-down"
-                  className="arrow-icon"
-                />
+              <a
+                href="#quick-links"
+                className="btn mainbtn btn-outline-primary"
+              >
+                <iconify-icon icon="tabler:arrow-down" className="arrow-icon" />
               </a>
             </div>
           </div>
@@ -565,14 +604,21 @@ export default function Home() {
       {/* Quick Links */}
       <section id="quick-links">
         <div style={{ overflow: "hidden" }}>
-          <div className="container-fluid border-bottom" data-aos="zoom-out" style={{ backgroundColor: '#dec49a' }}>
+          <div
+            className="container-fluid border-bottom"
+            data-aos="zoom-out"
+            style={{ backgroundColor: "#dec49a" }}
+          >
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-6 padding-medium pe-lg-5 border-end">
                   <h2 className="display-4 text-center">Quick Links</h2>
                 </div>
                 <div className="col-md-6 padding-medium-2 ps-md-5 d-grid gap-3">
-                  <Link to="/bookings" className="btn btn-primary w-100 book-now-btn-links">
+                  <Link
+                    to="/bookings"
+                    className="btn btn-primary w-100 book-now-btn-links"
+                  >
                     Book Now
                     <iconify-icon
                       icon="tabler:arrow-right"
@@ -580,7 +626,10 @@ export default function Home() {
                     />
                   </Link>
 
-                  <Link to="/snd-site/academy" className="btn btn-primary w-100">
+                  <Link
+                    to="/snd-site/academy"
+                    className="btn btn-primary w-100"
+                  >
                     What is Detailing?
                     <iconify-icon
                       icon="tabler:arrow-right"
@@ -603,132 +652,136 @@ export default function Home() {
       </section>
 
       {/* Gallery */}
-      <section
-        id="project"
-        className="py-5 home-gallery-section"
-      >
+      <section id="project" className="py-5 home-gallery-section">
         <div style={{ overflow: "hidden" }}>
           <div data-aos="zoom-out">
             <div className="container">
               <div className="row justify-content-center">
-                <p className="header-top mb-3 text-center text-sm-start">Gallery</p>
+                <p className="header-top mb-3 text-center text-sm-start">
+                  Gallery
+                </p>
                 <h2 className="text-white display-4 text-center text-sm-start">
                   Latest Projects
                 </h2>
               </div>
-              <div
-                className="swiper-arrow position-static position-md-absolute end-0 mt-md-5 w-100 d-flex justify-content-center pe-3"
-              >
+              <div className="swiper-arrow position-static position-md-absolute end-0 mt-md-5 w-100 d-flex justify-content-center pe-3">
                 <iconify-icon
                   icon="teenyicons:arrow-left-solid"
                   className="icon-arrow-left me-3"
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => scrollCarousel('left')}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => scrollCarousel("left")}
                 />
                 <iconify-icon
                   icon="teenyicons:arrow-right-solid"
                   className="icon-arrow-right"
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => scrollCarousel('right')}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => scrollCarousel("right")}
                 />
               </div>
               {/* Horizontal Scrolling Carousel */}
-                <div 
-                  className="projects-carousel-container"
+              <div
+                className="projects-carousel-container"
+                style={{
+                  position: "relative",
+                  overflow: "hidden",
+                  margin: "0 -15px",
+                }}
+              >
+                <div
+                  className="projects-carousel"
+                  id="projectsCarousel"
+                  ref={carouselRef}
                   style={{
-                    position: 'relative',
-                    overflow: 'hidden',
-                    margin: '0 -15px'
+                    display: "flex",
+                    overflowX: "auto",
+                    gap: "30px",
+                    padding: "0 15px",
+                    scrollBehavior: "smooth",
+                    scrollbarWidth: "none", // Hide scrollbar for cleaner look
+                    msOverflowStyle: "none", // Hide scrollbar for IE/Edge
                   }}
                 >
-                  <div 
-                    className="projects-carousel"
-                    id="projectsCarousel"
-                    ref={carouselRef}
-                    style={{
-                      display: 'flex',
-                      overflowX: 'auto',
-                      gap: '30px',
-                      padding: '0 15px',
-                      scrollBehavior: 'smooth',
-                      scrollbarWidth: 'none', // Hide scrollbar for cleaner look
-                      msOverflowStyle: 'none' // Hide scrollbar for IE/Edge
-                    }}
-                  >
-                    {displayedImages.map((image, index) => (
-                      <div 
-                        key={`${image.id}-${index}`}
-                        style={{
-                          flex: '0 0 calc(33.333% - 20px)',
-                          minWidth: '300px',
-                          position: 'relative',
-                          overflow: 'hidden',
-                          borderRadius: '10px',
-                          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
-                          backgroundColor: '#000'
+                  {displayedImages.map((image, index) => (
+                    <div
+                      key={`${image.id}-${index}`}
+                      style={{
+                        flex: "0 0 calc(33.333% - 20px)",
+                        minWidth: "300px",
+                        position: "relative",
+                        overflow: "hidden",
+                        borderRadius: "10px",
+                        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+                        backgroundColor: "#000",
+                      }}
+                    >
+                      <a
+                        href={image.link}
+                        title={image.title}
+                        className="image-link"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const index = displayedImages.findIndex(
+                            (img) => img.id === image.id,
+                          );
+                          openLightbox(index);
                         }}
                       >
-                        <a
-                          href={image.link}
-                          title={image.title}
-                          className="image-link"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            const index = displayedImages.findIndex(img => img.id === image.id);
-                            openLightbox(index);
+                        <img
+                          src={image.image}
+                          alt={image.title}
+                          style={{
+                            width: "100%",
+                            height: "300px",
+                            objectFit: "cover",
+                            objectPosition: "center",
+                            display: "block",
                           }}
+                          onError={(e) => {
+                            console.log(
+                              "Home image failed to load:",
+                              e.target.src,
+                            );
+                          }}
+                          onLoad={(e) => {
+                            console.log(
+                              "Home image loaded successfully:",
+                              e.target.src,
+                            );
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "0",
+                            left: "0",
+                            width: "100%",
+                            height: "100%",
+                            background: "rgba(0, 0, 0, 0.6)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            opacity: 0,
+                            transition: "opacity 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => (e.target.style.opacity = "1")}
+                          onMouseLeave={(e) => (e.target.style.opacity = "0")}
                         >
-                          <img
-                            src={image.image}
-                            alt={image.title}
-                            style={{
-                              width: '100%',
-                              height: '300px',
-                              objectFit: 'cover',
-                              objectPosition: 'center',
-                              display: 'block'
-                            }}
-                            onError={(e) => {
-                              console.log('Home image failed to load:', e.target.src);
-                            }}
-                            onLoad={(e) => {
-                              console.log('Home image loaded successfully:', e.target.src);
-                            }}
-                          />
-                          <div
-                            style={{
-                              position: 'absolute',
-                              top: '0',
-                              left: '0',
-                              width: '100%',
-                              height: '100%',
-                              background: 'rgba(0, 0, 0, 0.6)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              opacity: 0,
-                              transition: 'opacity 0.3s ease'
-                            }}
-                            onMouseEnter={(e) => e.target.style.opacity = '1'}
-                            onMouseLeave={(e) => e.target.style.opacity = '0'}
-                          >
-                            <h3 style={{ color: 'white', margin: '0' }}>{image.title}</h3>
-                          </div>
-                        </a>
-                      </div>
-                    ))}
-                  </div>
+                          <h3 style={{ color: "white", margin: "0" }}>
+                            {image.title}
+                          </h3>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
                 </div>
+              </div>
             </div>
           </div>
         </div>
         <div className="text-center pb-5 mb-5">
           <Link to="/snd-site/gallery" className="btn btn-primary mt-5">
             See More
-            <iconify-icon
-              icon="tabler:arrow-right"
-              className="arrow-icon"
-            />
+            <iconify-icon icon="tabler:arrow-right" className="arrow-icon" />
           </Link>
         </div>
       </section>
@@ -742,14 +795,14 @@ export default function Home() {
               <h2 className="display-4">Detailing Packages</h2>
             </div>
           </div>
-          
+
           {/* Pricing Tabs */}
           <div className="nav-tabs mb-5" id="paintProtectionTab">
             <div className="row justify-content-center">
               <div className="col-md-auto">
                 <button
-                  className={`nav-link ${activeTab === 'regular-tab-pane' ? 'active' : ''}`}
-                  onClick={() => handleTabClick('regular-tab-pane')}
+                  className={`nav-link ${activeTab === "regular-tab-pane" ? "active" : ""}`}
+                  onClick={() => handleTabClick("regular-tab-pane")}
                   type="button"
                 >
                   Sedan/Coupé
@@ -757,8 +810,8 @@ export default function Home() {
               </div>
               <div className="col-md-auto">
                 <button
-                  className={`nav-link ${activeTab === 'medium-tab-pane' ? 'active' : ''}`}
-                  onClick={() => handleTabClick('medium-tab-pane')}
+                  className={`nav-link ${activeTab === "medium-tab-pane" ? "active" : ""}`}
+                  onClick={() => handleTabClick("medium-tab-pane")}
                   type="button"
                 >
                   2 Row Suv/Small Truck
@@ -766,8 +819,8 @@ export default function Home() {
               </div>
               <div className="col-md-auto">
                 <button
-                  className={`nav-link ${activeTab === 'van-tab-pane' ? 'active' : ''}`}
-                  onClick={() => handleTabClick('van-tab-pane')}
+                  className={`nav-link ${activeTab === "van-tab-pane" ? "active" : ""}`}
+                  onClick={() => handleTabClick("van-tab-pane")}
                   type="button"
                 >
                   3 Row Suv/Large Truck
@@ -775,33 +828,114 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
+
           <div className="tab-content mt-4" id="paintProtectionTabContent">
-            {activeTab === 'regular-tab-pane' && (
+            {activeTab === "regular-tab-pane" && (
               <div className="row">
                 <div className="col-lg-3 mb-4">
                   <div className="plan-post">
                     <div className="header-top mb-3 text-center">Premium</div>
                     <h2 className="display-5 text-primary text-center">$300</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />6 Month Ceramic Wax1</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Iron Removal Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Clay Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Wheel Surfaces, Barrel, & Tire Clean</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Tire Dressing</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Foam Bath and Hand Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Shampoo and Conditioner</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Headliner Spot Cleaning</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Seats & Carpets Sanitized</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />UV Protect & Sanitize Dash/Vents/Trims/Panels</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Deep Interior & Trunk Vacuum</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows and Door Jams Cleaned</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Rain-X® Window Treatment</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        6 Month Ceramic Wax1
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Iron Removal Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Clay Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Wheel Surfaces, Barrel, & Tire Clean
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Tire Dressing
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Foam Bath and Hand Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Shampoo and Conditioner
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Headliner Spot Cleaning
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Seats & Carpets Sanitized
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        UV Protect & Sanitize Dash/Vents/Trims/Panels
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Deep Interior & Trunk Vacuum
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows and Door Jams Cleaned
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Rain-X® Window Treatment
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
@@ -811,19 +945,70 @@ export default function Home() {
                     <div className="header-top mb-3 text-center">Exterior</div>
                     <h2 className="display-5 text-primary text-center">$160</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />6 Month Ceramic Wax1</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Iron Removal Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Clay Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Wheel Surface, Barrel & Tire Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Tire Dressing</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Foam Bath & Hand Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows & Door Jams Cleaned</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Rain-X® Window Treatment</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        6 Month Ceramic Wax1
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Iron Removal Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Clay Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Wheel Surface, Barrel & Tire Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Tire Dressing
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Foam Bath & Hand Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows & Door Jams Cleaned
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Rain-X® Window Treatment
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
@@ -833,18 +1018,63 @@ export default function Home() {
                     <div className="header-top mb-3 text-center">Interior</div>
                     <h2 className="display-5 text-primary text-center">$160</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Shampoo and Conditioner</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Headliner Spot Cleaning</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Steam Interior Surfaces</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Seats & Carpets Sanitized</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />UV Protect and Sanitize Dash/Vents/Trims/Panels</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Deep Interior & Trunk Vacuum</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows and Door Jams Cleaned</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Shampoo and Conditioner
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Headliner Spot Cleaning
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Steam Interior Surfaces
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Seats & Carpets Sanitized
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        UV Protect and Sanitize Dash/Vents/Trims/Panels
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Deep Interior & Trunk Vacuum
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows and Door Jams Cleaned
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
@@ -854,55 +1084,185 @@ export default function Home() {
                     <div className="header-top mb-3 text-center">Express</div>
                     <h2 className="display-5 text-primary text-center">$125</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Basic Wax Coating1</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Wheel Surface and Tire Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Tire Dressing</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Foam Bath & Hand Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Seats & Carpets Sanitized</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Dash/Vents/Trims/Panels Wipe Down</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Interior Vacuum</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows Only</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Basic Wax Coating1
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Wheel Surface and Tire Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Tire Dressing
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Foam Bath & Hand Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Seats & Carpets Sanitized
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Dash/Vents/Trims/Panels Wipe Down
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Interior Vacuum
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows Only
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
             )}
-            
-            {activeTab === 'medium-tab-pane' && (
-              <MediumTabPane />
-            )}
-            
-            {activeTab === 'van-tab-pane' && (
+
+            {activeTab === "medium-tab-pane" && <MediumTabPane />}
+
+            {activeTab === "van-tab-pane" && (
               <div className="row">
                 <div className="col-lg-3 mb-4">
                   <div className="plan-post">
                     <div className="header-top mb-3 text-center">Premium</div>
                     <h2 className="display-5 text-primary text-center">$400</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />6 Month Ceramic Wax1</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Iron Removal Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Clay Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Wheel Surfaces, Barrel, & Tire Clean</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Tire Dressing</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Foam Bath and Hand Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Shampoo and Conditioner</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Headliner Spot Cleaning</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Seats & Carpets Sanitized</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />UV Protect & Sanitize Dash/Vents/Trims/Panels</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Deep Interior & Trunk Vacuum</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows and Door Jams Cleaned</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Rain-X® Window Treatment</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        6 Month Ceramic Wax1
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Iron Removal Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Clay Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Wheel Surfaces, Barrel, & Tire Clean
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Tire Dressing
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Foam Bath and Hand Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Shampoo and Conditioner
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Headliner Spot Cleaning
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Seats & Carpets Sanitized
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        UV Protect & Sanitize Dash/Vents/Trims/Panels
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Deep Interior & Trunk Vacuum
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows and Door Jams Cleaned
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Rain-X® Window Treatment
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
@@ -912,19 +1272,70 @@ export default function Home() {
                     <div className="header-top mb-3 text-center">Exterior</div>
                     <h2 className="display-5 text-primary text-center">$200</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />6 Month Ceramic Wax1</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Iron Removal Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Clay Treatment</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Wheel Surface, Barrel & Tire Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Tire Dressing</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Foam Bath & Hand Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows & Door Jams Cleaned</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Rain-X® Window Treatment</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        6 Month Ceramic Wax1
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Iron Removal Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Clay Treatment
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Wheel Surface, Barrel & Tire Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Tire Dressing
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Foam Bath & Hand Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows & Door Jams Cleaned
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Rain-X® Window Treatment
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
@@ -934,18 +1345,63 @@ export default function Home() {
                     <div className="header-top mb-3 text-center">Interior</div>
                     <h2 className="display-5 text-primary text-center">$200</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Shampoo and Conditioner</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Headliner Spot Cleaning</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Steam Interior Surfaces</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Seats & Carpets Sanitized</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />UV Protect and Sanitize Dash/Vents/Trims/Panels</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Deep Interior & Trunk Vacuum</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows and Door Jams Cleaned</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Shampoo and Conditioner
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Headliner Spot Cleaning
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Steam Interior Surfaces
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Seats & Carpets Sanitized
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        UV Protect and Sanitize Dash/Vents/Trims/Panels
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Deep Interior & Trunk Vacuum
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows and Door Jams Cleaned
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
@@ -955,19 +1411,70 @@ export default function Home() {
                     <div className="header-top mb-3 text-center">Express</div>
                     <h2 className="display-5 text-primary text-center">$175</h2>
                     <div className="price-option">
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Basic Wax Coating1</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Wheel Surface and Tire Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Tire Dressing</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Foam Bath & Hand Wash</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Seats & Carpets Sanitized</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Dash/Vents/Trims/Panels Wipe Down</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Interior Vacuum</p>
-                      <p><iconify-icon icon="mdi:check" className="price-tick me-2" />Windows Only</p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Basic Wax Coating1
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Wheel Surface and Tire Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Tire Dressing
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Foam Bath & Hand Wash
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Seats & Carpets Sanitized
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Dash/Vents/Trims/Panels Wipe Down
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Interior Vacuum
+                      </p>
+                      <p>
+                        <iconify-icon
+                          icon="mdi:check"
+                          className="price-tick me-2"
+                        />
+                        Windows Only
+                      </p>
                     </div>
                     <div className="text-center mt-4">
                       <a href="/bookings" className="btn btn-primary">
                         Book Now
-                        <iconify-icon icon="tabler:arrow-right" className="arrow-icon ms-2" />
+                        <iconify-icon
+                          icon="tabler:arrow-right"
+                          className="arrow-icon ms-2"
+                        />
                       </a>
                     </div>
                   </div>
@@ -980,7 +1487,7 @@ export default function Home() {
 
       {/* Lightbox */}
       {isLightboxOpen && (
-        <div 
+        <div
           className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center"
           style={{ zIndex: 9999 }}
           onClick={closeLightbox}
@@ -988,11 +1495,11 @@ export default function Home() {
           {/* Previous Button - Outside Image */}
           <button
             className="position-absolute top-50 start-0 translate-middle-y text-white border-0 bg-transparent"
-            style={{ 
-              zIndex: 10001, 
-              left: '2rem',
-              fontSize: '3rem',
-              cursor: 'pointer'
+            style={{
+              zIndex: 10001,
+              left: "2rem",
+              fontSize: "3rem",
+              cursor: "pointer",
             }}
             onClick={(e) => {
               e.stopPropagation();
@@ -1003,14 +1510,17 @@ export default function Home() {
           </button>
 
           {/* Image */}
-          <div className="position-relative" style={{ maxWidth: '90vw', maxHeight: '90vh' }}>
-            <img 
+          <div
+            className="position-relative"
+            style={{ maxWidth: "90vw", maxHeight: "90vh" }}
+          >
+            <img
               src={displayedImages[currentImageIndex].link}
               alt={displayedImages[currentImageIndex].title}
               style={{
-                maxWidth: '100%',
-                maxHeight: '80vh',
-                objectFit: 'contain'
+                maxWidth: "100%",
+                maxHeight: "80vh",
+                objectFit: "contain",
               }}
             />
           </div>
@@ -1018,11 +1528,11 @@ export default function Home() {
           {/* Next Button - Outside Image */}
           <button
             className="position-absolute top-50 end-0 translate-middle-y text-white border-0 bg-transparent"
-            style={{ 
-              zIndex: 10001, 
-              right: '2rem',
-              fontSize: '3rem',
-              cursor: 'pointer'
+            style={{
+              zIndex: 10001,
+              right: "2rem",
+              fontSize: "3rem",
+              cursor: "pointer",
             }}
             onClick={(e) => {
               e.stopPropagation();
@@ -1050,11 +1560,15 @@ export default function Home() {
             {/* Mobile Detailing Unit */}
             <div className="col-lg-4 mb-4 mb-lg-0 text-center">
               <div className="footer-section">
-                <h5 className="fs-5 mt-3 mt-lg-0 mb-3">Mobile Detailing Unit</h5>
+                <h5 className="fs-5 mt-3 mt-lg-0 mb-3">
+                  Mobile Detailing Unit
+                </h5>
                 <div className="row row-cols-1 g-0">
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <h6 className="mobile footer-heading2">We Come To You!</h6>
+                      <h6 className="mobile footer-heading2">
+                        We Come To You!
+                      </h6>
                     </div>
                   </div>
                   <div className="col">
@@ -1067,7 +1581,10 @@ export default function Home() {
                       >
                         <iconify-icon
                           icon="mdi:phone"
-                          style={{verticalAlign: 'middle', marginRight: '6px'}}
+                          style={{
+                            verticalAlign: "middle",
+                            marginRight: "6px",
+                          }}
                         />
                         704-561-1927
                       </a>
@@ -1083,7 +1600,10 @@ export default function Home() {
                       >
                         <iconify-icon
                           icon="mdi:email"
-                          style={{verticalAlign: 'middle', marginRight: '6px'}}
+                          style={{
+                            verticalAlign: "middle",
+                            marginRight: "6px",
+                          }}
                         />
                         info@supremenomads.com
                       </a>
@@ -1176,52 +1696,72 @@ export default function Home() {
                 <div className="row row-cols-1 row-cols-lg-2 g-0">
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Charlotte</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Charlotte
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Concord</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Concord
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Harrisburg</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Harrisburg
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Huntersville</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Huntersville
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Matthews</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Matthews
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Waxhaw</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Waxhaw
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Lake Norman</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Lake Norman
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Fort Mill, SC</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Fort Mill, SC
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Indian Land, SC</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Indian Land, SC
+                      </a>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="#" className="nav-link text-uppercase p-0">Rock Hill, SC</a>
+                      <a href="#" className="nav-link text-uppercase p-0">
+                        Rock Hill, SC
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -1235,27 +1775,49 @@ export default function Home() {
                 <div className="row row-cols-1 g-0">
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <Link to="/" className="nav-link text-uppercase p-0">Home</Link>
+                      <Link to="/" className="nav-link text-uppercase p-0">
+                        Home
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <Link to="/snd-site/gallery" className="nav-link text-uppercase p-0">Gallery</Link>
+                      <Link
+                        to="/snd-site/gallery"
+                        className="nav-link text-uppercase p-0"
+                      >
+                        Gallery
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <Link to="/snd-site/services" className="nav-link text-uppercase p-0">Our Services</Link>
+                      <Link
+                        to="/snd-site/services"
+                        className="nav-link text-uppercase p-0"
+                      >
+                        Our Services
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <Link to="/snd-site/about" className="nav-link text-uppercase p-0">About Us</Link>
+                      <Link
+                        to="/snd-site/about"
+                        className="nav-link text-uppercase p-0"
+                      >
+                        About Us
+                      </Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <Link to="/snd-site/academy" className="nav-link text-uppercase p-0">Academy</Link>
+                      <Link
+                        to="/snd-site/academy"
+                        className="nav-link text-uppercase p-0"
+                      >
+                        Academy
+                      </Link>
                     </div>
                   </div>
                 </div>

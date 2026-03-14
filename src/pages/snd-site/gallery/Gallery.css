@@ -2,7 +2,7 @@
 
 /* Hero Section */
 .hero-gallery {
-  background-image: url('../images/HERO GALLERY.jpg');
+  background-image: url("../images/HERO GALLERY.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,7 +43,9 @@
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 }
 
@@ -177,7 +179,7 @@
 .footer-heading2 {
   color: #dec49a;
   font-weight: 600;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 .footer-list a {
@@ -215,28 +217,28 @@
     min-height: 80vh;
     background-position: center center;
   }
-  
+
   .gallery-item {
     margin-bottom: 20px;
   }
-  
+
   .isotope-container {
     margin: 0 -10px;
   }
-  
+
   .isotope-container .col-12 {
     padding: 0 10px;
   }
-  
+
   .video-container iframe {
     height: 250px;
   }
-  
+
   .lightbox-nav {
     font-size: 1.5rem;
     padding: 15px;
   }
-  
+
   .lightbox-close {
     font-size: 1.5rem;
     top: 10px;
@@ -249,30 +251,30 @@
     min-height: 70vh;
     background-position: center center;
   }
-  
+
   .isotope-container {
     margin: 0 -5px;
   }
-  
+
   .isotope-container .col-12,
   .isotope-container .col-sm-6 {
     padding: 0 5px;
     margin-bottom: 15px;
   }
-  
+
   .gallerySocials {
     padding: 10px 20px;
     font-size: 0.9rem;
   }
-  
+
   .video-container {
     padding: 0 15px 30px;
   }
-  
+
   .video-container iframe {
     height: 200px;
   }
-  
+
   /* Ensure images are visible on mobile */
   .gallery-item img,
   .isotope-container img {
@@ -327,19 +329,19 @@
   .navbar .navbar-nav {
     display: none !important;
   }
-  
+
   .navbar .offcanvas .navbar-nav {
     display: flex !important;
   }
-  
+
   .navbar .book-now-div {
     display: none !important;
   }
-  
+
   .navbar .offcanvas .book-now-div {
     display: block !important;
   }
-  
+
   /* Prevent navbar collapse on mobile and apply black background to header */
   .navbar.fixed-top {
     background-color: #000000 !important; /* Black background for the header */
@@ -348,18 +350,18 @@
     min-height: auto !important;
     padding: inherit !important;
   }
-  
+
   .navbar.fixed-top.bg-black {
     background-color: #000000 !important; /* Ensure black background even with bg-black class */
   }
-  
+
   /* Ensure hamburger menu stays visible */
   .navbar-toggler {
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
-  
+
   .d-xl-none {
     display: flex !important;
   }

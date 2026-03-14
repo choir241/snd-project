@@ -14,19 +14,19 @@
   .navbar .navbar-nav {
     display: none !important;
   }
-  
+
   .navbar .offcanvas .navbar-nav {
     display: flex !important;
   }
-  
+
   .navbar .book-now-div {
     display: none !important;
   }
-  
+
   .navbar .offcanvas .book-now-div {
     display: block !important;
   }
-  
+
   /* Prevent navbar collapse on mobile and apply black background to header */
   .navbar.fixed-top {
     background-color: #000000 !important; /* Black background for the header */
@@ -35,32 +35,32 @@
     min-height: auto !important;
     padding: inherit !important;
   }
-  
+
   .navbar.fixed-top.bg-black {
     background-color: #000000 !important; /* Ensure black background even with bg-black class */
   }
-  
+
   /* Black background for hamburger menu offcanvas */
   .offcanvas {
     background-color: #000000 !important;
   }
-  
+
   .offcanvas-header {
     background-color: #000000 !important;
     border-bottom: 1px solid #333 !important;
   }
-  
+
   .offcanvas-body {
     background-color: #000000 !important;
   }
-  
+
   /* Ensure hamburger menu stays visible */
   .navbar-toggler {
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
-  
+
   .d-xl-none {
     display: flex !important;
   }
@@ -133,11 +133,11 @@
   .academy-quote {
     padding: 2rem 0;
   }
-  
+
   .academy-quote .fs-3 {
     font-size: 1.25rem !important;
   }
-  
+
   .academy-quote .fs-3.text-uppercase {
     font-size: 1.1rem !important;
   }
@@ -147,7 +147,7 @@
   .academy-quote .fs-3 {
     font-size: 1.1rem !important;
   }
-  
+
   .academy-quote .fs-3.text-uppercase {
     font-size: 1rem !important;
   }
