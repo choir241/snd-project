@@ -80,18 +80,6 @@
   transition: none !important;
 }
 
-/* Social Buttons */
-.gallerySocials {
-  background: #dec49a;
-  border: none;
-  color: #000;
-  padding: 12px 30px;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
 .gallerySocials:hover {
   background: #c4a975;
   color: #000;
@@ -232,6 +220,14 @@
     margin-bottom: 20px;
   }
   
+  .isotope-container {
+    margin: 0 -10px;
+  }
+  
+  .isotope-container .col-12 {
+    padding: 0 10px;
+  }
+  
   .video-container iframe {
     height: 250px;
   }
@@ -254,6 +250,16 @@
     background-position: center center;
   }
   
+  .isotope-container {
+    margin: 0 -5px;
+  }
+  
+  .isotope-container .col-12,
+  .isotope-container .col-sm-6 {
+    padding: 0 5px;
+    margin-bottom: 15px;
+  }
+  
   .gallerySocials {
     padding: 10px 20px;
     font-size: 0.9rem;
@@ -265,6 +271,15 @@
   
   .video-container iframe {
     height: 200px;
+  }
+  
+  /* Ensure images are visible on mobile */
+  .gallery-item img,
+  .isotope-container img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    display: block !important;
   }
 }
 
@@ -290,4 +305,10 @@
 .item.isotope-item {
   opacity: 1;
   transform: scale(1);
+}
+
+.social-media-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }

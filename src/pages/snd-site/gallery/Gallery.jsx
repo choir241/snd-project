@@ -451,7 +451,7 @@ export default function Gallery() {
           <h2 className="display-4 text-center mb-5">Explore Our Work</h2>
           <div className="isotope-container">
             {galleryImages.map((image) => (
-              <div key={image.id} className="col-md-4" style={{ padding: '0 15px', marginBottom: '30px' }}>
+              <div key={image.id} className="col-12 col-sm-6 col-md-4" style={{ padding: '0 15px', marginBottom: '30px' }}>
                 <div 
                   style={{
                     position: 'relative',
@@ -506,7 +506,7 @@ export default function Gallery() {
         </div>
 
         {/* Social Links */}
-        <div className="text-center pb-5 mb-5">
+        <div className="text-center pb-5 mb-5 social-media-button-container">
           <div className="social-button-wrapper">
             <a
               href="https://www.instagram.com/supremenomads"
