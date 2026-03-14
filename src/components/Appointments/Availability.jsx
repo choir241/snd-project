@@ -17,11 +17,29 @@ export default function Availabilty({
   selectedDate,
   appointments,
   setAppointments,
+  isLoading,
+  setIsLoading,
 }) {
   const cartItems = sessionStorage.getItem("cart")
     ? JSON.parse(sessionStorage.getItem("cart"))
     : [];
   const [nextAvailableDate, setNextAvailableDate] = useState(null);
+
+  // Function to validate nextAvailableDate data
+  function isValidDate(dateObj) {
+    return (
+      dateObj &&
+      typeof dateObj === 'object' &&
+      !isNaN(dateObj.year) &&
+      !isNaN(dateObj.month) &&
+      !isNaN(dateObj.date) &&
+      dateObj.year > 0 &&
+      dateObj.month > 0 &&
+      dateObj.month <= 12 &&
+      dateObj.date > 0 &&
+      dateObj.date <= 31
+    );
+  }
 
   // Function to find the next available date with appointments
   async function findNextAvailableDate(startFromDate) {
@@ -63,13 +81,18 @@ export default function Availabilty({
           );
 
           if (appts.data.appts && appts.data.appts.length > 0) {
-            return {
+            const dateObj = {
               dateString,
               year: calDate.year,
               month: calDate.month,
               date: calDate.date,
               dateName: calDate.dateName,
             };
+            
+            // Validate the date object before returning
+            if (isValidDate(dateObj)) {
+              return dateObj;
+            }
           }
         }
       } catch (err) {
@@ -84,6 +107,7 @@ export default function Availabilty({
   useEffect(() => {
     async function getAppointments() {
       try {
+        setIsLoading(true);
         const endDate = generateDateRange({
           startDate: selectedDate,
           endTime: 13,
@@ -129,6 +153,8 @@ export default function Availabilty({
         }
       } catch (err) {
         console.error(err);
+      } finally {
+        setIsLoading(false);
       }
     }
     getAppointments();
@@ -141,27 +167,32 @@ export default function Availabilty({
       id="availability-segments"
     >
       <div className="mb-4">
-        {!appointments.length && nextAvailableDate ? (
+        {isLoading ? (
+          <div className="mb-4">
+            {labels.appointments.loading}
+          </div>
+        ) : !appointments.length && isValidDate(nextAvailableDate) ? (
           <div className="mb-4">
             {labels.appointments.noAvailability}
-            {
-              weekNameList[
-                new Date(
-                  nextAvailableDate.year,
-                  nextAvailableDate.month - 1,
-                  nextAvailableDate.date,
-                ).getDay()
-              ]
+            {labels.appointments.nextAvailableOn}{" "}
+            {weekNameList[
+              new Date(
+                nextAvailableDate.year,
+                nextAvailableDate.month - 1,
+                nextAvailableDate.date,
+              ).getDay()
+            ]
             }
             , {months[nextAvailableDate.month - 1]} {nextAvailableDate.date}.
           </div>
         ) : !appointments.length ? (
           <div className="mb-4">
-            {labels.appointments.noAvailability}
-            Loading...
+            {labels.appointments.noAvailabilityFound}
           </div>
         ) : (
-          ""
+          <div className="mb-4">
+            {labels.appointments.selectTimeBelow}
+          </div>
         )}
         <TimeButtonCategories
           appointments={appointments}

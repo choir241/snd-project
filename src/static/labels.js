@@ -44,6 +44,13 @@ export const labels = {
     availAfternoon: "Afternoon",
     availEvening: "Evening",
     noAvailContainer: "No availability",
+    loading: "Loading availability...",
+    noAppointmentsToday: "No appointments available for today",
+    noAppointmentsSelected: "Please select a time to continue",
+    noAvailabilityFound: "No availability found for the next 60 days",
+    nextAvailableOn: "Next available on",
+    selectTimeBelow: "Select a time below to book your appointment",
+    today: "Today",
   },
   links: {
     checkoutLink: "/checkout",
@@ -75,7 +82,7 @@ export const labels = {
     updateButton: "Update",
     removeButton: "Remove",
     addButton: "Add",
-    backButton: "Back"
+    backButton: "Back",
   },
   packages: {
     expressPackage: {

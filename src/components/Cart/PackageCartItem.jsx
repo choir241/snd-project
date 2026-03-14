@@ -1,4 +1,7 @@
-import { packageNameCamelCase, getPackageBaseUrl } from "../../hooks/packageNameCamelCase";
+import {
+  packageNameCamelCase,
+  getPackageBaseUrl,
+} from "../../hooks/packageNameCamelCase";
 import RenderAddOnsCart from "../AddOns/RenderAddOnsInCart";
 
 export default function PackageCartItem({

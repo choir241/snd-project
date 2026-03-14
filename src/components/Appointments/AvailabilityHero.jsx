@@ -22,7 +22,7 @@ export default function AvailabilityHero({ selectedDate }) {
       <h3 className="my-6">
         {selectedDate === formattedDate ? (
           <span>
-            Today, {weekNameList[getDay(selectedDate)]},{" "}
+            {labels.appointments.today}, {weekNameList[getDay(selectedDate)]},{" "}
             {getAbbrMonth(selectedDate)} {getDate(selectedDate)},{" "}
             {getFullYear(selectedDate)}
           </span>

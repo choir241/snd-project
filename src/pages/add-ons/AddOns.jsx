@@ -22,7 +22,6 @@ export default function AddOns({ packageName }) {
     <div className="bg-white" id="addOn">
       <div className="mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
         <div className="flex flex-col flex-grow overflow-y-auto">
-
           <div className="p-4">
             <h1>Choose an Add-on</h1>
           </div>

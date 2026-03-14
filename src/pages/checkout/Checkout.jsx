@@ -52,7 +52,6 @@ export default function Checkout() {
     <div className="bg-white" id="root">
       <div className="mb-0 flex min-h-screen relative">
         <div className="flex flex-col flex-grow">
-
           <div className="p-4">
             <h1>Checkout</h1>
           </div>

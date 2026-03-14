@@ -25,7 +25,6 @@ export default function Package({
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
       <div className="flex flex-col flex-grow overflow-y-auto">
-
         <div className="p-4">
           <h1>Book a Service</h1>
         </div>

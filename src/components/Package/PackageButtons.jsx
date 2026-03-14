@@ -31,27 +31,24 @@ export default function PackageButtons({
     </div>
   ) : (
     <div className="package-button-container">
-    <button className="button remove-button">
-      <a href = "/bookings">
-        {labels.services.backButton}
-      </a>
-    </button>
-    <button
-      className="button"
-      onClick={() =>
-        addPackage({
-          packageName,
-          packageVersion,
-          packagePrice,
-          packageTimeAlloted,
-          packageOption,
-          navigate,
-        })
-      }
-    >
-      {labels.services.addButton}
-    </button>
+      <button className="button remove-button">
+        <a href="/bookings">{labels.services.backButton}</a>
+      </button>
+      <button
+        className="button"
+        onClick={() =>
+          addPackage({
+            packageName,
+            packageVersion,
+            packagePrice,
+            packageTimeAlloted,
+            packageOption,
+            navigate,
+          })
+        }
+      >
+        {labels.services.addButton}
+      </button>
     </div>
-
   );
 }

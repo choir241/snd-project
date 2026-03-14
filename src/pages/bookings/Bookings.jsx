@@ -10,7 +10,6 @@ export default function Bookings() {
       <div className="bg-white" id="root">
         <div className="mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
           <div className="flex flex-col flex-grow overflow-y-auto">
-
             <div className="p-4">
               <h1>Bookings</h1>
             </div>

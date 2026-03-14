@@ -13,12 +13,12 @@ export default function Appointments() {
   const [toggleCalendarView, setToggleCalendarView] = useState(false);
   const [selectedDate, setSelectedDate] = useState(formattedDate);
   const [appointments, setAppointments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="bg-white" id="root">
       <div className="mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
         <div className="flex flex-col flex-grow overflow-y-auto">
-
           <div className="p-4">
             <h1>Book an Appointment</h1>
           </div>
@@ -56,6 +56,8 @@ export default function Appointments() {
                   selectedDate={selectedDate}
                   appointments={appointments}
                   setAppointments={setAppointments}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
                 />
               </section>
               <aside className="transition-opacity delay-150 duration-500 ease-in-out opacity-100 hidden md-lg:block md-lg:px-4 max-w-cart-sidebar min-w-cart-sidebar ">
