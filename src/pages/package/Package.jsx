@@ -5,7 +5,6 @@ import PackageButtons from "../../components/Package/PackageButtons";
 import PackageServiceList from "../../components/Package/PackageServiceList";
 import "./Package.css";
 import { useState } from "react";
-import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
 
 export default function Package({
@@ -26,7 +25,6 @@ export default function Package({
   return (
     <div className="packageContainer mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
       <div className="flex flex-col flex-grow overflow-y-auto">
-        <PackageHeader />
 
         <div className="p-4">
           <h1>Book a Service</h1>

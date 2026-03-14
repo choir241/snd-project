@@ -4,7 +4,6 @@ import CalendarCarasoul from "../../components/Appointments/CalendarCarousel";
 import CalendarToggleButton from "../../components/Appointments/CalendarToggleButton";
 import Availabilty from "../../components/Appointments/Availability";
 import AvailabilityHero from "../../components/Appointments/AvailabilityHero";
-import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
 import { useState } from "react";
 import HiddenCalendar from "../../components/Appointments/HiddenCalendar";
@@ -19,7 +18,6 @@ export default function Appointments() {
     <div className="bg-white" id="root">
       <div className="mb-0 flex w-screen max-h-screen-svh min-h-screen-svh h-full overflow-hidden relative">
         <div className="flex flex-col flex-grow overflow-y-auto">
-          <PackageHeader />
 
           <div className="p-4">
             <h1>Book an Appointment</h1>

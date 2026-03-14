@@ -1,4 +1,3 @@
-import PackageHeader from "../../components/Package/PackageHeader";
 import Footer from "../../components/Footer";
 import CheckoutCart from "../../components/Checkout/CheckoutCart/CheckoutCart";
 import { labels } from "../../static/labels";
@@ -53,7 +52,6 @@ export default function Checkout() {
     <div className="bg-white" id="root">
       <div className="mb-0 flex min-h-screen relative">
         <div className="flex flex-col flex-grow">
-          <PackageHeader />
 
           <div className="p-4">
             <h1>Checkout</h1>
