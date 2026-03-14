@@ -125,6 +125,188 @@
   z-index: 2 ;
 }
 
+/* Hamburger toggle - hidden checkbox for CSS-only functionality */
+.hamburger-toggle {
+  display: none;
+}
+
+/* Hide hamburger menu on larger screens, show on smaller screens */
+@media (min-width: 1200px) {
+  .hamburger-label {
+    display: none !important;
+  }
+  
+  .mobile-nav-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .hamburger-label {
+    display: block;
+  }
+  
+  .mobile-nav-menu {
+    display: block;
+  }
+}
+
+/* Hamburger label styling */
+.hamburger-label {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger-label:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile navigation menu */
+.mobile-nav-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  backdrop-filter: blur(10px);
+  transition: right 0.3s ease-in-out;
+  z-index: 1050;
+  overflow: hidden;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Menu open state - checkbox is sibling to mobile-nav-menu */
+.hamburger-toggle:checked ~ .mobile-nav-menu {
+  right: 0;
+}
+
+/* Mobile menu header */
+.mobile-nav-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hamburger-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Mobile menu body */
+.mobile-nav-body {
+  padding: 20px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Mobile nav links */
+.mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-nav-item {
+  width: 100%;
+}
+
+.mobile-nav-link {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  padding: 12px 16px !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: block;
+  width: 100%;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+  text-decoration: none !important;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  background: rgba(220, 169, 88, 0.2) !important;
+  color: #dc9658 !important;
+  transform: translateX(5px);
+}
+
+/* Social links in mobile menu */
+.mobile-nav-body .social-div {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-body .social-ul {
+  justify-content: center;
+  gap: 20px;
+}
+
+.mobile-nav-body .social-icon {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-body .social-icon:hover {
+  color: #dc9658 !important;
+  transform: scale(1.1);
+}
+
+/* Book now button in mobile menu */
+.mobile-nav-body .book-now-div {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.book-now-button-custom {
+  background: linear-gradient(135deg, #dc9658 0%, #b8783a 100%);
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.book-now-button-custom:hover {
+  background: linear-gradient(135deg, #b8783a 0%, #dc9658 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 169, 88, 0.3);
+}
+
+/* Overlay when menu is open */
+.hamburger-toggle:checked ~ .mobile-nav-menu::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Close menu when clicking outside on mobile */
+@media (max-width: 1199.98px) {
+  .hamburger-toggle:checked ~ .mobile-nav-menu::before {
+    cursor: pointer;
+  }
+}
+
 /* Navigation link styling adjustments */
 .navbar-nav .nav-link {
   font-size: 0.8rem ;
@@ -223,12 +405,15 @@
   border-radius: 4px;
 }
 
-.navbar-toggler {
-  border: 2px solid #ffffff;
+/* Hamburger menu icon styling */
+.hamburger-menu {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
 }
 
-.navbar-toggler:focus {
-  box-shadow: 0 0 0 0.25rem rgba(220, 169, 88, 0.25);
+.hamburger-label:hover .hamburger-menu {
+  color: #dc9658;
 }
 
 /* Footer styling - LIGHT THEME */

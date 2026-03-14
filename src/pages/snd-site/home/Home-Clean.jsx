@@ -306,8 +306,22 @@ export default function Home() {
     }
   };
 
-  // Navbar scroll effect
+  // Close hamburger menu when clicking outside and navbar scroll effect
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      const checkbox = document.getElementById('hamburger-toggle');
+      const mobileMenu = document.querySelector('.mobile-nav-menu');
+      const hamburgerLabel = document.querySelector('.hamburger-label');
+      const navbar = document.querySelector('.navbar');
+      
+      // Only close if menu is open and click is outside menu and navbar
+      if (checkbox && checkbox.checked && 
+          mobileMenu && !mobileMenu.contains(event.target) && 
+          navbar && !navbar.contains(event.target)) {
+        checkbox.checked = false;
+      }
+    };
+
     const handleScroll = () => {
       const scroll = window.scrollY;
       const navbar = document.querySelector('.navbar.fixed-top');
@@ -321,12 +335,14 @@ export default function Home() {
       }
     };
 
+    document.addEventListener('click', handleClickOutside);
     window.addEventListener('scroll', handleScroll);
     
     // Initial check
     handleScroll();
 
     return () => {
+      document.removeEventListener('click', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -345,7 +361,65 @@ export default function Home() {
             <img src={Logo} alt="logo" />
           </a>
           
-          {/* Mobile Layout */}
+          {/* Desktop Navigation - Visible on XL screens and up */}
+          <div className="d-none d-xl-flex align-items-center gap-3">
+            <a href="tel:+17045611927" className="text-white pt-2">
+              <iconify-icon
+                icon="ic:baseline-call"
+                className="call-icon"
+                style={{ fontSize: "1.5rem" }}
+              />
+            </a>
+            <ul className="navbar-nav align-items-center flex-row gap-3">
+              <li className="nav-item">
+                <a
+                  className="nav-link text-white text-uppercase active"
+                  aria-current="page"
+                  href="/"
+                >Home</a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link text-white text-uppercase"
+                  href="/snd-site/gallery"
+                >Gallery</a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link text-white text-uppercase"
+                  href="/snd-site/services"
+                >Our Services</a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link text-white text-uppercase"
+                  href="/snd-site/about"
+                >About Us</a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link text-white text-uppercase"
+                  href="/snd-site/academy"
+                >Academy</a>
+              </li>
+            </ul>
+            <div className="book-now-div">
+              <button 
+                onClick={() => window.location.href = '/bookings'}
+                className="book-now-button-custom"
+                type="button"
+              >
+                Book Now
+                <iconify-icon
+                  icon="tabler:arrow-right"
+                  className="arrow-icon-custom"
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Layout - Visible on smaller screens */}
+          <input type="checkbox" id="hamburger-toggle" className="hamburger-toggle" />
           <div className="d-flex align-items-center gap-3 d-xl-none">
             <a href="tel:+17045611927" className="text-white pt-2">
               <iconify-icon
@@ -354,64 +428,58 @@ export default function Home() {
                 style={{ fontSize: "1.5rem" }}
               />
             </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasNavbar"
-              aria-controls="offcanvasNavbar"
-            >
+            <label htmlFor="hamburger-toggle" className="hamburger-label">
               <iconify-icon
                 icon="system-uicons:menu-hamburger"
                 className="hamburger-menu"
               />
-            </button>
+            </label>
           </div>
-          <div
-            className="offcanvas offcanvas-end"
-            tabIndex={-1}
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-          >
-            <div className="offcanvas-header my-2 mx-3">
+          <div className="mobile-nav-menu">
+            <div className="mobile-nav-header my-2 mx-3">
               <img
                 src="/images/logo-gold-text.svg"
                 alt="Supreme Nomads Detailing Logo"
                 className="hamburger-logo"
               />
             </div>
-            <div className="offcanvas-body">
+            <div className="mobile-nav-body">
               {/* Routes */}
-              <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
-                <li className="nav-item">
+              <ul className="mobile-nav-list">
+                <li className="mobile-nav-item">
                   <a
-                    className="nav-link text-white text-uppercase active mx-1 px-1 mb-2 mb-lg-0"
+                    className="mobile-nav-link"
                     aria-current="page"
                     href="/"
+                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Home</a>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <a
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="mobile-nav-link"
                     href="/snd-site/gallery"
+                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Gallery</a>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <a
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="mobile-nav-link"
                     href="/snd-site/services"
+                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Our Services</a>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <a
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="mobile-nav-link"
                     href="/snd-site/about"
+                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >About Us</a>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <a
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="mobile-nav-link"
                     href="/snd-site/academy"
+                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Academy</a>
                 </li>
                 {/* Socials */}
