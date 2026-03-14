@@ -4,6 +4,7 @@ import Logo from '../images/horizontal-logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/style.css";
 import "./PaintProtection.css";
+import "./Services.css";
 
 const PAINT_FEATURES = {
   special: [
@@ -449,37 +450,37 @@ export default function Services() {
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase active mx-1 px-1 mb-2 mb-lg-0"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/"
                   >Home</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
                     to="/snd-site/gallery"
                   >Gallery</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/services"
                   >Our Services</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/about"
                   >About Us</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/academy"
                   >Academy</Link>
                 </li>
                 {/* Socials */}
                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
-                  <ul className="d-flex flex-row list-unstyled mb-0 social-ul">
+                  <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
                     <li className="nav-item">
                       <a
                         className="nav-link d-flex align-items-center"
@@ -563,17 +564,12 @@ export default function Services() {
                 </div>
                 {/* Book Now */}
                 <div className="book-now-div">
-                  <button 
-                    onClick={() => window.location.href = '/bookings'}
-                    className="book-now-button-custom"
-                    type="button"
+                  <Link
+                    to="/bookings"
+                    className="btn btn-primary book-now-btn w-100 w-xl-auto ms-0 ms-xl-3"
                   >
                     Book Now
-                    <iconify-icon
-                      icon="tabler:arrow-right"
-                      className="arrow-icon-custom"
-                    />
-                  </button>
+                  </Link>
                 </div>
               </ul>
             </div>

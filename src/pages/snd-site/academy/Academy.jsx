@@ -6,6 +6,12 @@ import './Academy.css';
 import Logo from '../images/horizontal-logo.png';
 
 const Academy = () => {
+
+    const openFacebook = (event) => {
+    event.preventDefault();
+    window.open('https://www.facebook.com/Supremenomads/', '_blank');
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     email: ''
@@ -55,15 +61,15 @@ const Academy = () => {
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" />
           </Link>
-
+          
           {/* Mobile Layout */}
           <div className="d-flex align-items-center gap-3 d-xl-none">
             <a href="tel:+17045611927" className="text-white pt-2">
               <iconify-icon
                 icon="ic:baseline-call"
                 className="call-icon"
-                style={{ fontSize: '1.5rem' }}
-              ></iconify-icon>
+                style={{ fontSize: "1.5rem" }}
+              />
             </a>
             <button
               className="navbar-toggler"
@@ -75,13 +81,12 @@ const Academy = () => {
               <iconify-icon
                 icon="system-uicons:menu-hamburger"
                 className="hamburger-menu"
-              ></iconify-icon>
+              />
             </button>
           </div>
-
           <div
             className="offcanvas offcanvas-end"
-            tabIndex="-1"
+            tabIndex={-1}
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >
@@ -91,14 +96,7 @@ const Academy = () => {
                 alt="Supreme Nomads Detailing Logo"
                 className="hamburger-logo"
               />
-              <button
-                type="button"
-                className="btn-close btn-close-white text-reset"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
             </div>
-
             <div className="offcanvas-body">
               {/* Routes */}
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
@@ -106,138 +104,126 @@ const Academy = () => {
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/"
-                  >
-                    Home
-                  </Link>
+                  >Home</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
                     to="/snd-site/gallery"
-                  >
-                    Gallery
-                  </Link>
+                  >Gallery</Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/services"
-                  >
-                    Our Services
-                  </Link>
+                  >Our Services</Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/about"
-                  >
-                    About Us
-                  </Link>
+                  >About Us</Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/academy"
-                  >
-                    Academy
-                  </Link>
+                  >Academy</Link>
                 </li>
+                {/* Socials */}
+                <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
+                  <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
+                    <li className="nav-item">
+                      <a
+                        className="nav-link d-flex align-items-center"
+                        href="tel:+17045611927"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <iconify-icon
+                          icon="ic:baseline-call"
+                          className="social-icon text-white"
+                        />
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link d-flex align-items-center"
+                        href="https://www.tiktok.com/@supremenomads704"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <iconify-icon
+                          icon="ri:tiktok-fill"
+                          className="social-icon text-white"
+                        />
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link d-flex align-items-center"
+                        href="https://www.instagram.com/supremenomads"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <iconify-icon
+                          icon="ri:instagram-line"
+                          className="social-icon text-white"
+                        />
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link d-flex align-items-center"
+                        href="https://www.facebook.com/Supremenomads/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={openFacebook}
+                      >
+                        <iconify-icon
+                          icon="ri:facebook-fill"
+                          className="social-icon text-white"
+                        />
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link d-flex align-items-center"
+                        href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <iconify-icon
+                          icon="mdi:yelp"
+                          className="social-icon text-white"
+                        />
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link d-flex align-items-center"
+                        href="https://www.youtube.com/@SupremeNomads"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <iconify-icon
+                          icon="ri:youtube-fill"
+                          className="social-icon text-white"
+                        />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                {/* Book Now */}
+                <div className="book-now-div">
+                  <Link
+                    to="/bookings"
+                    className="btn btn-primary book-now-btn w-100 w-xl-auto ms-0 ms-xl-3"
+                  >
+                    Book Now
+                  </Link>
+                </div>
               </ul>
-
-              {/* Socials */}
-              <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
-                <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
-                  <li className="nav-item">
-                    <a
-                      className="nav-link d-flex align-items-center"
-                      href="tel:+17045611927"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <iconify-icon
-                        icon="ic:baseline-call"
-                        className="social-icon text-white"
-                      ></iconify-icon>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link d-flex align-items-center"
-                      href="https://www.tiktok.com/@supremenomads704"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <iconify-icon
-                        icon="ri:tiktok-fill"
-                        className="social-icon text-white"
-                      ></iconify-icon>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link d-flex align-items-center"
-                      href="https://www.instagram.com/supremenomads"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <iconify-icon
-                        icon="ri:instagram-line"
-                        className="social-icon text-white"
-                      ></iconify-icon>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link d-flex align-items-center"
-                      href="https://www.facebook.com/Supremenomads/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => window.open(e.target.href, '_blank')}
-                    >
-                      <iconify-icon
-                        icon="ri:facebook-fill"
-                        className="social-icon text-white"
-                      ></iconify-icon>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link d-flex align-items-center"
-                      href="https://www.yelp.com/biz/supreme-nomads-detailing-charlotte"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <iconify-icon
-                        icon="mdi:yelp"
-                        className="social-icon text-white"
-                      ></iconify-icon>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link d-flex align-items-center"
-                      href="https://www.youtube.com/@SupremeNomads"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <iconify-icon
-                        icon="ri:youtube-fill"
-                        className="social-icon text-white"
-                      ></iconify-icon>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Book Now */}
-              <div className="book-now-div">
-                <Link
-                  to="/bookings"
-                  className="btn btn-primary book-now-btn w-100 w-xl-auto ms-0 ms-xl-3"
-                >
-                  Book Now
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -260,7 +246,9 @@ const Academy = () => {
       <div className="pb-5 academy-quote">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 text-center hero-overlay">
+          </div>
+
+            <div className="col-12 text-center">
               <p className="fs-3 my-5 pt-5">
                 As Richard Feynman says, "If you want to master something, teach it."
                 Whether you're looking to start your own detailing business or just want
@@ -271,8 +259,6 @@ const Academy = () => {
                 something for all of you. Want to know when this section releases?
               </p>
             </div>
-          </div>
-
           <div className="row justify-content-center py-3">
             <div className="col-md-6 text-center">
               <h2 className="fs-3 text-uppercase mb-4">Join The Mailing List!</h2>

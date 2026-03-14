@@ -203,7 +203,7 @@ export default function About() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
                     to="/snd-site/gallery"
                   >Gallery</Link>
                 </li>
@@ -215,7 +215,7 @@ export default function About() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/about"
                   >About Us</Link>
                 </li>
@@ -396,7 +396,7 @@ export default function About() {
 
             {/* Team Member 1 */}
             <div className="row align-items-center my-5 mx-auto">
-              <div className="col-md-4 text-center">
+              <div className="col-md-4 col align-items-center">
                 <img
                   src="https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto,c_limit,w_1200/v1754439571/about-us-akash_gnm3s8.png"
                   className="img-fluid member-photo"
@@ -457,15 +457,14 @@ export default function About() {
             </div>
 
             {/* Team Member 2 (Alternate Layout) */}
-            <div className="row align-items-center mt-5 pt-3 mx-auto member-2">
-              <div className="col-md-4 text-center">
-                <img
+               <div className="row align-items-center my-5 mx-auto">
+              <div className="col-md-4 col align-items-center">
+                  <img
                   src="https://res.cloudinary.com/dnsc73sla/image/upload/f_auto,q_auto,c_limit,w_1200/v1754439521/about-us-tenzin_tqo4xu.png"
                   className="img-fluid member-photo"
                   alt="Tenzin"
                 />
-                <div className="social-links mt-3 d-flex justify-content-center gap-3">
-                </div>
+
               </div>
               <div className="col-md-8 text-center">
                 <h5 className="element-title text-uppercase mt-3">Tenzin</h5>

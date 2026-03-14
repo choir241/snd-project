@@ -350,77 +350,15 @@ export default function Home() {
 
   return (
     <>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Supreme Nomads Detailing - Charlotte - Mobile Auto Detailing</title>
-      
       {/* Nav */}
       <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
         {/* Logo */}
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" />
-          </a>
+          </Link>
           
-          {/* Desktop Navigation - Visible on XL screens and up */}
-          <div className="d-none d-xl-flex align-items-center gap-3">
-            <a href="tel:+17045611927" className="text-white pt-2">
-              <iconify-icon
-                icon="ic:baseline-call"
-                className="call-icon"
-                style={{ fontSize: "1.5rem" }}
-              />
-            </a>
-            <ul className="navbar-nav align-items-center flex-row gap-3">
-              <li className="nav-item">
-                <Link
-                  className="nav-link text-white text-uppercase active"
-                  aria-current="page"
-                  to="/"
-                >Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link text-white text-uppercase"
-                  to="/snd-site/gallery"
-                >Gallery</Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link text-white text-uppercase"
-                  to="/snd-site/services"
-                >Our Services</Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link text-white text-uppercase"
-                  to="/snd-site/about"
-                >About Us</Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link text-white text-uppercase"
-                  to="/snd-site/academy"
-                >Academy</Link>
-              </li>
-            </ul>
-            <div className="book-now-div">
-              <button 
-                onClick={() => window.location.href = '/bookings'}
-                className="book-now-button-custom"
-                type="button"
-              >
-                Book Now
-                <iconify-icon
-                  icon="tabler:arrow-right"
-                  className="arrow-icon-custom"
-                />
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Layout - Visible on smaller screens */}
-          <input type="checkbox" id="hamburger-toggle" className="hamburger-toggle" />
+          {/* Mobile Layout */}
           <div className="d-flex align-items-center gap-3 d-xl-none">
             <a href="tel:+17045611927" className="text-white pt-2">
               <iconify-icon
@@ -429,63 +367,68 @@ export default function Home() {
                 style={{ fontSize: "1.5rem" }}
               />
             </a>
-            <label htmlFor="hamburger-toggle" className="hamburger-label">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar"
+            >
               <iconify-icon
                 icon="system-uicons:menu-hamburger"
                 className="hamburger-menu"
               />
-            </label>
+            </button>
           </div>
-          <div className="mobile-nav-menu">
-            <div className="mobile-nav-header my-2 mx-3">
+          <div
+            className="offcanvas offcanvas-end"
+            tabIndex={-1}
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div className="offcanvas-header my-2 mx-3">
               <img
                 src="/images/logo-gold-text.svg"
                 alt="Supreme Nomads Detailing Logo"
                 className="hamburger-logo"
               />
             </div>
-            <div className="mobile-nav-body">
+            <div className="offcanvas-body">
               {/* Routes */}
-              <ul className="mobile-nav-list">
-                <li className="mobile-nav-item">
+              <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
+                <li className="nav-item">
                   <Link
-                    className="mobile-nav-link"
-                    aria-current="page"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/"
-                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Home</Link>
                 </li>
-                <li className="mobile-nav-item">
+                <li className="nav-item">
                   <Link
-                    className="mobile-nav-link"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0 active"
                     to="/snd-site/gallery"
-                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Gallery</Link>
                 </li>
-                <li className="mobile-nav-item">
+                <li className="nav-item">
                   <Link
-                    className="mobile-nav-link"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/services"
-                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Our Services</Link>
                 </li>
-                <li className="mobile-nav-item">
+                <li className="nav-item">
                   <Link
-                    className="mobile-nav-link"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/about"
-                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >About Us</Link>
                 </li>
-                <li className="mobile-nav-item">
+                <li className="nav-item">
                   <Link
-                    className="mobile-nav-link"
+                    className="nav-link text-white text-uppercase mx-2 px-1 mb-2 mb-lg-0"
                     to="/snd-site/academy"
-                    onClick={() => document.getElementById('hamburger-toggle').checked = false}
                   >Academy</Link>
                 </li>
                 {/* Socials */}
                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
-                  <ul className="d-flex flex-row list-unstyled mb-0 social-ul">
+                  <ul className="d-flex flex-row gap-2 list-unstyled mb-0 social-ul">
                     <li className="nav-item">
                       <a
                         className="nav-link d-flex align-items-center"
@@ -569,17 +512,12 @@ export default function Home() {
                 </div>
                 {/* Book Now */}
                 <div className="book-now-div">
-                  <button 
-                    onClick={() => window.location.href = '/bookings'}
-                    className="book-now-button-custom"
-                    type="button"
+                  <Link
+                    to="/bookings"
+                    className="btn btn-primary book-now-btn w-100 w-xl-auto ms-0 ms-xl-3"
                   >
                     Book Now
-                    <iconify-icon
-                      icon="tabler:arrow-right"
-                      className="arrow-icon-custom"
-                    />
-                  </button>
+                  </Link>
                 </div>
               </ul>
             </div>

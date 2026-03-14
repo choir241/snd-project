@@ -83,12 +83,6 @@
   padding: 3rem 0;
 }
 
-.academy-quote .hero-overlay {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  border-radius: 8px;
-}
-
 /* Form styling */
 .academy-quote .form-control {
   background-color: #ffffff;
@@ -138,10 +132,6 @@
 @media (max-width: 768px) {
   .academy-quote {
     padding: 2rem 0;
-  }
-  
-  .academy-quote .hero-overlay {
-    padding: 1.5rem;
   }
   
   .academy-quote .fs-3 {
