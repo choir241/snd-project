@@ -302,7 +302,7 @@ export default function Gallery() {
           >
             <div className="offcanvas-header my-2 mx-3">
               <img
-                src="/snd-site/images/horizontal-logo.png"
+                src="/images/logo-gold-text.svg"
                 alt="Supreme Nomads Detailing Logo"
                 className="hamburger-logo"
               />

@@ -340,9 +340,9 @@
     display: block !important;
   }
   
-  /* Prevent navbar collapse on mobile */
+  /* Prevent navbar collapse on mobile and apply black background to header */
   .navbar.fixed-top {
-    background-color: transparent !important;
+    background-color: #000000 !important; /* Black background for the header */
     backdrop-filter: none !important;
     transition: none !important;
     min-height: auto !important;
@@ -350,7 +350,7 @@
   }
   
   .navbar.fixed-top.bg-black {
-    background-color: transparent !important;
+    background-color: #000000 !important; /* Ensure black background even with bg-black class */
   }
   
   /* Ensure hamburger menu stays visible */
