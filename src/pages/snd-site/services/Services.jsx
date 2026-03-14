@@ -405,9 +405,9 @@ export default function Services() {
       <nav className="navbar fixed-top navbar-expand-xl container-fluid p-sm-3 p-2">
         {/* Logo */}
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" />
-          </a>
+          </Link>
           
           {/* Mobile Layout */}
           <div className="d-flex align-items-center gap-3 d-xl-none">
@@ -448,35 +448,34 @@ export default function Services() {
               {/* Routes */}
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1">
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link text-white text-uppercase active mx-1 px-1 mb-2 mb-lg-0"
-                    aria-current="page"
-                    href="/"
-                  >Home</a>
+                    to="/"
+                  >Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
-                    href="/snd-site/gallery"
-                  >Gallery</a>
+                    to="/snd-site/gallery"
+                  >Gallery</Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
-                    href="/snd-site/services"
-                  >Our Services</a>
+                    to="/snd-site/services"
+                  >Our Services</Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
-                    href="/snd-site/about"
-                  >About Us</a>
+                    to="/snd-site/about"
+                  >About Us</Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link text-white text-uppercase mx-1 px-1 mb-2 mb-lg-0"
-                    href="/snd-site/academy"
-                  >Academy</a>
+                    to="/snd-site/academy"
+                  >Academy</Link>
                 </li>
                 {/* Socials */}
                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
@@ -679,8 +678,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows and Door Jams Cleaned</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon><span>Rain-X<span className="sup-reg">®</span> Window Treatment</span></p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -688,7 +687,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -710,8 +709,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows & Door Jams Cleaned</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon><span>Rain-X<span className="sup-reg">®</span> Window Treatment</span></p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -719,7 +718,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -737,8 +736,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Deep Interior & Trunk Vacuum</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows and Door Jams Cleaned</p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -746,7 +745,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -768,8 +767,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Interior Vacuum</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows Only</p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -777,7 +776,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -818,8 +817,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows and Door Jams Cleaned</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon><span>Rain-X<span className="sup-reg">®</span> Window Treatment</span></p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -827,7 +826,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -854,8 +853,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows & Door Jams Cleaned</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon><span>Rain-X<span className="sup-reg">®</span> Window Treatment</span></p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -863,7 +862,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -886,8 +885,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Deep Interior & Trunk Vacuum</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows and Door Jams Cleaned</p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -895,7 +894,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -922,8 +921,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Interior Vacuum</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows Only</p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -931,7 +930,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -972,8 +971,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows and Door Jams Cleaned</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon><span>Rain-X<span className="sup-reg">®</span> Window Treatment</span></p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -981,7 +980,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -1008,8 +1007,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows & Door Jams Cleaned</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon><span>Rain-X<span className="sup-reg">®</span> Window Treatment</span></p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -1017,7 +1016,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -1040,8 +1039,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Deep Interior & Trunk Vacuum</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows and Door Jams Cleaned</p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -1049,7 +1048,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -1076,8 +1075,8 @@ export default function Services() {
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Interior Vacuum</p>
                         <p><iconify-icon icon="mdi:square-medium" className="bullet-icon price-tick"></iconify-icon> Windows Only</p>
                       </div>
-                      <a
-                        href="/snd-site/booking.html"
+                      <Link
+                        to="/bookings"
                         className="btn btn-primary mt-3 px-4 py-3 mx-2 book-now-btn-links"
                       >
                         Book now
@@ -1085,7 +1084,7 @@ export default function Services() {
                           icon="tabler:arrow-right"
                           className="arrow-icon"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -130,7 +130,6 @@ export default function BrowserRoutes() {
               <Route path="/bookings" element={<Bookings />} />
               
               {/* snd-site routes */}
-              <Route path="/snd-site/home" element={<Home />} />
               <Route path="/snd-site/about" element={<About />} />
               <Route path="/snd-site/gallery" element={<Gallery />} />
               <Route path="/snd-site/services" element={<Services />} />

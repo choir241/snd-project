@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import "../css/vendor.css";
 import 'swiper/css';
 import Logo from '../images/horizontal-logo.png';
@@ -372,35 +373,35 @@ export default function Home() {
             </a>
             <ul className="navbar-nav align-items-center flex-row gap-3">
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-white text-uppercase active"
                   aria-current="page"
-                  href="/"
-                >Home</a>
+                  to="/"
+                >Home</Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-white text-uppercase"
-                  href="/snd-site/gallery"
-                >Gallery</a>
+                  to="/snd-site/gallery"
+                >Gallery</Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-white text-uppercase"
-                  href="/snd-site/services"
-                >Our Services</a>
+                  to="/snd-site/services"
+                >Our Services</Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-white text-uppercase"
-                  href="/snd-site/about"
-                >About Us</a>
+                  to="/snd-site/about"
+                >About Us</Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-white text-uppercase"
-                  href="/snd-site/academy"
-                >Academy</a>
+                  to="/snd-site/academy"
+                >Academy</Link>
               </li>
             </ul>
             <div className="book-now-div">
@@ -447,40 +448,40 @@ export default function Home() {
               {/* Routes */}
               <ul className="mobile-nav-list">
                 <li className="mobile-nav-item">
-                  <a
+                  <Link
                     className="mobile-nav-link"
                     aria-current="page"
-                    href="/"
+                    to="/"
                     onClick={() => document.getElementById('hamburger-toggle').checked = false}
-                  >Home</a>
+                  >Home</Link>
                 </li>
                 <li className="mobile-nav-item">
-                  <a
+                  <Link
                     className="mobile-nav-link"
-                    href="/snd-site/gallery"
+                    to="/snd-site/gallery"
                     onClick={() => document.getElementById('hamburger-toggle').checked = false}
-                  >Gallery</a>
+                  >Gallery</Link>
                 </li>
                 <li className="mobile-nav-item">
-                  <a
+                  <Link
                     className="mobile-nav-link"
-                    href="/snd-site/services"
+                    to="/snd-site/services"
                     onClick={() => document.getElementById('hamburger-toggle').checked = false}
-                  >Our Services</a>
+                  >Our Services</Link>
                 </li>
                 <li className="mobile-nav-item">
-                  <a
+                  <Link
                     className="mobile-nav-link"
-                    href="/snd-site/about"
+                    to="/snd-site/about"
                     onClick={() => document.getElementById('hamburger-toggle').checked = false}
-                  >About Us</a>
+                  >About Us</Link>
                 </li>
                 <li className="mobile-nav-item">
-                  <a
+                  <Link
                     className="mobile-nav-link"
-                    href="/snd-site/academy"
+                    to="/snd-site/academy"
                     onClick={() => document.getElementById('hamburger-toggle').checked = false}
-                  >Academy</a>
+                  >Academy</Link>
                 </li>
                 {/* Socials */}
                 <div className="d-flex mt-lg-0 align-items-center justify-content-center offcanvas-body social-div">
@@ -629,29 +630,29 @@ export default function Home() {
                   <h2 className="display-4 text-center">Quick Links</h2>
                 </div>
                 <div className="col-md-6 padding-medium-2 ps-md-5 d-grid gap-3">
-                  <a href="/bookings" className="btn btn-primary w-100 book-now-btn-links">
+                  <Link to="/bookings" className="btn btn-primary w-100 book-now-btn-links">
                     Book Now
                     <iconify-icon
                       icon="tabler:arrow-right"
                       className="arrow-icon"
                     />
-                  </a>
+                  </Link>
 
-                  <a href="/snd-site/academy" className="btn btn-primary w-100">
+                  <Link to="/snd-site/academy" className="btn btn-primary w-100">
                     What is Detailing?
                     <iconify-icon
                       icon="tabler:arrow-right"
                       className="arrow-icon"
                     />
-                  </a>
+                  </Link>
 
-                  <a href="/snd-site/about" className="btn btn-primary w-100">
+                  <Link to="/snd-site/about" className="btn btn-primary w-100">
                     How do we Operate?
                     <iconify-icon
                       icon="tabler:arrow-right"
                       className="arrow-icon"
                     />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -780,13 +781,13 @@ export default function Home() {
           </div>
         </div>
         <div className="text-center pb-5 mb-5">
-          <a href="/snd-site/gallery" className="btn btn-primary mt-5">
+          <Link to="/snd-site/gallery" className="btn btn-primary mt-5">
             See More
             <iconify-icon
               icon="tabler:arrow-right"
               className="arrow-icon"
             />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -1292,27 +1293,27 @@ export default function Home() {
                 <div className="row row-cols-1 g-0">
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="/" className="nav-link text-uppercase p-0">Home</a>
+                      <Link to="/" className="nav-link text-uppercase p-0">Home</Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="/snd-site/gallery" className="nav-link text-uppercase p-0">Gallery</a>
+                      <Link to="/snd-site/gallery" className="nav-link text-uppercase p-0">Gallery</Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="/snd-site/services" className="nav-link text-uppercase p-0">Our Services</a>
+                      <Link to="/snd-site/services" className="nav-link text-uppercase p-0">Our Services</Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="/snd-site/about" className="nav-link text-uppercase p-0">About Us</a>
+                      <Link to="/snd-site/about" className="nav-link text-uppercase p-0">About Us</Link>
                     </div>
                   </div>
                   <div className="col">
                     <div className="footer-list mb-3">
-                      <a href="/snd-site/academy" className="nav-link text-uppercase p-0">Academy</a>
+                      <Link to="/snd-site/academy" className="nav-link text-uppercase p-0">Academy</Link>
                     </div>
                   </div>
                 </div>
