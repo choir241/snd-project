@@ -2,8 +2,8 @@ import { labels } from "../../static/labels";
 import { setCart } from "../../static/cartItems";
 
 export function updateModifier({ addOnItems, packageName, navigate }) {
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
 
   if (addOnItems.length) {

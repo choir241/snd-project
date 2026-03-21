@@ -1,8 +1,8 @@
 import { setCart } from "../../static/cartItems";
 
 export function removeAddOn({ addOnItemName }) {
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
 
   const updatedCartRemovePackage = cartItems.map((item) => {

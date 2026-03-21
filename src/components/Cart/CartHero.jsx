@@ -1,8 +1,8 @@
 import { calculateItemsTotal } from "../../hooks/calculateItemsTotal";
 
 export default function CartHero() {
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
   /*TODO: handle multiple cart items*/
   return (

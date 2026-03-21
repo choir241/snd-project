@@ -130,7 +130,7 @@ export async function getFirstTeamMember() {
 }
 
 function getAndValidateCart() {
-  const cartItems = JSON.parse(sessionStorage.getItem("cart") || "[]");
+  const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
   if (!Array.isArray(cartItems) || cartItems.length === 0) {
     throw new Error("Your cart is empty");
   }
@@ -272,7 +272,7 @@ async function createBooking(customerId, appointmentSegments, startAt) {
 
 function clearSessionData() {
   try {
-    sessionStorage.clear();
+    localStorage.clear();
   } catch (error) {
     console.warn("Error clearing session data:", error);
   }

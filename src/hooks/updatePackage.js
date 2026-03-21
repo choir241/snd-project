@@ -3,8 +3,8 @@ import { packageNameCamelCase } from "./packageNameCamelCase";
 import { setCart } from "../static/cartItems";
 
 export function updatePackage({ packageOption, packageName, navigate }) {
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
 
   if (packageOption) {

@@ -14,8 +14,8 @@ export default function TimeButtonCategories({
 }) {
   const navigate = useNavigate();
 
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
 
   function addBookingToCart({ time }) {

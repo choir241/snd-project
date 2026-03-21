@@ -13,8 +13,8 @@ export default function CancellationPolicyProgress() {
 
   // Get cart items and parse appointment date and time
   useEffect(() => {
-    const cartItems = sessionStorage.getItem("cart")
-      ? JSON.parse(sessionStorage.getItem("cart"))
+    const cartItems = localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
       : [];
 
     if (

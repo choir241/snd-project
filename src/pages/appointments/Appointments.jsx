@@ -23,8 +23,8 @@ export default function Appointments() {
   const [isLoading, setIsLoading] = useState(true);
   const [nextAvailableDate, setNextAvailableDate] = useState(null);
 
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
 
   // Function to validate nextAvailableDate data

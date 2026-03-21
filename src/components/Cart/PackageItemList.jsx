@@ -1,8 +1,8 @@
 import PackageCartItem from "./PackageCartItem";
 
 export default function PackageItemList() {
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
   return (
     <div className="py-4 px-4 md-lg:max-h-[calc(100vh-280px)] overflow-y-auto">

@@ -1,8 +1,8 @@
 import { labels } from "../../static/labels";
 
 export default function CartButtonsSection() {
-  const cartItems = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+  const cartItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
   if (cartItems.length) {
     return (
