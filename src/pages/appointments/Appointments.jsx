@@ -12,6 +12,7 @@ import { generateDateRange } from "../../hooks/generateDateRange";
 import axios from "axios";
 import { generateCalendarDates } from "../../hooks/generateCalendarDates";
 import { formatDate } from "../../hooks/dateFuncs";
+import { CartContext } from "../../context/CartContext";
 
 export default function Appointments() {
   const [toggleCalendarView, setToggleCalendarView] = useState(false);

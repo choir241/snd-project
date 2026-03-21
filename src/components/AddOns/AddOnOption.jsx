@@ -2,6 +2,7 @@ import { handleOnOptionSelect } from "./handleOnOptionSelect";
 import { useState, useEffect, useContext } from "react";
 import { removeAddOn } from "./removeAddOn";
 import { useNavigate } from "react-router";
+import { CartContext } from "../../context/CartContext";
 
 export default function AddOnOption({
   optionName,
