@@ -218,7 +218,7 @@ export async function getFirstTeamMember() {
 }
 
 function getAndValidateCart() {
-  const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+  const cartItems = JSON.parse(sessionStorage.getItem("cart") || "[]");
   if (!Array.isArray(cartItems) || cartItems.length === 0) {
     throw new Error("Your cart is empty");
   }
@@ -288,13 +288,13 @@ async function findOrCreateCustomer(userInfo) {
       (customer) => customer.email === email,
     );
 
+    console.log('Existing customer filter result:', existingCustomer);
+
     if (existingCustomer.length > 0) {
       console.log('Found existing customer:', existingCustomer[0].id);
       return existingCustomer[0].id;
     }
 
-    // If customer doesn't exist, create a new one
-    console.log('Creating new customer...');
     const newCustomer = await axios.post(
       `${API_BASE_URL}/createCustomer`,
       {
@@ -310,6 +310,9 @@ async function findOrCreateCustomer(userInfo) {
         country: "US",
       },
     );
+
+    // If customer doesn't exist, create a new one
+    console.log('Creating new customer...', newCustomer);
     
     if (!newCustomer || !newCustomer.data || !newCustomer.data.id) {
       throw new Error("Failed to create new customer");
@@ -426,7 +429,7 @@ async function createBooking(customerId, appointmentSegments, startAt) {
 
 function clearSessionData() {
   try {
-    localStorage.clear();
+    sessionStorage.clear();
   } catch (error) {
     console.warn("Error clearing session data:", error);
   }

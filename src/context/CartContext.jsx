@@ -4,7 +4,7 @@ export const CartProvider = ({ children }) => {
 
   const [cartItems, setCartItems] = useState(() => {
     try {
-      const items = localStorage.getItem('cart');
+      const items = sessionStorage.getItem('cart');
       return items ? JSON.parse(items) : [];
     } catch (error) {
       return [];
@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    sessionStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   return (

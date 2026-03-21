@@ -1,5 +1,5 @@
 export function calculateItemsTotal() {
-  const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+  const cartItems = JSON.parse(sessionStorage.getItem("cart") || "[]");
   let sumPrice = 0;
   cartItems.forEach((item) => {
     sumPrice += Number(item.packageOption.price);

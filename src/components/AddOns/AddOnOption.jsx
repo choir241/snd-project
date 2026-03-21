@@ -25,7 +25,7 @@ export default function AddOnOption({
       ? true
       : false;
     setIsChecked(isOptionInCart);
-  }, []);
+  }, [cartItems]);
 
   let modifiers;
   let isDisabled;
